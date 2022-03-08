@@ -1,0 +1,17 @@
+export default {
+  backgroundBlack: '#181920',
+  pointRed: '#E72847',
+  footerBlack: '#050505',
+  lineGray: '#2a2a2a',
+  subNavy: '#1f2026',
+  subNavy2: '#24252c',
+  subNavy3: '#2a2a2a',
+  textWhite: '#ffffff',
+  text2: 'rgba(255,255,255,0.9)',
+  text3: 'rgba(255,255,255,0.8)',
+  text4: 'rgba(255,255,255,0.6)',
+  text5: 'rgba(255,255,255,0.5)',
+  text6: '#b4b4b4',
+  kakao: '#fee500',
+  naver: '#03c75a',
+};
