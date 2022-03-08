@@ -6,6 +6,7 @@ export default {
   subNavy: '#1f2026',
   subNavy2: '#24252c',
   subNavy3: '#2a2a2a',
+  signBlue: '#36407d',
   textWhite: '#ffffff',
   text2: 'rgba(255,255,255,0.9)',
   text3: 'rgba(255,255,255,0.8)',
