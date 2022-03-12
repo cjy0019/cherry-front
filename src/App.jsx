@@ -6,6 +6,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <div>Hello, World</div>
+      <div>안녕</div>
     </>
   );
 };
