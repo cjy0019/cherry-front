@@ -2,8 +2,12 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SatisficationButton = ({ children, point }) => {
-  return <StyledButton point={point}>{children}</StyledButton>;
+const SatisficationButton = ({ children, point, handleClick }) => {
+  return (
+    <StyledButton onClick={handleClick} point={point}>
+      {children}
+    </StyledButton>
+  );
 };
 
 const StyledButton = styled.button`

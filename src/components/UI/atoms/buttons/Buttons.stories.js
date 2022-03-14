@@ -1,3 +1,4 @@
+import CategorySelectButton from './CategorySelectButton';
 import CherryPickStartButton from './CherryPickStartButton';
 import MoreLectureButton from './MoreLectureButton';
 import RetryButton from './RetryButton';
@@ -32,4 +33,18 @@ export const SatisficationVeryGood = () => (
 
 export const MoreLecture = () => (
   <MoreLectureButton>강의 전체 보기</MoreLectureButton>
+);
+
+export const CategorySelect = () => (
+  <div
+    style={{
+      display: 'flex',
+      gap: '10px',
+      backgroundColor: '#181920',
+      height: '100vh',
+      paddingTop: '30px',
+    }}>
+    <CategorySelectButton>전체</CategorySelectButton>
+    <CategorySelectButton selected>전체</CategorySelectButton>
+  </div>
 );
