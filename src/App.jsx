@@ -1,12 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import CherryPickStartButton from './components/UI/atoms/buttons/CherryPickStartButton';
+import RetryButton from './components/UI/atoms/buttons/RetryButton';
 import GlobalStyle from './style/GlobalStyle';
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <div>Hello, World</div>
+      <RetryButton />
+      <CherryPickStartButton />
     </>
   );
 };
