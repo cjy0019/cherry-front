@@ -1,5 +1,16 @@
 import { createGlobalStyle, css } from 'styled-components';
 import reset from 'styled-reset';
+import RobotoBold from '../assets/fonts/Roboto-Bold.woff';
+import RobotoMedium from '../assets/fonts/Roboto-Medium.woff';
+import RobotoRegular from '../assets/fonts/Roboto-Regular.woff';
+import RobotoLight from '../assets/fonts/Roboto-Light.woff';
+import RobotoThin from '../assets/fonts/Roboto-Thin.woff';
+import PretendardBold from '../assets/fonts/Pretendard-Bold.woff';
+import PretendardSemiBold from '../assets/fonts/Pretendard-SemiBold.woff';
+import PretendardMedium from '../assets/fonts/Pretendard-Medium.woff';
+import PretendardRegular from '../assets/fonts/Pretendard-Regular.woff';
+import PretendardLight from '../assets/fonts/Roboto-Light.woff';
+import PretendardThin from '../assets/fonts/Pretendard-Thin.woff';
 
 const globalStyle = css`
   ${reset}
@@ -9,69 +20,58 @@ const globalStyle = css`
 
   @font-face {
     font-family: 'Roboto';
-    src: url(${require('../assets/fonts/Roboto-Bold.woff').default})
-      format('woff');
+    src: url(${RobotoBold}) format('woff');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
   }
   @font-face {
     font-family: 'Roboto';
-    src: url(${require('../assets/fonts/Roboto-Medium.woff').default})
-      format('woff');
+    src: url(${RobotoMedium}) format('woff');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
   }
   @font-face {
     font-family: 'Roboto';
-    src: url(${require('../assets/fonts/Roboto-Regular.woff').default})
-      format('woff');
+    src: url(${RobotoRegular}) format('woff');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
   }
   @font-face {
     font-family: 'Roboto';
-    src: url(${require('../assets/fonts/Roboto-Light.woff').default})
-      format('woff');
+    src: url(${RobotoLight}) format('woff');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
   }
   @font-face {
     font-family: 'Roboto';
-    src: url(${require('../assets/fonts/Roboto-Thin.woff').default})
-      format('woff');
+    src: url(${RobotoThin}) format('woff');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
   }
 
   @font-face {
     font-family: 'Pretendard';
-    src: url(${require('../assets/fonts/Pretendard-Bold.woff').default})
-      format('woff');
+    src: url(${PretendardBold}) format('woff');
     unicode-range: U+AC00-D7A3;
   }
   @font-face {
     font-family: 'Pretendard';
-    src: url(${require('../assets/fonts/Pretendard-SemiBold.woff').default})
-      format('woff');
+    src: url(${PretendardSemiBold}) format('woff');
     unicode-range: U+AC00-D7A3;
   }
   @font-face {
     font-family: 'Pretendard';
-    src: url(${require('../assets/fonts/Pretendard-Medium.woff').default})
-      format('woff');
+    src: url(${PretendardMedium}) format('woff');
     unicode-range: U+AC00-D7A3;
   }
   @font-face {
     font-family: 'Pretendard';
-    src: url(${require('../assets/fonts/Pretendard-Regular.woff').default})
-      format('woff');
+    src: url(${PretendardRegular}) format('woff');
     unicode-range: U+AC00-D7A3;
   }
   @font-face {
     font-family: 'Pretendard';
-    src: url(${require('../assets/fonts/Pretendard-Light.woff').default})
-      format('woff');
+    src: url(${PretendardLight}) format('woff');
     unicode-range: U+AC00-D7A3;
   }
   @font-face {
     font-family: 'Pretendard';
-    src: url(${require('../assets/fonts/Pretendard-Thin.woff').default})
-      format('woff');
+    src: url(${PretendardThin}) format('woff');
     unicode-range: U+AC00-D7A3;
   }
 
