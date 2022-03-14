@@ -3,8 +3,12 @@ import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 
-const SaveButton = ({ children, dim }) => {
-  return <StyledButton dim={dim}>{children}</StyledButton>;
+const SaveButton = ({ children, dim, handleClick }) => {
+  return (
+    <StyledButton onClick={handleClick} dim={dim}>
+      {children}
+    </StyledButton>
+  );
 };
 
 const StyledButton = styled.button`

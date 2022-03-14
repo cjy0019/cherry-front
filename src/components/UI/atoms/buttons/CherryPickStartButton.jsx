@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const CherryPickStartButton = () => {
-  return <StyledButton>체리픽 시작하기</StyledButton>;
+const CherryPickStartButton = ({ handleClick }) => {
+  return <StyledButton onClick={handleClick}>체리픽 시작하기</StyledButton>;
 };
 
 const StyledButton = styled.button`

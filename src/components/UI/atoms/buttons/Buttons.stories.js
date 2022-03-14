@@ -1,5 +1,6 @@
 import CategorySelectButton from './CategorySelectButton';
 import CherryPickStartButton from './CherryPickStartButton';
+import DeleteAllButton from './DeleteAllButton';
 import MoreLectureButton from './MoreLectureButton';
 import RetryButton from './RetryButton';
 import ReviewButton from './ReviewButton';
@@ -46,5 +47,11 @@ export const CategorySelect = () => (
     }}>
     <CategorySelectButton>전체</CategorySelectButton>
     <CategorySelectButton selected>전체</CategorySelectButton>
+  </div>
+);
+
+export const DeleteAll = () => (
+  <div>
+    <DeleteAllButton>모두 지우기</DeleteAllButton>
   </div>
 );

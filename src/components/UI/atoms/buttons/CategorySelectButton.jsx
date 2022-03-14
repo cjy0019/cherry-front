@@ -17,7 +17,8 @@ const StyledButton = styled.button`
   border-radius: 100px;
   border: 1px solid #444444;
   background-color: #444444;
-  color: ${palette.textWhite};
+  color: ${palette.text5};
+  font-weight: 400;
 
   ${(props) =>
     props.selected &&
@@ -25,6 +26,7 @@ const StyledButton = styled.button`
       background-color: ${palette.textWhite};
       color: ${palette.pointRed};
       border: none;
+      font-weight: 700;
     `}
 `;
 

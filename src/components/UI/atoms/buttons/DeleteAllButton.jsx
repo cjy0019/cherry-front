@@ -3,25 +3,23 @@ import styled from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 
-const MoreLectureButton = ({ children, handleClick }) => {
+const DeleteAllButton = ({ children, handleClick }) => {
   return <StyledButton onClick={handleClick}>{children}</StyledButton>;
 };
 
 const StyledButton = styled.button`
-  width: 720px;
-  height: 44px;
-  background-color: ${palette.subNavy};
-  font-weight: 400;
-  font-size: 12px;
-  color: ${palette.textWhite};
+  width: 300px;
+  height: 34px;
+  background: #000000;
   border-radius: 3px;
   border: none;
-  cursor: pointer;
+  color: ${palette.textWhite};
   font-weight: 400;
 
   @media ${responsive.mobile} {
     width: 320px;
+    height: 44px;
   }
 `;
 
-export default MoreLectureButton;
+export default DeleteAllButton;

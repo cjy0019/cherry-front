@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const RetryButton = () => {
-  return <StyledButton>다시 시도</StyledButton>;
+const RetryButton = ({ handleClick }) => {
+  return <StyledButton onClick={handleClick}>다시 시도</StyledButton>;
 };
 
 const StyledButton = styled.button`
