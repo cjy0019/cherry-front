@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import GlobalStyle from './style/GlobalStyle';
 
 const App = () => {
@@ -6,7 +7,6 @@ const App = () => {
     <>
       <GlobalStyle />
       <div>Hello, World</div>
-      <div>안녕</div>
     </>
   );
 };
