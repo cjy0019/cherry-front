@@ -1,4 +1,5 @@
 import CherryPickStartButton from './CherryPickStartButton';
+import MoreLectureButton from './MoreLectureButton';
 import RetryButton from './RetryButton';
 import ReviewButton from './ReviewButton';
 import SatisficationButton from './SatisficationButton';
@@ -27,4 +28,8 @@ export const SatisficationVeryGood = () => (
     <SatisficationButton>보통</SatisficationButton>
     <SatisficationButton>그저 그럼</SatisficationButton>
   </div>
+);
+
+export const MoreLecture = () => (
+  <MoreLectureButton>강의 전체 보기</MoreLectureButton>
 );
