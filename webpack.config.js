@@ -38,6 +38,20 @@ module.exports = {
           },
         ],
       },
+      {
+        // write image files under 10k to inline or copy image files over 10k
+        test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              fallback: 'file-loader',
+              name: 'img/[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
