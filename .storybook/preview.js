@@ -27,6 +27,11 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: {
+      method: 'alphabetical', // <--- 추가된 코드
+    },
+  },
   viewport: {
     viewports: {
       ...MINIMAL_VIEWPORTS,
