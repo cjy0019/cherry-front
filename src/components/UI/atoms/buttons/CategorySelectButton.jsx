@@ -20,6 +20,7 @@ const StyledButton = styled.button`
   background-color: #444444;
   color: ${palette.text5};
   font-weight: 400;
+  cursor: pointer;
 
   ${(props) =>
     props.selected &&

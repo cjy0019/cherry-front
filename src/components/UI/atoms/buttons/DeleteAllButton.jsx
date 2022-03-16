@@ -15,6 +15,7 @@ const StyledButton = styled.button`
   border: none;
   color: ${palette.textWhite};
   font-weight: 400;
+  cursor: pointer;
 
   @media ${responsive.mobile} {
     width: 320px;

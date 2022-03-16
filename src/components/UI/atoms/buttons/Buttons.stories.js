@@ -4,11 +4,9 @@ import DeleteAllButton from './DeleteAllButton';
 import MoreLectureButton from './MoreLectureButton';
 import OriginalLinkButton from './OriginalLinkButton';
 import RetryButton from './RetryButton';
-import ReviewButton from './ReviewButton';
 import SatisficationButton from './SatisficationButton';
 import SaveButton from './SaveButton';
 import linkIcon from '../../../../assets/img/linkIcon.png';
-import CloseButton from './CloseButton';
 import CarouselSlideButton from './CarouselSlideButton';
 import CategoryCancelButton from './CategoryCancelButton';
 

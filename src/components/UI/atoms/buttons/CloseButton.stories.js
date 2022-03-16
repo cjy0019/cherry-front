@@ -2,6 +2,7 @@ import CloseButton from './CloseButton';
 
 export default {
   title: '버튼',
+  component: CloseButton,
 };
 
 const Template = (args) => <CloseButton {...args} />;

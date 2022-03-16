@@ -2,6 +2,7 @@ import ReviewButton from './ReviewButton';
 
 export default {
   title: '버튼',
+  component: ReviewButton,
 };
 
 const Template = (args) => <ReviewButton {...args} />;

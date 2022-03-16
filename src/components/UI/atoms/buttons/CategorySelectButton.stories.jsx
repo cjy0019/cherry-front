@@ -2,6 +2,7 @@ import CategorySelectButton from './CategorySelectButton';
 
 export default {
   title: '버튼',
+  component: CategorySelectButton,
 };
 
 const SelectedTemplate = (args) => <CategorySelectButton {...args} />;

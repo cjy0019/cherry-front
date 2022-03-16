@@ -20,6 +20,7 @@ const StyledButton = styled.button`
   background-color: ${palette.pointRed};
   font-weight: 700;
   font-size: 12px;
+  cursor: pointer;
 
   ${(props) =>
     props.dim &&
