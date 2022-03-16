@@ -11,7 +11,8 @@ const CategorySelectButton = ({ children, selected, handleClick }) => {
 };
 
 const StyledButton = styled.button`
-  width: 83px;
+  min-width: 83px;
+  padding: 0 10px;
   height: 40px;
   background: ${palette.textWhite};
   border-radius: 100px;
@@ -19,6 +20,7 @@ const StyledButton = styled.button`
   background-color: #444444;
   color: ${palette.text5};
   font-weight: 400;
+  cursor: pointer;
 
   ${(props) =>
     props.selected &&

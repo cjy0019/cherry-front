@@ -27,6 +27,11 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-weight: 400;
 
+  & > p:nth-child(2) {
+    padding-bottom: 3px;
+    padding-left: 4px;
+  }
+
   @media ${responsive.mobile} {
     width: 320px;
   }
