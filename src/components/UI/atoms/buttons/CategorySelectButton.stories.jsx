@@ -9,11 +9,6 @@ const SelectedTemplate = (args) => <CategorySelectButton {...args} />;
 export const CategorySelect = SelectedTemplate.bind({});
 
 CategorySelect.args = {
-  selected: true,
-  children: '전체',
-};
-
-CategorySelect.args = {
   selected: false,
   children: '프론트엔드',
 };

@@ -1,5 +1,4 @@
 import { BrowserRouter } from 'react-router-dom';
-import CategorySelectButton from './CategorySelectButton';
 import CherryPickStartButton from './CherryPickStartButton';
 import DeleteAllButton from './DeleteAllButton';
 import MoreLectureButton from './MoreLectureButton';
@@ -10,7 +9,6 @@ import SatisficationButton from './SatisficationButton';
 import SaveButton from './SaveButton';
 import linkIcon from '../../../../assets/img/linkIcon.png';
 import CloseButton from './CloseButton';
-import BookMarkButton from './BookMarkButton';
 import CarouselSlideButton from './CarouselSlideButton';
 import CategoryCancelButton from './CategoryCancelButton';
 
@@ -77,14 +75,6 @@ export const Close = () => (
   </div>
 );
 Close.storyName = '닫기 버튼';
-
-export const BookMark = () => (
-  <div>
-    <BookMarkButton active />
-    <BookMarkButton />
-  </div>
-);
-BookMark.storyName = '북마크 버튼';
 
 export const Carousel = () => (
   <div>
