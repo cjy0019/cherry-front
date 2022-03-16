@@ -54,18 +54,6 @@ export const MoreLecture = () => (
 );
 MoreLecture.storyName = '강의 전체 보기';
 
-export const CategorySelect = () => (
-  <div
-    style={{
-      display: 'flex',
-      gap: '10px',
-    }}>
-    <CategorySelectButton>전체</CategorySelectButton>
-    <CategorySelectButton selected>전체</CategorySelectButton>
-  </div>
-);
-CategorySelect.storyName = '카테고리 선택버튼';
-
 export const DeleteAll = () => (
   <div>
     <DeleteAllButton>모두 지우기</DeleteAllButton>
