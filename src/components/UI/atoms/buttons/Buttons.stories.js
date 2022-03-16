@@ -12,6 +12,7 @@ import linkIcon from '../../../../assets/img/linkIcon.png';
 import CloseButton from './CloseButton';
 import BookMarkButton from './BookMarkButton';
 import CarouselSlideButton from './CarouselSlideButton';
+import CategoryCancelButton from './CategoryCancelButton';
 
 export default {
   title: 'Buttons',
@@ -104,3 +105,7 @@ export const Carousel = () => (
   </div>
 );
 Carousel.storyName = '슬라이드 버튼';
+
+export const CategoryCancel = () => (
+  <CategoryCancelButton>Javascript</CategoryCancelButton>
+);
