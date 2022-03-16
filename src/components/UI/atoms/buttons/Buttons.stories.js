@@ -21,14 +21,6 @@ Retry.storyName = '다시 시도';
 export const CherryPickStart = () => <CherryPickStartButton />;
 CherryPickStart.storyName = '체리픽 시작하기';
 
-export const Review = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-    <ReviewButton>리뷰 작성하기</ReviewButton>
-    <ReviewButton dim>리뷰 작성완료</ReviewButton>
-  </div>
-);
-Review.storyName = '리뷰 작성하기 & 리뷰 작성완료';
-
 export const Save = () => (
   <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
     <SaveButton>저장하기</SaveButton>
