@@ -7,32 +7,41 @@ import naverImg from '../../../../assets/img/naver.png';
 import githubImg from '../../../../assets/img/github.png';
 import googleImg from '../../../../assets/img/google.png';
 
+const SocialLogin = ({ sns }) => {
+  return (
+    <Button sns={sns}>
+      <img alt='img' src={loginInfo[sns].imgSrc} />
+      <p sns={sns}>{loginInfo[sns].text}로 로그인</p>
+    </Button>
+  );
+};
+
 const loginInfo = {
   kakao: {
     text: '카카오',
     backgroundColor: palette.kakao,
     imgSrc: kakaoImg,
-    postion: { top: '16px', left: '15px' },
+    position: { top: '16px', left: '15px' },
   },
   naver: {
     text: '네이버',
     backgroundColor: palette.naver,
     fontColor: palette.textWhite,
     imgSrc: naverImg,
-    postion: { top: '16px', left: '15px' },
+    position: { top: '16px', left: '15px' },
   },
   github: {
     text: 'Github',
     backgroundColor: '#000000',
     fontColor: palette.textWhite,
     imgSrc: githubImg,
-    postion: { top: '14px', left: '17px' },
+    position: { top: '14px', left: '17px' },
   },
   google: {
     text: '구글',
     backgroundColor: palette.textWhite,
     imgSrc: googleImg,
-    postion: { top: '14px', left: '17px' },
+    position: { top: '14px', left: '17px' },
   },
 };
 
@@ -52,22 +61,13 @@ const Button = styled.button`
 
   & > img {
     position: absolute;
-    top: ${({ sns }) => loginInfo[sns].postion.top};
-    left: ${({ sns }) => loginInfo[sns].postion.left};
+    top: ${({ sns }) => loginInfo[sns].position.top};
+    left: ${({ sns }) => loginInfo[sns].position.left};
   }
 
   @media ${responsive.mobile} {
     width: 320px;
   }
 `;
-
-const SocialLogin = ({ sns }) => {
-  return (
-    <Button sns={sns}>
-      <img alt='img' src={loginInfo[sns].imgSrc} />
-      <p sns={sns}>{loginInfo[sns].text}로 로그인</p>
-    </Button>
-  );
-};
 
 export default SocialLogin;
