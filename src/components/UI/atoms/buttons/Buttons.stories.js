@@ -9,6 +9,7 @@ import ReviewButton from './ReviewButton';
 import SatisficationButton from './SatisficationButton';
 import SaveButton from './SaveButton';
 import linkIcon from '../../../../assets/img/linkIcon.png';
+import CloseButton from './CloseButton';
 
 export default {
   title: 'Buttons',
@@ -55,9 +56,6 @@ export const CategorySelect = () => (
     style={{
       display: 'flex',
       gap: '10px',
-      backgroundColor: '#181920',
-      height: '100vh',
-      paddingTop: '30px',
     }}>
     <CategorySelectButton>전체</CategorySelectButton>
     <CategorySelectButton selected>전체</CategorySelectButton>
@@ -80,3 +78,10 @@ export const OriginalLink = () => (
   </BrowserRouter>
 );
 OriginalLink.storyName = '원본 링크';
+
+export const Close = () => (
+  <div>
+    <CloseButton mode='dark' />
+    <CloseButton />
+  </div>
+);
