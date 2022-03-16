@@ -1,29 +1,45 @@
+import { BrowserRouter } from 'react-router-dom';
 import CategorySelectButton from './CategorySelectButton';
 import CherryPickStartButton from './CherryPickStartButton';
 import DeleteAllButton from './DeleteAllButton';
 import MoreLectureButton from './MoreLectureButton';
+import OriginalLinkButton from './OriginalLinkButton';
 import RetryButton from './RetryButton';
 import ReviewButton from './ReviewButton';
 import SatisficationButton from './SatisficationButton';
 import SaveButton from './SaveButton';
+import linkIcon from '../../../../assets/img/linkIcon.png';
+import CloseButton from './CloseButton';
+import BookMarkButton from './BookMarkButton';
+import CarouselSlideButton from './CarouselSlideButton';
+import CategoryCancelButton from './CategoryCancelButton';
 
 export default {
-  title: 'Buttons',
+  title: '버튼',
 };
 
 export const Retry = () => <RetryButton />;
+Retry.storyName = '다시 시도';
 export const CherryPickStart = () => <CherryPickStartButton />;
-export const WriteReview = () => <ReviewButton>리뷰 작성하기</ReviewButton>;
-export const CompleteReview = () => (
-  <ReviewButton dim>리뷰 작성완료</ReviewButton>
+CherryPickStart.storyName = '체리픽 시작하기';
+
+export const Review = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <ReviewButton>리뷰 작성하기</ReviewButton>
+    <ReviewButton dim>리뷰 작성완료</ReviewButton>
+  </div>
 );
+Review.storyName = '리뷰 작성하기 & 리뷰 작성완료';
+
 export const Save = () => (
   <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
     <SaveButton>저장하기</SaveButton>
     <SaveButton dim>저장하기</SaveButton>
   </div>
 );
-export const SatisficationVeryGood = () => (
+Save.storyName = '저장하기';
+
+export const Satisfication = () => (
   <div style={{ display: 'flex', gap: '10px' }}>
     <SatisficationButton point>매우 만족</SatisficationButton>
     <SatisficationButton>만족</SatisficationButton>
@@ -31,27 +47,66 @@ export const SatisficationVeryGood = () => (
     <SatisficationButton>그저 그럼</SatisficationButton>
   </div>
 );
+Satisfication.storyName = '만족도 뱃지';
 
 export const MoreLecture = () => (
   <MoreLectureButton>강의 전체 보기</MoreLectureButton>
 );
+MoreLecture.storyName = '강의 전체 보기';
 
 export const CategorySelect = () => (
   <div
     style={{
       display: 'flex',
       gap: '10px',
-      backgroundColor: '#181920',
-      height: '100vh',
-      paddingTop: '30px',
     }}>
     <CategorySelectButton>전체</CategorySelectButton>
     <CategorySelectButton selected>전체</CategorySelectButton>
   </div>
 );
+CategorySelect.storyName = '카테고리 선택버튼';
 
 export const DeleteAll = () => (
   <div>
     <DeleteAllButton>모두 지우기</DeleteAllButton>
   </div>
 );
+DeleteAll.storyName = '모두 지우기';
+
+export const OriginalLink = () => (
+  <BrowserRouter>
+    <OriginalLinkButton Href='/' imgUrl={linkIcon}>
+      원본 링크
+    </OriginalLinkButton>
+  </BrowserRouter>
+);
+OriginalLink.storyName = '원본 링크';
+
+export const Close = () => (
+  <div>
+    <CloseButton mode='dark' />
+    <CloseButton />
+  </div>
+);
+Close.storyName = '닫기 버튼';
+
+export const BookMark = () => (
+  <div>
+    <BookMarkButton active />
+    <BookMarkButton />
+  </div>
+);
+BookMark.storyName = '북마크 버튼';
+
+export const Carousel = () => (
+  <div>
+    <CarouselSlideButton left />
+    <CarouselSlideButton right />
+  </div>
+);
+Carousel.storyName = '슬라이드 버튼';
+
+export const CategoryCancel = () => (
+  <CategoryCancelButton>Javascript</CategoryCancelButton>
+);
+CategoryCancel.storyName = '카테고리 선택취소 버튼';
