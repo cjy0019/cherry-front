@@ -33,6 +33,7 @@
     "json-server": "^0.17.0",
     "mini-css-extract-plugin": "^2.6.0",
     "regenerator-runtime": "^0.13.9",
+    "storybook-dark-mode": "^1.0.9",
     "styled-components": "^5.3.3",
     "url-loader": "^4.1.1",
     "webpack": "^5.70.0",
@@ -42,7 +43,7 @@
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "storybook": "start-storybook -p 6006",
+    "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
