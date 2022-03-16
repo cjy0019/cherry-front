@@ -68,14 +68,6 @@ export const OriginalLink = () => (
 );
 OriginalLink.storyName = '원본 링크';
 
-export const Close = () => (
-  <div>
-    <CloseButton mode='dark' />
-    <CloseButton />
-  </div>
-);
-Close.storyName = '닫기 버튼';
-
 export const Carousel = () => (
   <div>
     <CarouselSlideButton left />

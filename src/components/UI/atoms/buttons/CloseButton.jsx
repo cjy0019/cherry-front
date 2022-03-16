@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import closeDark from '../../../../assets/img/close_dark.svg';
 import closeWhite from '../../../../assets/img/close_w.svg';
 
-const CloseButton = ({ mode, handleClick }) => {
+const CloseButton = ({ dark, handleClick }) => {
   return (
     <StyledButton onClick={handleClick}>
-      {mode === 'dark' ? (
-        <img src={closeDark} alt='close-button' />
-      ) : (
-        <img src={closeWhite} alt='close-button' />
-      )}
+      {dark && <img src={closeDark} alt='close-button' />}
+      {!dark && <img src={closeWhite} alt='close-button' />}
     </StyledButton>
   );
 };
