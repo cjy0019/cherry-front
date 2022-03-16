@@ -10,6 +10,7 @@ import SatisficationButton from './SatisficationButton';
 import SaveButton from './SaveButton';
 import linkIcon from '../../../../assets/img/linkIcon.png';
 import CloseButton from './CloseButton';
+import BookMarkButton from './BookMarkButton';
 
 export default {
   title: 'Buttons',
@@ -85,3 +86,12 @@ export const Close = () => (
     <CloseButton />
   </div>
 );
+Close.storyName = '닫기 버튼';
+
+export const BookMark = () => (
+  <div>
+    <BookMarkButton active />
+    <BookMarkButton />
+  </div>
+);
+BookMark.storyName = '북마크 버튼';
