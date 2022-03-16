@@ -109,3 +109,4 @@ Carousel.storyName = '슬라이드 버튼';
 export const CategoryCancel = () => (
   <CategoryCancelButton>Javascript</CategoryCancelButton>
 );
+CategoryCancel.storyName = '카테고리 선택취소 버튼';
