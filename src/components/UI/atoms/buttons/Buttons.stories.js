@@ -11,6 +11,7 @@ import SaveButton from './SaveButton';
 import linkIcon from '../../../../assets/img/linkIcon.png';
 import CloseButton from './CloseButton';
 import BookMarkButton from './BookMarkButton';
+import CarouselSlideButton from './CarouselSlideButton';
 
 export default {
   title: 'Buttons',
@@ -95,3 +96,11 @@ export const BookMark = () => (
   </div>
 );
 BookMark.storyName = '북마크 버튼';
+
+export const Carousel = () => (
+  <div>
+    <CarouselSlideButton left />
+    <CarouselSlideButton right />
+  </div>
+);
+Carousel.storyName = '슬라이드 버튼';
