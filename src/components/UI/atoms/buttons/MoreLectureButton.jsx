@@ -4,10 +4,18 @@ import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 
 const MoreLectureButton = ({ children, handleClick }) => {
-  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
+  return (
+    <StyledButton onClick={handleClick}>
+      <p>{children}</p>
+      <p>↓</p>
+    </StyledButton>
+  );
 };
 
 const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 720px;
   height: 44px;
   background-color: ${palette.subNavy};
