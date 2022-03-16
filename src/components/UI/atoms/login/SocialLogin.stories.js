@@ -10,3 +10,8 @@ export const Kakao = () => <SocialLogin sns='kakao' />;
 export const Google = () => <SocialLogin sns='google' />;
 export const Github = () => <SocialLogin sns='github' />;
 export const Naver = () => <SocialLogin sns='naver' />;
+
+Kakao.storyName = '카카오';
+Google.storyName = '구글';
+Github.storyName = '깃헙';
+Naver.storyName = '네이버';
