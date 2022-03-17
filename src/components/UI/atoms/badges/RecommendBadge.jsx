@@ -7,11 +7,8 @@ const RecommendBadge = ({ children, point }) => {
 };
 
 const StyledBadge = styled.div`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 9px;
-  height: 20px;
+  display: inline-block;
+  padding: 4px 9px 3px;
   background-color: #1d1c21;
   border-radius: 3px;
   font-size: 12px;
