@@ -1,5 +1,6 @@
 import NumberBadge from './NumberBadge';
 import SatisfactionBadge from './SatisfactionBadge';
+import UserLoginStateBadge from './UserLoginStateBadge';
 
 export default {
   title: 'atoms/뱃지',
@@ -25,3 +26,9 @@ export const SatisfactionBadgeStory = () => (
     <SatisfactionBadge>그저 그럼</SatisfactionBadge>
   </div>
 );
+SatisfactionBadgeStory.storyName = '만족도 뱃지';
+
+export const UserLoginState = () => (
+  <UserLoginStateBadge>카카오 로그인</UserLoginStateBadge>
+);
+UserLoginState.storyName = '로그인 상태 뱃지';
