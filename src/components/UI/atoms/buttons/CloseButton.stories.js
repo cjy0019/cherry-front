@@ -1,7 +1,7 @@
 import CloseButton from './CloseButton';
 
 export default {
-  title: '버튼/버튼',
+  title: 'atoms/버튼',
   component: CloseButton,
 };
 

@@ -1,15 +1,13 @@
 import BookMarkButton from '../../atoms/buttons/BookMarkButton';
 
 export default {
-  title: '버튼/버튼',
+  title: 'atoms/버튼',
   component: BookMarkButton,
 };
 
 const Template = (args) => <BookMarkButton {...args} />;
 
 export const BookMark = Template.bind({});
-
-BookMark.args = {};
 
 BookMark.args = {
   active: false,
