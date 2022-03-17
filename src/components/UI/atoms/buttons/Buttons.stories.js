@@ -11,7 +11,7 @@ import CarouselSlideButton from './CarouselSlideButton';
 import CategoryCancelButton from './CategoryCancelButton';
 
 export default {
-  title: '버튼',
+  title: '버튼/버튼',
 };
 
 export const Retry = () => <RetryButton />;
