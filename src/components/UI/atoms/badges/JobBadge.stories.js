@@ -10,5 +10,7 @@ const Template = (args) => <JobBadge {...args} />;
 export const Job = Template.bind({});
 
 Job.args = {
-  children: '프론트',
+  children: '1~3년차',
 };
+
+Job.storyName = '직무 관련 뱃지';
