@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { responsive } from '../../../../style/responsive';
 
-const FeedbackInput = () => {
+const FeedbackTextarea = () => {
   return (
     <Textarea placeholder='추가하고 싶은 강의/불편한 점/ 건의사항이 있으신가요?' />
   );
@@ -37,4 +37,4 @@ const Textarea = styled.textarea`
   }
 `;
 
-export default FeedbackInput;
+export default FeedbackTextarea;

@@ -1,13 +1,11 @@
 import React from 'react';
-import SearchInput from './SearchInput';
+import ReviewOneLineInput from './ReviewOneLineInput';
 
 export default {
-  title: 'atoms/입력창/검색',
-  component: SearchInput,
+  title: 'atoms/입력창',
+  component: ReviewOneLineInput,
 };
 
-export const BeforeSearch = () => <SearchInput />;
-export const AfterSearch = () => <SearchInput searched />;
+export const ReviewInput = () => <ReviewOneLineInput />;
 
-BeforeSearch.storyName = '검색 전 입력창';
-AfterSearch.storyName = '검색 후 입력창';
+ReviewInput.storyName = '리뷰 한 줄평';
