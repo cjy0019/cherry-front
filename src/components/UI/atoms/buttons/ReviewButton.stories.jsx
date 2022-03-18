@@ -1,7 +1,7 @@
 import ReviewButton from './ReviewButton';
 
 export default {
-  title: '버튼',
+  title: 'atoms/버튼',
   component: ReviewButton,
 };
 

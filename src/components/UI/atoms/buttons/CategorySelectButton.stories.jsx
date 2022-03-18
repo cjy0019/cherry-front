@@ -1,7 +1,7 @@
 import CategorySelectButton from './CategorySelectButton';
 
 export default {
-  title: '버튼',
+  title: 'atoms/버튼',
   component: CategorySelectButton,
 };
 
