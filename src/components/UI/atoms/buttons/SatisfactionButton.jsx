@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SatisficationButton = ({ children, point, handleClick }) => {
+const SatisfactionButton = ({ children, point, handleClick }) => {
   return (
     <StyledButton onClick={handleClick} point={point}>
       {children}
@@ -25,4 +25,4 @@ const StyledButton = styled.button`
     `}
 `;
 
-export default SatisficationButton;
+export default SatisfactionButton;

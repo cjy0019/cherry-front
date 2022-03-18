@@ -2,7 +2,7 @@ import React from 'react';
 import DetailInfoButton from './DetailInfoButton';
 
 export default {
-  title: '회원가입/상세 정보 버튼',
+  title: 'atoms/회원가입/상세 정보 버튼',
   component: DetailInfoButton,
 };
 

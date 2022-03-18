@@ -4,14 +4,14 @@ import DeleteAllButton from './DeleteAllButton';
 import MoreLectureButton from './MoreLectureButton';
 import OriginalLinkButton from './OriginalLinkButton';
 import RetryButton from './RetryButton';
-import SatisficationButton from './SatisficationButton';
+import SatisfactionButton from './SatisfactionButton';
 import SaveButton from './SaveButton';
 import linkIcon from '../../../../assets/img/linkIcon.png';
 import CarouselSlideButton from './CarouselSlideButton';
 import CategoryCancelButton from './CategoryCancelButton';
 
 export default {
-  title: '버튼',
+  title: 'atoms/버튼',
 };
 
 export const Retry = () => <RetryButton />;
@@ -27,15 +27,15 @@ export const Save = () => (
 );
 Save.storyName = '저장하기';
 
-export const Satisfication = () => (
+export const Satisfaction = () => (
   <div style={{ display: 'flex', gap: '10px' }}>
-    <SatisficationButton point>매우 만족</SatisficationButton>
-    <SatisficationButton>만족</SatisficationButton>
-    <SatisficationButton>보통</SatisficationButton>
-    <SatisficationButton>그저 그럼</SatisficationButton>
+    <SatisfactionButton point>매우 만족</SatisfactionButton>
+    <SatisfactionButton>만족</SatisfactionButton>
+    <SatisfactionButton>보통</SatisfactionButton>
+    <SatisfactionButton>그저 그럼</SatisfactionButton>
   </div>
 );
-Satisfication.storyName = '만족도 뱃지';
+Satisfaction.storyName = '만족도 뱃지';
 
 export const MoreLecture = () => (
   <MoreLectureButton>강의 전체 보기</MoreLectureButton>

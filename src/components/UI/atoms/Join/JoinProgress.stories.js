@@ -2,7 +2,7 @@ import React from 'react';
 import JoinProgress from './JoinProgress';
 
 export default {
-  title: '회원가입/진행 과정',
+  title: 'atoms/회원가입/진행 과정',
   component: JoinProgress,
 };
 

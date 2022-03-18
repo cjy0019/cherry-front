@@ -4,6 +4,6 @@ export const responsive = {
   laptop: '(min-width: 769px)',
 };
 
-// @media (${resonsive.mobile}) {
+// @media ${resonsive.mobile} {
 //     background-color: yellow;
 // }
