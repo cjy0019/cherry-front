@@ -41,6 +41,7 @@ const Input = styled.input`
     font-weight: 400;
     font-size: 12px;
     color: ${palette.textWhite};
+    opacity: 0.6;
   }
 
   @media ${responsive.mobile} {
