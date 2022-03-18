@@ -27,6 +27,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   background-color: ${palette.subNavy2};
+  outline: none;
 
   padding: 16px 156px 16px 20px;
   border-radius: 100px;
