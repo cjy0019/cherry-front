@@ -2,7 +2,7 @@ import React from 'react';
 import SocialLogin from './SocialLogin';
 
 export default {
-  title: '로그인/소셜 로그인 버튼',
+  title: 'atoms/로그인/소셜 로그인 버튼',
   component: SocialLogin,
 };
 

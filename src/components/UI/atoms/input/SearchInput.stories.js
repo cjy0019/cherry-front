@@ -2,7 +2,7 @@ import React from 'react';
 import SearchInput from './SearchInput';
 
 export default {
-  title: '입력창/검색',
+  title: 'atoms/입력창/검색',
   component: SearchInput,
 };
 
