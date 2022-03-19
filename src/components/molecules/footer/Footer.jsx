@@ -5,19 +5,19 @@ import palette from '../../../style/palette';
 const Footer = () => {
   return (
     <StyledFooter>
-      <div>
-        <LeftWrapper>
+      <ContentsContainer>
+        <FlexWrapper>
           <CherryPickText>Cherry Pick</CherryPickText>
           <BetaBadge>BETA</BetaBadge>
           <StyledSmall>&#9426; 2022 Cherry Pick</StyledSmall>
-        </LeftWrapper>
-        <div>
-          <p>email</p>
-          <div>CherryPick@gmail.com</div>
-          <p>github</p>
-          <div>github.com/cherrypick-project</div>
-        </div>
-      </div>
+        </FlexWrapper>
+        <FlexWrapper>
+          <StyledP>email</StyledP>
+          <EmailBadge>CherryPick@gmail.com</EmailBadge>
+          <StyledP>github</StyledP>
+          <EmailBadge>github.com/cherrypick-project</EmailBadge>
+        </FlexWrapper>
+      </ContentsContainer>
     </StyledFooter>
   );
 };
@@ -28,7 +28,17 @@ const StyledFooter = styled.footer`
   color: white;
 `;
 
-const LeftWrapper = styled.div`
+const ContentsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div:nth-of-type(2) {
+    gap: 8px;
+  }
+`;
+
+const FlexWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -59,6 +69,23 @@ const StyledSmall = styled.small`
   font-size: 12px;
   color: ${palette.text5};
   margin-left: 12px;
+`;
+
+const StyledP = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  color: ${palette.text5};
+`;
+
+const EmailBadge = styled.div`
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 12px;
+  color: ${palette.textWhite};
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
 `;
 
 export default Footer;
