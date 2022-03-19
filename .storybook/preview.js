@@ -1,6 +1,7 @@
 // .storybook/preview.js
 
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import '@storybook/addon-console';
 
 const customViewports = {
   cherryPickMobile: {
