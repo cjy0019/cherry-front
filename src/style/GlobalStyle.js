@@ -14,6 +14,7 @@ import PretendardThin from '../assets/fonts/Pretendard-Thin.woff';
 
 const globalStyle = css`
   ${reset}
+
   * {
     box-sizing: border-box;
   }

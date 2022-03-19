@@ -1,41 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useCalculateViewPort } from '../../../hooks/useCalculateViewPort';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
 const Footer = () => {
-  const [viewPort, setViewPort] = useState(window.innerWidth);
-
-  const resizeViewPort = useCallback(
-    (e) => {
-      setViewPort(window.innerWidth);
-      e.stopPropagation();
-    },
-    [viewPort],
-  );
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeViewPort);
-
-    return () => window.removeEventListener('resize', resizeViewPort);
-  }, [viewPort]);
-
+  const { viewPort } = useCalculateViewPort();
   return (
     <StyledFooter>
       <ContentsContainer>
-        <FlexWrapper>
-          <CherryPickText>Cherry Pick</CherryPickText>
-          <BetaBadge>BETA</BetaBadge>
+        <FlexLeft>
+          <BadgeWrapper>
+            <CherryPickText>Cherry Pick</CherryPickText>
+            <BetaBadge>BETA</BetaBadge>
+          </BadgeWrapper>
           <StyledSmall>&#9426; 2022 Cherry Pick</StyledSmall>
-        </FlexWrapper>
+        </FlexLeft>
 
-        <FlexWrapper>
+        <FlexRight>
           <StyledP>email</StyledP>
           <EmailBadge>CherryPick@gmail.com</EmailBadge>
-          {viewPort <= 400 && <Line />}
+          {viewPort <= 430 && <Line />}
           <StyledP>github</StyledP>
           <EmailBadge>github.com/cherrypick-project</EmailBadge>
-        </FlexWrapper>
+        </FlexRight>
       </ContentsContainer>
     </StyledFooter>
   );
@@ -52,8 +40,8 @@ const StyledFooter = styled.footer`
 
 const ContentsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: 30px;
   width: 1100px;
   box-sizing: border-box;
@@ -70,9 +58,24 @@ const ContentsContainer = styled.div`
   }
 `;
 
-const FlexWrapper = styled.div`
+const FlexLeft = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const FlexRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const BadgeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @media ${responsive.mobile} {
+    gap: 4px;
+  }
 `;
 
 const CherryPickText = styled.p`
@@ -88,8 +91,8 @@ const CherryPickText = styled.p`
 
 const BetaBadge = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 44px;
   height: 22px;
   background: #1e1d1d;
@@ -97,14 +100,12 @@ const BetaBadge = styled.div`
   font-weight: 700;
   font-size: 10px;
   text-align: center;
-  margin-left: 8px;
   color: ${palette.textWhite};
   padding-top: 2px;
 
   @media ${responsive.mobile} {
     width: 40px;
     height: 18px;
-    margin-left: 4px;
   }
 `;
 
@@ -125,7 +126,6 @@ const StyledP = styled.p`
   font-weight: 400;
   font-size: 12px;
   color: ${palette.text5};
-  margin-right: 8px;
 
   @media ${responsive.mobile} {
     margin-right: 4px;
