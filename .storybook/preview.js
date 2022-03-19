@@ -7,7 +7,7 @@ const customViewports = {
   cherryPickMobile: {
     name: 'cherrypick mobile',
     styles: {
-      width: '360px',
+      width: '390px',
       height: '844px',
     },
   },
