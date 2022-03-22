@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled, { css } from 'styled-components';
 import { useCalculateViewPort } from '../../../hooks/useCalculateViewPort';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
@@ -14,6 +14,7 @@ const Footer = () => {
             <CherryPickText>Cherry Pick</CherryPickText>
             <BetaBadge>BETA</BetaBadge>
           </BadgeWrapper>
+          {viewPort <= 430 && <Line hide />}
           <StyledSmall>&#9426; 2022 Cherry Pick</StyledSmall>
         </FlexLeft>
 
@@ -36,6 +37,10 @@ const StyledFooter = styled.footer`
   background-color: ${palette.footerBlack};
   color: white;
   padding: 12px 0;
+
+  @media (min-width: 361px) and (max-width: 737px) {
+    padding: 9px 0;
+  }
 `;
 
 const ContentsContainer = styled.div`
@@ -45,22 +50,32 @@ const ContentsContainer = styled.div`
   gap: 30px;
   width: 1100px;
   box-sizing: border-box;
-  padding-left: 13px;
+  padding: 0 15px 0;
 
-  @media ${responsive.tablet} {
+  @media (min-width: 361px) and (max-width: 737px) {
     width: 100%;
     padding-right: 3px;
+    justify-content: center;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    gap: 0;
   }
 
   @media ${responsive.mobile} {
     flex-direction: column-reverse;
     gap: 0;
+    padding: 0;
+    width: 100%;
   }
 `;
 
 const FlexLeft = styled.div`
   display: flex;
   align-items: center;
+
+  @media ${responsive.mobile} {
+    padding-right: 53px;
+  }
 `;
 
 const FlexRight = styled.div`
@@ -140,9 +155,13 @@ const EmailBadge = styled.div`
   font-weight: 500;
   font-size: 12px;
   color: ${palette.textWhite};
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   white-space: nowrap;
+  @media (min-width: 361px) and (max-width: 737px) {
+    padding: 0;
+    border: none;
+  }
 
   @media ${responsive.mobile} {
     font-size: 10px;
@@ -157,6 +176,13 @@ const Line = styled.div`
   opacity: 0.2;
   border: 1px solid #ffffff;
   transform: rotate(90deg);
-  margin: 0 6px;
+  margin: 0 8px 0 2px;
+
+  ${(props) =>
+    props.hide &&
+    css`
+      border-color: transparent;
+    `}
 `;
+
 export default React.memo(Footer);
