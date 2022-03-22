@@ -1,41 +1,30 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { useCalculateViewPort } from '../../../hooks/useCalculateViewPort';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
 const Footer = () => {
-  const [viewPort, setViewPort] = useState(window.innerWidth);
-
-  const resizeViewPort = useCallback(
-    (e) => {
-      setViewPort(window.innerWidth);
-      e.stopPropagation();
-    },
-    [viewPort],
-  );
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeViewPort);
-
-    return () => window.removeEventListener('resize', resizeViewPort);
-  }, [viewPort]);
-
+  const { viewPort } = useCalculateViewPort();
   return (
     <StyledFooter>
       <ContentsContainer>
-        <FlexWrapper>
-          <CherryPickText>Cherry Pick</CherryPickText>
-          <BetaBadge>BETA</BetaBadge>
+        <FlexLeft>
+          <BadgeWrapper>
+            <CherryPickText>Cherry Pick</CherryPickText>
+            <BetaBadge>BETA</BetaBadge>
+          </BadgeWrapper>
+          {viewPort <= 430 && <Line hide />}
           <StyledSmall>&#9426; 2022 Cherry Pick</StyledSmall>
-        </FlexWrapper>
+        </FlexLeft>
 
-        <FlexWrapper>
+        <FlexRight>
           <StyledP>email</StyledP>
           <EmailBadge>CherryPick@gmail.com</EmailBadge>
-          {viewPort <= 400 && <Line />}
+          {viewPort <= 430 && <Line />}
           <StyledP>github</StyledP>
           <EmailBadge>github.com/cherrypick-project</EmailBadge>
-        </FlexWrapper>
+        </FlexRight>
       </ContentsContainer>
     </StyledFooter>
   );
@@ -48,31 +37,60 @@ const StyledFooter = styled.footer`
   background-color: ${palette.footerBlack};
   color: white;
   padding: 12px 0;
+
+  @media (min-width: 361px) and (max-width: 737px) {
+    padding: 9px 0;
+  }
 `;
 
 const ContentsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: 30px;
   width: 1100px;
   box-sizing: border-box;
-  padding-left: 13px;
+  padding: 0 15px 0;
 
-  @media ${responsive.tablet} {
+  @media (min-width: 361px) and (max-width: 737px) {
     width: 100%;
     padding-right: 3px;
+    justify-content: center;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    gap: 0;
   }
 
   @media ${responsive.mobile} {
     flex-direction: column-reverse;
     gap: 0;
+    padding: 0;
+    width: 100%;
   }
 `;
 
-const FlexWrapper = styled.div`
+const FlexLeft = styled.div`
   display: flex;
   align-items: center;
+
+  @media ${responsive.mobile} {
+    padding-right: 53px;
+  }
+`;
+
+const FlexRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const BadgeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @media ${responsive.mobile} {
+    gap: 4px;
+  }
 `;
 
 const CherryPickText = styled.p`
@@ -88,8 +106,8 @@ const CherryPickText = styled.p`
 
 const BetaBadge = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 44px;
   height: 22px;
   background: #1e1d1d;
@@ -97,14 +115,12 @@ const BetaBadge = styled.div`
   font-weight: 700;
   font-size: 10px;
   text-align: center;
-  margin-left: 8px;
   color: ${palette.textWhite};
   padding-top: 2px;
 
   @media ${responsive.mobile} {
     width: 40px;
     height: 18px;
-    margin-left: 4px;
   }
 `;
 
@@ -125,7 +141,6 @@ const StyledP = styled.p`
   font-weight: 400;
   font-size: 12px;
   color: ${palette.text5};
-  margin-right: 8px;
 
   @media ${responsive.mobile} {
     margin-right: 4px;
@@ -140,9 +155,13 @@ const EmailBadge = styled.div`
   font-weight: 500;
   font-size: 12px;
   color: ${palette.textWhite};
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   white-space: nowrap;
+  @media (min-width: 361px) and (max-width: 737px) {
+    padding: 0;
+    border: none;
+  }
 
   @media ${responsive.mobile} {
     font-size: 10px;
@@ -157,6 +176,13 @@ const Line = styled.div`
   opacity: 0.2;
   border: 1px solid #ffffff;
   transform: rotate(90deg);
-  margin: 0 6px;
+  margin: 0 8px 0 2px;
+
+  ${(props) =>
+    props.hide &&
+    css`
+      border-color: transparent;
+    `}
 `;
+
 export default React.memo(Footer);
