@@ -67,10 +67,6 @@ const SubmitButton = styled.input`
       background: url(${closeRed});
     `}
 
-  svg {
-    fill: ${palette.pointRed};
-  }
-
   border: none;
 
   position: absolute;
