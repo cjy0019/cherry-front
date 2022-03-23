@@ -5,10 +5,10 @@ import searchRed from '../../../../assets/img/search_red.svg';
 import closeRed from '../../../../assets/img/close_red.svg';
 import { responsive } from '../../../../style/responsive';
 
-const SearchInput = ({ handleSubmit, searched }) => {
+const SearchInput = ({ className, handleSubmit, searched, main }) => {
   return (
-    <Form onSubmit={handleSubmit}>
-      <Input placeholder='찾의시는 강의, 강사가 있으신가요?' />
+    <Form className={className} onSubmit={handleSubmit}>
+      <Input main={main} placeholder='찾의시는 강의, 강사가 있으신가요?' />
       <SubmitButton
         searched={searched}
         value
@@ -29,7 +29,7 @@ const Input = styled.input`
   background-color: ${palette.subNavy2};
   outline: none;
 
-  padding: 16px 156px 16px 20px;
+  padding: 16px 155px 16px 20px;
   border-radius: 100px;
   border: none;
 
@@ -45,7 +45,15 @@ const Input = styled.input`
   }
 
   @media ${responsive.mobile} {
-    padding: 16px 140px 16px 16px;
+    // 메인 페이지 제외한 다른 페이지의 모바일인 경우
+    padding: 16px 95px 16px 20px;
+
+    // 메인 페이지 모바일인 경우
+    ${({ main }) =>
+      main &&
+      css`
+        padding: 16px 140px 16px 16px;
+      `}
   }
 
   & > button {
@@ -54,6 +62,10 @@ const Input = styled.input`
 `;
 
 const SubmitButton = styled.input`
+  position: absolute;
+  top: 10px;
+  right: 9px;
+
   width: 28px;
   height: 28px;
 
@@ -68,10 +80,6 @@ const SubmitButton = styled.input`
     `}
 
   border: none;
-
-  position: absolute;
-  top: 10px;
-  right: 9px;
 `;
 
 export default SearchInput;
