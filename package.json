@@ -20,6 +20,7 @@
     "@storybook/testing-library": "^0.0.9",
     "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^2.0.6",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "chromatic": "^6.5.3",
     "core-js": "^3.21.1",
     "css-loader": "^6.7.0",
