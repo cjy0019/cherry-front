@@ -38,7 +38,7 @@ UserLoginState.storyName = '로그인 상태 뱃지';
 export const Teacher = () => <TeacherBadge>강사 John Smilga</TeacherBadge>;
 Teacher.storyName = '강사 이름 뱃지';
 
-export const AgencyResponsive = () => (
-  <AgencyResponsiveBadge>기관 groomedu</AgencyResponsiveBadge>
-);
-AgencyResponsive.storyName = '기관 이름 반응형 뱃지';
+// export const AgencyResponsive = () => (
+//   <AgencyResponsiveBadge>기관 groomedu</AgencyResponsiveBadge>
+// );
+// AgencyResponsive.storyName = '기관 이름 반응형 뱃지';
