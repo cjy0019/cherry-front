@@ -1,4 +1,4 @@
-import JobBadge from './JobBadge';
+import JobBadge from '../JobBadge';
 
 export default {
   title: 'atoms/뱃지',

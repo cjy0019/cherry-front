@@ -1,4 +1,4 @@
-import RegularAgencyBadge from './RegularAgencyBadge';
+import RegularAgencyBadge from '../RegularAgencyBadge';
 
 export default {
   title: 'atoms/뱃지/기관 & 강사이름 뱃지',

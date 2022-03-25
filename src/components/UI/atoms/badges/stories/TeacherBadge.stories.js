@@ -1,4 +1,4 @@
-import TeacherBadge from './TeacherBadge';
+import TeacherBadge from '../TeacherBadge';
 
 export default {
   title: 'atoms/뱃지/기관 & 강사이름 뱃지',

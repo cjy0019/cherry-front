@@ -1,6 +1,6 @@
-import NumberBadge from './NumberBadge';
-import SatisfactionBadge from './SatisfactionBadge';
-import UserLoginStateBadge from './UserLoginStateBadge';
+import NumberBadge from '../NumberBadge';
+import SatisfactionBadge from '../SatisfactionBadge';
+import UserLoginStateBadge from '../UserLoginStateBadge';
 
 export default {
   title: 'atoms/뱃지',

@@ -1,4 +1,4 @@
-import LargeAgencyBadge from './LargeAgencyBadge';
+import LargeAgencyBadge from '../LargeAgencyBadge';
 
 export default {
   title: 'atoms/뱃지/기관 & 강사이름 뱃지',

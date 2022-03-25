@@ -1,4 +1,4 @@
-import OnlineBadge from './OnlineBadge';
+import OnlineBadge from '../OnlineBadge';
 
 export default {
   title: 'atoms/뱃지',

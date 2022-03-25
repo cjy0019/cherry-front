@@ -1,13 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
-import CherryPickStartButton from './CherryPickStartButton';
-import DeleteAllButton from './DeleteAllButton';
-import MoreLectureButton from './MoreLectureButton';
-import OriginalLinkButton from './OriginalLinkButton';
-import RetryButton from './RetryButton';
-import SatisfactionButton from './SatisfactionButton';
-import SaveButton from './SaveButton';
-import CarouselSlideButton from './CarouselSlideButton';
-import CategoryCancelButton from './CategoryCancelButton';
+import CherryPickStartButton from '../CherryPickStartButton';
+import DeleteAllButton from '../DeleteAllButton';
+import MoreLectureButton from '../MoreLectureButton';
+import OriginalLinkButton from '../OriginalLinkButton';
+import RetryButton from '../RetryButton';
+import SatisfactionButton from '../SatisfactionButton';
+import SaveButton from '../SaveButton';
+import CarouselSlideButton from '../CarouselSlideButton';
+import CategoryCancelButton from '../CategoryCancelButton';
 
 export default {
   title: 'atoms/버튼',
