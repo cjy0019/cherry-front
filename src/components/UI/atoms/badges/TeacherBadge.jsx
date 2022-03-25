@@ -3,7 +3,13 @@ import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
 const TeacherBadge = ({ children }) => {
-  return <StyledBadge>{children}</StyledBadge>;
+  const [type, ...teacherName] = children.split(' ');
+  return (
+    <StyledBadge>
+      <Regular>{type}</Regular>
+      <Bold>{teacherName.join(' ')}</Bold>
+    </StyledBadge>
+  );
 };
 
 const StyledBadge = styled.div`
@@ -14,6 +20,15 @@ const StyledBadge = styled.div`
   font-weight: 500;
   font-size: 12px;
   color: ${palette.textWhite};
+`;
+
+const Regular = styled.span`
+  font-weight: 400;
+`;
+
+const Bold = styled.span`
+  font-weight: 700;
+  margin-left: 5px;
 `;
 
 export default TeacherBadge;
