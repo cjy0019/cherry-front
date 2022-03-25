@@ -28,13 +28,13 @@ Save.storyName = '저장하기';
 
 export const Satisfaction = () => (
   <div style={{ display: 'flex', gap: '10px' }}>
-    <SatisfactionButton point>매우 만족</SatisfactionButton>
+    <SatisfactionButton selected>매우 만족</SatisfactionButton>
     <SatisfactionButton>만족</SatisfactionButton>
-    <SatisfactionButton>보통</SatisfactionButton>
+    <SatisfactionButton selected>보통</SatisfactionButton>
     <SatisfactionButton>그저 그럼</SatisfactionButton>
   </div>
 );
-Satisfaction.storyName = '만족도 뱃지';
+Satisfaction.storyName = '만족도 선택 버튼';
 
 export const MoreLecture = () => (
   <MoreLectureButton>강의 전체 보기</MoreLectureButton>
