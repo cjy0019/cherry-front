@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const DetailPageAgencyBadge = ({ children }) => {
+const LargeAgencyBadge = ({ children }) => {
   const [type, ...agencyName] = children.split(' ');
   return (
     <StyledBadge>
@@ -33,4 +33,4 @@ const Bold = styled.span`
   margin-left: 5px;
 `;
 
-export default DetailPageAgencyBadge;
+export default LargeAgencyBadge;
