@@ -6,7 +6,6 @@ import OriginalLinkButton from './OriginalLinkButton';
 import RetryButton from './RetryButton';
 import SatisfactionButton from './SatisfactionButton';
 import SaveButton from './SaveButton';
-import linkIcon from '../../../../assets/img/linkIcon.png';
 import CarouselSlideButton from './CarouselSlideButton';
 import CategoryCancelButton from './CategoryCancelButton';
 
@@ -51,9 +50,7 @@ DeleteAll.storyName = '모두 지우기';
 
 export const OriginalLink = () => (
   <BrowserRouter>
-    <OriginalLinkButton Href='/' imgUrl={linkIcon}>
-      원본 링크
-    </OriginalLinkButton>
+    <OriginalLinkButton Href='/' />
   </BrowserRouter>
 );
 OriginalLink.storyName = '원본 링크';
