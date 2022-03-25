@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SmallAgencyBadge = ({ children }) => {
+const RegularAgencyBadge = ({ children }) => {
   const [type, ...name] = children.split(' ');
+
   return (
     <StyledBadge>
       <span>{type}</span>
@@ -14,11 +15,11 @@ const SmallAgencyBadge = ({ children }) => {
 
 const StyledBadge = styled.div`
   display: inline-block;
-  padding: 5px 3px;
   background-color: #000000;
-  border-radius: 3px;
+  border-radius: 4px;
+  padding: 8px;
   color: ${palette.textWhite};
-  font-size: 10px;
+  font-size: 12px;
 
   & > span:nth-of-type(1) {
     font-weight: 400;
@@ -30,4 +31,4 @@ const StyledBadge = styled.div`
   }
 `;
 
-export default SmallAgencyBadge;
+export default RegularAgencyBadge;
