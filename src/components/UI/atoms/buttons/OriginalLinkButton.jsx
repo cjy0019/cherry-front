@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
+import linkIcon from '../../../../assets/img/linkicon.svg';
 
-const OriginalLinkButton = ({ children, Href, imgUrl }) => {
+const OriginalLinkButton = ({ Href }) => {
   return (
     <StyledLink to={Href}>
-      {children}
-      <img src={imgUrl} alt='아이콘' />
+      원본 링크
+      <img src={linkIcon} alt='아이콘' />
     </StyledLink>
   );
 };

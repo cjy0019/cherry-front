@@ -1,4 +1,4 @@
-import BookMarkButton from '../../atoms/buttons/BookMarkButton';
+import BookMarkButton from '../BookMarkButton';
 
 export default {
   title: 'atoms/버튼',

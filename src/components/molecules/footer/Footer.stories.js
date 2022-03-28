@@ -6,13 +6,15 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <div style={{ marginTop: '150px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const FooterStory = () => (
-  <div style={{ color: 'white' }}>
-    <h2>우측 상단에 풀스크린 누르고 확인</h2>
-    <Footer />
-  </div>
-);
+export const FooterStory = () => <Footer />;
 
 FooterStory.storyName = '푸터';

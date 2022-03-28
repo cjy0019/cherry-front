@@ -20,6 +20,7 @@ const StyledBadge = styled.div`
     props.point &&
     css`
       background-color: ${palette.signBlue};
+      color: ${palette.textWhite};
     `}
 
   @media ${responsive.mobile} {

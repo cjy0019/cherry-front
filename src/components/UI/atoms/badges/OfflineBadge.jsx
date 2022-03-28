@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const OnlineBadge = ({ children }) => {
-  return <StyledBadge>{children}</StyledBadge>;
+const OfflineBadge = () => {
+  return <StyledBadge>OFF-LINE</StyledBadge>;
 };
 
 const StyledBadge = styled.div`
@@ -15,4 +15,4 @@ const StyledBadge = styled.div`
   font-weight: 700;
 `;
 
-export default OnlineBadge;
+export default OfflineBadge;
