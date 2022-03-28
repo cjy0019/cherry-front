@@ -8,9 +8,31 @@ import SatisfactionButton from '../SatisfactionButton';
 import SaveButton from '../SaveButton';
 import CarouselSlideButton from '../CarouselSlideButton';
 import CategoryCancelButton from '../CategoryCancelButton';
+import styled from 'styled-components';
+
+const StoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+`;
 
 export default {
   title: 'atoms/버튼',
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <StoryContainer>
+          <Story />
+        </StoryContainer>
+      </BrowserRouter>
+    ),
+  ],
 };
 
 export const Retry = () => <RetryButton />;
@@ -19,15 +41,15 @@ export const CherryPickStart = () => <CherryPickStartButton />;
 CherryPickStart.storyName = '체리픽 시작하기';
 
 export const Save = () => (
-  <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+  <>
     <SaveButton>저장하기</SaveButton>
     <SaveButton dim>저장하기</SaveButton>
-  </div>
+  </>
 );
-Save.storyName = '저장하기';
+Save.storyName = '저장하기 버튼';
 
 export const Satisfaction = () => (
-  <div style={{ display: 'flex', gap: '10px' }}>
+  <div>
     <SatisfactionButton selected>매우 만족</SatisfactionButton>
     <SatisfactionButton>만족</SatisfactionButton>
     <SatisfactionButton selected>보통</SatisfactionButton>
@@ -48,11 +70,7 @@ export const DeleteAll = () => (
 );
 DeleteAll.storyName = '모두 지우기';
 
-export const OriginalLink = () => (
-  <BrowserRouter>
-    <OriginalLinkButton Href='/' />
-  </BrowserRouter>
-);
+export const OriginalLink = () => <OriginalLinkButton Href='/' />;
 OriginalLink.storyName = '원본 링크';
 
 export const Carousel = () => (
@@ -64,6 +82,8 @@ export const Carousel = () => (
 Carousel.storyName = '슬라이드 버튼';
 
 export const CategoryCancel = () => (
-  <CategoryCancelButton>Javascript</CategoryCancelButton>
+  <div>
+    <CategoryCancelButton>Javascript</CategoryCancelButton>
+  </div>
 );
 CategoryCancel.storyName = '카테고리 선택취소 버튼';
