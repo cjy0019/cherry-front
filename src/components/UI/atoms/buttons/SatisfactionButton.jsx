@@ -2,9 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SatisfactionButton = ({ children, point, handleClick }) => {
+const SatisfactionButton = ({ children, selected, handleClick }) => {
   return (
-    <StyledButton onClick={handleClick} point={point}>
+    <StyledButton onClick={handleClick} selected={selected}>
       {children}
     </StyledButton>
   );
@@ -16,10 +16,11 @@ const StyledButton = styled.button`
   border-radius: 3px;
   font-weight: 400;
   color: ${palette.textWhite};
+  cursor: pointer;
   border: none;
 
   ${(props) =>
-    props.point &&
+    props.selected &&
     css`
       color: ${palette.pointRed};
     `}

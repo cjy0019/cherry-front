@@ -1,11 +1,9 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { useCalculateViewPort } from '../../../hooks/useCalculateViewPort';
+import styled from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
 const Footer = () => {
-  const { viewPort } = useCalculateViewPort();
   return (
     <StyledFooter>
       <ContentsContainer>
@@ -14,14 +12,12 @@ const Footer = () => {
             <CherryPickText>Cherry Pick</CherryPickText>
             <BetaBadge>BETA</BetaBadge>
           </BadgeWrapper>
-          {viewPort <= 430 && <Line hide />}
           <StyledSmall>&#9426; 2022 Cherry Pick</StyledSmall>
         </FlexLeft>
 
         <FlexRight>
           <StyledP>email</StyledP>
           <EmailBadge>CherryPick@gmail.com</EmailBadge>
-          {viewPort <= 430 && <Line />}
           <StyledP>github</StyledP>
           <EmailBadge>github.com/cherrypick-project</EmailBadge>
         </FlexRight>
@@ -39,6 +35,10 @@ const StyledFooter = styled.footer`
   padding: 12px 0;
 
   @media (min-width: 361px) and (max-width: 737px) {
+    padding: 9px 0;
+  }
+
+  @media ${responsive.mobile} {
     padding: 9px 0;
   }
 `;
@@ -63,9 +63,9 @@ const ContentsContainer = styled.div`
 
   @media ${responsive.mobile} {
     flex-direction: column-reverse;
+    width: 100%;
     gap: 0;
     padding: 0;
-    width: 100%;
   }
 `;
 
@@ -75,6 +75,14 @@ const FlexLeft = styled.div`
 
   @media ${responsive.mobile} {
     padding-right: 53px;
+
+    & > div:nth-of-type(1)::after {
+      content: '';
+      display: inline-block;
+      vertical-align: 30%;
+      width: 10px;
+      opacity: 0.2;
+    }
   }
 `;
 
@@ -82,6 +90,20 @@ const FlexRight = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media ${responsive.mobile} {
+    gap: 2px;
+
+    & > div:nth-of-type(1)::after {
+      content: '';
+      display: inline-block;
+      vertical-align: 30%;
+      width: 10px;
+      opacity: 0.2;
+      border: 1px solid #ffffff;
+      transform: rotate(90deg);
+    }
+  }
 `;
 
 const BadgeWrapper = styled.div`
@@ -141,10 +163,11 @@ const StyledP = styled.p`
   font-weight: 400;
   font-size: 12px;
   color: ${palette.text5};
+  margin-right: 4px;
 
   @media ${responsive.mobile} {
-    margin-right: 4px;
     font-size: 10px;
+    margin-right: 2px;
   }
 `;
 
@@ -170,19 +193,4 @@ const EmailBadge = styled.div`
   }
 `;
 
-const Line = styled.div`
-  width: 10px;
-  height: 0px;
-  opacity: 0.2;
-  border: 1px solid #ffffff;
-  transform: rotate(90deg);
-  margin: 0 8px 0 2px;
-
-  ${(props) =>
-    props.hide &&
-    css`
-      border-color: transparent;
-    `}
-`;
-
-export default React.memo(Footer);
+export default Footer;

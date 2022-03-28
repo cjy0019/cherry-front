@@ -1,4 +1,4 @@
-import CategorySelectButton from './CategorySelectButton';
+import CategorySelectButton from '../CategorySelectButton';
 
 export default {
   title: 'atoms/버튼',
