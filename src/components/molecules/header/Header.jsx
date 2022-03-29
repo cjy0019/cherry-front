@@ -9,11 +9,11 @@ import SearchInput from '../../UI/atoms/input/SearchInput';
 import { Link } from 'react-router-dom';
 
 const Header = ({ login, NotMain }) => {
-  const [notiIsClicked, setNotiIsClicked] = useState(false);
+  const [noticeIsClicked, setNoticeIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
 
-  const notiOnClick = () => {
-    setNotiIsClicked(!notiIsClicked);
+  const noticeOnClick = () => {
+    setNoticeIsClicked(!noticeIsClicked);
   };
 
   const searchMOnClick = () => {
@@ -45,11 +45,11 @@ const Header = ({ login, NotMain }) => {
         )}
         {login && (
           <>
-            <NotificationButton onClick={notiOnClick} />
+            <NotificationButton onClick={noticeOnClick} />
             <StyledLink id='signUp' to='#'>
               MY
             </StyledLink>
-            <NotificationUl notiIsClicked={notiIsClicked}>
+            <NotificationUl noticeIsClicked={noticeIsClicked}>
               <NotificationLi>
                 <Link to='#'>내가 쓴 리뷰</Link>
               </NotificationLi>
@@ -120,8 +120,8 @@ const StyledSearchInput = styled(SearchInput)`
 `;
 
 const NotificationUl = styled.ul`
-  ${({ notiIsClicked }) =>
-    notiIsClicked
+  ${({ noticeIsClicked }) =>
+    noticeIsClicked
       ? css`
           display: flex;
         `
@@ -184,7 +184,6 @@ const NotificationLi = styled.li`
 `;
 
 const Span = styled.span`
-  margin-right: auto;
   ${(NotMain) =>
     NotMain &&
     css`
@@ -214,8 +213,8 @@ const NotificationButton = styled.button`
   height: 32px;
   cursor: pointer;
 
-  // 알림 데이터가 있다면, bellActive 이미지 사용
-  // 알림 데이터 없다면, bell 이미지 사용
+  // TODO 알림 데이터가 있다면, bellActive 이미지 사용
+  // TODO 데이터 없다면, bell 이미지 사용
   background-image: url(${bellActive});
   background-size: cover;
 `;
