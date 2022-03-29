@@ -38,17 +38,13 @@ const Header = ({ login, NotMain }) => {
         {!login && (
           <>
             <StyledLink to='#'>로그인</StyledLink>
-            <StyledLink id='signUp' to='#'>
-              회원가입
-            </StyledLink>
+            <StyledLink to='#'>회원가입</StyledLink>
           </>
         )}
         {login && (
           <>
             <NotificationButton onClick={noticeOnClick} />
-            <StyledLink id='signUp' to='#'>
-              MY
-            </StyledLink>
+            <StyledLink to='#'>MY</StyledLink>
             <NotificationUl noticeIsClicked={noticeIsClicked}>
               <NotificationLi>
                 <Link to='#'>내가 쓴 리뷰</Link>
@@ -254,7 +250,7 @@ const Container = styled.div`
   font-size: 16px;
   color: ${palette.textWhite};
 
-  #signUp {
+  & a:nth-last-of-type(1) {
     margin-left: 24px;
   }
 
@@ -265,7 +261,8 @@ const Container = styled.div`
   @media ${responsive.mobile} {
     padding: 0px 20px;
     height: 60px;
-    #signUp {
+
+    & a:nth-last-of-type(1) {
       margin-left: ${({ NotMain }) => (NotMain ? '8px' : '12px')};
     }
   }
