@@ -1,4 +1,4 @@
-import UserEmailBadge from './UserEmailBadge';
+import UserEmailBadge from '../UserEmailBadge';
 
 export default {
   title: 'atoms/뱃지',

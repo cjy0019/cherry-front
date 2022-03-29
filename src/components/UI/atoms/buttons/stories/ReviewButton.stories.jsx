@@ -1,4 +1,4 @@
-import ReviewButton from './ReviewButton';
+import ReviewButton from '../ReviewButton';
 
 export default {
   title: 'atoms/버튼',

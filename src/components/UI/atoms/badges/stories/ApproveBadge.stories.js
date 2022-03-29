@@ -1,4 +1,4 @@
-import ApproveBadge from './ApproveBadge';
+import ApproveBadge from '../ApproveBadge';
 
 export default {
   title: 'atoms/뱃지',

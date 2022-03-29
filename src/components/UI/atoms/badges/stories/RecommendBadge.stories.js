@@ -1,4 +1,4 @@
-import RecommendBadge from './RecommendBadge';
+import RecommendBadge from '../RecommendBadge';
 
 export default {
   title: 'atoms/뱃지',
