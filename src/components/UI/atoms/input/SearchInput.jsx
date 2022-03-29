@@ -5,6 +5,7 @@ import searchRed from '../../../../assets/img/search_red.svg';
 import closeRed from '../../../../assets/img/close_red.svg';
 import { responsive } from '../../../../style/responsive';
 
+// 메인 페이지에서 쓰이는경우 반드시 main 넣어주기
 const SearchInput = ({ className, handleSubmit, searched, main }) => {
   return (
     <Form className={className} onSubmit={handleSubmit}>
@@ -23,7 +24,9 @@ const Input = styled.input`
   background-color: ${palette.subNavy2};
   outline: none;
 
-  padding: 16px 155px 16px 20px;
+  /* width pc 340px */
+  width: 270px;
+  padding: 16px 50px 16px 20px;
   border-radius: 100px;
   border: none;
 
@@ -39,14 +42,16 @@ const Input = styled.input`
   }
 
   @media ${responsive.mobile} {
-    // 메인 페이지 외
-    padding: 16px 95px 16px 20px;
+    // 메인 페이지 외 280px
+    width: 210px;
+    padding: 16px 50px 16px 20px;
 
     // 메인 페이지 모바일인 경우
     ${({ main }) =>
       main &&
       css`
-        padding: 16px 140px 16px 16px; // 280px 메인
+        width: 254px;
+        padding: 16px 50px 16px 16px; // 메인 320px
       `}
   }
 

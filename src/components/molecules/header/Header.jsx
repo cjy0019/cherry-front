@@ -28,7 +28,7 @@ const Header = ({ login, NotMain }) => {
         </Span>
         {NotMain && (
           <StyledSearchInput
-            header
+            main={!NotMain}
             mobileSearchIsClicked={mobileSearchIsClicked}
           />
         )}

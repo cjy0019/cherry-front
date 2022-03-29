@@ -6,7 +6,7 @@ export default {
   component: SearchInput,
 };
 
-export const BeforeSearch = () => <SearchInput />;
+export const BeforeSearch = () => <SearchInput main />;
 export const AfterSearch = () => <SearchInput searched />;
 
 BeforeSearch.storyName = '검색 전 입력창';
