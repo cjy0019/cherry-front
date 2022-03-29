@@ -5,17 +5,12 @@ import searchRed from '../../../../assets/img/search_red.svg';
 import closeRed from '../../../../assets/img/close_red.svg';
 import { responsive } from '../../../../style/responsive';
 
+// 메인 페이지에서 쓰이는경우 반드시 main 넣어주기
 const SearchInput = ({ className, handleSubmit, searched, main }) => {
   return (
     <Form className={className} onSubmit={handleSubmit}>
       <Input main={main} placeholder='찾의시는 강의, 강사가 있으신가요?' />
-      <SubmitButton
-        searched={searched}
-        value
-        type='submit'
-        alt='submit'
-        value=''
-      />
+      <SubmitButton searched={searched} type='submit' alt='submit' value='' />
     </Form>
   );
 };
@@ -29,7 +24,9 @@ const Input = styled.input`
   background-color: ${palette.subNavy2};
   outline: none;
 
-  padding: 16px 155px 16px 20px;
+  /* width pc 340px */
+  width: 270px;
+  padding: 16px 50px 16px 20px;
   border-radius: 100px;
   border: none;
 
@@ -45,14 +42,16 @@ const Input = styled.input`
   }
 
   @media ${responsive.mobile} {
-    // 메인 페이지 제외한 다른 페이지의 모바일인 경우
-    padding: 16px 95px 16px 20px;
+    // 메인 페이지 외 280px
+    width: 210px;
+    padding: 16px 50px 16px 20px;
 
     // 메인 페이지 모바일인 경우
     ${({ main }) =>
       main &&
       css`
-        padding: 16px 140px 16px 16px;
+        width: 254px;
+        padding: 16px 50px 16px 16px; // 메인 320px
       `}
   }
 
@@ -69,14 +68,15 @@ const SubmitButton = styled.input`
   width: 28px;
   height: 28px;
 
-  background: url(${searchRed});
+  background-image: url(${searchRed});
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: transparent;
 
   ${({ searched }) =>
     searched &&
     css`
-      background: url(${closeRed});
+      background-image: url(${closeRed});
     `}
 
   border: none;

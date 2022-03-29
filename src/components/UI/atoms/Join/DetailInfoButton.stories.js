@@ -12,8 +12,8 @@ export const DetailCurJob = () => (
       display: 'flex',
       gap: '10px',
     }}>
-    <DetailInfoButton select text='프론트엔드' />
-    <DetailInfoButton text='프론트엔드' />
+    <DetailInfoButton select>프론트엔드</DetailInfoButton>
+    <DetailInfoButton>백엔드</DetailInfoButton>
   </div>
 );
 
@@ -23,11 +23,11 @@ export const DetailCareer = () => (
       display: 'flex',
       gap: '8px',
     }}>
-    <DetailInfoButton select text='학생' />
-    <DetailInfoButton text='1년 미만' />
-    <DetailInfoButton text='1~3년차' />
-    <DetailInfoButton text='3~6년차' />
-    <DetailInfoButton text='7년 이상' />
+    <DetailInfoButton select>학생</DetailInfoButton>
+    <DetailInfoButton>1년 미만</DetailInfoButton>
+    <DetailInfoButton>1~3년차</DetailInfoButton>
+    <DetailInfoButton>3~6년차</DetailInfoButton>
+    <DetailInfoButton>7년 이상</DetailInfoButton>
   </div>
 );
 
@@ -37,12 +37,12 @@ export const DetailKnownPath = () => (
       display: 'flex',
       gap: '8px',
     }}>
-    <DetailInfoButton select text='검색' />
-    <DetailInfoButton text='지인' />
-    <DetailInfoButton text='SNS' />
-    <DetailInfoButton text='카페' />
-    <DetailInfoButton text='블로그' />
-    <DetailInfoButton text='기타' />
+    <DetailInfoButton select>검색</DetailInfoButton>
+    <DetailInfoButton>지인</DetailInfoButton>
+    <DetailInfoButton>SNS</DetailInfoButton>
+    <DetailInfoButton>카페</DetailInfoButton>
+    <DetailInfoButton>블로그</DetailInfoButton>
+    <DetailInfoButton>기타</DetailInfoButton>
   </div>
 );
 
