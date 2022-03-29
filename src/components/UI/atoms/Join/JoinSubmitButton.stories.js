@@ -6,6 +6,8 @@ export default {
   component: JoinSubmitButton,
 };
 
-export const JoinSubmit = () => <JoinSubmitButton hover />;
+export const CompleteInfo = () => <JoinSubmitButton clicked hover />;
+export const IncompleteInfo = () => <JoinSubmitButton hover />;
 
-JoinSubmit.storyName = '상세정보 등록 버튼';
+CompleteInfo.storyName = '모든 상세정보 클릭 완료시';
+IncompleteInfo.storyName = '모든 상세정보 클릭 전';
