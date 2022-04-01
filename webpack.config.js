@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -59,7 +60,7 @@ module.exports = {
       template: './public/index.html',
       filename: 'index.html',
     }),
-    new CaseSensitivePathsPlugin({ debug: true }),
+    new CaseSensitivePathsWebpackPlugin({ debug: true }),
   ],
   resolve: {
     extensions: ['.jsx', '.js'],
