@@ -8,6 +8,7 @@ module.exports = {
     hot: true,
     open: true,
     port: 3000,
+    historyApiFallback: { index: '/', disableDotRule: true },
   },
   mode: 'development',
   module: {
