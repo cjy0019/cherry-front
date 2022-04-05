@@ -5,6 +5,9 @@ import Header from './Header';
 export default {
   title: 'molecules/헤더',
   component: Header,
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 export const HeaderNotLoginMainPage = () => (
