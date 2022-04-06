@@ -34,6 +34,7 @@ const LectureInfo = () => {
           <LargeAgencyBadge>기관 groomedu</LargeAgencyBadge>
           <LargeAgencyBadge>강사 ZeroCho</LargeAgencyBadge>
         </BadgeContainer>
+
         <HashTagContainer>
           <p>#수강가능</p>
           <p>#JavaScript</p>
@@ -81,17 +82,46 @@ const ThumbnailButton = styled.div`
   position: relative;
   cursor: pointer;
   width: 30.2083vw;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    left: -9.2083vw;
+    top: -4.42vw;
+    width: 48.0729vw;
+    height: 20.8333vw;
+    background: radial-gradient(
+      42.96% 98.15% at 50.05% 100%,
+      rgba(255, 255, 255, 0.44) 9.29%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    @media ${responsive.tablet} {
+      left: -100px;
+      width: 625px;
+      height: 271px;
+      top: -65px;
+    }
+    @media ${responsive.mobile} {
+      left: -100px;
+      width: 500px;
+      height: 231px;
+      top: -57px;
+    }
+  }
 
   @media ${responsive.tablet} {
     width: 379px;
   }
-
   @media ${responsive.mobile} {
     width: 320px;
   }
 `;
 
 const Thumbnail = styled.img`
+  display: block;
   border-radius: 10px;
   width: 100%;
 `;
@@ -116,6 +146,10 @@ const LectureTitle = styled.h1`
     font-size: 18px;
     width: 247px;
   }
+  @media ${responsive.mobile} {
+    width: 275px;
+    font-size: 19px;
+  }
 `;
 
 const BadgeContainer = styled.div`
@@ -124,6 +158,7 @@ const BadgeContainer = styled.div`
   margin-top: 1.4583vw;
   @media ${responsive.tablet} {
     gap: 4px;
+    margin-top: 12px;
   }
 `;
 
@@ -139,6 +174,10 @@ const HashTagContainer = styled.div`
     font-size: 10px;
     gap: 4px;
     margin-top: 11px;
+  }
+
+  @media ${responsive.mobile} {
+    font-size: 12px;
   }
 `;
 
@@ -195,6 +234,11 @@ const LinkButtonContainer = styled.div`
 
   @media ${responsive.tablet} {
     margin-top: 8px;
+  }
+
+  @media ${responsive.mobile} {
+    gap: 16px;
+    margin-top: 15px;
   }
 `;
 

@@ -34,8 +34,7 @@ const StyledLink = styled(Link)`
   }
 
   @media ${responsive.mobile} {
-    width: 7.9167vw;
-    height: 40px;
+    width: 152px;
   } ;
 `;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
+import { responsive } from '../../../../style/responsive';
 
 const LargeAgencyBadge = ({ children }) => {
   const [type, ...agencyName] = children.split(' ');
@@ -22,6 +23,11 @@ const StyledBadge = styled.div`
   font-weight: 500;
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media ${responsive.mobile} {
+    padding: 8px;
+    font-size: 12px;
+  }
 `;
 
 const Regular = styled.span`
