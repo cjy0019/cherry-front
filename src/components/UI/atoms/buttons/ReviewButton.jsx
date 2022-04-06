@@ -36,6 +36,7 @@ const StyledButton = styled.button`
 
   @media ${responsive.mobile} {
     width: 152px;
+    font-size: 12px;
   }
 `;
 

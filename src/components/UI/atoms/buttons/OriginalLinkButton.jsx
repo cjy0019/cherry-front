@@ -35,6 +35,7 @@ const StyledLink = styled(Link)`
 
   @media ${responsive.mobile} {
     width: 152px;
+    font-size: 12px;
   } ;
 `;
 

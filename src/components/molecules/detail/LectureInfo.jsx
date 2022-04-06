@@ -167,7 +167,6 @@ const HashTagContainer = styled.div`
   font-size: 0.8333vw;
   font-weight: 400;
   color: ${palette.text4};
-  margin-top: 0.625vw;
 
   @media ${responsive.tablet} {
     font-size: 10px;
@@ -177,6 +176,7 @@ const HashTagContainer = styled.div`
 
   @media ${responsive.mobile} {
     font-size: 12px;
+    margin-top: 12px;
   }
 `;
 
@@ -184,7 +184,14 @@ const ScoreContainer = styled.div`
   display: flex;
   align-items: center;
   margin-top: 3.6979vw;
+  @media ${responsive.tablet} {
+    margin-top: 27px;
+  }
+  @media ${responsive.mobile} {
+    margin-top: 32px;
+  }
 
+  /* 점수 ex) 4.5 */
   & > p:first-child {
     font-weight: 700;
     font-size: 1.4583vw;
@@ -193,10 +200,14 @@ const ScoreContainer = styled.div`
     padding-top: 0.5208vw;
 
     @media ${responsive.tablet} {
-      font-size: 23px;
+      font-size: 20px;
+    }
+    @media ${responsive.mobile} {
+      font-size: 20px;
     }
   }
 
+  /* ex) (99+ 참여) */
   & > p:last-child {
     color: ${palette.text2};
     font-size: 0.9375vw;
@@ -207,10 +218,9 @@ const ScoreContainer = styled.div`
     @media ${responsive.tablet} {
       font-size: 14px;
     }
-  }
-
-  @media ${responsive.tablet} {
-    margin-top: 27px;
+    @media ${responsive.mobile} {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -222,6 +232,9 @@ const StarImageContainer = styled.div`
     width: 1.6667vw;
 
     @media ${responsive.tablet} {
+      width: 20px;
+    }
+    @media ${responsive.mobile} {
       width: 20px;
     }
   }
