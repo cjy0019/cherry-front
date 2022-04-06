@@ -2,6 +2,27 @@
 import '@storybook/addon-console';
 
 const customViewports = {
+  cherrypickPC: {
+    name: 'cherrypick PC',
+    styles: {
+      width: '1920px',
+      height: '4174px',
+    },
+  },
+  cherryPickTablet: {
+    name: 'cherrypick tablet',
+    styles: {
+      width: '768px',
+      height: '1118px',
+    },
+  },
+  cherryPickMobile: {
+    name: 'cherrypick mobile',
+    styles: {
+      width: '360px',
+      height: '844px',
+    },
+  },
   iPhone5: {
     name: 'IPhone5',
     styles: {
