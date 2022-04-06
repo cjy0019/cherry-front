@@ -64,9 +64,8 @@ const LectureInfo = () => {
 };
 
 const TitleContainer = styled.div`
-  width: 100%;
+  width: 62.1354vw;
   display: flex;
-  justify-content: center;
   background-color: ${palette.backgroundBlack};
   gap: 7.4479vw;
   padding-top: 5.5208vw;

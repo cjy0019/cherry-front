@@ -3,18 +3,26 @@ import LectureInfo from '../molecules/detail/LectureInfo';
 import styled from 'styled-components';
 
 import Header from '../molecules/header/Header';
+import LecturePrice from '../molecules/detail/LecturePrice';
+import palette from '../../style/palette';
 
 const DetailTemplate = () => {
   return (
-    <Container>
+    <>
       <Header NotMain />
-      <LectureInfo />
-    </Container>
+      <Container>
+        <LectureInfo />
+        <LecturePrice />
+      </Container>
+    </>
   );
 };
 
 const Container = styled.div`
-  background-color: yellowgreen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${palette.backgroundBlack};
   height: 100%;
 `;
 

@@ -1,9 +1,9 @@
 import { BrowserRouter } from 'react-router-dom';
-import LectureInfo from '../LectureInfo';
+import LecturePrice from '../LecturePrice';
 
 export default {
   title: 'molecules/상세페이지',
-  component: LectureInfo,
+  component: LecturePrice,
   parameters: {
     layout: 'fullscreen',
   },
@@ -16,6 +16,6 @@ export default {
   ],
 };
 
-export const Lecture = () => <LectureInfo />;
+export const LecturePriceStory = () => <LecturePrice />;
 
-Lecture.storyName = '강의 정보';
+LecturePriceStory.storyName = '강의 정보 및 가격 정보';
