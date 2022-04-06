@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import palette from '../../../style/palette';
-import OfflineBadge from '../../UI/atoms/badges/OfflineBadge';
-import BookMarkButton from '../../UI/atoms/buttons/BookMarkButton';
 import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
 import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
 import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
@@ -13,17 +11,20 @@ import starRed from '../../../assets/img/star1_red.svg';
 
 import { responsive } from '../../../style/responsive';
 import { useCalculateViewPort } from '../../../hooks/useCalulateViewport';
+import ThumbnailWithBookMarkButton from './ThumbnailWithBookMarkButton';
 
 const LectureInfo = () => {
   const { viewPort } = useCalculateViewPort();
-
   return (
     <TitleContainer>
-      <ThumbnailButton>
-        <Thumbnail src={thumbnail} alt='썸네일 이미지' />
-        <BookMarkButton absolute active={true} />
-        <OfflineBadge absolute />
-      </ThumbnailButton>
+      <ThumbnailWithBookMarkButton
+        offLineTop='1.8229vw'
+        offLineLeft='1.3021vw'
+        markRight='1.3021vw'
+        markTop='1.5625vw'
+        mainTitle
+        imgUrl={thumbnail}
+      />
 
       <LectureInfoContainer>
         <LectureTitle>
@@ -77,54 +78,6 @@ const TitleContainer = styled.div`
   }
 `;
 
-const ThumbnailButton = styled.div`
-  position: relative;
-  cursor: pointer;
-  width: 30.2083vw;
-  z-index: 1;
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: -1;
-    left: -9.2083vw;
-    top: -4.42vw;
-    width: 48.0729vw;
-    height: 20.8333vw;
-    background: radial-gradient(
-      42.96% 98.15% at 50.05% 100%,
-      rgba(255, 255, 255, 0.44) 9.29%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    @media ${responsive.tablet} {
-      left: -100px;
-      width: 625px;
-      height: 271px;
-      top: -65px;
-    }
-    @media ${responsive.mobile} {
-      left: -100px;
-      width: 500px;
-      height: 231px;
-      top: -57px;
-    }
-  }
-
-  @media ${responsive.tablet} {
-    width: 379px;
-  }
-  @media ${responsive.mobile} {
-    width: 320px;
-  }
-`;
-
-const Thumbnail = styled.img`
-  display: block;
-  border-radius: 10px;
-  width: 100%;
-`;
-
 const LectureInfoContainer = styled.div`
   padding-top: 10px;
 
@@ -164,6 +117,7 @@ const BadgeContainer = styled.div`
 const HashTagContainer = styled.div`
   display: flex;
   gap: 12px;
+  margin-top: 12px;
   font-size: 0.8333vw;
   font-weight: 400;
   color: ${palette.text4};

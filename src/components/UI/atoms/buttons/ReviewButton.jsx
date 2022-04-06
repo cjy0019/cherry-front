@@ -13,7 +13,7 @@ const ReviewButton = ({ children, dim, handleClick }) => {
 
 const StyledButton = styled.button`
   width: 16.0417vw;
-  height: 40px;
+  height: 2.0833vw;
   border: none;
   border-radius: 4px;
   color: ${palette.textWhite};

@@ -24,7 +24,7 @@ const StyledLink = styled(Link)`
   color: ${palette.textWhite};
   text-decoration: none;
   width: 16.0417vw;
-  height: 40px;
+  height: 2.0833vw;
   font-size: 0.625vw;
   font-weight: 700;
 

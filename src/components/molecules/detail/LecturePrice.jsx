@@ -33,7 +33,6 @@ const LecturePrice = () => {
   );
 };
 const Container = styled.div`
-  width: 62.1354vw;
   display: flex;
   flex-direction: column;
   padding-top: 60px;
@@ -108,13 +107,13 @@ const PriceContainer = styled.div`
 
   & > p:nth-of-type(1) {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 13px;
     color: ${palette.textWhite};
   }
 
   & > p:nth-of-type(2) {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     color: ${palette.textWhite};
   }
 `;

@@ -1,9 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { responsive } from '../../../../style/responsive';
 
-const OfflineBadge = ({ absolute }) => {
-  return <StyledBadge absolute={absolute}>OFF-LINE</StyledBadge>;
+const OfflineBadge = ({ absolute, top, left }) => {
+  return (
+    <StyledBadge top={top} left={left} absolute={absolute}>
+      OFF-LINE
+    </StyledBadge>
+  );
 };
 
 const StyledBadge = styled.div`
@@ -19,8 +22,8 @@ const StyledBadge = styled.div`
     props.absolute &&
     css`
       position: absolute;
-      top: 1.8229vw;
-      left: 1.3021vw;
+      top: ${({ top }) => top};
+      left: ${({ left }) => left};
     `}
 `;
 
