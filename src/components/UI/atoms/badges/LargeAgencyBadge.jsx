@@ -13,10 +13,10 @@ const LargeAgencyBadge = ({ children }) => {
 };
 
 const StyledBadge = styled.div`
-  font-size: 14px;
+  font-size: 0.7292vw;
   color: ${palette.textWhite};
   display: inline-block;
-  padding: 9px 15px 8px;
+  padding: 0.4688vw 0.7813vw 0.4167vw;
   background-color: #000000;
   border-radius: 5px;
   font-weight: 500;

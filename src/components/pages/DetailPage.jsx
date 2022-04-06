@@ -1,7 +1,8 @@
 import React from 'react';
+import DetailTemplate from '../templates/DetailTemplate';
 
 const DetailPage = () => {
-  return <div>DetailPage</div>;
+  return <DetailTemplate />;
 };
 
 export default DetailPage;
