@@ -5,11 +5,18 @@ import palette from '../../../style/palette';
 import OfflineBadge from '../../UI/atoms/badges/OfflineBadge';
 import BookMarkButton from '../../UI/atoms/buttons/BookMarkButton';
 import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
+import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
+import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
 
 import thumbnail from '../../../assets/img/thumbnail.svg';
 import starRed from '../../../assets/img/star1_red.svg';
 
+import { responsive } from '../../../style/responsive';
+import { useCalculateViewPort } from '../../../hooks/useCalulateViewport';
+
 const LectureInfo = () => {
+  const { viewPort } = useCalculateViewPort();
+
   return (
     <TitleContainer>
       <ThumbnailButton>
@@ -17,9 +24,10 @@ const LectureInfo = () => {
         <BookMarkButton absolute active={true} />
         <OfflineBadge absolute />
       </ThumbnailButton>
+
       <LectureInfoContainer>
         <LectureTitle>
-          웹 게임을 만들며 배우는 JavaScipt(자바스크립트)
+          웹 게임을 만들며 배우는 JavaScipt (자바스크립트)
         </LectureTitle>
 
         <BadgeContainer>
@@ -43,6 +51,12 @@ const LectureInfo = () => {
           </StarImageContainer>
           <p>(99+ 참여)</p>
         </ScoreContainer>
+        {viewPort <= 768 && (
+          <LinkButtonContainer>
+            <OriginalLinkButton to='/'></OriginalLinkButton>
+            <ReviewButton>리뷰 작성 하기</ReviewButton>
+          </LinkButtonContainer>
+        )}
       </LectureInfoContainer>
     </TitleContainer>
   );
@@ -54,24 +68,40 @@ const TitleContainer = styled.div`
   justify-content: center;
   background-color: ${palette.backgroundBlack};
   gap: 7.4479vw;
-  padding-top: 106px;
+  padding-top: 5.5208vw;
+
+  @media ${responsive.mobile} {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+  }
 `;
 
 const ThumbnailButton = styled.div`
   position: relative;
   cursor: pointer;
   width: 30.2083vw;
-  height: 17.2917vw;
+
+  @media ${responsive.tablet} {
+    width: 379px;
+  }
+
+  @media ${responsive.mobile} {
+    width: 320px;
+  }
 `;
 
 const Thumbnail = styled.img`
   border-radius: 10px;
   width: 100%;
-  height: 100%;
 `;
 
 const LectureInfoContainer = styled.div`
   padding-top: 10px;
+
+  @media ${responsive.tablet} {
+    padding: 0;
+  }
 `;
 
 const LectureTitle = styled.h1`
@@ -80,13 +110,21 @@ const LectureTitle = styled.h1`
   width: 20.8333vw;
   font-weight: 700;
   color: ${palette.textWhite};
-  word-break: break-all;
+  word-break: keep-all;
+
+  @media ${responsive.tablet} {
+    font-size: 18px;
+    width: 247px;
+  }
 `;
 
 const BadgeContainer = styled.div`
   display: flex;
   gap: 8px;
-  margin-top: 28px;
+  margin-top: 1.4583vw;
+  @media ${responsive.tablet} {
+    gap: 4px;
+  }
 `;
 
 const HashTagContainer = styled.div`
@@ -95,7 +133,13 @@ const HashTagContainer = styled.div`
   font-size: 0.8333vw;
   font-weight: 400;
   color: ${palette.text4};
-  margin-top: 12px;
+  margin-top: 0.625vw;
+
+  @media ${responsive.tablet} {
+    font-size: 10px;
+    gap: 4px;
+    margin-top: 11px;
+  }
 `;
 
 const ScoreContainer = styled.div`
@@ -108,7 +152,11 @@ const ScoreContainer = styled.div`
     font-size: 1.4583vw;
     color: ${palette.textWhite};
     margin-right: 10px;
-    padding-top: 10px;
+    padding-top: 0.5208vw;
+
+    @media ${responsive.tablet} {
+      font-size: 23px;
+    }
   }
 
   & > p:last-child {
@@ -116,7 +164,15 @@ const ScoreContainer = styled.div`
     font-size: 0.9375vw;
     font-weight: 400;
     margin-left: 16px;
-    padding-top: 7px;
+    padding-top: 0.3646vw;
+
+    @media ${responsive.tablet} {
+      font-size: 14px;
+    }
+  }
+
+  @media ${responsive.tablet} {
+    margin-top: 27px;
   }
 `;
 
@@ -126,6 +182,19 @@ const StarImageContainer = styled.div`
 
   & > img {
     width: 1.6667vw;
+
+    @media ${responsive.tablet} {
+      width: 20px;
+    }
+  }
+`;
+
+const LinkButtonContainer = styled.div`
+  display: flex;
+  gap: 6px;
+
+  @media ${responsive.tablet} {
+    margin-top: 8px;
   }
 `;
 

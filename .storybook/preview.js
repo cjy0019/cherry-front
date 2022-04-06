@@ -2,7 +2,6 @@
 import '@storybook/addon-console';
 import GlobalStyle from '../src/style/GlobalStyle';
 
-import GlobalStyle from '../src/style/GlobalStyle';
 const customViewports = {
   cherrypickPC: {
     name: 'cherrypick PC',

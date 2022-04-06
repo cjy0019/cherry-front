@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import LectureInfo from '../LectureInfo';
 
 export default {
@@ -6,6 +7,13 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
 };
 
 export const Lecture = () => <LectureInfo />;

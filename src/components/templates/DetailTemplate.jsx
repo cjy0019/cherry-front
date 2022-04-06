@@ -1,15 +1,21 @@
 import React from 'react';
 import LectureInfo from '../molecules/detail/LectureInfo';
+import styled from 'styled-components';
 
 import Header from '../molecules/header/Header';
 
 const DetailTemplate = () => {
   return (
-    <div>
+    <Container>
       <Header NotMain />
       <LectureInfo />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  background-color: yellowgreen;
+  height: 100%;
+`;
 
 export default DetailTemplate;

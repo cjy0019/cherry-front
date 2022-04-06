@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import bookmark_active from '../../../../assets/img/bookmark_active.svg';
 import bookmark from '../../../../assets/img/bookmark.svg';
+import { responsive } from '../../../../style/responsive';
 
 const BookMarkButton = ({ active, handleClick, absolute }) => {
   return (
@@ -18,6 +19,10 @@ const StyledButton = styled.button`
   border: none;
   & > img {
     width: 2.5vw;
+
+    @media ${responsive.tablet} {
+      width: 40px;
+    }
   }
 
   ${(props) =>

@@ -12,14 +12,14 @@ const ReviewButton = ({ children, dim, handleClick }) => {
 };
 
 const StyledButton = styled.button`
-  width: 308px;
+  width: 16.0417vw;
   height: 40px;
   border: none;
   border-radius: 4px;
   color: ${palette.textWhite};
   background-color: ${palette.pointRed};
   font-weight: 700;
-  font-size: 12px;
+  font-size: 0.625vw;
   cursor: pointer;
 
   ${(props) =>
@@ -28,6 +28,11 @@ const StyledButton = styled.button`
       background-color: ${palette.subNavy};
       color: ${palette.text6};
     `}
+
+  @media ${responsive.tablet} {
+    width: 148px;
+    font-size: 12px;
+  }
 
   @media ${responsive.mobile} {
     width: 152px;
