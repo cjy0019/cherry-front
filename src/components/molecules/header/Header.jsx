@@ -75,7 +75,7 @@ const Header = ({ login, NotMain }) => {
 
 const CancelSpan = styled.span`
   cursor: pointer;
-  font-size: 0.7292vw;
+  font-size: 3.89vw;
 
   ${({ mobileSearchIsClicked }) =>
     mobileSearchIsClicked
@@ -98,7 +98,9 @@ const MobileSearchButton = styled.button`
   background-size: cover;
 
   @media ${responsive.mobile} {
-    ${({ NotMain }) => (NotMain ? 'display: block' : 'display: none')}
+    width: 8.89vw;
+    height: 8.89vw;
+    ${({ NotMain }) => (NotMain ? 'display: block' : 'display: none')};
   }
 `;
 
@@ -129,28 +131,52 @@ const NotificationUl = styled.ul`
           display: none;
         `}
 
-  padding: 0.9375vw;
+  padding: 0.625vw 0.9375vw;
   margin: 0;
 
   flex-direction: column;
 
   position: absolute;
   top: 3.6458vw;
-  right: 0px;
 
   background-color: ${palette.subNavy};
-  box-shadow: 0px 0px 1.3021vw rgba(0, 0, 0, 0.12);
-  border-radius: 0.2083vw;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
 
+  /* a태그 자체의 크기가 있기때문에, a태그의 크기를 계산해서 padding 상단 18px을 6px 까지 줄임 */
   & > li:first-child {
-    padding: 0 0 0.625vw 0;
+    padding: 0 0 0.3125vw 0;
     border-top: none;
   }
   & > li:last-child {
-    padding: 0.625vw 0 0 0;
+    padding: 0.5729vw 0 0 0;
+  }
+
+  @media ${responsive.tablet} {
+    padding: 1.56vw 2.34vw;
+
+    & > li:first-child {
+      padding: 0 0 0.78vw 0;
+      border-top: none;
+    }
+    & > li:last-child {
+      padding: 0.78vw 0 0 0;
+    }
+
+    top: 9.11vw;
   }
 
   @media ${responsive.mobile} {
+    padding: 3.33vw 5vw;
+
+    & > li:first-child {
+      padding: 0 0 1.67vw 0;
+      border-top: none;
+    }
+    & > li:last-child {
+      padding: 3.06vw 0 0 0;
+    }
+
     top: 13.61vw;
   }
 `;
@@ -159,11 +185,11 @@ const NotificationLi = styled.li`
   all: unset;
   width: 5vw;
 
-  padding: 0.6771vw 0;
+  padding: 0.3125vw 0;
   margin: 0 auto;
   text-align: center;
 
-  border-top: 0.0521vw solid rgb(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255, 255, 255, 0.1);
 
   & > a {
     all: unset;
@@ -177,11 +203,31 @@ const NotificationLi = styled.li`
     color: ${palette.pointRed};
     cursor: pointer;
   }
+
+  @media ${responsive.tablet} {
+    width: 12.5vw;
+
+    padding: 0.78vw 0;
+
+    & > a {
+      font-size: 1.69vw;
+    }
+  }
+  @media ${responsive.mobile} {
+    width: 26.67vw;
+
+    padding: 1.67vw 0;
+
+    & > a {
+      font-size: 3.61vw;
+    }
+  }
 `;
 
 const Span = styled.span`
   font-size: 0.9375vw;
   font-weight: 700;
+  font-family: 'Roboto';
 
   ${(NotMain) =>
     NotMain &&
@@ -232,6 +278,16 @@ const NotificationButton = styled.button`
   // TODO 데이터 없다면, bell 이미지 사용
   background-image: url(${bellActive});
   background-size: cover;
+
+  @media ${responsive.tablet} {
+    width: 4.17vw;
+    height: 4.17vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 8.89vw;
+    height: 8.89vw;
+  }
 `;
 
 const FlexLeft = styled.div`
@@ -260,6 +316,11 @@ const FlexRight = styled.div`
   }
 
   /* 회원가입, MY margin 주기 위해서 */
+  @media ${responsive.tablet} {
+    & > a:nth-last-of-type(1) {
+      margin-left: 2.08vw;
+    }
+  }
   @media ${responsive.mobile} {
     & > a:nth-last-of-type(1) {
       margin-left: ${({ NotMain }) => (NotMain ? '2.22vw' : '3.33vw')};
@@ -279,6 +340,7 @@ const Container = styled.div`
 
   @media ${responsive.tablet} {
     width: 93.75vw;
+    height: 13.02vw;
   }
 
   @media ${responsive.mobile} {
