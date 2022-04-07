@@ -7,6 +7,7 @@ import LecturePrice from '../molecules/detail/LecturePrice';
 import palette from '../../style/palette';
 import SideBar from '../molecules/detail/SideBar';
 import { useCalculateViewPort } from '../../hooks/useCalulateViewport';
+import ScoreAverage from '../molecules/detail/ScoreAverage';
 
 const DetailTemplate = () => {
   const { viewPort } = useCalculateViewPort();
@@ -19,6 +20,7 @@ const DetailTemplate = () => {
         <VerticalDivision>
           <div>
             <LecturePrice />
+            <ScoreAverage />
           </div>
           {viewPort >= 769 && <SideBar />}
         </VerticalDivision>

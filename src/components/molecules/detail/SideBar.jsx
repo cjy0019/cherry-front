@@ -32,6 +32,9 @@ const SideBar = () => {
 };
 
 const Container = styled.div`
+  position: sticky;
+  margin-top: 3.3854vw;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
