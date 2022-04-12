@@ -11,11 +11,18 @@ const ThumbnailWithBookMarkButton = ({
   markRight,
   offLineLeft,
   offLineTop,
+  markSize,
 }) => {
   return (
     <ThumbnailButton mainTitle={mainTitle}>
       <Thumbnail src={imgUrl} alt='썸네일 이미지' />
-      <BookMarkButton top={markTop} right={markRight} absolute active={true} />
+      <BookMarkButton
+        top={markTop}
+        right={markRight}
+        absolute
+        active={true}
+        markSize={markSize}
+      />
       <OfflineBadge top={offLineTop} left={offLineLeft} absolute />
     </ThumbnailButton>
   );
@@ -24,7 +31,7 @@ const ThumbnailWithBookMarkButton = ({
 const ThumbnailButton = styled.div`
   position: relative;
   cursor: pointer;
-  width: ${(props) => (props.mainTitle ? '530px' : '14.8438vw')};
+  width: ${(props) => (props.mainTitle ? '530px' : '285px')};
   z-index: 1;
 
   ${(props) =>

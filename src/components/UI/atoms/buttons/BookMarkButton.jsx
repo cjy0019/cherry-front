@@ -5,12 +5,20 @@ import bookmark_active from '../../../../assets/img/bookmark_active.svg';
 import bookmark from '../../../../assets/img/bookmark.svg';
 import { responsive } from '../../../../style/responsive';
 
-const BookMarkButton = ({ active, handleClick, absolute, top, right }) => {
+const BookMarkButton = ({
+  active,
+  handleClick,
+  absolute,
+  top,
+  right,
+  markSize,
+}) => {
   return (
     <StyledButton
       top={top}
       right={right}
       absolute={absolute}
+      markSize={markSize}
       onClick={handleClick}>
       {active && <img src={bookmark_active} alt='북마크' />}
       {!active && <img src={bookmark} alt='북마크' />}
@@ -23,7 +31,7 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   & > img {
-    width: 48px;
+    width: ${(props) => props.markSize};
 
     @media ${responsive.tablet} {
       width: 40px;

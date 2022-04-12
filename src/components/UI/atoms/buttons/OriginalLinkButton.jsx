@@ -23,20 +23,18 @@ const StyledLink = styled(Link)`
   background-color: #15161d;
   color: ${palette.textWhite};
   text-decoration: none;
-  width: 16.0417vw;
-  height: 2.0833vw;
-  font-size: 0.625vw;
+  font-size: 0.75rem;
+  width: 100%;
   font-weight: 700;
+  height: 40px;
 
-  @media ${responsive.tablet} {
+  /* @media ${responsive.tablet} {
     width: 148px;
-    font-size: 12px;
-  }
+  } */
 
-  @media ${responsive.mobile} {
+  /* @media ${responsive.mobile} {
     width: 152px;
-    font-size: 12px;
-  } ;
+  } ; */
 `;
 
 export default OriginalLinkButton;

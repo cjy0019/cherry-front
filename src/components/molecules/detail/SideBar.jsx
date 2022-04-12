@@ -17,6 +17,7 @@ const SideBar = () => {
         offLineLeft='1.0417vw'
         markRight='0.8vw'
         markTop='0.5729vw'
+        markSize='40px'
       />
       <BadgeContainer>
         <SmallAgencyBadge>기관 groomedu</SmallAgencyBadge>
@@ -38,12 +39,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 19.5833vw;
-  height: 26.6667vw;
+  width: 376px;
+  height: 512px;
+  padding: 45px;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   background-color: ${palette.backgroundBlack};
-  padding: 2.5vw 2.3438vw 2.3958vw 2.3958vw;
 `;
 
 const BadgeContainer = styled.div`
@@ -54,8 +55,8 @@ const BadgeContainer = styled.div`
 
 const Title = styled.h2`
   font-weight: 600;
-  margin-top: 1.0417vw;
-  font-size: 1.3542vw;
+  margin-top: 20px;
+  font-size: 1.625rem;
   text-align: center;
   line-height: 1.5;
   color: ${palette.textWhite};
@@ -64,8 +65,9 @@ const Title = styled.h2`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  gap: 12px;
   margin-top: 39px;
-  gap: 0.625vw;
 `;
 
 export default SideBar;
