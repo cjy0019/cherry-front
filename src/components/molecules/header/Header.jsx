@@ -8,7 +8,7 @@ import { responsive } from '../../../style/responsive';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import { Link } from 'react-router-dom';
 
-const Header = ({ login, NotMain }) => {
+const Header = ({ className, login, NotMain }) => {
   const [noticeIsClicked, setNoticeIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
 
@@ -21,7 +21,7 @@ const Header = ({ login, NotMain }) => {
   };
 
   return (
-    <StyledHeader NotMain={NotMain}>
+    <StyledHeader className={className} NotMain={NotMain}>
       <Container>
         <FlexLeft>
           <Span mobileSearchIsClicked={mobileSearchIsClicked} NotMain={NotMain}>
@@ -75,7 +75,8 @@ const Header = ({ login, NotMain }) => {
 
 const CancelSpan = styled.span`
   cursor: pointer;
-  font-size: 3.89vw;
+  font-size: 0.875rem;
+  white-space: nowrap;
 
   ${({ mobileSearchIsClicked }) =>
     mobileSearchIsClicked
@@ -90,16 +91,15 @@ const CancelSpan = styled.span`
 const MobileSearchButton = styled.button`
   all: unset;
   display: none;
-  width: 1.6667vw;
-  height: 1.6667vw;
   cursor: pointer;
+
+  width: 32px;
+  height: 32px;
 
   background-image: url(${searchM});
   background-size: cover;
 
   @media ${responsive.mobile} {
-    width: 8.89vw;
-    height: 8.89vw;
     ${({ NotMain }) => (NotMain ? 'display: block' : 'display: none')};
   }
 `;
@@ -131,13 +131,13 @@ const NotificationUl = styled.ul`
           display: none;
         `}
 
-  padding: 0.625vw 0.9375vw;
+  padding: 12px 18px;
   margin: 0;
 
   flex-direction: column;
 
   position: absolute;
-  top: 3.6458vw;
+  top: 70px;
 
   background-color: ${palette.subNavy};
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.12);
@@ -145,25 +145,11 @@ const NotificationUl = styled.ul`
 
   /* a태그 자체의 크기가 있기때문에, a태그의 크기를 계산해서 padding 상단 18px을 6px 까지 줄임 */
   & > li:first-child {
-    padding: 0 0 0.3125vw 0;
+    padding: 0 0 6px 0;
     border-top: none;
   }
   & > li:last-child {
-    padding: 0.5729vw 0 0 0;
-  }
-
-  @media ${responsive.tablet} {
-    padding: 1.56vw 2.34vw;
-
-    & > li:first-child {
-      padding: 0 0 0.78vw 0;
-      border-top: none;
-    }
-    & > li:last-child {
-      padding: 0.78vw 0 0 0;
-    }
-
-    top: 9.11vw;
+    padding: 10px 0 0 0;
   }
 
   @media ${responsive.mobile} {
@@ -183,9 +169,9 @@ const NotificationUl = styled.ul`
 
 const NotificationLi = styled.li`
   all: unset;
-  width: 5vw;
+  width: 96px;
 
-  padding: 0.3125vw 0;
+  padding: 10px 0;
   margin: 0 auto;
   text-align: center;
 
@@ -194,7 +180,7 @@ const NotificationLi = styled.li`
   & > a {
     all: unset;
     font-weight: 400;
-    font-size: 0.6771vw;
+    font-size: 0.8125rem;
     color: ${palette.textWhite};
     text-align: center;
   }
@@ -205,12 +191,8 @@ const NotificationLi = styled.li`
   }
 
   @media ${responsive.tablet} {
-    width: 12.5vw;
-
-    padding: 0.78vw 0;
-
     & > a {
-      font-size: 1.69vw;
+      font-size: 0.8125rem;
     }
   }
   @media ${responsive.mobile} {
@@ -225,14 +207,15 @@ const NotificationLi = styled.li`
 `;
 
 const Span = styled.span`
-  font-size: 0.9375vw;
+  font-size: 1.125rem;
   font-weight: 700;
   font-family: 'Roboto';
+  white-space: nowrap;
 
   ${(NotMain) =>
     NotMain &&
     css`
-      margin-right: 1.875vw;
+      margin-right: 36px;
     `}
 
   ${({ mobileSearchIsClicked }) =>
@@ -244,45 +227,37 @@ const Span = styled.span`
           display: block;
         `}
 
-  @media ${responsive.tablet} {
-    font-size: 2.34vw;
-  }
-
   @media ${responsive.mobile} {
-    font-size: 4.44vw;
+    font-size: 1rem;
   }
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 0.8333vw;
+  font-size: 1rem;
   display: inline-block;
   color: ${palette.textWhite};
   text-decoration: none;
+  white-space: nowrap;
 
   @media ${responsive.tablet} {
-    font-size: 1.82vw;
+    font-size: 0.875rem;
   }
 
   @media ${responsive.mobile} {
-    font-size: 3.89vw;
+    font-size: 0.875rem;
   }
 `;
 
 const NotificationButton = styled.button`
   all: unset;
-  width: 1.6667vw;
-  height: 1.6667vw;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 
   // TODO 알림 데이터가 있다면, bellActive 이미지 사용
   // TODO 데이터 없다면, bell 이미지 사용
   background-image: url(${bellActive});
   background-size: cover;
-
-  @media ${responsive.tablet} {
-    width: 4.17vw;
-    height: 4.17vw;
-  }
 
   @media ${responsive.mobile} {
     width: 8.89vw;
@@ -301,6 +276,8 @@ const FlexRight = styled.div`
   justify-content: flex-end;
   align-items: center;
 
+  font-family: 'Pretendard';
+
   ${({ mobileSearchIsClicked }) =>
     mobileSearchIsClicked
       ? css`
@@ -312,13 +289,13 @@ const FlexRight = styled.div`
 
   /* 회원가입, MY margin 주기 위해서 */
   & > a:nth-last-of-type(1) {
-    margin-left: 1.25vw;
+    margin-left: 24px;
   }
 
   /* 회원가입, MY margin 주기 위해서 */
   @media ${responsive.tablet} {
     & > a:nth-last-of-type(1) {
-      margin-left: 2.08vw;
+      margin-left: 16px;
     }
   }
   @media ${responsive.mobile} {
@@ -330,7 +307,7 @@ const FlexRight = styled.div`
 
 const Container = styled.div`
   width: 62.5vw;
-  height: 5.2083vw;
+  height: 100px;
 
   display: flex;
   justify-content: space-between;
@@ -340,12 +317,11 @@ const Container = styled.div`
 
   @media ${responsive.tablet} {
     width: 93.75vw;
-    height: 13.02vw;
   }
 
   @media ${responsive.mobile} {
     width: 88.88vw;
-    height: 16.67vw;
+    height: 60px;
   }
 `;
 
@@ -358,8 +334,6 @@ const StyledHeader = styled.header`
 
   font-weight: 400;
   color: ${palette.textWhite};
-
-  background: ${palette.backgroundBlack};
 `;
 
 export default Header;

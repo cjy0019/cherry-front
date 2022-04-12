@@ -1,5 +1,6 @@
 // .storybook/preview.js
 import '@storybook/addon-console';
+import GlobalStyle from '../src/style/GlobalStyle';
 
 const customViewports = {
   cherrypickPC: {
@@ -59,6 +60,15 @@ const customViewports = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <>
+      <GlobalStyle />
+      <Story />
+    </>
+  ),
+];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
