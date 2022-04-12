@@ -24,8 +24,8 @@ const Background = styled.div`
   & > div {
     width: 100%;
     height: 800px;
-    background-color: rgba(0, 0, 128, 0.1);
-    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(19px);
   }
 `;
 
