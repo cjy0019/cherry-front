@@ -64,7 +64,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
   color: ${palette.textWhite};
 
@@ -94,24 +94,25 @@ const CommonBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 10.4167vw;
+  width: 200px;
   background-color: ${palette.subNavy};
   border-radius: 8px;
-  padding: 1.4063vw 0 1.3021vw;
   color: ${palette.text2};
 `;
 
-const ReviewScoreBox = styled(CommonBox)``;
+const ReviewScoreBox = styled(CommonBox)`
+  padding: 27px 0 25px 0;
+`;
 
 const HighLightScore = styled.p`
   font-weight: 700;
-  font-size: 1.6667vw;
+  font-size: 2rem;
   color: ${palette.textWhite};
   margin-top: 1.4583vw;
 `;
 
 const ParticipateCount = styled.p`
-  font-size: 0.7292vw;
+  font-size: 0.875rem;
   margin-top: 4px;
 
   @media ${responsive.tablet} {
@@ -129,7 +130,7 @@ const IconContainer = styled.div`
   gap: 5.26px;
 
   & > img {
-    width: 0.8224vw;
+    width: 0.9375rem;
   }
 `;
 
@@ -144,7 +145,7 @@ const TextFlexWrapper = styled.div`
   flex-direction: column;
   gap: 4px;
   text-align: center;
-  font-size: 0.7292vw;
+  font-size: 0.875rem;
 `;
 
 const RecommendBox = styled(CommonBox)``;
@@ -155,7 +156,7 @@ const SatisfactionBox = styled(CommonBox)`
 
 const SubTitle = styled.h3`
   font-weight: 400;
-  font-size: 0.8333vw;
+  font-size: 1rem;
   color: ${palette.textWhite};
 
   @media ${responsive.tablet} {

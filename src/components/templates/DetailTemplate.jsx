@@ -6,12 +6,9 @@ import Header from '../molecules/header/Header';
 import LecturePrice from '../molecules/detail/LecturePrice';
 import palette from '../../style/palette';
 import SideBar from '../molecules/detail/SideBar';
-import { useCalculateViewPort } from '../../hooks/useCalulateViewport';
 import ScoreAverage from '../molecules/detail/ScoreAverage';
 
 const DetailTemplate = () => {
-  const { viewPort } = useCalculateViewPort();
-
   return (
     <>
       <Header NotMain />
@@ -22,7 +19,7 @@ const DetailTemplate = () => {
             <LecturePrice />
             <ScoreAverage />
           </div>
-          {viewPort >= 769 && <SideBar />}
+          <SideBar />
         </VerticalDivision>
       </Container>
     </>
@@ -34,13 +31,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${palette.backgroundBlack};
-  height: 100%;
 `;
 
 const VerticalDivision = styled.div`
   display: flex;
-  width: 62.1354vw;
-  gap: 2.5521vw;
+  justify-content: center;
+  width: 100%;
+  gap: 45px;
 `;
 
 export default DetailTemplate;

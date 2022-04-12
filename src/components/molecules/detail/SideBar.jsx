@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import thumbnail from '../../../assets/img/thumbnail.svg';
 import palette from '../../../style/palette';
+import { responsive } from '../../../style/responsive';
 import SmallAgencyBadge from '../../UI/atoms/badges/SmallAgencyBadge';
 import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
 import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
@@ -39,12 +40,24 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 376px;
+  word-break: keep-all;
+  width: 375px;
   height: 512px;
-  padding: 45px;
+  padding: 2.3438vw;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   background-color: ${palette.backgroundBlack};
+
+  @media (max-width: 1450px) {
+    width: 315px;
+    padding: 30px;
+  }
+  @media (max-width: 945px) {
+  }
+
+  @media ${responsive.tablet} {
+    display: none;
+  }
 `;
 
 const BadgeContainer = styled.div`

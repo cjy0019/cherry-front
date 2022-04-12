@@ -34,6 +34,14 @@ const ThumbnailButton = styled.div`
   width: ${(props) => (props.mainTitle ? '530px' : '285px')};
   z-index: 1;
 
+  @media (max-width: 945px) {
+    ${(props) =>
+      !props.mainTitle &&
+      css`
+        width: 90%;
+      `}
+  }
+
   ${(props) =>
     props.mainTitle &&
     css`
