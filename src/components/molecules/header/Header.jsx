@@ -8,7 +8,7 @@ import { responsive } from '../../../style/responsive';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import { Link } from 'react-router-dom';
 
-const Header = ({ login, NotMain }) => {
+const Header = ({ className, login, NotMain }) => {
   const [noticeIsClicked, setNoticeIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
 
@@ -21,59 +21,62 @@ const Header = ({ login, NotMain }) => {
   };
 
   return (
-    <Container NotMain={NotMain}>
-      <FlexLeft>
-        <Span mobileSearchIsClicked={mobileSearchIsClicked} NotMain={NotMain}>
-          Cherry Pick
-        </Span>
-        {NotMain && (
-          <StyledSearchInput
-            main={!NotMain}
-            mobileSearchIsClicked={mobileSearchIsClicked}
-          />
-        )}
-      </FlexLeft>
-      <FlexRight mobileSearchIsClicked={mobileSearchIsClicked}>
-        <MobileSearchButton NotMain={NotMain} onClick={searchMOnClick} />
-        {!login && (
-          <>
-            <StyledLink to='#'>로그인</StyledLink>
-            <StyledLink to='#'>회원가입</StyledLink>
-          </>
-        )}
-        {login && (
-          <>
-            <NotificationButton onClick={noticeOnClick} />
-            <StyledLink to='#'>MY</StyledLink>
-            <NotificationUl noticeIsClicked={noticeIsClicked}>
-              <NotificationLi>
-                <Link to='#'>내가 쓴 리뷰</Link>
-              </NotificationLi>
-              <NotificationLi>
-                <Link to='#'>북마크</Link>
-              </NotificationLi>
-              <NotificationLi>
-                <Link to='#'>계정 설정</Link>
-              </NotificationLi>
-              <NotificationLi>
-                <Link to='#'>로그아웃</Link>
-              </NotificationLi>
-            </NotificationUl>
-          </>
-        )}
-      </FlexRight>
-      <CancelSpan
-        mobileSearchIsClicked={mobileSearchIsClicked}
-        onClick={searchMOnClick}>
-        취소
-      </CancelSpan>
-    </Container>
+    <StyledHeader className={className} NotMain={NotMain}>
+      <Container>
+        <FlexLeft>
+          <Span mobileSearchIsClicked={mobileSearchIsClicked} NotMain={NotMain}>
+            Cherry Pick
+          </Span>
+          {NotMain && (
+            <StyledSearchInput
+              main={!NotMain}
+              mobileSearchIsClicked={mobileSearchIsClicked}
+            />
+          )}
+        </FlexLeft>
+        <FlexRight mobileSearchIsClicked={mobileSearchIsClicked}>
+          <MobileSearchButton NotMain={NotMain} onClick={searchMOnClick} />
+          {!login && (
+            <>
+              <StyledLink to='#'>로그인</StyledLink>
+              <StyledLink to='#'>회원가입</StyledLink>
+            </>
+          )}
+          {login && (
+            <>
+              <NotificationButton onClick={noticeOnClick} />
+              <StyledLink to='#'>MY</StyledLink>
+              <NotificationUl noticeIsClicked={noticeIsClicked}>
+                <NotificationLi>
+                  <Link to='#'>내가 쓴 리뷰</Link>
+                </NotificationLi>
+                <NotificationLi>
+                  <Link to='#'>북마크</Link>
+                </NotificationLi>
+                <NotificationLi>
+                  <Link to='#'>계정 설정</Link>
+                </NotificationLi>
+                <NotificationLi>
+                  <Link to='#'>로그아웃</Link>
+                </NotificationLi>
+              </NotificationUl>
+            </>
+          )}
+        </FlexRight>
+        <CancelSpan
+          mobileSearchIsClicked={mobileSearchIsClicked}
+          onClick={searchMOnClick}>
+          취소
+        </CancelSpan>
+      </Container>
+    </StyledHeader>
   );
 };
 
 const CancelSpan = styled.span`
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
+  white-space: nowrap;
 
   ${({ mobileSearchIsClicked }) =>
     mobileSearchIsClicked
@@ -88,15 +91,16 @@ const CancelSpan = styled.span`
 const MobileSearchButton = styled.button`
   all: unset;
   display: none;
+  cursor: pointer;
+
   width: 32px;
   height: 32px;
-  cursor: pointer;
 
   background-image: url(${searchM});
   background-size: cover;
 
   @media ${responsive.mobile} {
-    ${({ NotMain }) => (NotMain ? 'display: block' : 'display: none')}
+    ${({ NotMain }) => (NotMain ? 'display: block' : 'display: none')};
   }
 `;
 
@@ -116,6 +120,8 @@ const StyledSearchInput = styled(SearchInput)`
 `;
 
 const NotificationUl = styled.ul`
+  z-index: 9999;
+
   ${({ noticeIsClicked }) =>
     noticeIsClicked
       ? css`
@@ -125,33 +131,39 @@ const NotificationUl = styled.ul`
           display: none;
         `}
 
-  padding: 18px;
+  padding: 12px 18px;
   margin: 0;
 
   flex-direction: column;
 
   position: absolute;
-  top: 68px;
-  right: 356px;
+  top: 70px;
 
   background-color: ${palette.subNavy};
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
 
+  /* a태그 자체의 크기가 있기때문에, a태그의 크기를 계산해서 padding 상단 18px을 6px 까지 줄임 */
   & > li:first-child {
-    padding: 0px 0px 13px 0px;
+    padding: 0 0 6px 0;
     border-top: none;
   }
   & > li:last-child {
-    padding: 13px 0px 0px 0px;
+    padding: 10px 0 0 0;
   }
 
-  @media ${responsive.tablet} {
-    right: 22px;
-  }
   @media ${responsive.mobile} {
-    top: 49px;
-    right: 17px;
+    padding: 3.33vw 5vw;
+
+    & > li:first-child {
+      padding: 0 0 1.67vw 0;
+      border-top: none;
+    }
+    & > li:last-child {
+      padding: 3.06vw 0 0 0;
+    }
+
+    top: 13.61vw;
   }
 `;
 
@@ -159,7 +171,7 @@ const NotificationLi = styled.li`
   all: unset;
   width: 96px;
 
-  padding: 13px 0;
+  padding: 10px 0;
   margin: 0 auto;
   text-align: center;
 
@@ -168,7 +180,7 @@ const NotificationLi = styled.li`
   & > a {
     all: unset;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: ${palette.textWhite};
     text-align: center;
   }
@@ -177,9 +189,29 @@ const NotificationLi = styled.li`
     color: ${palette.pointRed};
     cursor: pointer;
   }
+
+  @media ${responsive.tablet} {
+    & > a {
+      font-size: 0.8125rem;
+    }
+  }
+  @media ${responsive.mobile} {
+    width: 26.67vw;
+
+    padding: 1.67vw 0;
+
+    & > a {
+      font-size: 3.61vw;
+    }
+  }
 `;
 
 const Span = styled.span`
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: 'Roboto';
+  white-space: nowrap;
+
   ${(NotMain) =>
     NotMain &&
     css`
@@ -194,13 +226,26 @@ const Span = styled.span`
       : css`
           display: block;
         `}
+
+  @media ${responsive.mobile} {
+    font-size: 1rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 14px;
+  font-size: 1rem;
   display: inline-block;
   color: ${palette.textWhite};
   text-decoration: none;
+  white-space: nowrap;
+
+  @media ${responsive.tablet} {
+    font-size: 0.875rem;
+  }
+
+  @media ${responsive.mobile} {
+    font-size: 0.875rem;
+  }
 `;
 
 const NotificationButton = styled.button`
@@ -213,6 +258,11 @@ const NotificationButton = styled.button`
   // TODO 데이터 없다면, bell 이미지 사용
   background-image: url(${bellActive});
   background-size: cover;
+
+  @media ${responsive.mobile} {
+    width: 8.89vw;
+    height: 8.89vw;
+  }
 `;
 
 const FlexLeft = styled.div`
@@ -226,6 +276,8 @@ const FlexRight = styled.div`
   justify-content: flex-end;
   align-items: center;
 
+  font-family: 'Pretendard';
+
   ${({ mobileSearchIsClicked }) =>
     mobileSearchIsClicked
       ? css`
@@ -234,38 +286,54 @@ const FlexRight = styled.div`
       : css`
           display: flex;
         `}
-`;
 
-const Container = styled.div`
-  height: 100px;
-
-  display: flex;
-  position: relative;
-  padding: 0px 360px 0px 359px;
-  background: ${palette.backgroundBlack};
-  justify-content: space-between;
-  align-items: center;
-
-  font-weight: 400;
-  font-size: 16px;
-  color: ${palette.textWhite};
-
-  & a:nth-last-of-type(1) {
+  /* 회원가입, MY margin 주기 위해서 */
+  & > a:nth-last-of-type(1) {
     margin-left: 24px;
   }
 
+  /* 회원가입, MY margin 주기 위해서 */
   @media ${responsive.tablet} {
-    padding: 0px 24px;
+    & > a:nth-last-of-type(1) {
+      margin-left: 16px;
+    }
+  }
+  @media ${responsive.mobile} {
+    & > a:nth-last-of-type(1) {
+      margin-left: ${({ NotMain }) => (NotMain ? '2.22vw' : '3.33vw')};
+    }
+  }
+`;
+
+const Container = styled.div`
+  width: 62.5vw;
+  height: 100px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+
+  @media ${responsive.tablet} {
+    width: 93.75vw;
   }
 
   @media ${responsive.mobile} {
-    padding: 0px 20px;
+    width: 88.88vw;
     height: 60px;
-
-    & a:nth-last-of-type(1) {
-      margin-left: ${({ NotMain }) => (NotMain ? '8px' : '12px')};
-    }
   }
+`;
+
+const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+
+  font-weight: 400;
+  color: ${palette.textWhite};
 `;
 
 export default Header;

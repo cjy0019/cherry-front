@@ -1,14 +1,13 @@
 // .storybook/preview.js
-
-import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import '@storybook/addon-console';
+import GlobalStyle from '../src/style/GlobalStyle';
 
 const customViewports = {
-  cherryPickMobile: {
-    name: 'cherrypick mobile',
+  cherrypickPC: {
+    name: 'cherrypick PC',
     styles: {
-      width: '390px',
-      height: '844px',
+      width: '1920px',
+      height: '4174px',
     },
   },
   cherryPickTablet: {
@@ -18,7 +17,58 @@ const customViewports = {
       height: '1118px',
     },
   },
+  cherryPickMobile: {
+    name: 'cherrypick mobile',
+    styles: {
+      width: '360px',
+      height: '844px',
+    },
+  },
+  iPhone5: {
+    name: 'IPhone5',
+    styles: {
+      width: '320px',
+      height: '640px',
+    },
+  },
+  iPhone12Pro: {
+    name: 'IPhone12 Pro',
+    styles: {
+      width: '390px',
+      height: '844px',
+    },
+  },
+  iPhoneSE: {
+    name: 'IPhone SE',
+    styles: {
+      width: '375px',
+      height: '667px',
+    },
+  },
+  iPadAir: {
+    name: 'IPad Air',
+    styles: {
+      width: '820px',
+      height: '1180px',
+    },
+  },
+  iPadMini: {
+    name: 'IPad Mini',
+    styles: {
+      width: '768px',
+      height: '1024px',
+    },
+  },
 };
+
+export const decorators = [
+  (Story) => (
+    <>
+      <GlobalStyle />
+      <Story />
+    </>
+  ),
+];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -34,9 +84,6 @@ export const parameters = {
     },
   },
   viewport: {
-    viewports: {
-      ...MINIMAL_VIEWPORTS,
-      ...customViewports,
-    },
+    viewports: customViewports,
   },
 };
