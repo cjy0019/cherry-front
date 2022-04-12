@@ -23,7 +23,7 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   & > img {
-    width: 2.5vw;
+    width: 48px;
 
     @media ${responsive.tablet} {
       width: 40px;

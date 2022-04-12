@@ -15,7 +15,7 @@ const StyledBadge = styled.div`
   padding: 6px 8px 5px;
   box-shadow: 0px 0px 8px rgba(33, 33, 33, 0.12);
   border-radius: 100px;
-  font-size: 0.5729vw;
+  font-size: 0.75rem;
   font-weight: 700;
 
   ${(props) =>
