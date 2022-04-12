@@ -1,7 +1,7 @@
 import React from 'react';
-import LectureInfo from '../molecules/detail/LectureInfo';
 import styled from 'styled-components';
 
+import LectureInfo from '../molecules/detail/LectureInfo';
 import Header from '../molecules/header/Header';
 import LecturePrice from '../molecules/detail/LecturePrice';
 import palette from '../../style/palette';

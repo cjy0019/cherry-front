@@ -28,13 +28,13 @@ const StyledLink = styled(Link)`
   font-weight: 700;
   height: 40px;
 
-  /* @media ${responsive.tablet} {
+  @media ${responsive.tablet} {
     width: 148px;
-  } */
+  }
 
-  /* @media ${responsive.mobile} {
+  @media ${responsive.mobile} {
     width: 152px;
-  } ; */
+  } ;
 `;
 
 export default OriginalLinkButton;

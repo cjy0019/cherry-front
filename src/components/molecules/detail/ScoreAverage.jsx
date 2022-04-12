@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
+
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 import starIcon from '../../../assets/img/star1_red.svg';
+import smileRed from '../../../assets/img/smile_red.svg';
+import smileGrey from '../../../assets/img/smile_grey.svg';
 
 const ScoreAverage = () => {
   return (
@@ -38,16 +42,18 @@ const ScoreAverage = () => {
 
           <RecommendBox>
             <SubTitle>강의 추천도</SubTitle>
-            <div>
-              <img />
-              <p>92%</p>
-              <div>추천해요</div>
-            </div>
-            <div>
-              <img />
-              <p>8%</p>
-              <div>별로에요</div>
-            </div>
+            <PercentageFlex>
+              <ImgContainer>
+                <img src={smileRed} />
+                <p>92%</p>
+                <RecommendBadge point>추천해요!</RecommendBadge>
+              </ImgContainer>
+              <ImgContainer>
+                <img src={smileGrey} />
+                <p>8%</p>
+                <RecommendBadge>별로에요</RecommendBadge>
+              </ImgContainer>
+            </PercentageFlex>
           </RecommendBox>
         </ReviewRecommendContainer>
 
@@ -76,8 +82,12 @@ const Title = styled.h1`
 
 const BoxContainer = styled.div`
   display: flex;
-  gap: 1.0417vw;
+  gap: 20px;
   margin-top: 1.4063vw;
+
+  @media ${responsive.wideTablet} {
+    gap: 16px;
+  }
 
   @media ${responsive.mobile} {
     margin-top: 20px;
@@ -86,23 +96,30 @@ const BoxContainer = styled.div`
 
 const ReviewRecommendContainer = styled.div`
   display: flex;
-  gap: 1.0417vw;
+  gap: 20px;
+
+  @media ${responsive.wideTablet} {
+    gap: 16px;
+  }
 `;
 
 const CommonBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 27px 0 25px 0;
   width: 200px;
   background-color: ${palette.subNavy};
   border-radius: 8px;
   color: ${palette.text2};
+
+  @media ${responsive.tablet} {
+    width: 180px;
+  }
 `;
 
-const ReviewScoreBox = styled(CommonBox)`
-  padding: 27px 0 25px 0;
-`;
+const ReviewScoreBox = styled(CommonBox)``;
 
 const HighLightScore = styled.p`
   font-weight: 700;
@@ -150,8 +167,30 @@ const TextFlexWrapper = styled.div`
 
 const RecommendBox = styled(CommonBox)``;
 
+const PercentageFlex = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 2.5521vw;
+`;
+
+const ImgContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+
+  & > img {
+    width: 32px;
+    display: flex;
+  }
+  & > p {
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+`;
+
 const SatisfactionBox = styled(CommonBox)`
-  width: 17.0833vw;
+  width: 328px;
 `;
 
 const SubTitle = styled.h3`

@@ -70,7 +70,7 @@ const TitleContainer = styled.div`
   background-color: ${palette.backgroundBlack};
   align-items: center;
   justify-content: center;
-  gap: 7.4479vw;
+  gap: 7.5vw;
   padding-top: 106px;
 
   @media ${responsive.mobile} {
@@ -89,7 +89,7 @@ const LectureInfoContainer = styled.div`
 const LectureTitle = styled.h1`
   font-size: 1.75rem;
   line-height: 1.5;
-  width: 400px;
+  width: 471px;
   font-weight: 700;
   color: ${palette.textWhite};
   word-break: keep-all;
@@ -147,12 +147,12 @@ const ScoreContainer = styled.div`
   align-items: center;
   margin-top: 3.5938vw;
 
-  @media ${responsive.tablet} {
+  /* @media ${responsive.tablet} {
     margin-top: 27px;
-  }
-  @media ${responsive.mobile} {
+  } */
+  /* @media ${responsive.mobile} {
     margin-top: 32px;
-  }
+  } */
 
   /* 점수 ex) 4.5 */
   & > p:first-child {
@@ -182,10 +182,10 @@ const ScoreContainer = styled.div`
     margin-left: 16px;
 
     @media ${responsive.wideTablet} {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
     @media ${responsive.mobile} {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 `;

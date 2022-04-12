@@ -37,6 +37,10 @@ const Container = styled.div`
   flex-direction: column;
   padding-top: 60px;
 
+  @media ${responsive.tablet} {
+    padding: 60px 25px;
+  }
+
   @media ${responsive.mobile} {
     width: 320px;
   }
@@ -47,7 +51,7 @@ const Title = styled.h1`
   font-weight: 700;
   color: ${palette.textWhite};
   border-bottom: 1px solid #2a2a2a;
-  padding-bottom: 1.25vw;
+  padding-bottom: 24px;
 
   @media ${responsive.mobile} {
     font-size: 1.125rem;
@@ -59,7 +63,7 @@ const TextInfoContainer = styled.div`
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 1.0938vw;
+  gap: 10px;
 
   & > p {
     font-weight: 400;

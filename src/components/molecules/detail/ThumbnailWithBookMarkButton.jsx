@@ -31,7 +31,7 @@ const ThumbnailWithBookMarkButton = ({
 const ThumbnailButton = styled.div`
   position: relative;
   cursor: pointer;
-  width: ${(props) => (props.mainTitle ? '530px' : '285px')};
+  width: ${(props) => (props.mainTitle ? '580px' : '285px')};
   z-index: 1;
 
   @media (max-width: 945px) {
@@ -50,9 +50,9 @@ const ThumbnailButton = styled.div`
         display: block;
         position: absolute;
         z-index: -1;
-        left: -177px;
-        top: -112px;
-        width: 922.9997px;
+        left: -12vw;
+        top: -7.8vw;
+        width: 60vw;
         height: 400px;
         background: radial-gradient(
           42.96% 98.15% at 50.05% 100%,
@@ -85,7 +85,6 @@ const ThumbnailButton = styled.div`
 const Thumbnail = styled.img`
   display: block;
   border-radius: 10px;
-  width: 100%;
 `;
 
 export default ThumbnailWithBookMarkButton;
