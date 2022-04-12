@@ -8,7 +8,7 @@ import { responsive } from '../../../../style/responsive';
 // 메인 페이지에서 쓰이는경우 반드시 main 넣어주기
 const SearchInput = ({ className, handleSubmit, searched, main }) => {
   return (
-    <Form className={className} onSubmit={handleSubmit}>
+    <Form main={main} className={className} onSubmit={handleSubmit}>
       <Input main={main} placeholder='찾의시는 강의, 강사가 있으신가요?' />
       <SubmitButton searched={searched} type='submit' alt='submit' value='' />
     </Form>
@@ -20,6 +20,14 @@ const Form = styled.form`
   position: relative;
 
   margin-right: 16px;
+
+  @media ${responsive.mobile} {
+    ${({ main }) =>
+      main &&
+      css`
+        margin-right: 0;
+      `}
+  }
 `;
 
 const Input = styled.input`
@@ -56,6 +64,12 @@ const Input = styled.input`
   /* 태블릿 뷰포트 650px 영역부터 로그인, 회원가입 텍스트가 SearchInput 부분을 침범하기 시작하므로 width 줄이기*/
   @media ${responsive.tablet} {
     width: 35.156vw;
+
+    ${({ main }) =>
+      main &&
+      css`
+        width: 270px;
+      `}
   }
 
   @media ${responsive.mobile} {
@@ -67,8 +81,8 @@ const Input = styled.input`
     ${({ main }) =>
       main &&
       css`
-        width: 59.07vw;
-        padding: 16px 50px 16px 16px; // 메인 320px
+        width: 70.56vw;
+        padding: 13.5px 50px 13.5px 16px; // 메인 320px
       `}
   }
 

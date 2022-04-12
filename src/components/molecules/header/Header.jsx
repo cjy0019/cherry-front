@@ -8,7 +8,7 @@ import { responsive } from '../../../style/responsive';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import { Link } from 'react-router-dom';
 
-const Header = ({ login, NotMain }) => {
+const Header = ({ className, login, NotMain }) => {
   const [noticeIsClicked, setNoticeIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
 
@@ -21,7 +21,7 @@ const Header = ({ login, NotMain }) => {
   };
 
   return (
-    <StyledHeader NotMain={NotMain}>
+    <StyledHeader className={className} NotMain={NotMain}>
       <Container>
         <FlexLeft>
           <Span mobileSearchIsClicked={mobileSearchIsClicked} NotMain={NotMain}>
@@ -334,8 +334,6 @@ const StyledHeader = styled.header`
 
   font-weight: 400;
   color: ${palette.textWhite};
-
-  background: ${palette.backgroundBlack};
 `;
 
 export default Header;
