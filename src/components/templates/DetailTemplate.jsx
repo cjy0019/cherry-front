@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
+import BackgroundOpacity from '../molecules/detail/BackgroundOpacity';
+
+import Header from '../molecules/header/Header';
 
 const DetailTemplate = () => {
   return (
     <>
       <Header NotMain />
-      <div></div>
+      <BackgroundOpacity />
     </>
   );
 };
