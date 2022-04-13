@@ -35,7 +35,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 49px;
   margin-top: 72px;
 
   @media ${responsive.tablet} {

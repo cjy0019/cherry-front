@@ -7,6 +7,7 @@ import LectureDetailTitle from '../molecules/detail/LectureDetailTitle';
 import LectureInfo from '../molecules/detail/LectureInfo';
 import SideBar from '../molecules/detail/SideBar';
 import palette from '../../style/palette';
+import AverageScore from '../molecules/detail/AverageScore';
 
 const DetailTemplate = () => {
   return (
@@ -17,11 +18,7 @@ const DetailTemplate = () => {
       <VerticalContainer>
         <div>
           <LectureInfo />
-          <LectureInfo />
-          <LectureInfo />
-          <LectureInfo />
-          <LectureInfo />
-          <LectureInfo />
+          <AverageScore />
         </div>
         <SideBar />
       </VerticalContainer>
