@@ -2,6 +2,7 @@ import React from 'react';
 import JobBadge from '../../UI/atoms/badges/JobBadge';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
+import { responsive } from '../../../style/responsive';
 
 const LectureInfo = () => {
   return (
@@ -36,6 +37,16 @@ const Container = styled.div`
   justify-content: center;
   padding-right: 49px;
   margin-top: 72px;
+
+  @media ${responsive.tablet} {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  @media ${responsive.mobile} {
+    width: 100%;
+    padding-right: 0;
+  }
 `;
 
 const Title = styled.h2`
