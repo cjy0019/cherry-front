@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
 import starRed from '../../../assets/img/star1_red.svg';
+import smileRed from '../../../assets/img/smile_red.svg';
+import smileGrey from '../../../assets/img/smile_grey.svg';
+import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
 
 const AverageScore = () => {
   return (
@@ -39,6 +42,20 @@ const AverageScore = () => {
 
         <RecommendBox>
           <p>강의 추천도</p>
+
+          <DivisionBox>
+            <HalfBox red>
+              <img src={smileRed} alt='추천해요 이미지' />
+              <p>92%</p>
+              <RecommendBadge point>추천해요!</RecommendBadge>
+            </HalfBox>
+
+            <HalfBox>
+              <img src={smileGrey} alt='별로에요 이미지' />
+              <p>8%</p>
+              <RecommendBadge>별로에요</RecommendBadge>
+            </HalfBox>
+          </DivisionBox>
         </RecommendBox>
 
         <SatisfactionBox>
@@ -133,6 +150,28 @@ const ScoreWithText = styled.div`
 `;
 
 const RecommendBox = styled(CommonBox)``;
+
+const DivisionBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+  gap: 20px;
+`;
+
+const HalfBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > p {
+    margin: 8px 0 16px;
+    font-weight: 600;
+    font-size: 1.25rem;
+
+    color: ${(props) => (props.red ? palette.pointRed : palette.text4)};
+  }
+`;
 
 const SatisfactionBox = styled(CommonBox)`
   width: 40%;
