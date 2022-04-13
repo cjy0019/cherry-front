@@ -29,11 +29,11 @@ const StyledLink = styled(Link)`
   height: 40px;
 
   @media ${responsive.tablet} {
-    width: 148px;
+    width: 50%;
   }
 
   @media ${responsive.mobile} {
-    width: 152px;
+    width: 50%;
   } ;
 `;
 
