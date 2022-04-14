@@ -11,6 +11,7 @@ import PretendardMedium from '../assets/fonts/Pretendard-Medium.woff';
 import PretendardRegular from '../assets/fonts/Pretendard-Regular.woff';
 import PretendardLight from '../assets/fonts/Roboto-Light.woff';
 import PretendardThin from '../assets/fonts/Pretendard-Thin.woff';
+import palette from './palette';
 
 const globalStyle = css`
   ${reset}
@@ -89,6 +90,7 @@ const globalStyle = css`
 
   body {
     font-family: 'Pretendard', 'Roboto';
+    background-color: ${palette.backgroundBlack};
   }
 `;
 
