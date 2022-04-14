@@ -33,8 +33,17 @@ const StyledHeader = styled(Header)`
 `;
 
 const Container = styled.div`
-  background-color: ${palette.backgroundBlack};
-  height: 100vh;
+  position: relative;
+  width: 62.5vw;
+  margin: 0 auto;
+
+  @media ${responsive.tablet} {
+    width: 93.75vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 89.17vw;
+  }
 `;
 
 const StyledH1 = styled.h1`
@@ -49,6 +58,8 @@ const StyledH1 = styled.h1`
 
   /* 일러스트 높이만큼 margin top */
   margin-top: 13.91vw;
+
+  z-index: 2;
 
   @media ${responsive.tablet} {
     width: 360px;
@@ -111,7 +122,14 @@ const HeaderSection = styled.section`
   align-items: center;
   justify-content: center;
 
+  margin-bottom: 97px;
+
+  @media ${responsive.tablet} {
+    margin-bottom: 77px;
+  }
+
   @media ${responsive.mobile} {
+    margin-bottom: 58px;
   }
 `;
 
