@@ -1,6 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../style/palette';
+import starRed from '../../../assets/img/star1_red.svg';
+import SatisfactionBadge from '../../UI/atoms/badges/SatisfactionBadge';
+import JobBadge from '../../UI/atoms/badges/JobBadge';
 
 const ReviewList = () => {
   const [selected, setSelected] = useState('asc');
@@ -37,6 +40,48 @@ const ReviewList = () => {
           </FilteringButton>
         </ButtonContainer>
       </HeaderContainer>
+
+      <ReviewContainer>
+        <LargePointsContainer>
+          <FlexLeft>
+            <img src={starRed} alt='평점' />
+            <LargePoint>3.0</LargePoint>
+            <Badges>
+              <SatisfactionBadge>추천해요!</SatisfactionBadge>
+              <SatisfactionBadge>매우 만족</SatisfactionBadge>
+            </Badges>
+          </FlexLeft>
+
+          <Date>2022.2</Date>
+        </LargePointsContainer>
+
+        <Title>"퀄리티가 넘 좋습니다."</Title>
+
+        <Advantages>
+          <p>장점</p>
+          <p>
+            3시간이 아깝지 않았습니다. 정말 유익하고 좋은 시간이었습니다. 꾸준히
+            배우고 싶네요! 엄청엄청 만족도 높습니다.
+          </p>
+        </Advantages>
+
+        <Advantages>
+          <p>단점</p>
+          <p>
+            3시간이 아깝지 않았습니다. 정말 유익하고 좋은 시간이었습니다. 꾸준히
+            배우고 싶네요! 엄청엄청 만족도 높습니다. 말 유익하고 좋은
+            시간이었습니다. 꾸준히 배우고 싶네요! 엄청엄청 만족도 높습니다.
+            3시간이 아깝지 않았습니다. 정말 유익하고 좋은 시간이었습니다. 꾸준히
+            배우고 싶네요! 엄청엄청 만족도 높습니다. 말 유익하고 좋은
+            시간이었습니다. 꾸준히 배우고 싶네요! 엄청엄청 만족도 높습니다.
+          </p>
+        </Advantages>
+
+        <BadgeWrapper>
+          <JobBadge>프론트</JobBadge>
+          <JobBadge>1년차</JobBadge>
+        </BadgeWrapper>
+      </ReviewContainer>
     </Container>
   );
 };
@@ -59,6 +104,11 @@ const HeaderContainer = styled.div`
   }
 `;
 
+const ReviewContainer = styled.div`
+  border-bottom: 1px solid ${palette.lineGray};
+  padding-bottom: 32px;
+`;
+
 const ButtonContainer = styled.div`
   display: flex;
   align-items: flex-end;
@@ -78,6 +128,77 @@ const FilteringButton = styled.button`
     css`
       color: ${palette.textWhite};
     `}
+`;
+
+const LargePointsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+`;
+
+const FlexLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & > img {
+    width: 15.79px;
+  }
+`;
+
+const LargePoint = styled.p`
+  font-weight: 600;
+  font-size: 2rem;
+  color: ${palette.textWhite};
+`;
+
+const Badges = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+const Date = styled.p`
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-align: right;
+  color: ${palette.text3};
+`;
+
+const Title = styled.p`
+  font-weight: 400;
+  font-size: 1rem;
+  color: ${palette.text2};
+  margin-top: 28px;
+`;
+
+const Advantages = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+
+  & > p:first-child {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: ${palette.text2};
+  }
+  & > p:last-child {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: ${palette.text5};
+    max-width: 700px;
+    word-break: keep-all;
+    line-height: 1.4;
+  }
+`;
+
+const BadgeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 20px;
 `;
 
 export default ReviewList;

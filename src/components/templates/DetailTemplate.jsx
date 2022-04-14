@@ -3,6 +3,7 @@ import BackgroundOpacity from '../molecules/detail/BackgroundOpacity';
 import styled from 'styled-components';
 
 import Header from '../molecules/header/Header';
+import Footer from '../molecules/footer/Footer';
 import LectureDetailTitle from '../molecules/detail/LectureDetailTitle';
 import LectureInfo from '../molecules/detail/LectureInfo';
 import SideBar from '../molecules/detail/SideBar';
@@ -24,6 +25,7 @@ const DetailTemplate = () => {
         </div>
         <SideBar />
       </VerticalContainer>
+      <Footer />
     </>
   );
 };

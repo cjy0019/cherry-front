@@ -11,7 +11,6 @@ const StyledBadge = styled.div`
   padding: 6px 4px;
   background: #000000;
   border-radius: 3px;
-  height: 11px;
   font-weight: 500;
   font-size: 11px;
   color: ${palette.textWhite};
