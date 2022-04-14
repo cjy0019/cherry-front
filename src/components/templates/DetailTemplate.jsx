@@ -8,6 +8,7 @@ import LectureInfo from '../molecules/detail/LectureInfo';
 import SideBar from '../molecules/detail/SideBar';
 import palette from '../../style/palette';
 import AverageScore from '../molecules/detail/AverageScore';
+import ReviewList from '../molecules/detail/ReviewList';
 
 const DetailTemplate = () => {
   return (
@@ -19,6 +20,7 @@ const DetailTemplate = () => {
         <div>
           <LectureInfo />
           <AverageScore />
+          <ReviewList />
         </div>
         <SideBar />
       </VerticalContainer>

@@ -9,7 +9,7 @@ const SvgProgressBar = ({ percentage, id }) => {
       xmlns='http://www.w3.org/2000/svg'>
       <defs>
         <linearGradient id={id}>
-          <stop offset='0' stop-color='#E72847'>
+          <stop offset='0' stopColor='#E72847'>
             <animate
               dur='2s'
               attributeName='offset'
@@ -18,7 +18,7 @@ const SvgProgressBar = ({ percentage, id }) => {
               to={percentage}
             />
           </stop>
-          <stop offset='0' stop-color='#292a31'>
+          <stop offset='0' stopColor='#292a31'>
             <animate
               dur='2s'
               attributeName='offset'
