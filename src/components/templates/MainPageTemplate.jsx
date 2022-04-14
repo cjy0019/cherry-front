@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import SearchInput from '../UI/atoms/input/SearchInput';
 import palette from '../../style/palette';
 import { responsive } from '../../style/responsive';
+import AvailableSkill from '../molecules/availableSkill/AvailableSkill';
 
 const MainPageTemplate = () => {
   return (
@@ -18,6 +19,8 @@ const MainPageTemplate = () => {
         </StyledH1>
         <SearchInput main />
       </HeaderSection>
+
+      <AvailableSkill />
     </Container>
   );
 };
@@ -30,8 +33,17 @@ const StyledHeader = styled(Header)`
 `;
 
 const Container = styled.div`
-  background-color: ${palette.backgroundBlack};
-  height: 100vh;
+  position: relative;
+  width: 62.5vw;
+  margin: 0 auto;
+
+  @media ${responsive.tablet} {
+    width: 93.75vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 89.17vw;
+  }
 `;
 
 const StyledH1 = styled.h1`
@@ -44,19 +56,39 @@ const StyledH1 = styled.h1`
   margin: 0 0 20px 0;
   line-height: 1.2;
 
+  /* 일러스트 높이만큼 margin top */
+  margin-top: 13.91vw;
+
+  z-index: 2;
+
   @media ${responsive.tablet} {
     width: 360px;
     line-height: 1.3;
+
+    /* 일러스트 높이만큼 margin top */
+    margin-top: 34.77vw;
   }
 
   @media ${responsive.mobile} {
     font-size: 1.5rem;
     margin: 0 0 36px 0;
     line-height: 1.4;
+
+    /* 일러스트 보다 위에 위치 */
+    position: relative;
+    z-index: 100;
+
+    /* 일러스트 높이만큼 margin top */
+    margin-top: 112px;
   }
 `;
 
 const Illustrate = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
   background: url(${illustrate});
   background-repeat: no-repeat;
   background-size: cover;
@@ -69,24 +101,9 @@ const Illustrate = styled.div`
   }
 
   @media ${responsive.mobile} {
-    width: 0;
-    height: 172px;
-    background: none;
-  }
-`;
+    width: 100vw;
+    height: 309px;
 
-const HeaderSection = styled.section`
-  position: absolute;
-  top: 0px;
-  left: 50%;
-  transform: translate(-50%, 0%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media ${responsive.mobile} {
     background: linear-gradient(
         180deg,
         rgba(24, 25, 32, 0) -52.59%,
@@ -96,11 +113,23 @@ const HeaderSection = styled.section`
       url(${illustrate});
     background-repeat: no-repeat;
     background-size: cover;
+  }
+`;
 
-    left: 0;
-    transform: none;
+const HeaderSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    width: 100vw;
+  margin-bottom: 97px;
+
+  @media ${responsive.tablet} {
+    margin-bottom: 77px;
+  }
+
+  @media ${responsive.mobile} {
+    margin-bottom: 58px;
   }
 `;
 

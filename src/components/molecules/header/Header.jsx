@@ -330,8 +330,6 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: center;
 
-  width: 100vw;
-
   font-weight: 400;
   color: ${palette.textWhite};
 `;
