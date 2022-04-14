@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 import linkIcon from '../../../../assets/img/linkicon.svg';
 
-const OriginalLinkButton = ({ Href }) => {
+const OriginalLinkButton = ({ to }) => {
   return (
-    <StyledLink to={Href}>
+    <StyledLink to={to}>
       원본 링크
       <img src={linkIcon} alt='아이콘' />
     </StyledLink>
@@ -23,14 +23,17 @@ const StyledLink = styled(Link)`
   background-color: #15161d;
   color: ${palette.textWhite};
   text-decoration: none;
-  width: 308px;
-  height: 40px;
-  font-size: 12px;
+  font-size: 0.75rem;
+  width: 100%;
   font-weight: 700;
+  height: 40px;
+
+  @media ${responsive.tablet} {
+    width: 50%;
+  }
 
   @media ${responsive.mobile} {
-    width: 152px;
-    height: 40px;
+    width: 50%;
   } ;
 `;
 

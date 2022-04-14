@@ -18,7 +18,7 @@ const StyledBadge = styled.div`
   background-color: #000000;
   border-radius: 3px;
   color: ${palette.textWhite};
-  font-size: 10px;
+  font-size: 0.75rem;
 
   & > span:nth-of-type(1) {
     font-weight: 400;
