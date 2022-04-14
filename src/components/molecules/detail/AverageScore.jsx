@@ -63,10 +63,15 @@ const AverageScore = () => {
           <p>가격 대비 만족도</p>
 
           <ProgressColContainer>
-            <ProgressBar title='매우 만족' total={2} />
-            <ProgressBar title='만족' total={4} />
-            <ProgressBar title='보통' total={20} />
-            <ProgressBar title='그저 그럼' total={100} />
+            <ProgressBar title='매우 만족' total={2} percentage='0.3' id='1' />
+            <ProgressBar title='만족' total={4} percentage='0.9' id='2' />
+            <ProgressBar title='보통' total={20} percentage='1' id='3' />
+            <ProgressBar
+              title='그저 그럼'
+              total={100}
+              percentage='0.5'
+              id='4'
+            />
           </ProgressColContainer>
         </SatisfactionBox>
       </BoxContainer>

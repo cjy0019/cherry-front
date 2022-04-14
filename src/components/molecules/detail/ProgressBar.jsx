@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
+import SvgProgressBar from './SvgProgressBar';
 
-const ProgressBar = ({ title, total, percentage }) => {
+const ProgressBar = ({ title, total, percentage, id }) => {
   return (
     <Container>
       <p>{title}</p>
+      <SvgProgressBar id={id} percentage={percentage} />
       <p>{total}명</p>
     </Container>
   );
