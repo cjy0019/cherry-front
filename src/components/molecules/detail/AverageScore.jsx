@@ -5,6 +5,7 @@ import starRed from '../../../assets/img/star1_red.svg';
 import smileRed from '../../../assets/img/smile_red.svg';
 import smileGrey from '../../../assets/img/smile_grey.svg';
 import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
+import ProgressBar from './ProgressBar';
 
 const AverageScore = () => {
   return (
@@ -60,6 +61,13 @@ const AverageScore = () => {
 
         <SatisfactionBox>
           <p>가격 대비 만족도</p>
+
+          <ProgressColContainer>
+            <ProgressBar title='매우 만족' total={2} />
+            <ProgressBar title='만족' total={4} />
+            <ProgressBar title='보통' total={20} />
+            <ProgressBar title='그저 그럼' total={100} />
+          </ProgressColContainer>
         </SatisfactionBox>
       </BoxContainer>
     </Container>
@@ -68,6 +76,7 @@ const AverageScore = () => {
 
 const Container = styled.div`
   margin-top: 60px;
+  padding-bottom: 100vh;
 `;
 
 const Title = styled.h2`
@@ -174,7 +183,16 @@ const HalfBox = styled.div`
 `;
 
 const SatisfactionBox = styled(CommonBox)`
-  width: 40%;
+  width: 60%;
+`;
+
+const ProgressColContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 17px;
+  margin-top: 45px;
+  color: ${palette.text2};
 `;
 
 export default AverageScore;
