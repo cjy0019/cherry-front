@@ -19,6 +19,8 @@ const ReviewWriteTemplate = () => {
   const [starImagesArr, setStarImagesArr] = useState(
     Array.from({ length: 5 }, () => starImageUrl.emptyStar),
   );
+  const [isOverHalf, setIsOverHalf] = useState(false);
+  const [starPoint, setStarPoint] = useState(0.5);
 
   const handleMouseMove = (e) => {
     if (lockStarPoints) return;
@@ -28,7 +30,7 @@ const ReviewWriteTemplate = () => {
     const starPointIndex = parseInt(point) - 1;
     const [starImageClientRect] = e.target.getClientRects();
     const starImageWidth = starImageClientRect.width;
-    const isOverHalf = starImageWidth / 2 < currentPoint;
+    setIsOverHalf(starImageWidth / 2 < currentPoint);
 
     setStarImagesArr(
       starImagesArr.map((v, index) => {
@@ -42,6 +44,14 @@ const ReviewWriteTemplate = () => {
         }
       }),
     );
+  };
+
+  const handleMouseClick = (e) => {
+    const { point } = e.target.dataset;
+    setLockStarPoints(!lockStarPoints);
+
+    if (isOverHalf) setStarPoint(point);
+    else setStarPoint(point - 0.5);
   };
 
   return (
@@ -62,12 +72,17 @@ const ReviewWriteTemplate = () => {
         <FirstContainer>
           <NumberBadge>1</NumberBadge>
           <p>리뷰 평점(필수)</p>
-          <StarContainer onMouseMove={handleMouseMove}>
+          <StarContainer
+            onMouseMove={handleMouseMove}
+            onClick={handleMouseClick}>
             {starImagesArr.map((url, i) => (
               <img src={url} key={i} data-point={String(i + 1)} />
             ))}
           </StarContainer>
-          <p>3.5</p>
+          <p>{starPoint}</p>
+          <DescText>
+            별점을 <span>Click</span> 해주세요!
+          </DescText>
         </FirstContainer>
       </CenterBox>
     </Container>
@@ -138,7 +153,16 @@ const StarContainer = styled.div`
   height: 40px;
 
   & > img {
-    width: 30px;
+    width: 35px;
+  }
+`;
+
+const DescText = styled.p`
+  color: ${palette.text6};
+  font-size: 0.75rem;
+  margin-left: 10px;
+  span {
+    color: ${palette.pointRed};
   }
 `;
 
