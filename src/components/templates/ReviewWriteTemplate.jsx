@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import closeDark from '../../assets/img/close_dark.svg';
 import styled from 'styled-components';
-import palette from '../../style/palette';
 
-import SatisfactionButton from '../UI/atoms/buttons/SatisfactionButton';
-import NumberBadge from '../UI/atoms/badges/NumberBadge';
+import smileRed from '../../assets/img/smile_red.svg';
+import smileGrey from '../../assets/img/smile.svg';
+import sadRed from '../../assets/img/sad.svg';
+import sadGrey from '../../assets/img/sad_active.svg';
 import emptyStar from '../../assets/img/star0_red.svg';
 import halfStar from '../../assets/img/star0.5_red.svg';
 import fullStar from '../../assets/img/star1_red.svg';
+import closeDark from '../../assets/img/close_dark.svg';
 
-import smileRed from '../../assets/img/smile_red.svg';
-import smileGrey from '../../assets/img/smile_grey.svg';
+import SatisfactionButton from '../UI/atoms/buttons/SatisfactionButton';
+import NumberBadge from '../UI/atoms/badges/NumberBadge';
+import palette from '../../style/palette';
+import ReviewOneLineInput from '../UI/atoms/input/ReviewOneLineInput';
 
 const starImageUrl = {
   emptyStar,
@@ -26,6 +29,9 @@ const ReviewWriteTemplate = () => {
   );
   const [isOverHalf, setIsOverHalf] = useState(false);
   const [starPoint, setStarPoint] = useState(0.5);
+
+  // 2번 추천 state
+  const [recommend, setRecommend] = useState('recommendation');
 
   // 3번 만족도 선택 state
   const [satisfaction, setSatisfaction] = useState('');
@@ -67,6 +73,11 @@ const ReviewWriteTemplate = () => {
     setSatisfaction(name);
   };
 
+  const selectRecommendation = (e) => {
+    const { name } = e.currentTarget.dataset;
+    setRecommend(name);
+  };
+
   return (
     <Container>
       <CenterBox>
@@ -100,11 +111,19 @@ const ReviewWriteTemplate = () => {
           <NumberBadge>2</NumberBadge>
           <p>강의를 추천하시나요?(필수)</p>
           <SmileButtonContainer>
-            <button>
-              <img src={smileRed} alt='추천합니다' />
+            <button data-name='recommendation' onClick={selectRecommendation}>
+              <img
+                src={recommend === 'recommendation' ? smileRed : smileGrey}
+                alt='추천합니다'
+              />
             </button>
-            <button>
-              <img src={smileGrey} alt='추천하지 않습니다' />
+            <button
+              data-name='non-recommendation'
+              onClick={selectRecommendation}>
+              <img
+                src={recommend === 'non-recommendation' ? sadRed : sadGrey}
+                alt='추천하지 않습니다'
+              />
             </button>
           </SmileButtonContainer>
         </QuestionContainer>
@@ -135,6 +154,14 @@ const ReviewWriteTemplate = () => {
             </SatisfactionButton>
           </SatisfactionButtonContainer>
         </QuestionContainer>
+
+        <ColQuestionContainer>
+          <QuestionTitleContainer>
+            <NumberBadge>4</NumberBadge>
+            <p>한 줄 평이 궁금해요(필수)</p>
+          </QuestionTitleContainer>
+          <ReviewOneLineInput />
+        </ColQuestionContainer>
       </CenterBox>
     </Container>
   );
@@ -145,7 +172,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${palette.backgroundBlack};
-  height: 100vh;
   padding-top: 40px;
 `;
 
@@ -202,6 +228,7 @@ const StarContainer = styled.div`
   display: flex;
   margin: 0 12px 0 24px;
   height: 40px;
+  cursor: pointer;
 
   & > img {
     width: 35px;
@@ -228,7 +255,7 @@ const SmileButtonContainer = styled.div`
 
   & > button:hover {
     transform: translateY(-10%);
-    transition: 0.3s;
+    transition: 0.1s;
   }
 `;
 
@@ -236,6 +263,25 @@ const SatisfactionButtonContainer = styled.div`
   display: flex;
   gap: 12px;
   margin-left: 24px;
+`;
+
+const ColQuestionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const QuestionTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${palette.text2};
+  margin-top: 28px;
+
+  & > p:nth-of-type(1) {
+    margin-left: 12px;
+  }
 `;
 
 export default ReviewWriteTemplate;
