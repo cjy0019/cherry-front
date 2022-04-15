@@ -1,10 +1,49 @@
-import React from 'react';
-import Header from '../molecules/header/Header';
+import React, { useState } from 'react';
 import closeDark from '../../assets/img/close_dark.svg';
 import styled from 'styled-components';
 import palette from '../../style/palette';
 
+import NumberBadge from '../UI/atoms/badges/NumberBadge';
+import emptyStar from '../../assets/img/star0_red.svg';
+import halfStar from '../../assets/img/star0.5_red.svg';
+import fullStar from '../../assets/img/star1_red.svg';
+
+const starImageUrl = {
+  emptyStar,
+  halfStar,
+  fullStar,
+};
+
 const ReviewWriteTemplate = () => {
+  const [lockStarPoints, setLockStarPoints] = useState(false);
+  const [starImagesArr, setStarImagesArr] = useState(
+    Array.from({ length: 5 }, () => starImageUrl.emptyStar),
+  );
+
+  const handleMouseMove = (e) => {
+    if (lockStarPoints) return;
+
+    const currentPoint = e.nativeEvent.offsetX;
+    const { point } = e.target.dataset;
+    const starPointIndex = parseInt(point) - 1;
+    const [starImageClientRect] = e.target.getClientRects();
+    const starImageWidth = starImageClientRect.width;
+    const isOverHalf = starImageWidth / 2 < currentPoint;
+
+    setStarImagesArr(
+      starImagesArr.map((v, index) => {
+        if (index < starPointIndex) {
+          return starImageUrl.fullStar;
+        } else if (index === starPointIndex) {
+          if (isOverHalf) return starImageUrl.fullStar;
+          else return starImageUrl.halfStar;
+        } else {
+          return starImageUrl.emptyStar;
+        }
+      }),
+    );
+  };
+
   return (
     <Container>
       <CenterBox>
@@ -19,6 +58,17 @@ const ReviewWriteTemplate = () => {
         <LectureTitle>
           강의 - 웹 게임을 만들며 배우는 JavaScript(자바스크립트)
         </LectureTitle>
+
+        <FirstContainer>
+          <NumberBadge>1</NumberBadge>
+          <p>리뷰 평점(필수)</p>
+          <StarContainer onMouseMove={handleMouseMove}>
+            {starImagesArr.map((url, i) => (
+              <img src={url} key={i} data-point={String(i + 1)} />
+            ))}
+          </StarContainer>
+          <p>3.5</p>
+        </FirstContainer>
       </CenterBox>
     </Container>
   );
@@ -67,6 +117,29 @@ const LectureTitle = styled.p`
   font-size: 1rem;
   color: ${palette.text2};
   margin-top: 40px;
+`;
+
+const FirstContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${palette.text2};
+
+  & > p:nth-of-type(1) {
+    margin-left: 12px;
+  }
+`;
+
+const StarContainer = styled.div`
+  display: flex;
+  margin: 0 12px 0 24px;
+  height: 40px;
+
+  & > img {
+    width: 30px;
+  }
 `;
 
 export default ReviewWriteTemplate;
