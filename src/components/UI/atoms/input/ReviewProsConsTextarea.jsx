@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 
-const ReviewProsConsTextarea = () => {
+const ReviewProsConsTextarea = ({ handleChange }) => {
   return (
-    <Textarea maxLength='500' placeholder='ex) 강사, 과제, 커리큘럼, 환경 등' />
+    <Textarea
+      onChange={handleChange}
+      maxLength='500'
+      placeholder='ex) 강사, 과제, 커리큘럼, 환경 등'
+    />
   );
 };
 

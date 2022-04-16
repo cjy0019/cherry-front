@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import smileRed from '../../assets/img/smile_red.svg';
 import smileGrey from '../../assets/img/smile.svg';
@@ -15,6 +15,8 @@ import NumberBadge from '../UI/atoms/badges/NumberBadge';
 import palette from '../../style/palette';
 import ReviewOneLineInput from '../UI/atoms/input/ReviewOneLineInput';
 import ReviewProsConsTextarea from '../UI/atoms/input/ReviewProsConsTextarea';
+import SaveButton from '../UI/atoms/buttons/SaveButton';
+import Footer from '../molecules/footer/Footer';
 
 const starImageUrl = {
   emptyStar,
@@ -35,7 +37,13 @@ const ReviewWriteTemplate = () => {
   const [recommend, setRecommend] = useState('recommendation');
 
   // 3번 만족도 선택 state
-  const [satisfaction, setSatisfaction] = useState('');
+  const [satisfaction, setSatisfaction] = useState('매우 만족');
+
+  // 5번 장점 state
+  const [advantage, setAdvantage] = useState('');
+
+  // 6번 단점 state
+  const [disadvantage, setDisadvantage] = useState('');
 
   const handleMouseMove = (e) => {
     if (lockStarPoints) return;
@@ -77,6 +85,14 @@ const ReviewWriteTemplate = () => {
   const selectRecommendation = (e) => {
     const { name } = e.currentTarget.dataset;
     setRecommend(name);
+  };
+
+  const writeAdvantage = (e) => {
+    setAdvantage(e.target.value);
+  };
+
+  const writeDisadvantage = (e) => {
+    setDisadvantage(e.target.value);
   };
 
   return (
@@ -171,13 +187,30 @@ const ReviewWriteTemplate = () => {
               <p>장점(필수)</p>
             </FlexWrapper>
             <TextCount>
-              <span>0/</span>
+              <span>{advantage.length}/</span>
               <span>500</span>
             </TextCount>
           </BetweenWrapper>
-          <ReviewProsConsTextarea />
+          <ReviewProsConsTextarea handleChange={writeAdvantage} />
         </AdvantagesContainer>
+
+        <AdvantagesContainer mb>
+          <BetweenWrapper>
+            <FlexWrapper>
+              <NumberBadge>6</NumberBadge>
+              <p>단점(필수)</p>
+            </FlexWrapper>
+            <TextCount>
+              <span>{disadvantage.length}/</span>
+              <span>500</span>
+            </TextCount>
+          </BetweenWrapper>
+          <ReviewProsConsTextarea handleChange={writeDisadvantage} />
+        </AdvantagesContainer>
+
+        <SaveButton dim>저장하기</SaveButton>
       </CenterBox>
+      <Footer />
     </Container>
   );
 };
@@ -192,6 +225,7 @@ const Container = styled.div`
 
 const CenterBox = styled.div`
   width: 60%;
+  padding: 43px 0 156px;
 `;
 
 const Title = styled.p`
@@ -301,6 +335,12 @@ const QuestionTitleContainer = styled.div`
 
 const AdvantagesContainer = styled.div`
   margin-top: 36px;
+
+  ${(props) =>
+    props.mb &&
+    css`
+      margin-bottom: 52px;
+    `}
 `;
 
 const BetweenWrapper = styled.div`
