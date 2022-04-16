@@ -14,6 +14,7 @@ import SatisfactionButton from '../UI/atoms/buttons/SatisfactionButton';
 import NumberBadge from '../UI/atoms/badges/NumberBadge';
 import palette from '../../style/palette';
 import ReviewOneLineInput from '../UI/atoms/input/ReviewOneLineInput';
+import ReviewProsConsTextarea from '../UI/atoms/input/ReviewProsConsTextarea';
 
 const starImageUrl = {
   emptyStar,
@@ -162,6 +163,20 @@ const ReviewWriteTemplate = () => {
           </QuestionTitleContainer>
           <ReviewOneLineInput />
         </ColQuestionContainer>
+
+        <AdvantagesContainer>
+          <BetweenWrapper>
+            <FlexWrapper>
+              <NumberBadge>5</NumberBadge>
+              <p>장점(필수)</p>
+            </FlexWrapper>
+            <TextCount>
+              <span>0/</span>
+              <span>500</span>
+            </TextCount>
+          </BetweenWrapper>
+          <ReviewProsConsTextarea />
+        </AdvantagesContainer>
       </CenterBox>
     </Container>
   );
@@ -281,6 +296,39 @@ const QuestionTitleContainer = styled.div`
 
   & > p:nth-of-type(1) {
     margin-left: 12px;
+  }
+`;
+
+const AdvantagesContainer = styled.div`
+  margin-top: 36px;
+`;
+
+const BetweenWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${palette.text2};
+
+  & > p:nth-of-type(1) {
+    margin-left: 12px;
+  }
+`;
+
+const TextCount = styled.div`
+  font-size: 0.8125rem;
+  & > span:nth-of-type(1) {
+    color: ${palette.text2};
+  }
+  & > span:nth-of-type(2) {
+    color: ${palette.text5};
   }
 `;
 

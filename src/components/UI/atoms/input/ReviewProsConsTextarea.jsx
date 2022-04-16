@@ -10,7 +10,7 @@ const ReviewProsConsTextarea = () => {
 };
 
 const Textarea = styled.textarea`
-  width: 708px;
+  width: 100%;
   height: 102px;
   padding: 17px 30px;
 
@@ -33,12 +33,12 @@ const Textarea = styled.textarea`
     letter-spacing: 0px;
   }
 
-  @media ${responsive.tablet} {
+  /* @media ${responsive.tablet} {
     width: 658px;
   }
   @media ${responsive.mobile} {
     width: 260px;
-  }
+  } */
 `;
 
 export default ReviewProsConsTextarea;

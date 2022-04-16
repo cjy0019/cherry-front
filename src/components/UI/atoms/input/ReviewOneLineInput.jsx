@@ -8,7 +8,7 @@ const ReviewOneLineInput = () => {
 };
 
 const Input = styled.input`
-  width: 705px;
+  width: 100%;
   height: 14px;
   padding: 17px 33px 17px 30px;
 
@@ -29,12 +29,12 @@ const Input = styled.input`
     opacity: 0.5;
   }
 
-  @media ${responsive.tablet} {
+  /* @media ${responsive.tablet} {
     width: 655px;
   }
   @media ${responsive.mobile} {
     width: 257px;
-  }
+  } */
 `;
 
 export default ReviewOneLineInput;
