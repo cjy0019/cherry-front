@@ -4,7 +4,10 @@ import palette from '../../../../style/palette';
 
 const SatisfactionButton = ({ children, selected, handleClick }) => {
   return (
-    <StyledButton onClick={handleClick} selected={selected}>
+    <StyledButton
+      onClick={handleClick}
+      selected={selected}
+      data-name={children}>
       {children}
     </StyledButton>
   );
@@ -20,7 +23,7 @@ const StyledButton = styled.button`
   border: none;
 
   ${(props) =>
-    props.selected &&
+    props.selected === props['data-name'] &&
     css`
       color: ${palette.pointRed};
     `}
