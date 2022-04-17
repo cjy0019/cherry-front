@@ -78,6 +78,13 @@ const LectureOfflineBadge = styled(OfflineBadge)`
     top: 7.78px;
     left: 6.916px;
   }
+
+  @media ${responsive.mobile} {
+    /* 반응형 변경하기 */
+    /* 14, 20px */
+    top: 3.8889vw;
+    left: 5.5556vw;
+  }
 `;
 
 const BookmarkImg = styled.img`
@@ -117,6 +124,12 @@ const BookmarkImg = styled.img`
   }
 
   @media ${responsive.mobile} {
+    /* 14, 20px */
+    top: 3.8889vw;
+    right: 5.5556vw;
+
+    width: 28px;
+    height: 28px;
   }
 `;
 
@@ -146,9 +159,6 @@ const AdditionalInfoContainer = styled.div`
       padding-left: 8px;
     }
   }
-
-  @media ${responsive.mobile} {
-  }
 `;
 
 const AdditionalInfo = styled.div`
@@ -172,6 +182,7 @@ const AdditionalInfoContent = styled.span`
   }
 
   @media ${responsive.mobile} {
+    font-size: 0.875rem;
   }
 `;
 
@@ -195,6 +206,8 @@ const AdditionalInfoTitle = styled.h4`
   }
 
   @media ${responsive.mobile} {
+    font-size: 0.75rem;
+    margin-right: 3px;
   }
 `;
 
@@ -228,6 +241,10 @@ const LectureTitle = styled.h3`
   }
 
   @media ${responsive.mobile} {
+    /* 반응형 구현하기 */
+    font-size: 0.875rem;
+    /* margin-top: 7px; */
+    margin-top: 2.2222vw;
   }
 `;
 
@@ -251,6 +268,7 @@ const HashTagContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    margin-top: 5.2778vw;
   }
 `;
 
@@ -273,6 +291,7 @@ const HashTag = styled.span`
   }
 
   @media ${responsive.mobile} {
+    font-size: 0.75rem;
   }
 `;
 
@@ -304,6 +323,8 @@ const AgencyBadge = styled(RegularAgencyBadge)`
   }
 
   @media ${responsive.mobile} {
+    margin-right: 2.2222vw;
+    padding: 1.6667vw 1.1111vw;
   }
 `;
 
@@ -334,6 +355,8 @@ const LectureImg = styled.img`
   }
 
   @media ${responsive.mobile} {
+    width: 79.1667vw;
+    height: 44.1667vw;
   }
 `;
 
@@ -365,6 +388,8 @@ const LectureInfo = styled.div`
   }
 
   @media ${responsive.mobile} {
+    width: 68.0556vw;
+    height: 44.7222vw;
   }
 `;
 
@@ -400,6 +425,8 @@ const InfoContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    width: 79.1667vw;
+    height: 55.8333vw;
   }
 `;
 
