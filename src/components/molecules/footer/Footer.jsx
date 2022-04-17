@@ -58,14 +58,15 @@ const ContentsContainer = styled.div`
     justify-content: center;
     flex-direction: column-reverse;
     flex-wrap: wrap;
-    gap: 0;
+    gap: 13px;
+    padding: 32px 0 35px;
   }
 
   @media ${responsive.mobile} {
     flex-direction: column-reverse;
     width: 100%;
-    gap: 0;
-    padding: 0;
+    gap: 13px;
+    padding: 32px 0 35px;
   }
 `;
 
