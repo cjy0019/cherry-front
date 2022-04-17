@@ -17,6 +17,7 @@ import ReviewOneLineInput from '../UI/atoms/input/ReviewOneLineInput';
 import ReviewProsConsTextarea from '../UI/atoms/input/ReviewProsConsTextarea';
 import SaveButton from '../UI/atoms/buttons/SaveButton';
 import Footer from '../molecules/footer/Footer';
+import { responsive } from '../../style/responsive';
 
 const starImageUrl = {
   emptyStar,
@@ -31,13 +32,16 @@ const ReviewWriteTemplate = () => {
     Array.from({ length: 5 }, () => starImageUrl.emptyStar),
   );
   const [isOverHalf, setIsOverHalf] = useState(false);
-  const [starPoint, setStarPoint] = useState(0.5);
+  const [starPoint, setStarPoint] = useState(0);
 
   // 2번 추천 state
   const [recommend, setRecommend] = useState('recommendation');
 
   // 3번 만족도 선택 state
   const [satisfaction, setSatisfaction] = useState('매우 만족');
+
+  // 4번 한줄평 state
+  const [oneLineReview, setOneLineReview] = useState('');
 
   // 5번 장점 state
   const [advantage, setAdvantage] = useState('');
@@ -77,14 +81,18 @@ const ReviewWriteTemplate = () => {
     else setStarPoint(point - 0.5);
   };
 
-  const selectSatisfaction = (e) => {
-    const { name } = e.target.dataset;
-    setSatisfaction(name);
+  const writeOneLineReview = (e) => {
+    setOneLineReview(e.target.value);
   };
 
   const selectRecommendation = (e) => {
     const { name } = e.currentTarget.dataset;
     setRecommend(name);
+  };
+
+  const selectSatisfaction = (e) => {
+    const { name } = e.target.dataset;
+    setSatisfaction(name);
   };
 
   const writeAdvantage = (e) => {
@@ -111,22 +119,27 @@ const ReviewWriteTemplate = () => {
         </LectureTitle>
 
         <QuestionContainer>
-          <NumberBadge>1</NumberBadge>
-          <p>리뷰 평점(필수)</p>
-          <StarContainer onMouseMove={handleMouseMove} onClick={pickStarPoint}>
-            {starImagesArr.map((url, i) => (
-              <img src={url} key={i} data-point={String(i + 1)} />
-            ))}
-          </StarContainer>
-          <p>{starPoint}</p>
-          <DescText>
-            별점을 <span>Click</span> 해주세요!
-          </DescText>
+          <AlignInline>
+            <NumberBadge>1</NumberBadge>
+            <p>리뷰 평점(필수)</p>
+          </AlignInline>
+          <AlignInline>
+            <StarContainer
+              onMouseMove={handleMouseMove}
+              onClick={pickStarPoint}>
+              {starImagesArr.map((url, i) => (
+                <img src={url} key={i} data-point={String(i + 1)} />
+              ))}
+            </StarContainer>
+            <p>{starPoint}</p>
+          </AlignInline>
         </QuestionContainer>
 
         <QuestionContainer>
-          <NumberBadge>2</NumberBadge>
-          <p>강의를 추천하시나요?(필수)</p>
+          <AlignInline>
+            <NumberBadge>2</NumberBadge>
+            <p>강의를 추천하시나요?(필수)</p>
+          </AlignInline>
           <SmileButtonContainer>
             <button data-name='recommendation' onClick={selectRecommendation}>
               <img
@@ -146,8 +159,10 @@ const ReviewWriteTemplate = () => {
         </QuestionContainer>
 
         <QuestionContainer>
-          <NumberBadge>3</NumberBadge>
-          <p>가격 대비 만족도(필수)</p>
+          <AlignInline>
+            <NumberBadge>3</NumberBadge>
+            <p>가격 대비 만족도(필수)</p>
+          </AlignInline>
           <SatisfactionButtonContainer>
             <SatisfactionButton
               handleClick={selectSatisfaction}
@@ -177,7 +192,7 @@ const ReviewWriteTemplate = () => {
             <NumberBadge>4</NumberBadge>
             <p>한 줄 평이 궁금해요(필수)</p>
           </QuestionTitleContainer>
-          <ReviewOneLineInput />
+          <ReviewOneLineInput handleChange={writeOneLineReview} />
         </ColQuestionContainer>
 
         <AdvantagesContainer>
@@ -226,6 +241,16 @@ const Container = styled.div`
 const CenterBox = styled.div`
   width: 60%;
   padding: 43px 0 156px;
+
+  @media ${responsive.tablet} {
+    width: 100%;
+    padding: 49px 24px 132px 24px;
+  }
+
+  @media ${responsive.mobile} {
+    width: 100%;
+    padding: 49px 20px 32px;
+  }
 `;
 
 const Title = styled.p`
@@ -251,13 +276,22 @@ const SmallTextWrapper = styled.div`
   font-size: 0.875rem;
   color: ${palette.text5};
   margin-top: 20px;
+
+  @media ${responsive.mobile} {
+    font-size: 0.75rem;
+  }
 `;
 
 const LectureTitle = styled.p`
   font-weight: 600;
   font-size: 1rem;
+  line-height: 1.5;
   color: ${palette.text2};
   margin-top: 40px;
+
+  @media ${responsive.mobile} {
+    word-break: keep-all;
+  }
 `;
 
 const QuestionContainer = styled.div`
@@ -271,6 +305,22 @@ const QuestionContainer = styled.div`
   & > p:nth-of-type(1) {
     margin-left: 12px;
   }
+
+  @media ${responsive.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 32px;
+  }
+`;
+
+const AlignInline = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > p:nth-of-type(1) {
+    margin-left: 12px;
+  }
 `;
 
 const StarContainer = styled.div`
@@ -280,16 +330,11 @@ const StarContainer = styled.div`
   cursor: pointer;
 
   & > img {
-    width: 35px;
+    width: 32px;
   }
-`;
 
-const DescText = styled.p`
-  color: ${palette.text6};
-  font-size: 0.75rem;
-  margin-left: 10px;
-  span {
-    color: ${palette.pointRed};
+  @media ${responsive.mobile} {
+    margin: 0 0 0 16%;
   }
 `;
 
@@ -306,12 +351,20 @@ const SmileButtonContainer = styled.div`
     transform: translateY(-10%);
     transition: 0.1s;
   }
+
+  @media ${responsive.mobile} {
+    margin-left: 11%;
+  }
 `;
 
 const SatisfactionButtonContainer = styled.div`
   display: flex;
   gap: 12px;
   margin-left: 24px;
+
+  @media ${responsive.mobile} {
+    margin-left: 10%;
+  }
 `;
 
 const ColQuestionContainer = styled.div`

@@ -12,7 +12,7 @@ const StyledBadge = styled.div`
   align-items: center;
   background: ${palette.pointRed};
   border-radius: 100%;
-  width: 24px;
+  min-width: 24px;
   height: 24px;
   font-weight: 600;
   font-size: 12px;
