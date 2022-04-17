@@ -70,7 +70,7 @@ export const DeleteAll = () => (
 );
 DeleteAll.storyName = '모두 지우기';
 
-export const OriginalLink = () => <OriginalLinkButton Href='/' />;
+export const OriginalLink = () => <OriginalLinkButton to='/' />;
 OriginalLink.storyName = '원본 링크';
 
 export const Carousel = () => (
