@@ -103,6 +103,19 @@ const ReviewWriteTemplate = () => {
     setDisadvantage(e.target.value);
   };
 
+  const checkQuestionIsFull = () => {
+    if (
+      starPoint > 0 &&
+      recommend &&
+      satisfaction &&
+      oneLineReview.length > 0 &&
+      advantage.length > 0 &&
+      disadvantage.length > 0
+    ) {
+      return true;
+    } else return false;
+  };
+
   return (
     <Container>
       <CenterBox>
@@ -223,7 +236,7 @@ const ReviewWriteTemplate = () => {
           <ReviewProsConsTextarea handleChange={writeDisadvantage} />
         </AdvantagesContainer>
 
-        <SaveButton dim>저장하기</SaveButton>
+        <SaveButton disabled={!checkQuestionIsFull()}>저장하기</SaveButton>
       </CenterBox>
       <Footer />
     </Container>

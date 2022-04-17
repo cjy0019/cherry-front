@@ -2,9 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SaveButton = ({ children, dim, handleClick }) => {
+const SaveButton = ({ children, disabled, handleClick }) => {
   return (
-    <StyledButton onClick={handleClick} dim={dim}>
+    <StyledButton onClick={handleClick} disabled={disabled}>
       {children}
     </StyledButton>
   );
@@ -21,12 +21,11 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
 
-  ${(props) =>
-    props.dim &&
-    css`
-      background-color: ${palette.subNavy};
-      color: ${palette.text6};
-    `}
+  &:disabled {
+    background-color: ${palette.subNavy};
+    color: ${palette.text6};
+    cursor: not-allowed;
+  }
 `;
 
 export default SaveButton;
