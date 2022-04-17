@@ -4,6 +4,7 @@ import DetailPage from './components/pages/DetailPage';
 import MainPage from './components/pages/MainPage';
 import ReviewWritePage from './components/pages/ReviewWritePage';
 import GlobalStyle from './style/GlobalStyle';
+import SigninPage from './components/pages/SigninPage';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/' element={<MainPage />} />
           <Route path='/detail' element={<DetailPage />} />
           <Route path='/write' element={<ReviewWritePage />} />
+          <Route path='/signin' element={<SigninPage />} />
         </Routes>
       </Router>
     </>
