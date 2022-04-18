@@ -10,12 +10,15 @@ import OfflineBadge from '../badges/OfflineBadge';
 import bookmark from '../../../../assets/img/bookmark.svg';
 import bookmarkActive from '../../../../assets/img/bookmark_active.svg';
 
-const Card = ({ className }) => {
+const Card = ({ className, src, alt }) => {
   return (
     <LectureCard className={className}>
       <LectureImg src={lectureImg} alt='제로초 자바스크립트 강의' />
       <LectureOfflineBadge />
-      <BookmarkImg src={bookmark} alt='북마크 버튼'></BookmarkImg>
+      <Bookmark />
+      <HoverDark>
+        <RankImg src={src} alt={alt} />
+      </HoverDark>
       <InfoContainer>
         <LectureInfo>
           <div>
@@ -46,6 +49,43 @@ const Card = ({ className }) => {
     </LectureCard>
   );
 };
+const RankImg = styled.img`
+  position: absolute;
+  top: 7.5vw;
+  left: 13.0208vw;
+
+  width: 6.7188vw;
+  height: 2.1354vw;
+
+  opacity: 1;
+
+  @media (max-width: 1121px) {
+    top: 11.1964vw;
+    left: 19.4382vw;
+
+    width: 10.03vw;
+    height: 3.1878vw;
+  }
+`;
+
+const HoverDark = styled.div`
+  position: absolute;
+  width: 19.74vw;
+  height: 10.99vw;
+
+  background-color: #000000;
+  opacity: 0;
+  border-radius: 8px 8px 0px 0px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 1121px) {
+    width: 29.4643vw;
+    height: 16.4063vw;
+  }
+`;
 
 const LectureOfflineBadge = styled(OfflineBadge)`
   position: absolute;
@@ -57,12 +97,16 @@ const LectureOfflineBadge = styled(OfflineBadge)`
   padding: 0.3125vw 0.4167vw 0.2604vw;
   font-size: 0.625rem;
 
-  /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
+  /* 1120px 부터 한줄에 카드 3개 존재 불가능 */
   @media (max-width: 1121px) {
-    padding: 3.5px 4.667px 2.916px;
+    /* padding: 3.5px 4.667px 2.916px;
 
     top: 19.833px;
-    left: 18.667px;
+    left: 18.667px; */
+    padding: 0.4665vw 0.6221vw 0.3888vw;
+
+    top: 2.6436vw;
+    left: 2.4881vw;
   }
 
   @media ${responsive.tablet} {
@@ -87,8 +131,15 @@ const LectureOfflineBadge = styled(OfflineBadge)`
   }
 `;
 
-const BookmarkImg = styled.img`
+const Bookmark = styled.button`
+  all: unset;
+  cursor: pointer;
   position: absolute;
+
+  background-image: url(${bookmark});
+  background-repeat: no-repeat;
+  background-size: cover;
+
   /* top: 24px;
   right: 32px; */
   top: 1.25vw;
@@ -101,11 +152,17 @@ const BookmarkImg = styled.img`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    top: 14px;
+    /* top: 14px;
     right: 18.667px;
 
     width: 23.289px;
-    height: 23.289px;
+    height: 23.289px; */
+
+    top: 1.8661vw;
+    right: 2.4881vw;
+
+    width: 3.1047vw;
+    height: 3.1047vw;
   }
 
   @media ${responsive.tablet} {
@@ -226,7 +283,8 @@ const LectureTitle = styled.h3`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    margin-top: 7px;
+    /* margin-top: 7px; */
+    margin-top: 0.933vw;
   }
 
   @media ${responsive.tablet} {
@@ -254,7 +312,8 @@ const HashTagContainer = styled.div`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    margin-top: 17.5px;
+    /* margin-top: 17.5px; */
+    margin-top: 2.3326vw;
   }
 
   /* 반응형 구현하기 */
@@ -306,7 +365,8 @@ const AgencyBadge = styled(RegularAgencyBadge)`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    padding: 4.667px;
+    /* padding: 4.667px; */
+    padding: 0.6221vw;
   }
 
   @media ${responsive.tablet} {
@@ -338,8 +398,10 @@ const LectureImg = styled.img`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    width: 221.086px;
-    height: 123.086px;
+    /* width: 221.086px;
+    height: 123.086px; */
+    width: 29.4643vw;
+    height: 16.4063vw;
   }
 
   @media ${responsive.tablet} {
@@ -371,8 +433,10 @@ const LectureInfo = styled.div`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    width: 183.789px;
-    height: 119.055px;
+    /* width: 183.789px;
+    height: 119.055px; */
+    width: 24.4978vw;
+    height: 15.8685vw;
   }
 
   @media ${responsive.tablet} {
@@ -408,8 +472,10 @@ const InfoContainer = styled.div`
 
   /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 1121px) {
-    width: 221.086px;
-    height: 156.352px;
+    /* width: 221.086px;
+    height: 156.352px; */
+    width: 29.4685vw;
+    height: 20.8398vw;
   }
 
   @media ${responsive.tablet} {
@@ -431,6 +497,7 @@ const InfoContainer = styled.div`
 `;
 
 const LectureCard = styled.div`
+  cursor: pointer;
   display: inline-flex;
   flex-direction: column;
   position: relative;

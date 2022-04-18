@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
+
 import emojiStart from '../../../assets/img/emoji_star.png';
 import javascript from '../../../assets/img/JavaScript.png';
 import angular from '../../../assets/img/Angular.png';
@@ -70,10 +71,10 @@ const imgList = [
 const AvailableSkill = () => {
   return (
     <Container>
-      <FlexBox>
+      <TitleSection>
         <Title>현재 배울 수 있는 기술 </Title>
         <EmojiStartImg src={emojiStart} alt='smile emoji' />
-      </FlexBox>
+      </TitleSection>
       <AutoSlider>
         <ImagesUl>
           {imgList.map((src, i) => (
@@ -233,7 +234,7 @@ const ImagesUl = styled.ul`
   }
 `;
 
-const FlexBox = styled.div`
+const TitleSection = styled.div`
   display: flex;
   align-items: center;
 
@@ -263,6 +264,15 @@ const Title = styled.h2`
 
 const Container = styled.div`
   position: relative;
+  height: 130px;
+
+  @media ${responsive.tablet} {
+    height: 107px;
+  }
+
+  @media ${responsive.mobile} {
+    height: 86px;
+  }
 `;
 
 export default AvailableSkill;

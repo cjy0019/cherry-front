@@ -6,6 +6,7 @@ import SearchInput from '../UI/atoms/input/SearchInput';
 import palette from '../../style/palette';
 import { responsive } from '../../style/responsive';
 import AvailableSkill from '../molecules/availableSkill/AvailableSkill';
+import Hotsix from '../molecules/hotsix/Hotsix';
 
 const MainPageTemplate = () => {
   return (
@@ -21,6 +22,7 @@ const MainPageTemplate = () => {
       </HeaderSection>
 
       <AvailableSkill />
+      <Hotsix />
     </Container>
   );
 };
