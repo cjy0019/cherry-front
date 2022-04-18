@@ -222,6 +222,10 @@ const QuestionContainer = styled.div`
   background-color: #15161d;
 
   @media ${responsive.mobile} {
+    width: 100%;
+
+    background-color: ${palette.backgroundBlack};
+
     padding: 0;
     margin: 86px 0 0;
   }
@@ -254,6 +258,11 @@ const DetailInfoContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+
+  @media ${responsive.mobile} {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
 `;
 
 const CherryPickLogo = styled.div`

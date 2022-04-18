@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
+import { responsive } from '../../../../style/responsive';
 
 const DetailInfoButton = ({ children, select, value, handleClick }) => {
   return (
@@ -34,6 +35,10 @@ const Button = styled.button`
     css`
       border: 0.6px solid ${palette.pointRed};
     `}
+
+  @media ${responsive.mobile} {
+    white-space: nowrap;
+  }
 `;
 
 export default DetailInfoButton;
