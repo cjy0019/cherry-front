@@ -36,7 +36,6 @@ const SignUpTemplate = () => {
     }
     return allChecked;
   };
-  console.log(checkIsSelected());
 
   return (
     <Container>
@@ -155,10 +154,10 @@ const SignUpTemplate = () => {
               </DetailInfoContainer>
             </QuestionBox>
           </QuestionContainer>
-          <JoinSubmitButton clicked={!checkIsSelected()} />
         </CenterBox>
+        <JoinSubmitButton clicked={!checkIsSelected()} />
       </CenterWrapper>
-      <Footer></Footer>
+      <Footer login></Footer>
       <CherryPickLogo>
         <img src={feedbacklogo} alt='체리픽 로고' />
       </CherryPickLogo>
@@ -178,14 +177,24 @@ const Container = styled.div`
 
 const CenterWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   padding: 195px 0 100px;
+
+  @media ${responsive.mobile} {
+    padding: 0 21px;
+    height: 100vh;
+  }
 `;
 
 const CenterBox = styled.div`
   width: 340px;
+
+  @media ${responsive.mobile} {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -211,6 +220,11 @@ const QuestionContainer = styled.div`
   padding: 28px 20px;
 
   background-color: #15161d;
+
+  @media ${responsive.mobile} {
+    padding: 0;
+    margin: 86px 0 0;
+  }
 `;
 
 const QuestionBox = styled.div`
