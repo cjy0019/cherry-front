@@ -1,9 +1,17 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
+import { responsive } from '../../../../style/responsive';
 
-const DetailInfoButton = ({ children, select }) => {
-  return <Button select={select}>{children}</Button>;
+const DetailInfoButton = ({ children, select, value, handleClick }) => {
+  return (
+    <Button
+      onClick={handleClick}
+      data-value={value}
+      select={select === value ? true : false}>
+      {children}
+    </Button>
+  );
 };
 
 const Button = styled.button`
@@ -27,6 +35,10 @@ const Button = styled.button`
     css`
       border: 0.6px solid ${palette.pointRed};
     `}
+
+  @media ${responsive.mobile} {
+    white-space: nowrap;
+  }
 `;
 
 export default DetailInfoButton;

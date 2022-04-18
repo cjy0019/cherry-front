@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
-const Footer = () => {
+const Footer = ({ login }) => {
   return (
-    <StyledFooter>
+    <StyledFooter login={login}>
       <ContentsContainer>
         <FlexLeft>
           <BadgeWrapper>
@@ -41,6 +41,14 @@ const StyledFooter = styled.footer`
   @media ${responsive.mobile} {
     padding: 9px 0;
   }
+
+  ${(props) =>
+    props.login &&
+    css`
+      @media ${responsive.mobile} {
+        display: none;
+      }
+    `}
 `;
 
 const ContentsContainer = styled.div`
