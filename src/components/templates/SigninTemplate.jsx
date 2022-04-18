@@ -61,14 +61,18 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  height: 100vh;
+  background-color: ${palette.backgroundBlack};
 `;
 
 const CenterWrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: 100%;
+  padding: 195px 0 100px;
   align-items: center;
+
+  @media ${responsive.mobile} {
+    padding: 82px 0 101px;
+  }
 `;
 
 const CenterBox = styled.div`
