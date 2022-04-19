@@ -30,20 +30,26 @@ const Hotsix = () => {
   }
 
   useEffect(() => {
-    const checkViewPort = () => {
-      if (window.innerWidth < 1121) {
+    // 변수 함수를 넣으면 왜 안돼는지 검색
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 1121 && window.innerWidth > 768) {
         isBack1121 = true;
+        return;
       }
 
       if (window.innerWidth > 1121 && isBack1121) {
         setCurrentCarousel(1);
         isBack1121 = false;
+        return;
       }
-    };
 
-    window.addEventListener('resize', checkViewPort);
+      if (window.innerWidth < 769) {
+        setCurrentCarousel(0);
+        return;
+      }
+    });
 
-    return window.removeEventListener('resize', checkViewPort);
+    // return window.removeEventListener('resize', checkViewPort);
   }, []);
 
   return (
@@ -105,11 +111,20 @@ const CarrouselButton = styled.button`
   @media (max-width: 1121px) {
     top: 20.9933vw;
   }
+
+  @media ${responsive.mobile} {
+    top: 56.4061vw;
+  }
 `;
 
 const CardsUl = styled.ul`
   all: unset;
+  & > li {
+    all: unset;
+  }
+
   display: flex;
+
   /* Card 6개 + margin-right 31px 6개 */
   width: calc(19.7396vw * 6 + 1.6146vw * 6);
 
@@ -126,6 +141,21 @@ const CardsUl = styled.ul`
       transform: translateX(-${currentCarousel * 33.333333}%);
     `}
   }
+
+  @media ${responsive.tablet} {
+    width: calc(30.2083vw * 6 + 1.5625vw * 6);
+
+    ${({ currentCarousel }) => css`
+      transform: translateX(-${50 * currentCarousel}%);
+    `}
+  }
+
+  @media ${responsive.mobile} {
+    width: calc(82.5vw * 6);
+    ${({ currentCarousel }) => css`
+      transform: translateX(-${16.6666 * currentCarousel}%);
+    `}
+  }
 `;
 
 const CarouselContainer = styled.div`
@@ -133,6 +163,15 @@ const CarouselContainer = styled.div`
   z-index: 0;
   width: 62.5vw;
   overflow: hidden;
+
+  @media ${responsive.tablet} {
+    width: 93.75vw;
+  }
+
+  @media ${responsive.mobile} {
+    overflow: none;
+    width: calc(82.5vw * 6);
+  }
 `;
 
 const DownArrow = styled.img`
@@ -269,13 +308,8 @@ const Container = styled.div`
   @media (max-width: 1121px) {
     & > button:nth-of-type(2) {
       right: -13px;
+      display: block;
 
-      ${({ currentCarousel }) =>
-        currentCarousel === 1
-          ? css`
-              display: block;
-            `
-          : ''}
       ${({ currentCarousel }) =>
         currentCarousel === 2
           ? css`
@@ -283,8 +317,36 @@ const Container = styled.div`
             `
           : ''}
     }
+
     & > button:nth-of-type(1) {
       left: -27px;
+    }
+  }
+
+  @media ${responsive.tablet} {
+    & > button:nth-of-type(2) {
+      right: -30px;
+
+      ${({ currentCarousel }) =>
+        currentCarousel === 1
+          ? css`
+              display: none;
+            `
+          : ''}
+    }
+  }
+
+  @media ${responsive.mobile} {
+    & > button:nth-of-type(2) {
+      display: block;
+      right: 5px;
+
+      ${({ currentCarousel }) =>
+        currentCarousel === 5
+          ? css`
+              display: none;
+            `
+          : ''}
     }
   }
 `;
