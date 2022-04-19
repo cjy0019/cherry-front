@@ -17,9 +17,19 @@ const SignUpTemplate = () => {
     knownPath: '',
   });
   const careerSlider = useRef(null);
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+  const knownPathSlider = useRef(null);
+
+  const careerSliderObj = {
+    isDown: false,
+    initialX: 0,
+    scrollLeft: 0,
+  };
+
+  const knownPathSliderObj = {
+    isDown: false,
+    initialX: 0,
+    scrollLeft: 0,
+  };
 
   const selectCurrentJob = (e) => {
     setUserInfo({ ...userInfo, currentJob: e.target.dataset.value });
@@ -41,36 +51,69 @@ const SignUpTemplate = () => {
     return allChecked;
   };
 
+  const initMoveStart = (obj, reference, event) => {
+    obj.isDown = true;
+    obj.initialX = event.pageX - reference.current.offsetLeft;
+    obj.scrollLeft = reference.current.scrollLeft;
+  };
+
+  const moveSlides = (obj, reference, event) => {
+    if (!obj.isDown) return;
+    event.preventDefault();
+    const x = event.pageX - reference.current.offsetLeft;
+    const move = (x - obj.initialX) * 1.5;
+    reference.current.scrollLeft = obj.scrollLeft - move;
+  };
+
   const gestureStart = (e) => {
-    isDown = true;
-    startX = e.pageX - careerSlider.current.offsetLeft;
-    scrollLeft = careerSlider.current.scrollLeft;
+    const { name } = e.currentTarget.dataset;
+
+    if (name === 'career') initMoveStart(careerSliderObj, careerSlider, e);
+    else if (name === 'knownPath')
+      initMoveStart(knownPathSliderObj, knownPathSlider, e);
   };
 
   const gestureMove = (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - careerSlider.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    careerSlider.current.scrollLeft = scrollLeft - walk;
+    const { name } = e.currentTarget.dataset;
+
+    if (name === 'career') moveSlides(careerSliderObj, careerSlider, e);
+    else if (name === 'knownPath')
+      moveSlides(knownPathSliderObj, knownPathSlider, e);
   };
 
-  const gestureFinish = () => {
-    isDown = false;
+  const gestureFinish = (e) => {
+    const { name } = e.currentTarget.dataset;
+
+    if (name === 'career') careerSliderObj.isDown = false;
+    else if (name === 'knownPath') knownPathSliderObj.isDown = false;
   };
 
   useEffect(() => {
-    if (window.PointerEvent) {
-      careerSlider.current.addEventListener('pointerdown', gestureStart);
-      careerSlider.current.addEventListener('pointermove', gestureMove);
-      careerSlider.current.addEventListener('pointerup', gestureFinish);
-    } else {
-      careerSlider.current.addEventListener('mousedown', gestureStart);
-      careerSlider.current.addEventListener('mousemove', gestureMove);
-      careerSlider.current.addEventListener('mouseleave', gestureFinish);
-      careerSlider.current.addEventListener('mouseup', gestureFinish);
-    }
-  }, [careerSlider]);
+    careerSlider.current.addEventListener('pointerdown', gestureStart);
+    careerSlider.current.addEventListener('pointermove', gestureMove);
+    careerSlider.current.addEventListener('pointerleave', gestureFinish);
+    careerSlider.current.addEventListener('pointerup', gestureFinish);
+
+    knownPathSlider.current.addEventListener('pointerdown', gestureStart);
+    knownPathSlider.current.addEventListener('pointermove', gestureMove);
+    knownPathSlider.current.addEventListener('pointerleave', gestureFinish);
+    knownPathSlider.current.addEventListener('pointerup', gestureFinish);
+
+    return () => {
+      careerSlider.current.removeEventListener('pointerdown', gestureStart);
+      careerSlider.current.removeEventListener('pointermove', gestureMove);
+      careerSlider.current.removeEventListener('pointerleave', gestureFinish);
+      careerSlider.current.removeEventListener('pointerup', gestureFinish);
+
+      knownPathSlider.current.removeEventListener('pointerdown', gestureStart);
+      knownPathSlider.current.removeEventListener('pointermove', gestureMove);
+      knownPathSlider.current.removeEventListener(
+        'pointerleave',
+        gestureFinish,
+      );
+      knownPathSlider.current.removeEventListener('pointerup', gestureFinish);
+    };
+  }, []);
 
   return (
     <Container>
@@ -110,7 +153,7 @@ const SignUpTemplate = () => {
               <SubTitle>
                 <p>2. 경력</p>
               </SubTitle>
-              <DetailInfoContainer ref={careerSlider}>
+              <DetailInfoContainer data-name='career' ref={careerSlider}>
                 <DetailInfoButton
                   value='student'
                   handleClick={selectCareer}
@@ -149,7 +192,7 @@ const SignUpTemplate = () => {
                 <p>3. 알게 된 경로</p>
               </SubTitle>
 
-              <DetailInfoContainer>
+              <DetailInfoContainer data-name='knownPath' ref={knownPathSlider}>
                 <DetailInfoButton
                   value='search'
                   handleClick={selectKnownPath}
