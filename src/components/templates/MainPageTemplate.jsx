@@ -6,6 +6,7 @@ import SearchInput from '../UI/atoms/input/SearchInput';
 import palette from '../../style/palette';
 import { responsive } from '../../style/responsive';
 import AvailableSkill from '../molecules/availableSkill/AvailableSkill';
+import Hotsix from '../molecules/hotsix/Hotsix';
 
 const MainPageTemplate = () => {
   return (
@@ -21,6 +22,7 @@ const MainPageTemplate = () => {
       </HeaderSection>
 
       <AvailableSkill />
+      <Hotsix />
     </Container>
   );
 };
@@ -98,6 +100,11 @@ const Illustrate = styled.div`
   @media ${responsive.tablet} {
     width: 55.729vw;
     height: 47.786vw;
+  }
+
+  @media (max-width: 533px) {
+    width: 52.5328vw;
+    height: 45.0281vw;
   }
 
   @media ${responsive.mobile} {

@@ -1,12 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const OfflineBadge = ({ absolute, top, left }) => {
-  return (
-    <StyledBadge top={top} left={left} absolute={absolute}>
-      OFF-LINE
-    </StyledBadge>
-  );
+const OfflineBadge = ({ className }) => {
+  return <StyledBadge className={className}>OFF-LINE</StyledBadge>;
 };
 
 const StyledBadge = styled.div`
@@ -17,14 +13,6 @@ const StyledBadge = styled.div`
   border-radius: 100px;
   font-size: 0.75rem;
   font-weight: 700;
-
-  ${(props) =>
-    props.absolute &&
-    css`
-      position: absolute;
-      top: ${({ top }) => top};
-      left: ${({ left }) => left};
-    `}
 `;
 
 export default OfflineBadge;
