@@ -102,6 +102,11 @@ const Illustrate = styled.div`
     height: 47.786vw;
   }
 
+  @media (max-width: 533px) {
+    width: 52.5328vw;
+    height: 45.0281vw;
+  }
+
   @media ${responsive.mobile} {
     width: 100vw;
     height: 309px;
