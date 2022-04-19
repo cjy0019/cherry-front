@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import palette from '../../style/palette';
@@ -16,6 +16,10 @@ const SignUpTemplate = () => {
     career: '',
     knownPath: '',
   });
+  const careerSlider = useRef(null);
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
   const selectCurrentJob = (e) => {
     setUserInfo({ ...userInfo, currentJob: e.target.dataset.value });
@@ -36,6 +40,37 @@ const SignUpTemplate = () => {
     }
     return allChecked;
   };
+
+  const gestureStart = (e) => {
+    isDown = true;
+    startX = e.pageX - careerSlider.current.offsetLeft;
+    scrollLeft = careerSlider.current.scrollLeft;
+  };
+
+  const gestureMove = (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - careerSlider.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    careerSlider.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const gestureFinish = () => {
+    isDown = false;
+  };
+
+  useEffect(() => {
+    if (window.PointerEvent) {
+      careerSlider.current.addEventListener('pointerdown', gestureStart);
+      careerSlider.current.addEventListener('pointermove', gestureMove);
+      careerSlider.current.addEventListener('pointerup', gestureFinish);
+    } else {
+      careerSlider.current.addEventListener('mousedown', gestureStart);
+      careerSlider.current.addEventListener('mousemove', gestureMove);
+      careerSlider.current.addEventListener('mouseleave', gestureFinish);
+      careerSlider.current.addEventListener('mouseup', gestureFinish);
+    }
+  }, [careerSlider]);
 
   return (
     <Container>
@@ -75,7 +110,7 @@ const SignUpTemplate = () => {
               <SubTitle>
                 <p>2. 경력</p>
               </SubTitle>
-              <DetailInfoContainer>
+              <DetailInfoContainer ref={careerSlider}>
                 <DetailInfoButton
                   value='student'
                   handleClick={selectCareer}
