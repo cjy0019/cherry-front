@@ -1,18 +1,17 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
-import { responsive } from '../../../../style/responsive';
 
-const SaveButton = ({ children, dim, handleClick }) => {
+const SaveButton = ({ children, disabled, handleClick }) => {
   return (
-    <StyledButton onClick={handleClick} dim={dim}>
+    <StyledButton onClick={handleClick} disabled={disabled}>
       {children}
     </StyledButton>
   );
 };
 
 const StyledButton = styled.button`
-  width: 768px;
+  width: 100%;
   height: 44px;
   border-radius: 4px;
   background-color: ${palette.pointRed};
@@ -22,19 +21,10 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
 
-  ${(props) =>
-    props.dim &&
-    css`
-      background-color: ${palette.subNavy};
-      color: ${palette.text6};
-    `}
-
-  @media ${responsive.tablet} {
-    width: 718px;
-  }
-
-  @media ${responsive.mobile} {
-    width: 340px;
+  &:disabled {
+    background-color: ${palette.subNavy};
+    color: ${palette.text6};
+    cursor: not-allowed;
   }
 `;
 

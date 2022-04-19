@@ -68,6 +68,7 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
+    publicPath: '/',
     path: path.join(__dirname, '/dist'),
   },
 };
