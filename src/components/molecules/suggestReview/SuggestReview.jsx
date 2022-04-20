@@ -1,47 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import JobBadge from '../../UI/atoms/badges/JobBadge';
 
 const SuggestReview = () => {
-  const ReviewRef = useRef(null);
-  let carouselN = 0;
-
-  // 자동 슬라이더
-  useEffect(() => {
-    const timeoutId = setInterval(() => {
-      if (carouselN === 3) {
-        setTimeout(() => {
-          ReviewRef.current.style.transition = '';
-          ReviewRef.current.style.transitionDuration = '';
-          ReviewRef.current.style.transitionProperty = '';
-          ReviewRef.current.style.transitionTimingFunction = '';
-          ReviewRef.current.style.transform = 'translateX(0px)';
-          carouselN = 1;
-        }, 2000);
-        ReviewRef.current.style.transitionDuration = '2s';
-        ReviewRef.current.style.transitionProperty = 'all';
-        ReviewRef.current.style.transitionTimingFunction = 'ease-in-out';
-        ReviewRef.current.style.transform = `translateX(${
-          carouselN * -1200
-        }px)`;
-      } else {
-        ReviewRef.current.style.transitionDuration = '2s';
-        ReviewRef.current.style.transitionProperty = 'all';
-        ReviewRef.current.style.transitionTimingFunction = 'ease-in-out';
-
-        ReviewRef.current.style.transform = `translateX(${
-          carouselN * -1200
-        }px)`;
-        carouselN++;
-      }
-    }, 5000);
-
-    // return clearInterval(timeoutId);
-  }, []);
-
   return (
     <Slider>
-      <ReviewUl ref={ReviewRef}>
+      <ReviewUl>
         <ReviewList>
           <Review>
             <Header>
@@ -203,6 +167,39 @@ const ReviewUl = styled.ul`
   top: 0;
 
   width: calc(1200px * 4);
+
+  @keyframes scroll {
+    0% {
+      /* 0초 */
+      transform: translateX(0px);
+    }
+    23.085% {
+      /* 5초 */
+      transform: translateX(0px);
+    }
+    32.607% {
+      /* 7초 */
+      transform: translateX(-1200px);
+    }
+    55.692% {
+      /* 12초 */
+      transform: translateX(-1200px);
+    }
+    65.214% {
+      /* 14초 */
+      transform: translateX(-2400px);
+    }
+    88.299% {
+      /* 19초 */
+      transform: translateX(-2400px);
+    }
+    100% {
+      /* 21초 */
+      transform: translateX(-3600px);
+    }
+  }
+
+  animation: scroll 21s linear infinite;
 `;
 
 const Dot = styled.div`
