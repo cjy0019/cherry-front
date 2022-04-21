@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import palette from '../../../../style/palette';
+import arrowBottom from '../../../../assets/img/arrow_bottom.svg';
+
 import SatisfactionButton from '../../../UI/atoms/buttons/SatisfactionButton';
 import SaveButton from '../../../UI/atoms/buttons/SaveButton';
 
@@ -24,7 +26,12 @@ const OtherDatas = () => {
 
         <AgencyContainer>
           <div>
-            <Title>5.기관</Title>
+            <FlexColumn>
+              <Title>5.기관</Title>
+              <SelectBox defaultValue='선택'>
+                <option disabled>선택</option>
+              </SelectBox>
+            </FlexColumn>
           </div>
 
           <div>
@@ -40,7 +47,12 @@ const OtherDatas = () => {
 
         <AgencyContainer>
           <div>
-            <Title>6.강사</Title>
+            <FlexColumn>
+              <Title>6.강사</Title>
+              <SelectBox defaultValue='선택'>
+                <option disabled>선택</option>
+              </SelectBox>
+            </FlexColumn>
           </div>
 
           <div>
@@ -139,6 +151,10 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 8px;
   outline: none;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 const OnlineOfflineContainer = styled.div`
@@ -159,6 +175,36 @@ const AgencyContainer = styled.div`
   justify-content: space-between;
 
   margin-top: 40px;
+
+  @media (max-width: 900px) {
+    background: #000;
+    flex-direction: column;
+    gap: 20px;
+  }
+`;
+
+const SelectBox = styled.select`
+  width: 260px;
+  height: 48px;
+  padding-left: 30px;
+
+  font-size: 0.875rem;
+
+  background: url(${arrowBottom}) no-repeat ${palette.subNavy} 95% 50%;
+  color: ${palette.text5};
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  cursor: pointer;
+  outline: none;
+  border-radius: 8px;
+  border: none;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 const RegisterButton = styled.button`
@@ -189,15 +235,23 @@ const FlexRow = styled.div`
 const HashWrapper = styled.div`
   display: flex;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const HashTag = styled(StyledInput).attrs({
   placeholder: '#',
 })`
-  width: 160px;
+  width: 13vw;
   height: 48px;
 
   padding: 0 12px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const LengthCounterContainer = styled.div`
