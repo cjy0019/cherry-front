@@ -54,17 +54,15 @@ const OtherDatas = () => {
           </div>
         </AgencyContainer>
 
-        <HashTagContainer>
-          <FlexColumn>
-            <Title>7.해시태그</Title>
-            <HashWrapper>
-              <HashTag type='text' />
-              <HashTag type='text' />
-              <HashTag type='text' />
-              <HashTag type='text' />
-            </HashWrapper>
-          </FlexColumn>
-        </HashTagContainer>
+        <FlexColumn mt>
+          <Title>7.해시태그</Title>
+          <HashWrapper>
+            <HashTag type='text' />
+            <HashTag type='text' />
+            <HashTag type='text' />
+            <HashTag type='text' />
+          </HashWrapper>
+        </FlexColumn>
 
         <FlexColumn mt>
           <Title>8.원본 링크</Title>
@@ -113,7 +111,6 @@ const CenterWrapper = styled.div`
   }
 `;
 
-// 3번
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -187,10 +184,6 @@ const FlexRow = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-
-const HashTagContainer = styled(FlexRow)`
-  margin-top: 40px;
 `;
 
 const HashWrapper = styled.div`
