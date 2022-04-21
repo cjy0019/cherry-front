@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 import SatisfactionButton from '../../../UI/atoms/buttons/SatisfactionButton';
 
@@ -63,6 +63,11 @@ const OtherDatas = () => {
             </HashWrapper>
           </FlexColumn>
         </HashTagContainer>
+
+        <FlexColumn mt>
+          <Title>8.원본 링크</Title>
+          <StyledInput type='text' placeholder='원본 링크' />
+        </FlexColumn>
       </CenterWrapper>
     </Container>
   );
@@ -87,6 +92,12 @@ const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  ${(props) =>
+    props.mt &&
+    css`
+      margin-top: 40px;
+    `}
 `;
 
 const Title = styled.p`
@@ -154,7 +165,7 @@ const FlexRow = styled.div`
   gap: 8px;
 `;
 
-const HashTagContainer = styled.div`
+const HashTagContainer = styled(FlexRow)`
   margin-top: 40px;
 `;
 
