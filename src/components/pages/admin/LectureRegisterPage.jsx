@@ -1,7 +1,8 @@
 import React from 'react';
+import LectureRegisterTemplate from '../../templates/admin/LectureRegisterTemplate';
 
 const LectureRegisterPage = () => {
-  return <div>LectureRegisterPage</div>;
+  return <LectureRegisterTemplate />;
 };
 
 export default LectureRegisterPage;
