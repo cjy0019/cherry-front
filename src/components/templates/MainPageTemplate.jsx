@@ -7,6 +7,7 @@ import palette from '../../style/palette';
 import { responsive } from '../../style/responsive';
 import AvailableSkill from '../molecules/availableSkill/AvailableSkill';
 import Hotsix from '../molecules/hotsix/Hotsix';
+import SuggestReview from '../molecules/suggestReview/SuggestReview';
 
 const MainPageTemplate = () => {
   return (
@@ -23,6 +24,7 @@ const MainPageTemplate = () => {
 
       <AvailableSkill />
       <Hotsix />
+      <SuggestReview />
     </Container>
   );
 };
