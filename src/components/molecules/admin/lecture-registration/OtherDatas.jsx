@@ -7,10 +7,10 @@ const OtherDatas = () => {
   return (
     <Container>
       <CenterWrapper>
-        <LectureNameContainer>
+        <FlexColumn>
           <Title>3.강의명</Title>
-          <LectureNameInput type='text' />
-        </LectureNameContainer>
+          <StyledInput type='text' placeholder='강의명' />
+        </FlexColumn>
 
         <OnlineOfflineContainer>
           <Title>4.강의방식</Title>
@@ -19,6 +19,38 @@ const OtherDatas = () => {
             <SatisfactionButton>오프라인</SatisfactionButton>
           </ButtonContainer>
         </OnlineOfflineContainer>
+
+        <AgencyContainer>
+          <div>
+            <Title>5.기관</Title>
+          </div>
+
+          <div>
+            <FlexColumn>
+              <Title>5-1.기관 추가</Title>
+              <FlexRow>
+                <StyledInput type='text' placeholder='기관 입력' />
+                <RegisterButton>등록</RegisterButton>
+              </FlexRow>
+            </FlexColumn>
+          </div>
+        </AgencyContainer>
+
+        <AgencyContainer>
+          <div>
+            <Title>6.강사</Title>
+          </div>
+
+          <div>
+            <FlexColumn>
+              <Title>6-1.강사 추가</Title>
+              <FlexRow>
+                <StyledInput type='text' placeholder='강사 입력' />
+                <RegisterButton>등록</RegisterButton>
+              </FlexRow>
+            </FlexColumn>
+          </div>
+        </AgencyContainer>
       </CenterWrapper>
     </Container>
   );
@@ -32,16 +64,14 @@ const Container = styled.div`
   height: 100vh;
 
   margin-top: 68px;
-  background-color: yellowgreen;
 `;
 
 const CenterWrapper = styled.div`
   width: 60%;
-  background-color: gold;
 `;
 
 // 3번
-const LectureNameContainer = styled.div`
+const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -53,15 +83,14 @@ const Title = styled.p`
   color: ${palette.textWhite};
 `;
 
-const LectureNameInput = styled.input.attrs({
-  placeholder: '강의명',
-})`
+const StyledInput = styled.input`
   background-color: ${palette.subNavy};
   color: ${palette.text5};
 
   padding: 0 32px;
   height: 48px;
 
+  border: none;
   border-radius: 8px;
   outline: none;
 `;
@@ -78,6 +107,39 @@ const OnlineOfflineContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   gap: 12px;
+`;
+
+// 5번
+const AgencyContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 40px;
+`;
+
+const RegisterButton = styled.button`
+  all: unset;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 41px;
+  height: 32px;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+
+  color: #ffffff;
+  background-color: #000000;
+
+  border-radius: 3px;
+`;
+
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export default OtherDatas;
