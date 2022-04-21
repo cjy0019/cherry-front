@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import palette from '../../../style/palette';
+import OtherDatas from '../../molecules/admin/lecture-registration/OtherDatas';
 import SelectCategory from '../../molecules/admin/lecture-registration/SelectCategory';
 import UploadImage from '../../molecules/admin/lecture-registration/UploadImage';
 
@@ -18,6 +19,7 @@ const LectureRegisterTemplate = () => {
         <PageTitle>강의 추가</PageTitle>
         <SelectCategory category={category} handleClick={handleClick} />
         <UploadImage />
+        <OtherDatas />
       </div>
     </div>
   );
