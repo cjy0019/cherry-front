@@ -51,6 +51,18 @@ const OtherDatas = () => {
             </FlexColumn>
           </div>
         </AgencyContainer>
+
+        <HashTagContainer>
+          <FlexColumn>
+            <Title>7.해시태그</Title>
+            <HashWrapper>
+              <HashTag type='text' />
+              <HashTag type='text' />
+              <HashTag type='text' />
+              <HashTag type='text' />
+            </HashWrapper>
+          </FlexColumn>
+        </HashTagContainer>
       </CenterWrapper>
     </Container>
   );
@@ -140,6 +152,24 @@ const FlexRow = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`;
+
+const HashTagContainer = styled.div`
+  margin-top: 40px;
+`;
+
+const HashWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+const HashTag = styled(StyledInput).attrs({
+  placeholder: '#',
+})`
+  width: 160px;
+  height: 48px;
+
+  padding: 0 12px;
 `;
 
 export default OtherDatas;
