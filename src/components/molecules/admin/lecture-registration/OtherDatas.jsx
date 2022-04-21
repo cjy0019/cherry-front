@@ -1,7 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+
 import palette from '../../../../style/palette';
 import SatisfactionButton from '../../../UI/atoms/buttons/SatisfactionButton';
+import SaveButton from '../../../UI/atoms/buttons/SaveButton';
 
 const OtherDatas = () => {
   return (
@@ -9,7 +11,7 @@ const OtherDatas = () => {
       <CenterWrapper>
         <FlexColumn>
           <Title>3.강의명</Title>
-          <StyledInput type='text' placeholder='강의명' />
+          <StyledInput type='text' placeholder='강의명을 입력해주세요' />
         </FlexColumn>
 
         <OnlineOfflineContainer>
@@ -66,8 +68,28 @@ const OtherDatas = () => {
 
         <FlexColumn mt>
           <Title>8.원본 링크</Title>
-          <StyledInput type='text' placeholder='원본 링크' />
+          <StyledInput type='text' placeholder='원본 링크를 입력해주세요' />
         </FlexColumn>
+
+        <FlexColumn mt>
+          <Title>9.가격</Title>
+          <StyledInput type='text' placeholder='가격을 입력해주세요' />
+        </FlexColumn>
+
+        <FlexColumn mt>
+          <LengthCounterContainer>
+            <Title>10.강의 정보</Title>
+            <Counter>
+              <span>0</span>/500
+            </Counter>
+          </LengthCounterContainer>
+
+          <StyledTextArea
+            placeholder='강의정보를 입력해주세요'
+            maxLength={500}></StyledTextArea>
+        </FlexColumn>
+
+        <SaveButton>추가하기</SaveButton>
       </CenterWrapper>
     </Container>
   );
@@ -78,13 +100,17 @@ const Container = styled.div`
   justify-content: center;
 
   width: 100%;
-  height: 100vh;
 
   margin-top: 68px;
 `;
 
 const CenterWrapper = styled.div`
   width: 60%;
+  padding-bottom: 80px;
+
+  & > button:last-child {
+    margin-top: 52px;
+  }
 `;
 
 // 3번
@@ -118,7 +144,6 @@ const StyledInput = styled.input`
   outline: none;
 `;
 
-// 4번
 const OnlineOfflineContainer = styled.div`
   display: flex;
   align-items: center;
@@ -132,7 +157,6 @@ const ButtonContainer = styled.div`
   gap: 12px;
 `;
 
-// 5번
 const AgencyContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -181,6 +205,43 @@ const HashTag = styled(StyledInput).attrs({
   height: 48px;
 
   padding: 0 12px;
+`;
+
+const LengthCounterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Counter = styled.div`
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: ${palette.text5};
+
+  span {
+    color: ${palette.text2};
+  }
+`;
+
+const StyledTextArea = styled.textarea`
+  width: 100%;
+  height: 136px;
+
+  padding: 17px 30px;
+
+  background-color: ${palette.subNavy};
+  color: ${palette.textWhite};
+
+  border: none;
+  outline: none;
+  resize: none;
+  border-radius: 8px;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: ${palette.text5};
+  }
 `;
 
 export default OtherDatas;
