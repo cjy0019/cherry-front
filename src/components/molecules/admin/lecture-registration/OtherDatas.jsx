@@ -143,14 +143,22 @@ const Title = styled.p`
 
 const StyledInput = styled.input`
   background-color: ${palette.subNavy};
-  color: ${palette.text5};
 
-  padding: 0 32px;
-  height: 48px;
+  padding: 17px 32px;
 
   border: none;
   border-radius: 8px;
   outline: none;
+
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: ${palette.textWhite};
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: ${palette.text5};
+  }
 
   @media (max-width: 900px) {
     width: 100%;
@@ -244,9 +252,8 @@ const HashTag = styled(StyledInput).attrs({
   placeholder: '#',
 })`
   width: 13vw;
-  height: 48px;
 
-  padding: 0 12px;
+  padding: 17px 12px;
 
   @media (max-width: 768px) {
     width: 100%;
