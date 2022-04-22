@@ -177,7 +177,6 @@ const AgencyContainer = styled.div`
   margin-top: 40px;
 
   @media (max-width: 900px) {
-    background: #000;
     flex-direction: column;
     gap: 20px;
   }
