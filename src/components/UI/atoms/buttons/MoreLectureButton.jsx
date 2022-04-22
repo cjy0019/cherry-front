@@ -16,16 +16,19 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 720px;
   height: 44px;
+
   background-color: ${palette.subNavy};
+
+  font-size: 0.75rem;
   font-weight: 400;
-  font-size: 12px;
   color: ${palette.textWhite};
+
   border-radius: 3px;
   border: none;
   cursor: pointer;
-  font-weight: 400;
 
   & > p:nth-child(2) {
     padding-bottom: 3px;

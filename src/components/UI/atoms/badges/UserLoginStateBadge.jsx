@@ -9,10 +9,13 @@ const UserLoginStateBadge = ({ children }) => {
 const StyledBadge = styled.div`
   display: inline-block;
   padding: 6px 4px;
-  background: #000000;
+
+  background-color: #000000;
+
   border-radius: 3px;
+
+  font-size: 0.6875rem;
   font-weight: 500;
-  font-size: 11px;
   color: ${palette.textWhite};
 `;
 

@@ -10,11 +10,16 @@ const DeleteAllButton = ({ children, handleClick }) => {
 const StyledButton = styled.button`
   width: 300px;
   height: 34px;
-  background: #000000;
-  border-radius: 3px;
+
+  background-color: #000000;
+
   border: none;
-  color: ${palette.textWhite};
+  border-radius: 3px;
+
+  font-size: 0.75rem;
   font-weight: 400;
+  color: ${palette.textWhite};
+
   cursor: pointer;
 
   @media ${responsive.mobile} {

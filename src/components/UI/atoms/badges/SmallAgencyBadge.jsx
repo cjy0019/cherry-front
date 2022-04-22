@@ -15,10 +15,13 @@ const SmallAgencyBadge = ({ children }) => {
 const StyledBadge = styled.div`
   display: inline-block;
   padding: 5px 3px;
-  background-color: #000000;
+
   border-radius: 3px;
-  color: ${palette.textWhite};
+
+  background-color: #000000;
+
   font-size: 0.75rem;
+  color: ${palette.textWhite};
 
   & > span:nth-of-type(1) {
     font-weight: 400;

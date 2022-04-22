@@ -13,12 +13,16 @@ const SaveButton = ({ children, disabled, handleClick }) => {
 const StyledButton = styled.button`
   width: 100%;
   height: 44px;
-  border-radius: 4px;
+
   background-color: ${palette.pointRed};
+
+  font-size: 0.75rem;
   font-weight: 700;
   color: ${palette.textWhite};
-  font-size: 12px;
+
+  border-radius: 4px;
   border: none;
+
   cursor: pointer;
 
   &:disabled {
