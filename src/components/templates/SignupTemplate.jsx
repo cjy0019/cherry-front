@@ -7,8 +7,8 @@ import feedbacklogo from '../../assets/img/feedback.png';
 
 import SigninStep from '../molecules/signin/SigninStep';
 
-import JoinSubmitButton from '../UI/atoms/Join/JoinSubmitButton';
-import DetailInfoButton from '../UI/atoms/Join/DetailInfoButton';
+import JoinSubmitButton from '../UI/atoms/join/JoinSubmitButton';
+import DetailInfoButton from '../UI/atoms/join/DetailInfoButton';
 import Footer from '../molecules/footer/Footer';
 
 const SignUpTemplate = () => {
