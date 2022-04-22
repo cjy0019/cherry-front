@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
-import JoinProgress from '../../UI/atoms/join/JoinProgress';
+import JoinProgress from '../../UI/atoms/Join/JoinProgress';
 
 const SigninStep = ({ step }) => {
   return (
