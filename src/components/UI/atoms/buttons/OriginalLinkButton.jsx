@@ -16,17 +16,21 @@ const OriginalLinkButton = ({ to }) => {
 
 const StyledLink = styled(Link)`
   display: flex;
-  gap: 10px;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  height: 40px;
+
   border-radius: 4px;
   background-color: #15161d;
-  color: ${palette.textWhite};
-  text-decoration: none;
+
   font-size: 0.75rem;
-  width: 100%;
   font-weight: 700;
-  height: 40px;
+  color: ${palette.textWhite};
+
+  text-decoration: none;
 
   @media ${responsive.tablet} {
     width: 50%;

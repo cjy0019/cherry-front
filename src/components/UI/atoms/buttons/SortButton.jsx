@@ -14,19 +14,25 @@ const SortButton = ({ children }) => {
 
 const StyledButton = styled.button`
   all: unset;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   gap: 4px;
+
   width: 72px;
   height: 28px;
+
+  font-size: 0.75rem;
   font-weight: 400;
-  font-size: 12px;
   color: ${palette.textWhite};
-  background: ${palette.subNavy};
+
+  background-color: ${palette.subNavy};
+
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 100px;
+
+  cursor: pointer;
 `;
 
 export default SortButton;

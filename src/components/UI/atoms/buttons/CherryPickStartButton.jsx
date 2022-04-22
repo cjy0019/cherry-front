@@ -7,13 +7,17 @@ const CherryPickStartButton = ({ handleClick }) => {
 };
 
 const StyledButton = styled.button`
-  background-color: ${palette.pointRed};
-  color: ${palette.textWhite};
   width: 160px;
   height: 48px;
+
+  font-size: 0.875rem;
   font-weight: 700;
+  color: ${palette.textWhite};
+
+  background-color: ${palette.pointRed};
+
   box-shadow: 0px 0px 12px rgba(231, 40, 71, 0.5);
-  font-size: 14px;
+
   border-radius: 8px;
   border: none;
 `;
