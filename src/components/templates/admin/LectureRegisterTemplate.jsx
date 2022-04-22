@@ -7,20 +7,20 @@ import SelectCategory from '../../molecules/admin/lecture-registration/SelectCat
 import UploadImage from '../../molecules/admin/lecture-registration/UploadImage';
 
 const LectureRegisterTemplate = () => {
-  const [category, setCategory] = useState('프론트엔드');
+  const [lectureData, setLectureData] = useState({
+    category: '프론트엔드',
+  });
 
-  const handleClick = (e) => {
-    setCategory(e.target.dataset.name);
+  const selectCategory = (e) => {
+    setLectureData({ ...lectureData, category: e.target.dataset.name });
   };
 
   return (
     <div>
-      <div>
-        <PageTitle>강의 추가</PageTitle>
-        <SelectCategory category={category} handleClick={handleClick} />
-        <UploadImage />
-        <OtherDatas />
-      </div>
+      <PageTitle>강의 추가</PageTitle>
+      <SelectCategory lectureData={lectureData} handleClick={selectCategory} />
+      <UploadImage />
+      <OtherDatas />
     </div>
   );
 };
