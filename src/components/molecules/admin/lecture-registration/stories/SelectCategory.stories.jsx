@@ -21,7 +21,9 @@ const Template = (args) => <SelectCategory {...args} />;
 export const SelectCategoryStory = Template.bind({});
 
 SelectCategoryStory.args = {
-  category: '프론트엔드',
+  lectureData: {
+    category: '프론트엔드',
+  },
 };
 
 SelectCategoryStory.storyName = '카테고리 선택';

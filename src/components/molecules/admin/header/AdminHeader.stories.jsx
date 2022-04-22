@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import AdminHeader from './AdminHeader';
 
 export default {
-  title: 'molecules/어드민/어드민 헤더',
+  title: 'molecules/어드민/헤더',
   component: AdminHeader,
   parameters: {
     layout: 'fullscreen',
@@ -23,4 +23,4 @@ const Template = (args) => <AdminHeader {...args} />;
 
 export const AdminHeaderStory = Template.bind({});
 
-AdminHeaderStory.storyName = '어드민 헤더';
+AdminHeaderStory.storyName = '헤더';
