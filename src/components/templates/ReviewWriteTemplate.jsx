@@ -247,6 +247,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   background-color: ${palette.backgroundBlack};
   padding-top: 40px;
 `;
@@ -269,25 +270,29 @@ const CenterBox = styled.div`
 const Title = styled.p`
   font-weight: 700;
   font-size: 1.5rem;
-  line-height: 100%;
   color: ${palette.text2};
+  line-height: 100%;
 `;
 
 const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${palette.lineGray};
+
   padding-bottom: 24px;
+
+  border-bottom: 1px solid ${palette.lineGray};
 `;
 
 const SmallTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-weight: 400;
+
   font-size: 0.875rem;
+  font-weight: 400;
   color: ${palette.text5};
+
   margin-top: 20px;
 
   @media ${responsive.mobile} {
@@ -296,10 +301,12 @@ const SmallTextWrapper = styled.div`
 `;
 
 const LectureTitle = styled.p`
-  font-weight: 600;
   font-size: 1rem;
-  line-height: 1.5;
+  font-weight: 600;
   color: ${palette.text2};
+
+  line-height: 1.5;
+
   margin-top: 40px;
 
   @media ${responsive.mobile} {
@@ -310,7 +317,9 @@ const LectureTitle = styled.p`
 const QuestionContainer = styled.div`
   display: flex;
   align-items: center;
+
   margin-top: 28px;
+
   font-size: 1rem;
   font-weight: 400;
   color: ${palette.text2};
@@ -323,6 +332,7 @@ const QuestionContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+
     margin-top: 32px;
   }
 `;
@@ -338,8 +348,10 @@ const AlignInline = styled.div`
 
 const StarContainer = styled.div`
   display: flex;
-  margin: 0 12px 0 24px;
   height: 40px;
+
+  margin: 0 12px 0 24px;
+
   cursor: pointer;
 
   & > img {
@@ -354,6 +366,7 @@ const StarContainer = styled.div`
 const SmileButtonContainer = styled.div`
   display: flex;
   gap: 20px;
+
   margin-left: 24px;
   & > button {
     all: unset;
@@ -389,10 +402,12 @@ const ColQuestionContainer = styled.div`
 const QuestionTitleContainer = styled.div`
   display: flex;
   align-items: center;
+
+  margin-top: 28px;
+
   font-size: 1rem;
   font-weight: 400;
   color: ${palette.text2};
-  margin-top: 28px;
 
   & > p:nth-of-type(1) {
     margin-left: 12px;
@@ -413,12 +428,14 @@ const BetweenWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   margin-bottom: 16px;
 `;
 
 const FlexWrapper = styled.div`
   display: flex;
   align-items: center;
+
   font-size: 1rem;
   font-weight: 400;
   color: ${palette.text2};
@@ -430,6 +447,7 @@ const FlexWrapper = styled.div`
 
 const TextCount = styled.div`
   font-size: 0.8125rem;
+
   & > span:nth-of-type(1) {
     color: ${palette.text2};
   }
