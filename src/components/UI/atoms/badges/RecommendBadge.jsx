@@ -9,12 +9,14 @@ const RecommendBadge = ({ children, point }) => {
 const StyledBadge = styled.div`
   display: inline-block;
   padding: 4px 9px 3px;
+
   background-color: #1d1c21;
+
   border-radius: 3px;
-  font-size: 12px;
+
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #ffffff;
-  opacity: 0.7;
+  color: ${palette.text4};
 
   ${({ point }) =>
     point &&

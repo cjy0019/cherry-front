@@ -15,11 +15,13 @@ const RegularAgencyBadge = ({ children, className }) => {
 
 const StyledBadge = styled.div`
   display: inline-block;
+  padding: 8px;
+
   background-color: #000000;
   border-radius: 4px;
-  padding: 8px;
+
+  font-size: 0.75rem;
   color: ${palette.textWhite};
-  font-size: 12px;
 
   & > span:nth-of-type(1) {
     font-weight: 400;

@@ -15,10 +15,12 @@ const TeacherBadge = ({ children }) => {
 const StyledBadge = styled.div`
   display: inline-block;
   padding: 7px 4px 6px;
-  background: #000000;
+
   border-radius: 3px;
+  background-color: #000000;
+
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: ${palette.textWhite};
 `;
 

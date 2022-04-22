@@ -9,11 +9,14 @@ const SatisfactionBadge = ({ children }) => {
 const StyledBadge = styled.div`
   display: inline-block;
   padding: 5px 8px 3px;
-  background-color: ${palette.subNavy};
+
   border-radius: 3px;
+
+  background-color: ${palette.subNavy};
+
   font-weight: 400;
-  font-size: 12px;
-  color: #ffffff;
+  font-size: 0.75rem;
+  color: ${palette.textWhite};
 `;
 
 export default SatisfactionBadge;

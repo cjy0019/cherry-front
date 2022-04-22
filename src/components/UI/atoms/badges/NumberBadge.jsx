@@ -10,14 +10,17 @@ const StyledBadge = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${palette.pointRed};
+
+  background-color: ${palette.pointRed};
+
   border-radius: 100%;
+
   min-width: 24px;
   height: 24px;
+
   font-weight: 600;
-  font-size: 12px;
-  color: ${palette.textWhite};
-  opacity: 0.9;
+  font-size: 0.75rem;
+  color: ${palette.text2};
 `;
 
 export default NumberBadge;

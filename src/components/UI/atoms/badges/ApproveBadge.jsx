@@ -10,10 +10,13 @@ const ApproveBadge = ({ children, point }) => {
 const StyledBadge = styled.div`
   display: inline-block;
   padding: 6px 8px;
+
   background-color: ${palette.subNavy};
+
   border-radius: 3px;
+
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: ${palette.text6};
 
   ${(props) =>
@@ -25,6 +28,7 @@ const StyledBadge = styled.div`
 
   @media ${responsive.mobile} {
     padding: 5px 6px;
+
     font-weight: 500;
     font-size: 10px;
     color: ${palette.text6};
