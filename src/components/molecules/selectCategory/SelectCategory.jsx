@@ -8,6 +8,7 @@ import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
 import closeDark from '../../../assets/img/close_dark.svg';
 import javascript from '../../../assets/img/JavaScript.png';
+import { responsive } from '../../../style/responsive';
 
 const skillArr = [
   { src: javascript, name: 'Javascript', id: 1 },
@@ -142,7 +143,7 @@ const SelectCategory = () => {
           left1120='-2.6786vw'
         />
         <ThirdCategorySliderContainer>
-          <SliderUl currentCarousel={currentCarousel}>
+          <SliderUl length={skillArr.length} currentCarousel={currentCarousel}>
             {skillArr.map(({ src, name, id }) => (
               <SidlerLi
                 onClickCapture={selectThirdCategory}
@@ -245,6 +246,13 @@ const CategoryName = styled.span`
   color: #b4b4b4;
 
   margin-right: 8px;
+
+  @media ${responsive.tablet} {
+    font-size: 10px;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const CategoryResult = styled.li`
@@ -387,6 +395,14 @@ const SkillTitle = styled.h5`
   @media (max-width: 1120px) {
     font-size: 1.125rem;
   }
+
+  @media ${responsive.tablet} {
+    width: 8.5938vw;
+    font-size: 1.5625vw;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const SkillImg = styled.img`
@@ -396,6 +412,14 @@ const SkillImg = styled.img`
   @media (max-width: 1120px) {
     width: 3.8393vw;
     height: 3.8393vw;
+  }
+
+  @media ${responsive.tablet} {
+    width: 3.9844vw;
+    height: 3.9844vw;
+  }
+
+  @media ${responsive.mobile} {
   }
 `;
 
@@ -413,6 +437,14 @@ const SkillImgContainer = styled.div`
   @media (max-width: 1120px) {
     width: 8.0357vw;
     height: 8.0357vw;
+  }
+
+  @media ${responsive.tablet} {
+    width: 8.3333vw;
+    height: 8.3333vw;
+  }
+
+  @media ${responsive.mobile} {
   }
 `;
 
@@ -457,13 +489,24 @@ const SidlerLi = styled.li`
     width: 9.8214vw;
     margin-right: 3.2143vw;
   }
+
+  @media ${responsive.tablet} {
+    width: 8.5938vw;
+    margin-right: 3.6458vw;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const SliderUl = styled.ul`
   /* 예시 기술 이미지 10개 */
   display: flex;
 
-  width: calc((5.6771vw + 2.4479vw) * 10);
+  ${({ length }) =>
+    css`
+      width: calc((5.6771vw + 2.4479vw) * ${Number(length)});
+    `}
   margin-top: auto;
 
   transition: all 0.8s ease-in-out;
@@ -478,6 +521,19 @@ const SliderUl = styled.ul`
       transform: translateX(-${50 * currentCarousel}%);
     `}
   }
+
+  @media ${responsive.tablet} {
+    ${({ length }) => css`
+      width: calc((8.5938vw + 3.6458vw) * ${Number(length)});
+    `}
+
+    ${({ currentCarousel }) => css`
+      transform: translateX(-${80 * currentCarousel}%);
+    `}
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const ThirdCategorySliderContainer = styled.div`
@@ -486,12 +542,19 @@ const ThirdCategorySliderContainer = styled.div`
   align-items: flex-end;
 
   width: 62.5vw;
-  height: 160px;
+  height: 130px;
+
+  @media ${responsive.tablet} {
+    width: 93.75vw;
+    height: 130px;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const ThirdCategoryContainer = styled.div`
   position: relative;
-  /* margin-top: 13px; */
 `;
 
 const SortCategory = styled.button`
@@ -534,6 +597,7 @@ const SecondCategoryButton = styled.h4`
   letter-spacing: -0.05em;
   opacity: 0.5;
   font-weight: 400;
+  font-size: 1rem;
 
   ${({ secondCategoryIsClicked }) =>
     secondCategoryIsClicked &&
@@ -541,19 +605,34 @@ const SecondCategoryButton = styled.h4`
       background-color: #ffffff;
       color: #e72847;
       font-weight: 700;
-      font-size: 1rem;
 
       border: none;
       opacity: unset;
 
       transition: all 0.3s linear;
     `};
+
+  @media ${responsive.tablet} {
+    padding: 1.0417vw 2.6042vw;
+    font-size: 0.875rem;
+    margin-top: 10px;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const SecondCategoryContainer = styled.div`
   margin-top: 19px;
   display: flex;
   flex-wrap: wrap;
+
+  @media ${responsive.tablet} {
+    margin-top: 15px;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const FirstCategoryButton = styled.h3`
@@ -571,11 +650,17 @@ const FirstCategoryButton = styled.h3`
     firstCategoryIsClicked &&
     css`
       font-weight: 600;
-      font-size: 2rem;
       color: #e72847;
 
       transition: all 0.3s linear;
     `};
+
+  @media ${responsive.tablet} {
+    font-size: 1.75rem;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const FirstCategoryContainer = styled.div`
