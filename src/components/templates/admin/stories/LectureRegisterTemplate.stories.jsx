@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import LectureRegisterTemplate from '../LectureRegisterTemplate';
 
 export default {
@@ -7,6 +8,13 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
 };
 
 export const LectureRegister = () => <LectureRegisterTemplate />;

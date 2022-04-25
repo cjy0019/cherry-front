@@ -29,7 +29,9 @@ const AdminHeader = () => {
             <StyledNavLink to='/'>피드백</StyledNavLink>
           </LinkWrapper>
           <LinkWrapper>
-            <StyledNavLink to='/'>카테고리 추가</StyledNavLink>
+            <StyledNavLink to='/admin/category-registration'>
+              카테고리 추가
+            </StyledNavLink>
           </LinkWrapper>
         </NavList>
       </CenterWrapper>
