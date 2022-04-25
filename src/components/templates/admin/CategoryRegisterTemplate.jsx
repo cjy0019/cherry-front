@@ -4,6 +4,8 @@ import palette from '../../../style/palette';
 import AdminHeader from '../../molecules/admin/header/AdminHeader';
 import SatisfactionButton from '../../UI/atoms/buttons/SatisfactionButton';
 
+import arrowBottom from '../../../assets/img/arrow_bottom.svg';
+
 const CategoryRegisterTemplate = () => {
   return (
     <div>
@@ -25,7 +27,9 @@ const CategoryRegisterTemplate = () => {
 
             <CommonDepth>
               <DepthText>&#183; 2depth</DepthText>
-              <div></div>
+              <SelectBox defaultValue='선택'>
+                <option disabled>선택</option>
+              </SelectBox>
             </CommonDepth>
 
             <ThirdDepth>
@@ -72,6 +76,10 @@ const SubTitle = styled.p`
 const DepthContainer = styled.div`
   display: flex;
   gap: 75px;
+
+  @media (max-width: 997px) {
+    flex-direction: column;
+  }
 `;
 
 const CommonDepth = styled.div`
@@ -98,6 +106,25 @@ const ButtonContainer = styled.div`
   border-radius: 8px;
 
   background-color: ${palette.subNavy};
+`;
+
+const SelectBox = styled.select`
+  height: 48px;
+  padding-left: 30px;
+
+  font-size: 0.875rem;
+
+  background: url(${arrowBottom}) no-repeat ${palette.subNavy} 95% 50%;
+  color: ${palette.text5};
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  cursor: pointer;
+  outline: none;
+  border-radius: 8px;
+  border: none;
 `;
 
 const ThirdDepth = styled(CommonDepth)`
