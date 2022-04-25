@@ -6,6 +6,7 @@ import palette from '../../../style/palette';
 import AdminHeader from '../../molecules/admin/header/AdminHeader';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import CherryPickStartButton from '../../UI/atoms/buttons/CherryPickStartButton';
+import LectureListItem from '../../molecules/admin/lecture-list/LectureListItem';
 
 const LectureListTemplate = () => {
   return (
@@ -32,6 +33,24 @@ const LectureListTemplate = () => {
           <CherryPickStartButton>강의 추가</CherryPickStartButton>
         </CenterWrapper>
       </LinkButtonContainer>
+
+      <Table>
+        <CenterWrapper>
+          <TableTitles>
+            <li>번호</li>
+            <li>강의명</li>
+            <li>기관</li>
+            <li>등록일</li>
+            <li>수정일</li>
+            <li>노출여부</li>
+            <li>액션</li>
+          </TableTitles>
+        </CenterWrapper>
+
+        <CenterWrapper>
+          <LectureListItem />
+        </CenterWrapper>
+      </Table>
     </>
   );
 };
@@ -87,6 +106,57 @@ const StyledLink = styled(Link)`
 
   color: #444444;
   text-decoration: none;
+`;
+
+const Table = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 40px;
+`;
+
+const TableTitles = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 4%;
+
+  width: 100%;
+  height: 64px;
+
+  background-color: ${palette.text2};
+
+  & > li:nth-of-type(1) {
+    flex: 1;
+  }
+
+  & > li:nth-of-type(2) {
+    flex: 4;
+  }
+
+  & > li:nth-of-type(3) {
+    flex: 2;
+  }
+
+  & > li:nth-of-type(4) {
+    flex: 2;
+  }
+
+  & > li:nth-of-type(5) {
+    flex: 2;
+  }
+
+  & > li:nth-of-type(6) {
+    flex: 2;
+  }
+
+  & > li:nth-of-type(7) {
+    flex: 1;
+  }
 `;
 
 export default LectureListTemplate;
