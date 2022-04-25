@@ -22,10 +22,14 @@ const Hotsix = () => {
   const cardListRef = useRef(null);
   let isBack1121 = false;
 
-  function CarouselMoveRight(e) {
+  function selectCategory(e) {
+    setIsCategoryActive(e.target.innerText);
+  }
+
+  function carouselMoveRight(e) {
     setCurrentCarousel(currentCarousel + 1);
   }
-  function CarouselMoveLeft(e) {
+  function carouselMoveLeft(e) {
     setCurrentCarousel(currentCarousel - 1);
   }
 
@@ -62,14 +66,22 @@ const Hotsix = () => {
           </Title>
         </TitleSection>
         <Category>
-          <CategorySpan>프론트엔드</CategorySpan>
-          <CategorySpan>백엔드</CategorySpan>
+          <CategorySpan
+            isCategoryActive={isCategoryActive === '프론트엔드'}
+            onClick={selectCategory}>
+            프론트엔드
+          </CategorySpan>
+          <CategorySpan
+            isCategoryActive={isCategoryActive === '백엔드'}
+            onClick={selectCategory}>
+            백엔드
+          </CategorySpan>
           <MobileCategory>
             백엔드 <DownArrow src={categoryDown} alt='펼쳐 보기' />
           </MobileCategory>
         </Category>
       </Header>
-      <CarrouselButton onClick={CarouselMoveLeft} />
+      <CarrouselButton onClick={carouselMoveLeft} />
       <CarouselContainer>
         <CardsUl cardListRef={cardListRef} currentCarousel={currentCarousel}>
           <li>
@@ -92,7 +104,7 @@ const Hotsix = () => {
           </li>
         </CardsUl>
       </CarouselContainer>
-      <CarrouselButton onClick={CarouselMoveRight} />
+      <CarrouselButton onClick={carouselMoveRight} />
     </Container>
   );
 };
@@ -214,9 +226,18 @@ const HotSixCard = styled(LectureCard)`
 `;
 
 const CategorySpan = styled.span`
+  cursor: pointer;
+
   color: ${palette.textWhite};
   font-size: 0.875rem;
   font-weight: 400;
+  opacity: 0.5;
+
+  ${({ isCategoryActive }) =>
+    isCategoryActive &&
+    css`
+      opacity: 1;
+    `}
 
   @media ${responsive.tablet} {
     font-size: 0.875rem;

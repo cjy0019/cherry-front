@@ -4,6 +4,23 @@ import styled, { css } from 'styled-components';
 import curiousEmoji from '../../../assets/img/emoji_hmm.png';
 import palette from '../../../style/palette';
 
+import arrowRight from '../../../assets/img/arrow_right.svg';
+import arrowLeft from '../../../assets/img/arrow_left.svg';
+import javascript from '../../../assets/img/JavaScript.png';
+
+const skillArr = [
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+  javascript,
+];
+
 const SelectCategory = () => {
   const [firstCategoryIsClicked, setFirstCategoryIsClicked] =
     useState('프론트엔드');
@@ -12,6 +29,7 @@ const SelectCategory = () => {
     useState('전체');
 
   const [sortIsClicked, setSortIsClicked] = useState('최신순');
+  const [currentCarousel, setCurrentCarousel] = useState(0);
 
   function selectFirstCategory(e) {
     setFirstCategoryIsClicked(e.target.innerText);
@@ -21,6 +39,13 @@ const SelectCategory = () => {
   }
   function selectSort(e) {
     setSortIsClicked(e.target.innerText);
+  }
+
+  function sliderMoveRight(e) {
+    setCurrentCarousel(currentCarousel + 1);
+  }
+  function sliderMoveLeft(e) {
+    setCurrentCarousel(currentCarousel - 1);
   }
 
   return (
@@ -78,6 +103,36 @@ const SelectCategory = () => {
           Tools
         </SecondCategoryButton>
       </SecondCategoryContainer>
+      <ThirdCategoryContainer>
+        <ThirdButton
+          isHidden={currentCarousel === 0}
+          onClick={sliderMoveLeft}
+          src={arrowLeft}
+          top='60px'
+          left='-30px'
+        />
+        <ThirdCategorySliderContainer>
+          <SliderUl currentCarousel={currentCarousel}>
+            {skillArr.map((src, i) => (
+              <>
+                <SidlerLi>
+                  <SkillImgContainer>
+                    <SkillImg key={i} src={src} alt='자바스크립트' />
+                  </SkillImgContainer>
+                  <SkillTitle>Javascript</SkillTitle>
+                </SidlerLi>
+              </>
+            ))}
+          </SliderUl>
+        </ThirdCategorySliderContainer>
+        <ThirdButton
+          isHidden={currentCarousel === Math.floor(skillArr.length / 8)}
+          onClick={sliderMoveRight}
+          src={arrowRight}
+          top='60px'
+          right='-30px'
+        />
+      </ThirdCategoryContainer>
       <SortContainer>
         <SortCategory
           sortIsClicked={sortIsClicked === '최신순'}
@@ -124,6 +179,125 @@ const SelectCategory = () => {
   );
 };
 
+const ThirdButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+
+  width: 60px;
+  height: 60px;
+
+  ${({ src, top, left, right, isHidden }) => css`
+    ${isHidden
+      ? css`
+          display: none;
+        `
+      : css`
+          display: block;
+        `}
+    background-image: url(${src});
+    top: ${top};
+    ${left
+      ? css`
+          left: ${left};
+        `
+      : css`
+          right: ${right};
+        `}
+  `}
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 0px 12px rgba(33, 33, 33, 0.08);
+`;
+
+const SkillTitle = styled.h5`
+  width: 109px;
+
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.125rem;
+  letter-spacing: -0.05em;
+  color: #b4b4b4;
+  opacity: 0.8;
+
+  margin-top: 17px;
+
+  /* 선택 되었을때 */
+  /* color: #ffffff; */
+`;
+
+const SkillImg = styled.img`
+  width: 43px;
+  height: 43px;
+`;
+
+const SkillImgContainer = styled.div`
+  width: 90px;
+  height: 90px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #1f2026;
+  border-radius: 64px;
+
+  /* 선택되었을때 */
+  /* background-color: #2a2a2a; */
+`;
+
+const SidlerLi = styled.li`
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 47px;
+
+  &:hover {
+    transform: translateY(-13px);
+
+    & > div {
+      background-color: #2a2a2a;
+    }
+
+    & > h5 {
+      color: #ffffff;
+    }
+  }
+`;
+
+const SliderUl = styled.ul`
+  /* 예시 기술 이미지 10개 */
+  width: calc((109px + 47px) * 10);
+  margin-top: auto;
+
+  transition: all 0.8s ease-in-out;
+  ${({ currentCarousel }) => css`
+    transform: translateX(-${80 * currentCarousel}%);
+  `}
+
+  display: flex;
+`;
+
+const ThirdCategorySliderContainer = styled.div`
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+
+  width: 1200px;
+  height: 165px;
+`;
+
+const ThirdCategoryContainer = styled.div`
+  position: relative;
+  margin-top: 13px;
+`;
+
 const SortCategory = styled.button`
   all: unset;
   cursor: pointer;
@@ -149,7 +323,7 @@ const SortContainer = styled.div`
   margin-left: auto;
 `;
 
-const SecondCategoryButton = styled.button`
+const SecondCategoryButton = styled.h4`
   all: unset;
   cursor: pointer;
 
@@ -184,7 +358,7 @@ const SecondCategoryContainer = styled.div`
   display: flex;
 `;
 
-const FirstCategoryButton = styled.button`
+const FirstCategoryButton = styled.h3`
   all: unset;
   cursor: pointer;
 
