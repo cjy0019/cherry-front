@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
+import ToggleButton from '../../../UI/atoms/buttons/ToggleButton';
 
 const LectureListItem = () => {
   return (
@@ -12,10 +13,7 @@ const LectureListItem = () => {
       <li>2022.02.14</li>
       <li>2022.02.15</li>
       <li>
-        <div>
-          <button>왓더퍽</button>
-          <p>비공개</p>
-        </div>
+        <ToggleButton />
       </li>
       <li>
         <StyledLink to='/'>수정하기</StyledLink>
