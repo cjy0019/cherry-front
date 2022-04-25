@@ -6,19 +6,20 @@ import palette from '../../../style/palette';
 
 import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
+import closeDark from '../../../assets/img/close_dark.svg';
 import javascript from '../../../assets/img/JavaScript.png';
 
 const skillArr = [
-  { src: javascript, name: 'javascript', id: 1 },
-  { src: javascript, name: 'javascript1', id: 2 },
-  { src: javascript, name: 'javascript2', id: 3 },
-  { src: javascript, name: 'javascript3', id: 4 },
-  { src: javascript, name: 'javascript4', id: 5 },
-  { src: javascript, name: 'javascript5', id: 6 },
-  { src: javascript, name: 'javascript6', id: 7 },
-  { src: javascript, name: 'javascript7', id: 8 },
-  { src: javascript, name: 'javascript8', id: 9 },
-  { src: javascript, name: 'javascript9', id: 10 },
+  { src: javascript, name: 'Javascript', id: 1 },
+  { src: javascript, name: 'Javascript1', id: 2 },
+  { src: javascript, name: 'Javascript2', id: 3 },
+  { src: javascript, name: 'Javascript3', id: 4 },
+  { src: javascript, name: 'Javascript4', id: 5 },
+  { src: javascript, name: 'Javascript5', id: 6 },
+  { src: javascript, name: 'Javascript6', id: 7 },
+  { src: javascript, name: 'Javascript7', id: 8 },
+  { src: javascript, name: 'Javascript8', id: 9 },
+  { src: javascript, name: 'Javascript9', id: 10 },
 ];
 
 const SelectCategory = () => {
@@ -28,7 +29,11 @@ const SelectCategory = () => {
   const [secondCategoryIsClicked, setSecondCategoryIsClicked] =
     useState('전체');
 
-  const [thirdCategoryIsClicked, setThirdCategoryIsClicked] = useState([]);
+  const [thirdCategoryIsClicked, setThirdCategoryIsClicked] = useState([
+    'Javascript3',
+    'Javascript1',
+    'Javascript5',
+  ]);
 
   const [sortIsClicked, setSortIsClicked] = useState('최신순');
   const [currentCarousel, setCurrentCarousel] = useState(0);
@@ -50,6 +55,15 @@ const SelectCategory = () => {
     } else {
       setThirdCategoryIsClicked([...thirdCategoryIsClicked, dataSetId]);
     }
+  }
+  function unselectThirdCategory(e) {
+    const datasetName = e.target.dataset.name;
+    const indexOf = thirdCategoryIsClicked.indexOf(datasetName);
+
+    setThirdCategoryIsClicked([
+      ...thirdCategoryIsClicked.slice(0, indexOf),
+      ...thirdCategoryIsClicked.slice(indexOf + 1),
+    ]);
   }
 
   function selectSort(e) {
@@ -133,9 +147,9 @@ const SelectCategory = () => {
               <SidlerLi
                 onClickCapture={selectThirdCategory}
                 thirdCategoryIsClicked={thirdCategoryIsClicked.includes(
-                  `${id}`,
+                  `${name}`,
                 )}
-                data-id={id}
+                data-id={name}
                 key={id}>
                 <SkillImgContainer>
                   <SkillImg src={src} alt='자바스크립트' />
@@ -155,6 +169,17 @@ const SelectCategory = () => {
           right1120='-2.6786vw'
         />
       </ThirdCategoryContainer>
+      <ThirdCategoryResultContainer>
+        {thirdCategoryIsClicked.map((name, i) => (
+          <CategoryResult key={i}>
+            <CategoryName>{name}</CategoryName>
+            <CloseCategoryButton
+              onClick={unselectThirdCategory}
+              data-name={name}
+            />
+          </CategoryResult>
+        ))}
+      </ThirdCategoryResultContainer>
       <SortContainer>
         <SortCategory
           sortIsClicked={sortIsClicked === '최신순'}
@@ -200,6 +225,43 @@ const SelectCategory = () => {
     </Container>
   );
 };
+
+const CloseCategoryButton = styled.button`
+  all: unset;
+  cursor: pointer;
+
+  width: 18px;
+  height: 18px;
+
+  background-image: url(${closeDark});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+const CategoryName = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+  color: #b4b4b4;
+
+  margin-right: 8px;
+`;
+
+const CategoryResult = styled.li`
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 6px;
+  margin-top: 5px;
+  margin-right: 8px;
+
+  background-color: #2a2a2a;
+  border-radius: 3px;
+`;
+
+const ThirdCategoryResultContainer = styled.ul`
+  margin-top: 35px;
+`;
 
 const ThirdButton = styled.button`
   all: unset;
@@ -306,6 +368,10 @@ const ThirdButton = styled.button`
 `;
 
 const SkillTitle = styled.h5`
+  width: 5.6771vw;
+
+  word-wrap: break-word;
+
   text-align: center;
   font-weight: 400;
   font-size: 1.125rem;
@@ -315,7 +381,7 @@ const SkillTitle = styled.h5`
 
   margin-top: 17px;
 
-  @media (max-width: 1360px) {
+  @media (max-width: 1440px) {
     font-size: 0.875rem;
   }
   @media (max-width: 1120px) {
@@ -415,17 +481,17 @@ const SliderUl = styled.ul`
 `;
 
 const ThirdCategorySliderContainer = styled.div`
-  overflow: hidden;
   display: flex;
+  overflow: hidden;
   align-items: flex-end;
 
   width: 62.5vw;
-  height: 165px;
+  height: 160px;
 `;
 
 const ThirdCategoryContainer = styled.div`
   position: relative;
-  margin-top: 13px;
+  /* margin-top: 13px; */
 `;
 
 const SortCategory = styled.button`
@@ -449,7 +515,7 @@ const SortCategory = styled.button`
 
 const SortContainer = styled.div`
   display: block;
-  margin-top: 65px;
+  margin-top: 60px;
   margin-left: auto;
 `;
 
@@ -459,6 +525,7 @@ const SecondCategoryButton = styled.h4`
 
   padding: 0.625vw 1.4583vw;
   margin-right: 17px;
+  margin-top: 12px;
 
   border-radius: 100px;
   border: 1px solid #444444;
@@ -481,19 +548,12 @@ const SecondCategoryButton = styled.h4`
 
       transition: all 0.3s linear;
     `};
-
-  @media (max-width: 1120px) {
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 950px) {
-    padding: 0.2105vw 0.8421vw;
-  }
 `;
 
 const SecondCategoryContainer = styled.div`
-  margin-top: 28px;
+  margin-top: 19px;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const FirstCategoryButton = styled.h3`
