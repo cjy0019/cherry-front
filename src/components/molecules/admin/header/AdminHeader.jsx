@@ -12,9 +12,7 @@ const AdminHeader = () => {
 
         <NavList>
           <LinkWrapper>
-            <StyledNavLink to='/admin/lecture-registration'>
-              강의 리스트
-            </StyledNavLink>
+            <StyledNavLink to='/admin/lecture-list'>강의 리스트</StyledNavLink>
           </LinkWrapper>
           <LinkWrapper>
             <StyledNavLink to='/'>회원 관리</StyledNavLink>

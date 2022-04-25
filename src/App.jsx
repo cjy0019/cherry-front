@@ -1,13 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GlobalStyle from './style/GlobalStyle';
+
 import DetailPage from './components/pages/DetailPage';
 import MainPage from './components/pages/MainPage';
 import ReviewWritePage from './components/pages/ReviewWritePage';
-import GlobalStyle from './style/GlobalStyle';
 import SigninPage from './components/pages/SigninPage';
 import SignupPage from './components/pages/SignupPage';
+// admin
 import LectureRegisterPage from './components/pages/admin/LectureRegisterPage';
 import CategoryRegisterPage from './components/pages/admin/CategoryRegisterPage';
+import LectureListPage from './components/pages/admin/LectureListPage';
 
 const App = () => {
   return (
@@ -29,6 +32,7 @@ const App = () => {
               path='category-registration'
               element={<CategoryRegisterPage />}
             />
+            <Route path='lecture-list' element={<LectureListPage />} />
           </Route>
         </Routes>
       </Router>
