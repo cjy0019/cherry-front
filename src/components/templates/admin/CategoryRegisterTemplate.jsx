@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
+import arrowBottom from '../../../assets/img/arrow_bottom.svg';
+
 import AdminHeader from '../../molecules/admin/header/AdminHeader';
 import SatisfactionButton from '../../UI/atoms/buttons/SatisfactionButton';
-
-import arrowBottom from '../../../assets/img/arrow_bottom.svg';
+import RetryButton from '../../UI/atoms/buttons/RetryButton';
 
 const CategoryRegisterTemplate = () => {
   return (
-    <div>
+    <>
       <AdminHeader />
       <Title>카테고리 추가</Title>
 
@@ -37,9 +38,26 @@ const CategoryRegisterTemplate = () => {
               <StyledInput type='text' placeholder='입력' />
             </ThirdDepth>
           </DepthContainer>
+
+          <ImageUploadContainer>
+            <SubTitle>2.이미지 첨부</SubTitle>
+            <ImageBox>
+              <p>이미지 없음</p>
+            </ImageBox>
+            <ImageText>90 * 90px</ImageText>
+            <FileContainer>
+              <FileText type='text' disabled value='파일 이름' />
+              <SearchFileButton htmlFor='mobile-image'>
+                파일선택
+              </SearchFileButton>
+              <InputFile type='file' id='mobile-image' />
+            </FileContainer>
+          </ImageUploadContainer>
+
+          <RetryButton>추가하기</RetryButton>
         </CenterWrapper>
       </CategorySelectContainer>
-    </div>
+    </>
   );
 };
 
@@ -57,12 +75,13 @@ const CategorySelectContainer = styled.div`
   align-items: center;
 
   margin-top: 68px;
+
+  padding-bottom: 236px;
 `;
 
 const CenterWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
   width: 80%;
 `;
 
@@ -87,6 +106,8 @@ const CommonDepth = styled.div`
   flex-direction: column;
   gap: 16px;
   flex: 1;
+
+  margin-top: 48px;
 `;
 
 const DepthText = styled.p`
@@ -150,6 +171,79 @@ const StyledInput = styled.input`
     font-weight: 400;
     color: ${palette.text5};
   }
+`;
+
+const ImageUploadContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 40%;
+
+  margin: 48px 0 80px;
+`;
+
+const ImageBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: ${palette.text5};
+
+  width: 180px;
+  height: 180px;
+
+  background-color: ${palette.subNavy2};
+`;
+
+const ImageText = styled.p`
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: ${palette.text5};
+`;
+
+const FileContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const FileText = styled.input`
+  width: 200px;
+  background-color: ${palette.subNavy3};
+
+  padding-left: 10px;
+  color: ${palette.text2};
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+`;
+
+const SearchFileButton = styled.label`
+  display: inline-block;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: ${palette.textWhite};
+  cursor: pointer;
+  white-space: nowrap;
+
+  padding: 9px 14px;
+  border-radius: 3px;
+
+  background-color: #000000;
+`;
+
+const InputFile = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 `;
 
 export default CategoryRegisterTemplate;
