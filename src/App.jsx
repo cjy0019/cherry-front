@@ -7,6 +7,7 @@ import GlobalStyle from './style/GlobalStyle';
 import SigninPage from './components/pages/SigninPage';
 import SignupPage from './components/pages/SignupPage';
 import LectureRegisterPage from './components/pages/admin/LectureRegisterPage';
+import CategoryRegisterPage from './components/pages/admin/CategoryRegisterPage';
 
 const App = () => {
   return (
@@ -23,6 +24,10 @@ const App = () => {
             <Route
               path='lecture-registration'
               element={<LectureRegisterPage />}
+            />
+            <Route
+              path='category-registration'
+              element={<CategoryRegisterPage />}
             />
           </Route>
         </Routes>
