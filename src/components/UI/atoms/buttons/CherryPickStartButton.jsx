@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const CherryPickStartButton = ({ handleClick }) => {
-  return <StyledButton onClick={handleClick}>체리픽 시작하기</StyledButton>;
+const CherryPickStartButton = ({ handleClick, children }) => {
+  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
 };
 
 const StyledButton = styled.button`
@@ -20,6 +20,8 @@ const StyledButton = styled.button`
 
   border-radius: 8px;
   border: none;
+
+  cursor: pointer;
 `;
 
 export default CherryPickStartButton;
