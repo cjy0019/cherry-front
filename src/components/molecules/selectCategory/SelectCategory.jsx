@@ -9,16 +9,16 @@ import arrowLeft from '../../../assets/img/arrow_left.svg';
 import javascript from '../../../assets/img/JavaScript.png';
 
 const skillArr = [
-  javascript,
-  javascript,
-  javascript,
-  javascript,
-  javascript,
-  javascript,
-  javascript,
-  javascript,
-  javascript,
-  javascript,
+  { src: javascript, name: 'javascript', id: 1 },
+  { src: javascript, name: 'javascript1', id: 2 },
+  { src: javascript, name: 'javascript2', id: 3 },
+  { src: javascript, name: 'javascript3', id: 4 },
+  { src: javascript, name: 'javascript4', id: 5 },
+  { src: javascript, name: 'javascript5', id: 6 },
+  { src: javascript, name: 'javascript6', id: 7 },
+  { src: javascript, name: 'javascript7', id: 8 },
+  { src: javascript, name: 'javascript8', id: 9 },
+  { src: javascript, name: 'javascript9', id: 10 },
 ];
 
 const SelectCategory = () => {
@@ -27,6 +27,8 @@ const SelectCategory = () => {
 
   const [secondCategoryIsClicked, setSecondCategoryIsClicked] =
     useState('전체');
+
+  const [thirdCategoryIsClicked, setThirdCategoryIsClicked] = useState([]);
 
   const [sortIsClicked, setSortIsClicked] = useState('최신순');
   const [currentCarousel, setCurrentCarousel] = useState(0);
@@ -37,6 +39,19 @@ const SelectCategory = () => {
   function selectSecondCategory(e) {
     setSecondCategoryIsClicked(e.target.innerText);
   }
+  function selectThirdCategory(e) {
+    const dataSetId = e.currentTarget.dataset.id;
+    const indexOf = thirdCategoryIsClicked.indexOf(dataSetId);
+    if (indexOf !== -1) {
+      setThirdCategoryIsClicked([
+        ...thirdCategoryIsClicked.slice(0, indexOf),
+        ...thirdCategoryIsClicked.slice(indexOf + 1),
+      ]);
+    } else {
+      setThirdCategoryIsClicked([...thirdCategoryIsClicked, dataSetId]);
+    }
+  }
+
   function selectSort(e) {
     setSortIsClicked(e.target.innerText);
   }
@@ -108,29 +123,36 @@ const SelectCategory = () => {
           isHidden={currentCarousel === 0}
           onClick={sliderMoveLeft}
           src={arrowLeft}
-          top='60px'
-          left='-30px'
+          bottom='2.6042vw'
+          left='-1.5625vw'
+          left1120='-2.6786vw'
         />
         <ThirdCategorySliderContainer>
           <SliderUl currentCarousel={currentCarousel}>
-            {skillArr.map((src, i) => (
-              <>
-                <SidlerLi>
-                  <SkillImgContainer>
-                    <SkillImg key={i} src={src} alt='자바스크립트' />
-                  </SkillImgContainer>
-                  <SkillTitle>Javascript</SkillTitle>
-                </SidlerLi>
-              </>
+            {skillArr.map(({ src, name, id }) => (
+              <SidlerLi
+                onClickCapture={selectThirdCategory}
+                thirdCategoryIsClicked={thirdCategoryIsClicked.includes(
+                  `${id}`,
+                )}
+                data-id={id}
+                key={id}>
+                <SkillImgContainer>
+                  <SkillImg src={src} alt='자바스크립트' />
+                </SkillImgContainer>
+                <SkillTitle>{name}</SkillTitle>
+              </SidlerLi>
             ))}
           </SliderUl>
         </ThirdCategorySliderContainer>
         <ThirdButton
-          isHidden={currentCarousel === Math.floor(skillArr.length / 8)}
+          length={skillArr.length}
+          currentCarousel={currentCarousel}
           onClick={sliderMoveRight}
           src={arrowRight}
-          top='60px'
-          right='-30px'
+          bottom='2.6042vw'
+          right='-1.5625vw'
+          right1120='-2.6786vw'
         />
       </ThirdCategoryContainer>
       <SortContainer>
@@ -185,36 +207,105 @@ const ThirdButton = styled.button`
   position: absolute;
   z-index: 10;
 
-  width: 60px;
-  height: 60px;
+  width: 3.125vw;
+  height: 3.125vw;
 
-  ${({ src, top, left, right, isHidden }) => css`
-    ${isHidden
-      ? css`
-          display: none;
-        `
-      : css`
-          display: block;
-        `}
-    background-image: url(${src});
-    top: ${top};
-    ${left
-      ? css`
-          left: ${left};
-        `
-      : css`
-          right: ${right};
-        `}
-  `}
+  ${({ src, bottom, left, right, currentCarousel, isHidden, length }) => {
+    let isDisplayHidden = false;
+
+    if (length % 8 !== 0) {
+      if (currentCarousel === Math.floor(length / 8)) {
+        isDisplayHidden = true;
+      } else {
+        isDisplayHidden = false;
+      }
+    } else {
+      if (currentCarousel === length / 8 - 1) {
+        isDisplayHidden = true;
+      } else {
+        isDisplayHidden = false;
+      }
+    }
+
+    return css`
+      ${isDisplayHidden
+        ? css`
+            display: none;
+          `
+        : css`
+            display: block;
+          `}
+      ${isHidden &&
+      css`
+        display: none;
+      `}
+      background-image: url(${src});
+      bottom: ${bottom};
+      ${left
+        ? css`
+            left: ${left};
+          `
+        : css`
+            right: ${right};
+          `}
+    `;
+  }}
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   box-shadow: 0px 0px 12px rgba(33, 33, 33, 0.08);
+
+  @media (max-width: 1120px) {
+    display: block;
+
+    width: 5.3571vw;
+    height: 3.2143vw;
+
+    bottom: 5.3571vw;
+    ${({ right1120, left1120 }) =>
+      left1120
+        ? css`
+            left: ${left1120};
+          `
+        : css`
+            right: ${right1120};
+          `}
+
+    ${({ currentCarousel, length }) => {
+      let isDisplayHidden = false;
+      if (length % 5 !== 0) {
+        if (currentCarousel === Math.floor(length / 5)) {
+          isDisplayHidden = true;
+        } else {
+          isDisplayHidden = false;
+        }
+      } else {
+        if (currentCarousel === length / 5 - 1) {
+          isDisplayHidden = true;
+        } else {
+          isDisplayHidden = false;
+        }
+      }
+
+      return css`
+        ${isDisplayHidden
+          ? css`
+              display: none;
+            `
+          : css`
+              display: block;
+            `}
+      `;
+    }}
+    ${({ isHidden }) =>
+      isHidden &&
+      css`
+        display: none;
+      `};
+  }
 `;
 
 const SkillTitle = styled.h5`
-  width: 109px;
-
   text-align: center;
   font-weight: 400;
   font-size: 1.125rem;
@@ -224,18 +315,27 @@ const SkillTitle = styled.h5`
 
   margin-top: 17px;
 
-  /* 선택 되었을때 */
-  /* color: #ffffff; */
+  @media (max-width: 1360px) {
+    font-size: 0.875rem;
+  }
+  @media (max-width: 1120px) {
+    font-size: 1.125rem;
+  }
 `;
 
 const SkillImg = styled.img`
-  width: 43px;
-  height: 43px;
+  width: 2.2396vw;
+  height: 2.2396vw;
+
+  @media (max-width: 1120px) {
+    width: 3.8393vw;
+    height: 3.8393vw;
+  }
 `;
 
 const SkillImgContainer = styled.div`
-  width: 90px;
-  height: 90px;
+  width: 4.6875vw;
+  height: 4.6875vw;
 
   display: flex;
   justify-content: center;
@@ -244,19 +344,36 @@ const SkillImgContainer = styled.div`
   background: #1f2026;
   border-radius: 64px;
 
-  /* 선택되었을때 */
-  /* background-color: #2a2a2a; */
+  @media (max-width: 1120px) {
+    width: 8.0357vw;
+    height: 8.0357vw;
+  }
 `;
 
 const SidlerLi = styled.li`
   cursor: pointer;
+  width: 5.7292vw;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  margin-right: 47px;
+  margin-right: 2.4479vw;
+  transition: all 0.2s ease-in-out;
+
+  ${({ thirdCategoryIsClicked }) =>
+    thirdCategoryIsClicked &&
+    css`
+      transform: translateY(-13px);
+
+      & > div {
+        background-color: #2a2a2a;
+      }
+
+      & > h5 {
+        color: #ffffff;
+      }
+    `}
 
   &:hover {
     transform: translateY(-13px);
@@ -269,11 +386,18 @@ const SidlerLi = styled.li`
       color: #ffffff;
     }
   }
+
+  @media (max-width: 1120px) {
+    width: 9.8214vw;
+    margin-right: 3.2143vw;
+  }
 `;
 
 const SliderUl = styled.ul`
   /* 예시 기술 이미지 10개 */
-  width: calc((109px + 47px) * 10);
+  display: flex;
+
+  width: calc((5.6771vw + 2.4479vw) * 10);
   margin-top: auto;
 
   transition: all 0.8s ease-in-out;
@@ -281,7 +405,13 @@ const SliderUl = styled.ul`
     transform: translateX(-${80 * currentCarousel}%);
   `}
 
-  display: flex;
+  @media (max-width: 1120px) {
+    width: calc((9.7321vw + 3.2143vw) * 10);
+
+    ${({ currentCarousel }) => css`
+      transform: translateX(-${50 * currentCarousel}%);
+    `}
+  }
 `;
 
 const ThirdCategorySliderContainer = styled.div`
@@ -289,7 +419,7 @@ const ThirdCategorySliderContainer = styled.div`
   display: flex;
   align-items: flex-end;
 
-  width: 1200px;
+  width: 62.5vw;
   height: 165px;
 `;
 
@@ -351,6 +481,14 @@ const SecondCategoryButton = styled.h4`
 
       transition: all 0.3s linear;
     `};
+
+  @media (max-width: 1120px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 950px) {
+    padding: 0.2105vw 0.8421vw;
+  }
 `;
 
 const SecondCategoryContainer = styled.div`
