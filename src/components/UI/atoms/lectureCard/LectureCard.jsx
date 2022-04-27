@@ -16,9 +16,9 @@ const Card = ({ className, src, alt }) => {
       <LectureImg src={lectureImg} alt='제로초 자바스크립트 강의' />
       <LectureOfflineBadge />
       <Bookmark />
-      <HoverDark>
+      {/* <HoverDark>
         <RankImg src={src} alt={alt} />
-      </HoverDark>
+      </HoverDark> */}
       <InfoContainer>
         <LectureInfo>
           <div>
@@ -145,9 +145,9 @@ const LectureOfflineBadge = styled(OfflineBadge)`
   }
 
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
-  @media (max-width: 666px) {
-    top: 7.78px;
-    left: 6.916px;
+  @media (max-width: 667px) {
+    top: 1.1664vw;
+    left: 1.0369vw;
   }
 
   @media ${responsive.mobile} {
@@ -203,8 +203,8 @@ const Bookmark = styled.button`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    top: 7.78px;
-    right: 6.916px;
+    top: 1.1664vw;
+    right: 1.0369vw;
   }
 
   @media ${responsive.mobile} {
@@ -322,7 +322,7 @@ const LectureTitle = styled.h3`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    margin-top: 6px;
+    margin-top: 1.4243vw;
   }
 
   @media ${responsive.mobile} {
@@ -350,7 +350,7 @@ const HashTagContainer = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    margin-top: 14px;
+    margin-top: 3.5607vw;
   }
 
   @media ${responsive.mobile} {
@@ -405,8 +405,8 @@ const AgencyBadge = styled(RegularAgencyBadge)`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    margin-right: 3.45px;
-    padding: 4.256px 2.793px;
+    margin-right: 1.1994vw;
+    padding: 0.9496vw;
   }
 
   @media ${responsive.mobile} {
@@ -439,8 +439,8 @@ const LectureImg = styled.img`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 200.891px;
-    height: 111.719px;
+    width: 44.9775vw;
+    height: 25.0445vw;
   }
 
   @media ${responsive.mobile} {
@@ -474,8 +474,8 @@ const LectureInfo = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 180.078px;
-    height: 113.445px;
+    width: 37.3958vw;
+    height: 24.2234vw;
   }
 
   @media ${responsive.mobile} {
@@ -497,7 +497,7 @@ const InfoContainer = styled.div`
   border-radius: 0 0 8px 8px;
   background: linear-gradient(180deg, #212121 76.67%, #000000 126.25%);
 
-  /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
+  /* 1120px 부터 더 작아질 수 없어서, 카드 크기 변경 */
   @media (max-width: 1121px) {
     /* width: 221.086px;
     height: 156.352px; */
@@ -513,8 +513,8 @@ const InfoContainer = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 200.891px;
-    height: 141.109px;
+    width: 44.9775vw;
+    height: 31.8123vw;
   }
 
   @media ${responsive.mobile} {

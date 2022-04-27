@@ -123,6 +123,9 @@ const CarrouselButton = styled.button`
   @media (max-width: 1121px) {
     top: 20.9933vw;
   }
+  @media (max-width: 666px) {
+    top: 31.934vw;
+  }
 
   @media ${responsive.mobile} {
     top: 56.4061vw;
@@ -159,6 +162,15 @@ const CardsUl = styled.ul`
 
     ${({ currentCarousel }) => css`
       transform: translateX(-${50 * currentCarousel}%);
+    `}
+  }
+
+  @media (max-width: 666px) {
+    width: calc(44.9775vw * 6 + 2.9985vw * 6);
+
+    ${({ currentCarousel }) => css`
+      /* transform: translateX(-${33.3333 * currentCarousel}%); */
+      transform: translateX(-${currentCarousel * 33.333333}%);
     `}
   }
 
@@ -216,8 +228,12 @@ const HotSixCard = styled(LectureCard)`
   @media (max-width: 1121px) {
     margin-right: 1.7857vw;
   }
+
   @media ${responsive.tablet} {
     margin-right: 12px;
+  }
+  @media (max-width: 666px) {
+    margin-right: 2.9985vw;
   }
 
   @media ${responsive.mobile} {
@@ -343,6 +359,23 @@ const Container = styled.div`
       left: -27px;
     }
   }
+  @media (max-width: 1121px) {
+    & > button:nth-of-type(2) {
+      right: -13px;
+      display: block;
+
+      ${({ currentCarousel }) =>
+        currentCarousel === 2
+          ? css`
+              display: none;
+            `
+          : ''}
+    }
+
+    & > button:nth-of-type(1) {
+      left: -27px;
+    }
+  }
 
   @media ${responsive.tablet} {
     & > button:nth-of-type(2) {
@@ -354,6 +387,23 @@ const Container = styled.div`
               display: none;
             `
           : ''}
+    }
+  }
+
+  @media (max-width: 666px) {
+    & > button:nth-of-type(2) {
+      display: block;
+
+      ${({ currentCarousel }) =>
+        currentCarousel === 2
+          ? css`
+              display: none;
+            `
+          : ''}
+    }
+
+    & > button:nth-of-type(1) {
+      left: -27px;
     }
   }
 
