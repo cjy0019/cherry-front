@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-
-import curiousEmoji from '../../../assets/img/emoji_hmm.png';
+import { responsive } from '../../../style/responsive';
 import palette from '../../../style/palette';
 
+import LectureCard from '../../UI/atoms/lectureCard/LectureCard';
+
+import curiousEmoji from '../../../assets/img/emoji_hmm.png';
+import categoryDown from '../../../assets/img/categoryDown.svg';
 import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
 import closeDark from '../../../assets/img/close_dark.svg';
 import javascript from '../../../assets/img/JavaScript.png';
-import { responsive } from '../../../style/responsive';
 
 const skillArr = [
   { src: javascript, name: 'Javascript', id: 1 },
@@ -182,38 +184,62 @@ const SelectCategory = () => {
         ))}
       </ThirdCategoryResultContainer>
       <SortContainer>
-        <SortCategory
-          sortIsClicked={sortIsClicked === '최신순'}
-          onClick={selectSort}>
-          최신순
-        </SortCategory>
-        <SortCategory
-          sortIsClicked={sortIsClicked === '인기순'}
-          onClick={selectSort}>
-          인기순
-        </SortCategory>
-        <SortCategory
-          sortIsClicked={sortIsClicked === '가격↑'}
-          onClick={selectSort}>
-          가격↑
-        </SortCategory>
-        <SortCategory
-          sortIsClicked={sortIsClicked === '가격↓'}
-          onClick={selectSort}>
-          가격↓
-        </SortCategory>
+        <SortPcTablet>
+          <SortCategory
+            sortIsClicked={sortIsClicked === '최신순'}
+            onClick={selectSort}>
+            최신순
+          </SortCategory>
+          <SortCategory
+            sortIsClicked={sortIsClicked === '인기순'}
+            onClick={selectSort}>
+            인기순
+          </SortCategory>
+          <SortCategory
+            sortIsClicked={sortIsClicked === '가격↑'}
+            onClick={selectSort}>
+            가격↑
+          </SortCategory>
+          <SortCategory
+            sortIsClicked={sortIsClicked === '가격↓'}
+            onClick={selectSort}>
+            가격↓
+          </SortCategory>
+        </SortPcTablet>
+        <SortMobile>
+          <CurrentSort>백엔드</CurrentSort>
+          <DownArrow src={categoryDown} alt='펼쳐 보기' />
+        </SortMobile>
       </SortContainer>
-      {/* <LectureCardContainer>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-      </LectureCardContainer> */}
+      <LectureCardsContainer>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+        <LectureCardLi>
+          <CategoryLectureCard />
+        </LectureCardLi>
+      </LectureCardsContainer>
       {/* <Pagination>
         <Prev></Prev>
         <PaginationNumber></PaginationNumber>
@@ -226,6 +252,33 @@ const SelectCategory = () => {
     </Container>
   );
 };
+
+const LectureCardLi = styled.li`
+  all: unset;
+`;
+
+const CategoryLectureCard = styled(LectureCard)`
+  margin-top: 32px;
+`;
+
+const LectureCardsContainer = styled.ul`
+  all: unset;
+  margin-top: 1px;
+
+  & > li:not(:nth-of-type(3n)) {
+    margin-right: 1.5104vw;
+  }
+
+  @media (max-width: 1120px) {
+    & > li:nth-of-type(2n) {
+      margin-right: 0;
+    }
+
+    & > li:not(:nth-of-type(2n)) {
+      margin-right: 3.3036vw;
+    }
+  }
+`;
 
 const CloseCategoryButton = styled.button`
   all: unset;
@@ -242,16 +295,17 @@ const CloseCategoryButton = styled.button`
 
 const CategoryName = styled.span`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #b4b4b4;
 
   margin-right: 8px;
 
   @media ${responsive.tablet} {
-    font-size: 10px;
+    font-size: 0.625rem;
   }
 
   @media ${responsive.mobile} {
+    font-size: 0.625rem;
   }
 `;
 
@@ -269,6 +323,10 @@ const CategoryResult = styled.li`
 
 const ThirdCategoryResultContainer = styled.ul`
   margin-top: 35px;
+
+  @media ${responsive.mobile} {
+    margin-top: 24px;
+  }
 `;
 
 const ThirdButton = styled.button`
@@ -373,6 +431,10 @@ const ThirdButton = styled.button`
         display: none;
       `};
   }
+
+  @media ${responsive.mobile} {
+    display: none;
+  }
 `;
 
 const SkillTitle = styled.h5`
@@ -393,6 +455,7 @@ const SkillTitle = styled.h5`
     font-size: 0.875rem;
   }
   @media (max-width: 1120px) {
+    width: 9.5536vw;
     font-size: 1.125rem;
   }
 
@@ -402,6 +465,8 @@ const SkillTitle = styled.h5`
   }
 
   @media ${responsive.mobile} {
+    width: 18.3333vw;
+    font-size: 0.75rem;
   }
 `;
 
@@ -420,6 +485,8 @@ const SkillImg = styled.img`
   }
 
   @media ${responsive.mobile} {
+    width: 7vw;
+    height: 7vw;
   }
 `;
 
@@ -445,6 +512,8 @@ const SkillImgContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    width: 14.4444vw;
+    height: 14.4444vw;
   }
 `;
 
@@ -496,6 +565,8 @@ const SidlerLi = styled.li`
   }
 
   @media ${responsive.mobile} {
+    width: 18.3333vw;
+    margin-right: 5.5556vw;
   }
 `;
 
@@ -533,6 +604,7 @@ const SliderUl = styled.ul`
   }
 
   @media ${responsive.mobile} {
+    width: auto;
   }
 `;
 
@@ -544,12 +616,18 @@ const ThirdCategorySliderContainer = styled.div`
   width: 62.5vw;
   height: 130px;
 
+  @media (max-width: 1120px) {
+    height: 180px;
+  }
+
   @media ${responsive.tablet} {
     width: 93.75vw;
     height: 130px;
   }
 
   @media ${responsive.mobile} {
+    overflow: visible;
+    width: auto;
   }
 `;
 
@@ -576,10 +654,48 @@ const SortCategory = styled.button`
     `}
 `;
 
+const CurrentSort = styled.span`
+  font-weight: 400;
+  font-size: 12px;
+  color: #ffffff;
+`;
+
+const DownArrow = styled.img`
+  margin-left: 4px;
+`;
+
+const SortMobile = styled.div`
+  display: none;
+
+  @media ${responsive.mobile} {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #1f2026;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+
+    padding: 8px 12px;
+  }
+`;
+
+const SortPcTablet = styled.div`
+  @media ${responsive.mobile} {
+    display: none;
+  }
+`;
+
 const SortContainer = styled.div`
   display: block;
   margin-top: 60px;
   margin-left: auto;
+
+  @media ${responsive.mobile} {
+    margin-top: 32px;
+  }
 `;
 
 const SecondCategoryButton = styled.h4`
@@ -619,6 +735,12 @@ const SecondCategoryButton = styled.h4`
   }
 
   @media ${responsive.mobile} {
+    padding: 2.2222vw 4.4444vw;
+
+    font-size: 0.875rem;
+
+    margin-right: 8px;
+    margin-top: 0px;
   }
 `;
 
@@ -632,6 +754,9 @@ const SecondCategoryContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    /* flex-wrap: nowrap; */
+
+    margin-top: 16px;
   }
 `;
 
@@ -665,6 +790,10 @@ const FirstCategoryButton = styled.h3`
 
 const FirstCategoryContainer = styled.div`
   margin-top: 16px;
+
+  @media ${responsive.mobile} {
+    margin-top: 12px;
+  }
 `;
 
 const TitleEmoji = styled.img`
@@ -681,6 +810,10 @@ const Title = styled.h2`
   color: ${palette.textWhite};
   opacity: 0.8;
   margin-right: 2px;
+
+  @media ${responsive.mobile} {
+    font-size: 0.875rem;
+  }
 `;
 
 const Container = styled.div`
