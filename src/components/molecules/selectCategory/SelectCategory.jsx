@@ -241,19 +241,51 @@ const SelectCategory = () => {
         </LectureCardLi>
       </LectureCardsContainer>
       <Pagination>
-        <Prev>← PREV</Prev>
-        <PaginationNumberContainer>
-          <PaginationNumber>1</PaginationNumber>
-          <PaginationNumber>2</PaginationNumber>
-          <PaginationNumber>3</PaginationNumber>
-          <PaginationNumber>4</PaginationNumber>
-          <PaginationNumber>5</PaginationNumber>
-        </PaginationNumberContainer>
-        <Next>Next →</Next>
+        <PcPagination>
+          <Prev>← PREV</Prev>
+          <PaginationNumberContainer>
+            <PaginationNumber>1</PaginationNumber>
+            <PaginationNumber>2</PaginationNumber>
+            <PaginationNumber>3</PaginationNumber>
+            <PaginationNumber>4</PaginationNumber>
+            <PaginationNumber>5</PaginationNumber>
+          </PaginationNumberContainer>
+          <Next>Next →</Next>
+        </PcPagination>
+        <TabletPagination>강의 전체 보기↓</TabletPagination>
       </Pagination>
     </Container>
   );
 };
+
+const TabletPagination = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 93.75vw;
+  height: 44px;
+
+  background-color: #1f2026;
+  border-radius: 3px;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ffffff;
+`;
+
+const PcPagination = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media ${responsive.tablet} {
+    display: none;
+  }
+
+  @media ${responsive.mobile} {
+  }
+`;
 
 const PaginationNumberContainer = styled.div`
   display: flex;
@@ -307,11 +339,11 @@ const Prev = styled.a`
 `;
 
 const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   margin-top: 90px;
+
+  @media ${responsive.tablet} {
+    margin-top: 32px;
+  }
 `;
 
 const LectureCardLi = styled.li`
@@ -736,7 +768,7 @@ const SortCategory = styled.button`
 
 const CurrentSort = styled.span`
   font-weight: 400;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #ffffff;
 `;
 
