@@ -339,6 +339,25 @@ const LectureCardsContainer = styled.ul`
       margin-right: 3.3036vw;
     }
   }
+
+  @media ${responsive.tablet} {
+    & > li:not(:nth-of-type(2n)) {
+      margin-right: 0;
+    }
+
+    & > li:not(:nth-of-type(3n)) {
+      margin-right: 1.3021vw;
+    }
+  }
+  @media (max-width: 666px) {
+    & > li:nth-of-type(2n) {
+      margin-right: 0;
+    }
+
+    & > li:not(:nth-of-type(2n)) {
+      margin-right: 3.3036vw;
+    }
+  }
 `;
 
 const CloseCategoryButton = styled.button`
