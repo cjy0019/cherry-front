@@ -240,18 +240,79 @@ const SelectCategory = () => {
           <CategoryLectureCard />
         </LectureCardLi>
       </LectureCardsContainer>
-      {/* <Pagination>
-        <Prev></Prev>
-        <PaginationNumber></PaginationNumber>
-        <PaginationNumber></PaginationNumber>
-        <PaginationNumber></PaginationNumber>
-        <PaginationNumber></PaginationNumber>
-        <PaginationNumber></PaginationNumber>
-        <Next></Next>
-      </Pagination> */}
+      <Pagination>
+        <Prev>← PREV</Prev>
+        <PaginationNumberContainer>
+          <PaginationNumber>1</PaginationNumber>
+          <PaginationNumber>2</PaginationNumber>
+          <PaginationNumber>3</PaginationNumber>
+          <PaginationNumber>4</PaginationNumber>
+          <PaginationNumber>5</PaginationNumber>
+        </PaginationNumberContainer>
+        <Next>Next →</Next>
+      </Pagination>
     </Container>
   );
 };
+
+const PaginationNumberContainer = styled.div`
+  display: flex;
+
+  & > a:not(:last-of-type) {
+    margin-right: 12px;
+  }
+`;
+
+const Next = styled.a`
+  cursor: pointer;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.9;
+
+  margin-left: 20px;
+`;
+
+const PaginationNumber = styled.a`
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: #ffffff;
+
+  &:hover {
+    border-radius: 50%;
+    background-color: #1f2026;
+    color: #e72847;
+  }
+`;
+
+const Prev = styled.a`
+  cursor: pointer;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.9;
+
+  margin-right: 20px;
+`;
+
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 90px;
+`;
 
 const LectureCardLi = styled.li`
   all: unset;
