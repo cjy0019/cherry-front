@@ -85,34 +85,22 @@ const Hotsix = () => {
       <CarouselContainer>
         <CardsUl cardListRef={cardListRef} currentCarousel={currentCarousel}>
           <CardLi>
-            <HotSixCard />
-            <HoverDark />
-            <RankImg src={rank1} alt='1위 강의' />
+            <HotSixCard rankSrc={rank1} />
           </CardLi>
           <CardLi>
-            <HotSixCard />
-            <HoverDark />
-            <RankImg src={rank2} alt='2위 강의' />
+            <HotSixCard rankSrc={rank2} />
           </CardLi>
           <CardLi>
-            <HotSixCard />
-            <HoverDark />
-            <RankImg src={rank3} alt='3위 강의' />
+            <HotSixCard rankSrc={rank3} />
           </CardLi>
           <CardLi>
-            <HotSixCard />
-            <HoverDark />
-            <RankImg src={rank4} alt='4위 강의' />
+            <HotSixCard rankSrc={rank4} />
           </CardLi>
           <CardLi>
-            <HotSixCard />
-            <HoverDark />
-            <RankImg src={rank5} alt='5위 강의' />
+            <HotSixCard rankSrc={rank5} />
           </CardLi>
           <CardLi>
-            <HotSixCard />
-            <HoverDark />
-            <RankImg src={rank6} alt='6위 강의' />
+            <HotSixCard rankSrc={rank6} />
           </CardLi>
         </CardsUl>
       </CarouselContainer>
@@ -141,81 +129,6 @@ const CardLi = styled.li`
 
   @media ${responsive.mobile} {
     margin-right: 12px;
-  }
-`;
-
-const RankImg = styled.img`
-  position: absolute;
-  top: 7.5vw;
-  right: 0;
-
-  transition: all 0.2s ease-in-out;
-
-  width: 6.7188vw;
-  height: 2.1354vw;
-
-  opacity: 0;
-
-  @media (max-width: 1121px) {
-    top: 11.1964vw;
-
-    width: 10.03vw;
-    height: 3.1878vw;
-  }
-
-  @media ${responsive.tablet} {
-    width: 10.2875vw;
-    height: 3.2694vw;
-  }
-
-  @media ${responsive.mobile} {
-    top: 30.0833vw;
-
-    width: 26.9489vw;
-    height: 8.5633vw;
-  }
-`;
-
-const HoverDark = styled.div`
-  position: absolute;
-  top: 0;
-
-  width: 19.74vw;
-  height: 10.99vw;
-
-  background-color: #000000;
-  opacity: 0;
-  border-radius: 8px 8px 0px 0px;
-
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    & + img {
-      opacity: 1;
-    }
-
-    opacity: 0.7;
-  }
-
-  @media (max-width: 1121px) {
-    width: 29.4643vw;
-    height: 16.4063vw;
-  }
-  @media ${responsive.tablet} {
-    /* width: 232px;
-    height: 129px; */
-    width: 30.21vw;
-    height: 16.8vw;
-  }
-  /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
-  @media (max-width: 666px) {
-    width: 200.891px;
-    height: 111.719px;
-  }
-
-  @media ${responsive.mobile} {
-    width: 79.1667vw;
-    height: 44.1667vw;
   }
 `;
 
