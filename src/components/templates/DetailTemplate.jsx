@@ -26,7 +26,7 @@ const DetailTemplate = () => {
         </div>
         <SideBar />
       </VerticalContainer>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

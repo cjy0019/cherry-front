@@ -68,6 +68,8 @@ const Container = styled.div`
 
   @media ${responsive.mobile} {
     flex-direction: column;
+    gap: 0;
+
     margin-top: 52px;
     width: 100%;
     padding: 0 20px;
@@ -205,6 +207,7 @@ const FlexRight = styled.div`
   flex-direction: column;
   justify-content: center;
   word-break: keep-all;
+
   width: 471px;
 
   @media ${responsive.tablet} {
