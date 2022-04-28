@@ -102,7 +102,7 @@ const FlexLeft = styled.div`
     height: 420px;
     top: -32%;
     left: -191px;
-    /* z-index: -1; */
+    z-index: -1;
 
     background: radial-gradient(
       42.96% 98.15% at 50.05% 100%,
