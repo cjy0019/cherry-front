@@ -78,6 +78,9 @@ const StyledBookMark = styled(BookMarkButton)`
 `;
 
 const Badges = styled.div`
+  display: flex;
+  gap: 4px;
+
   margin-top: 20px;
 `;
 
