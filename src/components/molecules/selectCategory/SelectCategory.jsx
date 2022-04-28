@@ -40,6 +40,13 @@ const SelectCategory = () => {
 
   const [sortIsClicked, setSortIsClicked] = useState('최신순');
   const [currentCarousel, setCurrentCarousel] = useState(0);
+  let mobileSecondSlider = {
+    startX: 0,
+    moveX: 0,
+    endX: 0,
+    lastElementLocation: 0,
+    isFirstTouch: false,
+  };
 
   function selectFirstCategory(e) {
     setFirstCategoryIsClicked(e.target.innerText);
@@ -80,6 +87,44 @@ const SelectCategory = () => {
     setCurrentCarousel(currentCarousel - 1);
   }
 
+  function touchStartSecondSlider(e) {
+    mobileSecondSlider.startX = e.changedTouches[0].clientX;
+    if (!mobileSecondSlider.isFirstTouch) {
+      mobileSecondSlider.lastElementLocation =
+        e.currentTarget.lastElementChild.getBoundingClientRect().right;
+    }
+    mobileSecondSlider.isFirstTouch = true;
+  }
+  function touchMoveSecondSlider(e) {
+    mobileSecondSlider.moveX = -(
+      mobileSecondSlider.startX - e.changedTouches[0].clientX
+    );
+
+    e.currentTarget.style.transform = `translateX(${
+      mobileSecondSlider.endX + mobileSecondSlider.moveX
+    }px)`;
+  }
+  function touchEndSecondSlider(e) {
+    let responsiveWidth = (340 / 360) * window.innerWidth;
+    mobileSecondSlider.endX += -(
+      mobileSecondSlider.startX - e.changedTouches[0].clientX
+    );
+
+    if (
+      responsiveWidth - mobileSecondSlider.lastElementLocation >
+      mobileSecondSlider.endX
+    ) {
+      mobileSecondSlider.endX =
+        responsiveWidth - mobileSecondSlider.lastElementLocation;
+      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.endX}px)`;
+    }
+
+    if (mobileSecondSlider.endX > 0) {
+      mobileSecondSlider.endX = 0;
+      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.endX}px)`;
+    }
+  }
+
   return (
     <Container>
       <Title>
@@ -98,7 +143,10 @@ const SelectCategory = () => {
           백엔드
         </FirstCategoryButton>
       </FirstCategoryContainer>
-      <SecondCategoryContainer>
+      <SecondCategoryContainer
+        onTouchStart={touchStartSecondSlider}
+        onTouchMove={touchMoveSecondSlider}
+        onTouchEnd={touchEndSecondSlider}>
         <SecondCategoryButton
           secondCategoryIsClicked={secondCategoryIsClicked === '전체'}
           onClick={selectSecondCategory}>
@@ -847,6 +895,9 @@ const SecondCategoryButton = styled.h4`
   }
 
   @media ${responsive.mobile} {
+    display: flex;
+    flex-direction: row;
+
     padding: 2.2222vw 4.4444vw;
 
     font-size: 0.875rem;
@@ -857,17 +908,18 @@ const SecondCategoryButton = styled.h4`
 `;
 
 const SecondCategoryContainer = styled.div`
-  margin-top: 19px;
   display: flex;
-  flex-wrap: wrap;
+
+  margin-top: 19px;
 
   @media ${responsive.tablet} {
     margin-top: 15px;
   }
 
   @media ${responsive.mobile} {
-    /* flex-wrap: nowrap; */
+    flex-wrap: nowrap;
 
+    width: 1000px;
     margin-top: 16px;
   }
 `;
@@ -931,6 +983,8 @@ const Title = styled.h2`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  overflow: hidden;
 
   margin-top: 120px;
 
