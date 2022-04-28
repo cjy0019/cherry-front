@@ -20,7 +20,11 @@ const Hotsix = () => {
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
   const [currentCarousel, setCurrentCarousel] = useState(0);
   const cardListRef = useRef(null);
+
   let isBack1121 = false;
+  let startClientX = 0;
+  let moveClientX = 0;
+  let endClientX = 0;
 
   function selectCategory(e) {
     setIsCategoryActive(e.target.innerText);
@@ -31,6 +35,29 @@ const Hotsix = () => {
   }
   function carouselMoveLeft(e) {
     setCurrentCarousel(currentCarousel - 1);
+  }
+
+  function touchStartCarousel(e) {
+    startClientX = e.changedTouches[0].clientX;
+  }
+  function touchMoveCarousel(e) {
+    moveClientX = -(startClientX - e.changedTouches[0].clientX);
+    e.currentTarget.style.transform = `translateX(${
+      endClientX + moveClientX
+    }px)`;
+  }
+  function touchEndCarousel(e) {
+    endClientX += -(startClientX - e.changedTouches[0].clientX);
+
+    let responsiveWidth = (-1450 / 360) * window.innerWidth;
+    if (responsiveWidth > endClientX) {
+      endClientX = responsiveWidth;
+      e.currentTarget.style.transform = `translateX(${endClientX}px)`;
+    }
+    if (endClientX > 0) {
+      endClientX = 0;
+      e.currentTarget.style.transform = `translateX(${endClientX}px)`;
+    }
   }
 
   useEffect(() => {
@@ -83,7 +110,12 @@ const Hotsix = () => {
       </Header>
       <CarrouselButton onClick={carouselMoveLeft} />
       <CarouselContainer>
-        <CardsUl cardListRef={cardListRef} currentCarousel={currentCarousel}>
+        <CardsUl
+          onTouchStart={touchStartCarousel}
+          onTouchMove={touchMoveCarousel}
+          onTouchEnd={touchEndCarousel}
+          cardListRef={cardListRef}
+          currentCarousel={currentCarousel}>
           <CardLi>
             <HotSixCard rankSrc={rank1} />
           </CardLi>
@@ -151,6 +183,7 @@ const CarrouselButton = styled.button`
   }
 
   @media ${responsive.mobile} {
+    display: none;
     top: 56.4061vw;
   }
 `;
@@ -196,9 +229,11 @@ const CardsUl = styled.ul`
 
   @media ${responsive.mobile} {
     width: calc(82.5vw * 6);
-    ${({ currentCarousel }) => css`
+    transition: none;
+
+    /* ${({ currentCarousel }) => css`
       transform: translateX(-${16.6666 * currentCarousel}%);
-    `}
+    `} */
   }
 `;
 
@@ -213,8 +248,7 @@ const CarouselContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
-    overflow: none;
-    width: calc(82.5vw * 6);
+    width: 94.4444vw;
   }
 `;
 
@@ -414,15 +448,15 @@ const Container = styled.div`
 
   @media ${responsive.mobile} {
     & > button:nth-of-type(2) {
-      display: block;
-      right: 5px;
-
+      display: none;
+      /* right: 5px; */
+      /* 
       ${({ currentCarousel }) =>
         currentCarousel === 5
           ? css`
               display: none;
             `
-          : ''}
+          : ''} */
     }
   }
 `;

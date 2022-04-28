@@ -87,10 +87,13 @@ const RankImg = styled.img`
   }
 
   @media ${responsive.tablet} {
+    opacity: 1;
+
     width: 10.2875vw;
     height: 3.2694vw;
   }
   @media (max-width: 666px) {
+    opacity: 1;
     top: 15.015vw;
 
     width: 15.3341vw;
@@ -98,6 +101,7 @@ const RankImg = styled.img`
   }
 
   @media ${responsive.mobile} {
+    opacity: 1;
     top: 26.3889vw;
 
     width: 26.9489vw;
@@ -140,6 +144,13 @@ const HoverDark = styled.div`
     height: 16.4063vw;
   }
   @media ${responsive.tablet} {
+    &:hover {
+      & + img {
+        opacity: 1;
+      }
+      opacity: 0;
+    }
+
     /* width: 232px;
     height: 129px; */
     width: 30.21vw;
@@ -152,8 +163,9 @@ const HoverDark = styled.div`
   }
 
   @media ${responsive.mobile} {
-    width: 79.1667vw;
-    height: 44.1667vw;
+    display: none;
+    /* width: 79.1667vw; */
+    /* height: 44.1667vw; */
   }
 `;
 
@@ -311,6 +323,15 @@ const Bookmark = styled.button`
   }
 
   @media ${responsive.tablet} {
+    &:hover {
+      & + div {
+        opacity: 0;
+      }
+
+      & + div + img {
+        opacity: 1;
+      }
+    }
     /* top: 9px;
     right: 8px; */
     top: 1.17vw;
