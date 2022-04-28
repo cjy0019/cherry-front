@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import palette from '../../../style/palette';
+import { responsive } from '../../../style/responsive';
 
 import thumbnail from '../../../assets/img/thumbnail.svg';
-import palette from '../../../style/palette';
-import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
 import starRed from '../../../assets/img/star1_red.svg';
+
+import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
 import OfflineBadge from '../../UI/atoms/badges/OfflineBadge';
 import BookMarkButton from '../../UI/atoms/buttons/BookMarkButton';
-import { responsive } from '../../../style/responsive';
 import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
 import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
 
@@ -59,6 +60,7 @@ const Container = styled.div`
   justify-content: center;
   margin-top: 106px;
   gap: 7.4479vw;
+  overflow-x: hidden;
 
   @media ${responsive.tablet} {
     padding: 0 35px;
@@ -100,7 +102,7 @@ const FlexLeft = styled.div`
     height: 420px;
     top: -32%;
     left: -191px;
-    z-index: -1;
+    /* z-index: -1; */
 
     background: radial-gradient(
       42.96% 98.15% at 50.05% 100%,
@@ -177,7 +179,11 @@ const FlexLeft = styled.div`
     }
 
     @media ${responsive.mobile} {
-      display: none;
+      top: -25%;
+      left: -50px;
+
+      width: 100vw;
+      height: 260px;
     }
   }
 `;
@@ -220,6 +226,10 @@ const Title = styled.h1`
   @media ${responsive.tablet} {
     font-size: 1.125rem;
   }
+
+  @media ${responsive.mobile} {
+    font-size: 1.25rem;
+  }
 `;
 
 const Badges = styled.div`
@@ -231,9 +241,11 @@ const Badges = styled.div`
 const HashTags = styled.div`
   display: flex;
   gap: 12px;
+
   font-size: 1rem;
   font-weight: 400;
   color: ${palette.text4};
+
   margin-top: 12px;
 
   @media ${responsive.tablet} {
@@ -262,10 +274,15 @@ const StarPoints = styled.div`
 const Stars = styled.div`
   display: flex;
   gap: 0.625vw;
+
   margin: 0 16px 0 10px;
 
   & > img {
     @media ${responsive.tablet} {
+      width: 20px;
+    }
+
+    @media ${responsive.mobile} {
       width: 20px;
     }
   }
@@ -275,9 +292,14 @@ const Points = styled.p`
   font-weight: 700;
   font-size: 1.75rem;
   color: ${palette.textWhite};
+
   padding-top: 8px;
 
   @media ${responsive.tablet} {
+    font-size: 1.25rem;
+  }
+
+  @media ${responsive.mobile} {
     font-size: 1.25rem;
   }
 `;
@@ -289,6 +311,10 @@ const Counter = styled.p`
   padding-top: 8px;
 
   @media ${responsive.tablet} {
+    font-size: 0.875rem;
+  }
+
+  @media ${responsive.mobile} {
     font-size: 0.875rem;
   }
 `;
