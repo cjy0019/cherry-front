@@ -92,6 +92,10 @@ const Title = styled.h2`
   font-weight: 700;
   font-size: 1.5rem;
   color: ${palette.text2};
+
+  @media ${responsive.mobile} {
+    font-size: 1.125rem;
+  }
 `;
 
 const BoxContainer = styled.div`
@@ -102,6 +106,7 @@ const BoxContainer = styled.div`
 
   @media ${responsive.mobile} {
     flex-direction: column;
+    gap: 8px;
   }
 `;
 
@@ -111,19 +116,20 @@ const ReviewRecommendContainer = styled.div`
   gap: 20px;
 
   @media ${responsive.mobile} {
+    gap: 8px;
     width: 100%;
   }
 `;
 
 const CommonBox = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
   height: 230px;
   border-radius: 8px;
   background-color: ${palette.subNavy};
-  padding: 27px 0 25.5px 0;
 
   & > p:first-child {
     color: ${palette.text2};
@@ -145,9 +151,9 @@ const ScoreWrapper = styled.div`
 
 const Score = styled.p`
   text-align: center;
-  font-weight: 700;
+
   font-size: 2rem;
-  line-height: 100%;
+  font-weight: 700;
   color: ${palette.textWhite};
 `;
 
@@ -182,8 +188,13 @@ const ScoreWithText = styled.div`
   align-items: center;
   justify-content: center;
   gap: 4px;
+
   font-size: 0.875rem;
   color: ${palette.text2};
+
+  @media ${responsive.mobile} {
+    font-size: 0.75rem;
+  }
 `;
 
 const RecommendBox = styled(CommonBox)`
@@ -198,8 +209,9 @@ const DivisionBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 48px;
   gap: 20px;
+
+  margin-top: 48px;
 `;
 
 const HalfBox = styled.div`
