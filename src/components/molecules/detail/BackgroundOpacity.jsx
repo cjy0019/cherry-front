@@ -14,7 +14,7 @@ const BackgroundOpacity = () => {
 const Background = styled.div`
   position: absolute;
   top: 0;
-  z-index: -1;
+  z-index: -2;
   background-image: url(${thumbnail});
   background-size: cover;
   background-position-y: 100px;

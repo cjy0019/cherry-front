@@ -97,8 +97,8 @@ const FlexLeft = styled.div`
     display: block;
     position: absolute;
     width: 922.9997px;
-    height: 450px;
-    top: -41%;
+    height: 420px;
+    top: -32%;
     left: -191px;
     z-index: -1;
 
@@ -107,27 +107,73 @@ const FlexLeft = styled.div`
       rgba(255, 255, 255, 0.44) 9.29%,
       rgba(255, 255, 255, 0) 100%
     );
+
     @media (max-width: 1054px) {
-      top: -52%;
+      top: -42%;
     }
     @media (max-width: 975px) {
       width: 800px;
-      height: 450px;
-      top: -64%;
+      top: -56%;
     }
     @media (max-width: 892px) {
       width: 700px;
-      height: 450px;
 
-      top: -68%;
+      top: -57%;
     }
 
-    @media ${responsive.tablet} {
+    @media (max-width: 800px) {
+      width: 500px;
+
+      left: -60px;
+      top: -63%;
+    }
+
+    @media (max-width: 768px) {
       width: 550px;
       height: 300px;
 
-      top: -30%;
-      left: -140px;
+      top: -39%;
+      left: -100px;
+    }
+
+    @media (max-width: 700px) {
+      width: 550px;
+
+      left: -110px;
+    }
+
+    @media (max-width: 670px) {
+      width: 480px;
+
+      left: -90px;
+    }
+
+    @media (max-width: 630px) {
+      width: 480px;
+
+      left: -120px;
+    }
+
+    @media (max-width: 600px) {
+      width: 430px;
+
+      left: -90px;
+    }
+
+    @media (max-width: 570px) {
+      width: 400px;
+    }
+
+    @media (max-width: 520px) {
+      width: 350px;
+    }
+
+    @media (max-width: 490px) {
+      width: 300px;
+    }
+
+    @media (max-width: 450px) {
+      width: 250px;
     }
 
     @media ${responsive.mobile} {
