@@ -78,8 +78,10 @@ const FlexLeft = styled.div`
   border-radius: 10px;
 
   & > img {
-    border-radius: 10px;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
   @media ${responsive.tablet} {
