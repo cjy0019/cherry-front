@@ -97,9 +97,9 @@ const FlexLeft = styled.div`
     display: block;
     position: absolute;
     width: 922.9997px;
-    height: 399.9994px;
+    height: 450px;
+    top: -41%;
     left: -191px;
-    top: -85px;
     z-index: -1;
 
     background: radial-gradient(
@@ -107,30 +107,27 @@ const FlexLeft = styled.div`
       rgba(255, 255, 255, 0.44) 9.29%,
       rgba(255, 255, 255, 0) 100%
     );
-    @media (max-width: 1035px) {
-      top: -113px;
+    @media (max-width: 1054px) {
+      top: -52%;
     }
-    @media (max-width: 930px) {
-      height: 350px;
+    @media (max-width: 975px) {
       width: 800px;
-      top: -94px;
+      height: 450px;
+      top: -64%;
     }
     @media (max-width: 892px) {
-      height: 300px;
-      width: 800px;
-      top: -50px;
+      width: 700px;
+      height: 450px;
+
+      top: -68%;
     }
 
     @media ${responsive.tablet} {
+      width: 550px;
       height: 300px;
-      width: 700px;
-      top: -94px;
-    }
-    @media (max-width: 665px) {
-      display: none;
-    }
-    @media ${responsive.mobile} {
-      display: none;
+
+      top: -30%;
+      left: -140px;
     }
   }
 `;

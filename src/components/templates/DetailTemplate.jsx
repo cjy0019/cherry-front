@@ -10,6 +10,7 @@ import SideBar from '../molecules/detail/SideBar';
 import palette from '../../style/palette';
 import AverageScore from '../molecules/detail/AverageScore';
 import ReviewList from '../molecules/detail/ReviewList';
+import { responsive } from '../../style/responsive';
 
 const DetailTemplate = () => {
   return (
@@ -35,6 +36,10 @@ const VerticalContainer = styled.div`
   justify-content: center;
   gap: 49px;
   background-color: ${palette.backgroundBlack};
+
+  @media ${responsive.tablet} {
+    padding: 0 35px;
+  }
 `;
 
 export default DetailTemplate;
