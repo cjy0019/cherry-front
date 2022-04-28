@@ -16,8 +16,8 @@ const LectureDetailTitle = () => {
     <Container>
       <FlexLeft>
         <img src={thumbnail} alt='강의 썸네일' />
-        <OfflineBadge absolute left='5%' top='8%' />
-        <BookMarkButton absolute right='1.3021vw' top='1.4583vw' />
+        <StyledOffLineBadge />
+        <StyledBookMarkButton />
       </FlexLeft>
 
       <FlexRight>
@@ -131,6 +131,18 @@ const FlexLeft = styled.div`
       display: none;
     }
   }
+`;
+
+const StyledOffLineBadge = styled(OfflineBadge)`
+  position: absolute;
+  left: 5%;
+  top: 8%;
+`;
+
+const StyledBookMarkButton = styled(BookMarkButton)`
+  position: absolute;
+  right: 1.3021vw;
+  top: 1.4583vw;
 `;
 
 const FlexRight = styled.div`
