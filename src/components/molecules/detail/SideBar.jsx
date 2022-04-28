@@ -15,8 +15,8 @@ const SideBar = () => {
   return (
     <Container>
       <ThumbnailWrapper>
-        <OfflineBadge absolute left='5%' top='10%' />
-        <BookMarkButton absolute right='5%' top='5%' markSize='40px' />
+        <StyledOffLineBadge />
+        <StyledBookMark markSize='40px' />
       </ThumbnailWrapper>
 
       <Badges>
@@ -63,6 +63,18 @@ const ThumbnailWrapper = styled.div`
   background-repeat: no-repeat;
   position: relative;
   border-radius: 8px;
+`;
+
+const StyledOffLineBadge = styled(OfflineBadge)`
+  position: absolute;
+  left: 5%;
+  top: 10%;
+`;
+
+const StyledBookMark = styled(BookMarkButton)`
+  position: absolute;
+  top: 5%;
+  right: 5%;
 `;
 
 const Badges = styled.div`
