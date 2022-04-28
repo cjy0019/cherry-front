@@ -11,6 +11,7 @@ import SignupPage from './components/pages/SignupPage';
 import LectureRegisterPage from './components/pages/admin/LectureRegisterPage';
 import CategoryRegisterPage from './components/pages/admin/CategoryRegisterPage';
 import LectureListPage from './components/pages/admin/LectureListPage';
+import UserListPage from './components/pages/admin/UserListPage';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='write' element={<ReviewWritePage />} />
           <Route path='signin' element={<SigninPage />} />
           <Route path='signup' element={<SignupPage />} />
+
           <Route path='admin'>
             <Route
               path='lecture-registration'
@@ -33,6 +35,7 @@ const App = () => {
               element={<CategoryRegisterPage />}
             />
             <Route path='lecture-list' element={<LectureListPage />} />
+            <Route path='user-list' element={<UserListPage />} />
           </Route>
         </Routes>
       </Router>
