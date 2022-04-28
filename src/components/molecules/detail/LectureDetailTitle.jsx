@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import palette from '../../../style/palette';
+import { responsive } from '../../../style/responsive';
 
 import thumbnail from '../../../assets/img/thumbnail.svg';
-import palette from '../../../style/palette';
-import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
 import starRed from '../../../assets/img/star1_red.svg';
+
+import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
 import OfflineBadge from '../../UI/atoms/badges/OfflineBadge';
 import BookMarkButton from '../../UI/atoms/buttons/BookMarkButton';
-import { responsive } from '../../../style/responsive';
 import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
 import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
 
@@ -16,8 +17,8 @@ const LectureDetailTitle = () => {
     <Container>
       <FlexLeft>
         <img src={thumbnail} alt='강의 썸네일' />
-        <OfflineBadge absolute left='5%' top='8%' />
-        <BookMarkButton absolute right='1.3021vw' top='1.4583vw' />
+        <StyledOffLineBadge />
+        <StyledBookMarkButton />
       </FlexLeft>
 
       <FlexRight>
@@ -59,6 +60,7 @@ const Container = styled.div`
   justify-content: center;
   margin-top: 106px;
   gap: 7.4479vw;
+  overflow-x: hidden;
 
   @media ${responsive.tablet} {
     padding: 0 35px;
@@ -66,6 +68,8 @@ const Container = styled.div`
 
   @media ${responsive.mobile} {
     flex-direction: column;
+    gap: 0;
+
     margin-top: 52px;
     width: 100%;
     padding: 0 20px;
@@ -78,8 +82,10 @@ const FlexLeft = styled.div`
   border-radius: 10px;
 
   & > img {
-    border-radius: 10px;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
   @media ${responsive.tablet} {
@@ -95,9 +101,9 @@ const FlexLeft = styled.div`
     display: block;
     position: absolute;
     width: 922.9997px;
-    height: 399.9994px;
+    height: 420px;
+    top: -32%;
     left: -191px;
-    top: -85px;
     z-index: -1;
 
     background: radial-gradient(
@@ -105,32 +111,95 @@ const FlexLeft = styled.div`
       rgba(255, 255, 255, 0.44) 9.29%,
       rgba(255, 255, 255, 0) 100%
     );
-    @media (max-width: 1035px) {
-      top: -113px;
+
+    @media (max-width: 1054px) {
+      top: -42%;
     }
-    @media (max-width: 930px) {
-      height: 350px;
+    @media (max-width: 975px) {
       width: 800px;
-      top: -94px;
+      top: -56%;
     }
     @media (max-width: 892px) {
-      height: 300px;
-      width: 800px;
-      top: -50px;
+      width: 700px;
+
+      top: -57%;
     }
 
-    @media ${responsive.tablet} {
+    @media (max-width: 800px) {
+      width: 500px;
+
+      left: -60px;
+      top: -63%;
+    }
+
+    @media (max-width: 768px) {
+      width: 550px;
       height: 300px;
-      width: 700px;
-      top: -94px;
+
+      top: -39%;
+      left: -100px;
     }
-    @media (max-width: 665px) {
-      display: none;
+
+    @media (max-width: 700px) {
+      width: 550px;
+
+      left: -110px;
     }
+
+    @media (max-width: 670px) {
+      width: 480px;
+
+      left: -90px;
+    }
+
+    @media (max-width: 630px) {
+      width: 480px;
+
+      left: -120px;
+    }
+
+    @media (max-width: 600px) {
+      width: 430px;
+
+      left: -90px;
+    }
+
+    @media (max-width: 570px) {
+      width: 400px;
+    }
+
+    @media (max-width: 520px) {
+      width: 350px;
+    }
+
+    @media (max-width: 490px) {
+      width: 300px;
+    }
+
+    @media (max-width: 450px) {
+      width: 250px;
+    }
+
     @media ${responsive.mobile} {
-      display: none;
+      top: -25%;
+      left: -50px;
+
+      width: 100vw;
+      height: 260px;
     }
   }
+`;
+
+const StyledOffLineBadge = styled(OfflineBadge)`
+  position: absolute;
+  left: 5%;
+  top: 8%;
+`;
+
+const StyledBookMarkButton = styled(BookMarkButton)`
+  position: absolute;
+  right: 1.3021vw;
+  top: 1.4583vw;
 `;
 
 const FlexRight = styled.div`
@@ -138,6 +207,7 @@ const FlexRight = styled.div`
   flex-direction: column;
   justify-content: center;
   word-break: keep-all;
+
   width: 471px;
 
   @media ${responsive.tablet} {
@@ -159,6 +229,10 @@ const Title = styled.h1`
   @media ${responsive.tablet} {
     font-size: 1.125rem;
   }
+
+  @media ${responsive.mobile} {
+    font-size: 1.25rem;
+  }
 `;
 
 const Badges = styled.div`
@@ -170,9 +244,11 @@ const Badges = styled.div`
 const HashTags = styled.div`
   display: flex;
   gap: 12px;
+
   font-size: 1rem;
   font-weight: 400;
   color: ${palette.text4};
+
   margin-top: 12px;
 
   @media ${responsive.tablet} {
@@ -201,10 +277,15 @@ const StarPoints = styled.div`
 const Stars = styled.div`
   display: flex;
   gap: 0.625vw;
+
   margin: 0 16px 0 10px;
 
   & > img {
     @media ${responsive.tablet} {
+      width: 20px;
+    }
+
+    @media ${responsive.mobile} {
       width: 20px;
     }
   }
@@ -214,9 +295,14 @@ const Points = styled.p`
   font-weight: 700;
   font-size: 1.75rem;
   color: ${palette.textWhite};
+
   padding-top: 8px;
 
   @media ${responsive.tablet} {
+    font-size: 1.25rem;
+  }
+
+  @media ${responsive.mobile} {
     font-size: 1.25rem;
   }
 `;
@@ -228,6 +314,10 @@ const Counter = styled.p`
   padding-top: 8px;
 
   @media ${responsive.tablet} {
+    font-size: 0.875rem;
+  }
+
+  @media ${responsive.mobile} {
     font-size: 0.875rem;
   }
 `;

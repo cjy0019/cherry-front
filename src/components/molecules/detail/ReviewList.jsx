@@ -4,6 +4,7 @@ import palette from '../../../style/palette';
 import starRed from '../../../assets/img/star1_red.svg';
 import SatisfactionBadge from '../../UI/atoms/badges/SatisfactionBadge';
 import JobBadge from '../../UI/atoms/badges/JobBadge';
+import { responsive } from '../../../style/responsive';
 
 const ReviewList = () => {
   const [selected, setSelected] = useState('asc');
@@ -82,13 +83,14 @@ const ReviewList = () => {
           <JobBadge>1년차</JobBadge>
         </BadgeWrapper>
       </ReviewContainer>
+
+      <MoreLectureButton>강의 전체 보기 ↓</MoreLectureButton>
     </Container>
   );
 };
 
 const Container = styled.div`
   margin-top: 60px;
-  padding-bottom: 30vh;
 `;
 
 const HeaderContainer = styled.div`
@@ -97,10 +99,18 @@ const HeaderContainer = styled.div`
   padding-bottom: 24px;
   border-bottom: 1px solid ${palette.lineGray};
 
+  @media ${responsive.mobile} {
+    padding-bottom: 20px;
+  }
+
   & > h2 {
     font-weight: 700;
     font-size: 1.5rem;
     color: ${palette.text2};
+
+    @media ${responsive.mobile} {
+      font-size: 1.125rem;
+    }
   }
 `;
 
@@ -113,6 +123,10 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 12px;
+
+  @media ${responsive.mobile} {
+    display: none;
+  }
 `;
 
 const FilteringButton = styled.button`
@@ -164,12 +178,17 @@ const Date = styled.p`
   font-size: 0.75rem;
   text-align: right;
   color: ${palette.text3};
+
+  @media ${responsive.mobile} {
+    display: none;
+  }
 `;
 
 const Title = styled.p`
   font-weight: 400;
   font-size: 1rem;
   color: ${palette.text2};
+
   margin-top: 28px;
 `;
 
@@ -177,6 +196,7 @@ const Advantages = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
   margin-top: 24px;
 
   & > p:first-child {
@@ -188,9 +208,11 @@ const Advantages = styled.div`
     font-weight: 400;
     font-size: 0.875rem;
     color: ${palette.text5};
+
     max-width: 700px;
+
     word-break: keep-all;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 `;
 
@@ -199,6 +221,37 @@ const BadgeWrapper = styled.div`
   align-items: center;
   gap: 4px;
   margin-top: 20px;
+`;
+
+const MoreLectureButton = styled.button`
+  all: unset;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: ${palette.textWhite};
+
+  width: 100%;
+  height: 44px;
+
+  margin-top: 24px;
+
+  background-color: ${palette.subNavy};
+
+  border-radius: 3px;
+
+  @media ${responsive.tablet} {
+    display: flex;
+    margin-bottom: 130px;
+  }
+
+  @media ${responsive.mobile} {
+    display: flex;
+    margin-bottom: 32px;
+  }
 `;
 
 export default ReviewList;
