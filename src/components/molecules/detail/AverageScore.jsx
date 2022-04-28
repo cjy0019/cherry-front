@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
+
 import starRed from '../../../assets/img/star1_red.svg';
 import smileRed from '../../../assets/img/smile_red.svg';
 import smileGrey from '../../../assets/img/smile_grey.svg';
-import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
 import ProgressBar from './ProgressBar';
+
+import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
+import { responsive } from '../../../style/responsive';
 
 const AverageScore = () => {
   return (
@@ -13,51 +16,53 @@ const AverageScore = () => {
       <Title>평점</Title>
 
       <BoxContainer>
-        <ScoreBox>
-          <p>리뷰 평점</p>
+        <ReviewRecommendContainer>
+          <ScoreBox>
+            <p>리뷰 평점</p>
 
-          <ScoreWrapper>
-            <Score>4.5</Score>
-            <Counter>(133명 참여)</Counter>
-          </ScoreWrapper>
+            <ScoreWrapper>
+              <Score>4.5</Score>
+              <Counter>(133명 참여)</Counter>
+            </ScoreWrapper>
 
-          <StarContainer>
-            <img src={starRed} alt='포인트' />
-            <img src={starRed} alt='포인트' />
-            <img src={starRed} alt='포인트' />
-            <img src={starRed} alt='포인트' />
-            <img src={starRed} alt='포인트' />
-          </StarContainer>
+            <StarContainer>
+              <img src={starRed} alt='포인트' />
+              <img src={starRed} alt='포인트' />
+              <img src={starRed} alt='포인트' />
+              <img src={starRed} alt='포인트' />
+              <img src={starRed} alt='포인트' />
+            </StarContainer>
 
-          <FrontBackContainer>
-            <ScoreWithText>
-              <p>프론트엔드</p>
-              <p>2.2</p>
-            </ScoreWithText>
-            <ScoreWithText>
-              <p>백엔드</p>
-              <p>2.5</p>
-            </ScoreWithText>
-          </FrontBackContainer>
-        </ScoreBox>
+            <FrontBackContainer>
+              <ScoreWithText>
+                <p>프론트엔드</p>
+                <p>2.2</p>
+              </ScoreWithText>
+              <ScoreWithText>
+                <p>백엔드</p>
+                <p>2.5</p>
+              </ScoreWithText>
+            </FrontBackContainer>
+          </ScoreBox>
 
-        <RecommendBox>
-          <p>강의 추천도</p>
+          <RecommendBox>
+            <p>강의 추천도</p>
 
-          <DivisionBox>
-            <HalfBox red>
-              <img src={smileRed} alt='추천해요 이미지' />
-              <p>92%</p>
-              <RecommendBadge point>추천해요!</RecommendBadge>
-            </HalfBox>
+            <DivisionBox>
+              <HalfBox red>
+                <img src={smileRed} alt='추천해요 이미지' />
+                <p>92%</p>
+                <RecommendBadge point>추천해요!</RecommendBadge>
+              </HalfBox>
 
-            <HalfBox>
-              <img src={smileGrey} alt='별로에요 이미지' />
-              <p>8%</p>
-              <RecommendBadge>별로에요</RecommendBadge>
-            </HalfBox>
-          </DivisionBox>
-        </RecommendBox>
+              <HalfBox>
+                <img src={smileGrey} alt='별로에요 이미지' />
+                <p>8%</p>
+                <RecommendBadge>별로에요</RecommendBadge>
+              </HalfBox>
+            </DivisionBox>
+          </RecommendBox>
+        </ReviewRecommendContainer>
 
         <SatisfactionBox>
           <p>가격 대비 만족도</p>
@@ -94,6 +99,20 @@ const BoxContainer = styled.div`
   align-items: center;
   margin-top: 28px;
   gap: 20px;
+
+  @media ${responsive.mobile} {
+    flex-direction: column;
+  }
+`;
+
+const ReviewRecommendContainer = styled.div`
+  display: flex;
+  width: 55%;
+  gap: 20px;
+
+  @media ${responsive.mobile} {
+    width: 100%;
+  }
 `;
 
 const CommonBox = styled.div`
@@ -101,7 +120,6 @@ const CommonBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 30%;
   height: 230px;
   border-radius: 8px;
   background-color: ${palette.subNavy};
@@ -113,7 +131,13 @@ const CommonBox = styled.div`
   }
 `;
 
-const ScoreBox = styled(CommonBox)``;
+const ScoreBox = styled(CommonBox)`
+  width: 100%;
+
+  @media ${responsive.mobile} {
+    width: 50%;
+  }
+`;
 
 const ScoreWrapper = styled.div`
   margin-top: 28px;
@@ -162,7 +186,13 @@ const ScoreWithText = styled.div`
   color: ${palette.text2};
 `;
 
-const RecommendBox = styled(CommonBox)``;
+const RecommendBox = styled(CommonBox)`
+  width: 100%;
+
+  @media ${responsive.mobile} {
+    width: 50%;
+  }
+`;
 
 const DivisionBox = styled.div`
   display: flex;
@@ -188,6 +218,10 @@ const HalfBox = styled.div`
 
 const SatisfactionBox = styled(CommonBox)`
   width: 60%;
+
+  @media ${responsive.mobile} {
+    width: 100%;
+  }
 `;
 
 const ProgressColContainer = styled.div`

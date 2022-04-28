@@ -40,6 +40,10 @@ const VerticalContainer = styled.div`
   @media ${responsive.tablet} {
     padding: 0 35px;
   }
+
+  @media ${responsive.mobile} {
+    padding: 0 20px 0 21px;
+  }
 `;
 
 export default DetailTemplate;

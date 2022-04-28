@@ -129,6 +129,10 @@ const FlexLeft = styled.div`
       top: -30%;
       left: -140px;
     }
+
+    @media ${responsive.mobile} {
+      display: none;
+    }
   }
 `;
 
