@@ -5,9 +5,9 @@ import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 import linkIcon from '../../../../assets/img/linkicon.svg';
 
-const OriginalLinkButton = ({ to }) => {
+const OriginalLinkButton = ({ to, className }) => {
   return (
-    <StyledLink to={to}>
+    <StyledLink className={className} to={to}>
       원본 링크
       <img src={linkIcon} alt='아이콘' />
     </StyledLink>
@@ -38,7 +38,7 @@ const StyledLink = styled(Link)`
 
   @media ${responsive.mobile} {
     width: 50%;
-  } ;
+  }
 `;
 
 export default OriginalLinkButton;

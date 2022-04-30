@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 
-const LargeAgencyBadge = ({ children }) => {
+const LargeAgencyBadge = ({ children, className }) => {
   const [type, ...agencyName] = children.split(' ');
   return (
-    <StyledBadge>
+    <StyledBadge className={className}>
       <Regular>{type}</Regular>
       <Bold>{agencyName.join(' ')}</Bold>
     </StyledBadge>
