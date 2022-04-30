@@ -2,8 +2,12 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 
-const RecommendBadge = ({ children, point }) => {
-  return <StyledBadge point={point}>{children}</StyledBadge>;
+const RecommendBadge = ({ children, point, className }) => {
+  return (
+    <StyledBadge point={point} className={className}>
+      {children}
+    </StyledBadge>
+  );
 };
 
 const StyledBadge = styled.div`

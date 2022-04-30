@@ -52,13 +52,13 @@ const AverageScore = () => {
               <HalfBox red>
                 <img src={smileRed} alt='추천해요 이미지' />
                 <p>92%</p>
-                <RecommendBadge point>추천해요!</RecommendBadge>
+                <StyledRecommendBadge point>추천해요!</StyledRecommendBadge>
               </HalfBox>
 
               <HalfBox>
                 <img src={smileGrey} alt='별로에요 이미지' />
                 <p>8%</p>
-                <RecommendBadge>별로에요</RecommendBadge>
+                <StyledRecommendBadge>별로에요</StyledRecommendBadge>
               </HalfBox>
             </DivisionBox>
           </RecommendBox>
@@ -124,8 +124,9 @@ const ReviewRecommendContainer = styled.div`
 const CommonBox = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+
+  padding: 27px 10px 0;
 
   height: 230px;
   border-radius: 8px;
@@ -200,6 +201,12 @@ const ScoreWithText = styled.div`
 const RecommendBox = styled(CommonBox)`
   width: 100%;
 
+  & > p {
+    @media (min-width: 768px) and (max-width: 790px) {
+      font-size: 0.875rem;
+    }
+  }
+
   @media ${responsive.mobile} {
     width: 50%;
   }
@@ -209,7 +216,7 @@ const DivisionBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.0417vw;
 
   margin-top: 48px;
 `;
@@ -225,6 +232,22 @@ const HalfBox = styled.div`
     font-size: 1.25rem;
 
     color: ${(props) => (props.red ? palette.pointRed : palette.text4)};
+
+    @media (min-width: 768px) and (max-width: 790px) {
+      font-size: 15px;
+    }
+  }
+
+  & > img {
+    @media (min-width: 768px) and (max-width: 790px) {
+      width: 25px;
+    }
+  }
+`;
+
+const StyledRecommendBadge = styled(RecommendBadge)`
+  @media (min-width: 768px) and (max-width: 790px) {
+    display: none;
   }
 `;
 
