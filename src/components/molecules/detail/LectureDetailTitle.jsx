@@ -23,6 +23,7 @@ const LectureDetailTitle = () => {
 
       <FlexRight>
         <Title>웹 게임을 만들며 배우는 JavaScript (자바스크립트)</Title>
+
         <Badges>
           <LargeAgencyBadge>기관 groomedu</LargeAgencyBadge>
           <LargeAgencyBadge>강사 ZeroCho</LargeAgencyBadge>
@@ -58,9 +59,10 @@ const LectureDetailTitle = () => {
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 106px;
   gap: 7.4479vw;
-  overflow-x: hidden;
+
+  padding: 0 15px;
+  margin-top: 106px;
 
   @media ${responsive.tablet} {
     padding: 0 35px;
@@ -84,6 +86,7 @@ const FlexLeft = styled.div`
   & > img {
     display: block;
     width: 100%;
+
     object-fit: contain;
     border-radius: 10px;
   }
@@ -194,12 +197,19 @@ const StyledOffLineBadge = styled(OfflineBadge)`
   position: absolute;
   left: 5%;
   top: 8%;
+
+  font-size: 0.9375vw;
+  padding: 0.4688vw 0.5729vw 0.4167vw;
 `;
 
 const StyledBookMarkButton = styled(BookMarkButton)`
   position: absolute;
   right: 1.3021vw;
   top: 1.4583vw;
+
+  & > img {
+    width: 4.1667vw;
+  }
 `;
 
 const FlexRight = styled.div`
@@ -221,13 +231,13 @@ const FlexRight = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.75rem;
+  font-size: 1.7708vw;
   font-weight: 700;
   line-height: 1.3;
   color: ${palette.textWhite};
 
   @media ${responsive.tablet} {
-    font-size: 1.125rem;
+    font-size: 1.0417vw;
   }
 
   @media ${responsive.mobile} {
@@ -238,7 +248,7 @@ const Title = styled.h1`
 const Badges = styled.div`
   display: flex;
   gap: 8px;
-  margin-top: 28px;
+  margin-top: 1.4583vw;
 `;
 
 const HashTags = styled.div`
@@ -263,7 +273,8 @@ const HashTags = styled.div`
 const StarPoints = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 71px;
+
+  margin-top: 3.6979vw;
 
   @media ${responsive.tablet} {
     margin-top: 21px;
@@ -293,7 +304,7 @@ const Stars = styled.div`
 
 const Points = styled.p`
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 1.7708vw;
   color: ${palette.textWhite};
 
   padding-top: 8px;
@@ -309,7 +320,7 @@ const Points = styled.p`
 
 const Counter = styled.p`
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1.1458vw;
   color: ${palette.text2};
   padding-top: 8px;
 

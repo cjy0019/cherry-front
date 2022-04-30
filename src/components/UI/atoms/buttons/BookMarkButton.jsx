@@ -7,10 +7,7 @@ import { responsive } from '../../../../style/responsive';
 
 const BookMarkButton = ({ active, handleClick, markSize, className }) => {
   return (
-    <StyledButton
-      className={className}
-      markSize={markSize}
-      onClick={handleClick}>
+    <StyledButton className={className} onClick={handleClick}>
       {active && <img src={bookmark_active} alt='북마크' />}
       {!active && <img src={bookmark} alt='북마크' />}
     </StyledButton>
@@ -23,8 +20,6 @@ const StyledButton = styled.button`
   border: none;
 
   & > img {
-    width: ${(props) => props.markSize || '48px'};
-
     @media ${responsive.tablet} {
       width: 40px;
     }

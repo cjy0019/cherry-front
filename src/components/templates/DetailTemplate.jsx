@@ -37,6 +37,8 @@ const VerticalContainer = styled.div`
   gap: 49px;
   background-color: ${palette.backgroundBlack};
 
+  padding: 0 15px;
+
   @media ${responsive.tablet} {
     padding: 0 35px;
   }
