@@ -23,9 +23,10 @@ const LectureDetailTitle = () => {
 
       <FlexRight>
         <Title>웹 게임을 만들며 배우는 JavaScript (자바스크립트)</Title>
+
         <Badges>
-          <LargeAgencyBadge>기관 groomedu</LargeAgencyBadge>
-          <LargeAgencyBadge>강사 ZeroCho</LargeAgencyBadge>
+          <StyledLargeAgencyBadge>기관 groomedu</StyledLargeAgencyBadge>
+          <StyledLargeAgencyBadge>강사 ZeroCho</StyledLargeAgencyBadge>
         </Badges>
 
         <HashTags>
@@ -47,8 +48,8 @@ const LectureDetailTitle = () => {
         </StarPoints>
 
         <ButtonContainer>
-          <OriginalLinkButton to='/' />
-          <ReviewButton>리뷰 작성하기</ReviewButton>
+          <StyledOriginalLinkButton to='/' />
+          <StyledReviewButton>리뷰 작성하기</StyledReviewButton>
         </ButtonContainer>
       </FlexRight>
     </Container>
@@ -58,9 +59,10 @@ const LectureDetailTitle = () => {
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 106px;
   gap: 7.4479vw;
-  overflow-x: hidden;
+
+  padding: 0 15px;
+  margin-top: 106px;
 
   @media ${responsive.tablet} {
     padding: 0 35px;
@@ -82,9 +84,10 @@ const FlexLeft = styled.div`
   border-radius: 10px;
 
   & > img {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+    object-fit: contain;
     border-radius: 10px;
   }
 
@@ -129,7 +132,7 @@ const FlexLeft = styled.div`
       width: 500px;
 
       left: -60px;
-      top: -63%;
+      top: -50%;
     }
 
     @media (max-width: 768px) {
@@ -194,12 +197,21 @@ const StyledOffLineBadge = styled(OfflineBadge)`
   position: absolute;
   left: 5%;
   top: 8%;
+
+  font-size: 0.5729vw;
+  padding: 0.4167vw 0.5208vw 0.3646vw;
 `;
 
 const StyledBookMarkButton = styled(BookMarkButton)`
   position: absolute;
   right: 1.3021vw;
   top: 1.4583vw;
+
+  & > img {
+    @media ${responsive.tablet} {
+      width: 5.2083vw;
+    }
+  }
 `;
 
 const FlexRight = styled.div`
@@ -221,13 +233,13 @@ const FlexRight = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.75rem;
+  font-size: 1.7708vw;
   font-weight: 700;
   line-height: 1.3;
   color: ${palette.textWhite};
 
   @media ${responsive.tablet} {
-    font-size: 1.125rem;
+    font-size: 1.875vw;
   }
 
   @media ${responsive.mobile} {
@@ -239,6 +251,26 @@ const Badges = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 28px;
+
+  @media ${responsive.tablet} {
+    margin-top: 0.625vw;
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+  @media ${responsive.mobile} {
+    display: flex;
+    gap: 4px;
+
+    margin-top: 12px;
+  }
+`;
+
+const StyledLargeAgencyBadge = styled(LargeAgencyBadge)`
+  @media ${responsive.tablet} {
+    font-size: 0.8333vw;
+  }
 `;
 
 const HashTags = styled.div`
@@ -252,7 +284,9 @@ const HashTags = styled.div`
   margin-top: 12px;
 
   @media ${responsive.tablet} {
-    font-size: 0.625rem;
+    gap: 0.625vw;
+    margin-top: 0.5208vw;
+    font-size: 0.625vw;
   }
 
   @media ${responsive.mobile} {
@@ -263,10 +297,11 @@ const HashTags = styled.div`
 const StarPoints = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 71px;
+
+  margin-top: 3.6979vw;
 
   @media ${responsive.tablet} {
-    margin-top: 21px;
+    margin-top: 1.0938vw;
   }
 
   @media ${responsive.mobile} {
@@ -282,7 +317,7 @@ const Stars = styled.div`
 
   & > img {
     @media ${responsive.tablet} {
-      width: 20px;
+      width: 3.125vw;
     }
 
     @media ${responsive.mobile} {
@@ -293,13 +328,13 @@ const Stars = styled.div`
 
 const Points = styled.p`
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 1.7708vw;
   color: ${palette.textWhite};
 
   padding-top: 8px;
 
   @media ${responsive.tablet} {
-    font-size: 1.25rem;
+    font-size: 2.0833vw;
   }
 
   @media ${responsive.mobile} {
@@ -309,12 +344,13 @@ const Points = styled.p`
 
 const Counter = styled.p`
   font-weight: 400;
-  font-size: 1.125rem;
+  font-size: 1.1458vw;
+
   color: ${palette.text2};
   padding-top: 8px;
 
   @media ${responsive.tablet} {
-    font-size: 0.875rem;
+    font-size: 0.7292vw;
   }
 
   @media ${responsive.mobile} {
@@ -335,6 +371,31 @@ const ButtonContainer = styled.div`
     display: flex;
     gap: 6px;
     margin-top: 8px;
+  }
+`;
+
+const StyledOriginalLinkButton = styled(OriginalLinkButton)`
+  @media ${responsive.tablet} {
+    height: 5.2083vw;
+    font-size: 0.625vw;
+  }
+`;
+
+const StyledReviewButton = styled(ReviewButton)`
+  ${(props) =>
+    props.dim &&
+    css`
+      background-color: ${palette.subNavy};
+      color: ${palette.text6};
+    `}
+
+  @media ${responsive.tablet} {
+    height: 5.2083vw;
+    font-size: 0.625vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 50%;
   }
 `;
 
