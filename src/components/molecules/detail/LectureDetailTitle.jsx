@@ -184,11 +184,20 @@ const FlexLeft = styled.div`
     }
 
     @media ${responsive.mobile} {
-      top: -25%;
-      left: -50px;
+      top: -40%;
+      left: -30px;
 
       width: 100vw;
-      height: 260px;
+      height: 210px;
+    }
+
+    @media (max-width: 320px) {
+      top: -30%;
+      height: 160px;
+    }
+
+    @media (max-width: 267px) {
+      display: none;
     }
   }
 `;

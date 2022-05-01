@@ -140,6 +140,7 @@ const CommonBox = styled.div`
 
 const ScoreBox = styled(CommonBox)`
   width: 100%;
+  min-width: 105px;
 
   @media ${responsive.mobile} {
     width: 50%;
@@ -156,29 +157,40 @@ const Score = styled.p`
   font-size: 2rem;
   font-weight: 700;
   color: ${palette.textWhite};
+
+  @media (min-width: 430px) and (max-width: 525px) {
+    font-size: 1.625rem;
+  }
 `;
 
 const Counter = styled.p`
   font-weight: 400;
   font-size: 0.875rem;
-  line-height: 100%;
   color: ${palette.text2};
+
+  @media (min-width: 430px) and (max-width: 525px) {
+    font-size: 0.6875rem;
+  }
 `;
 
 const StarContainer = styled.div`
   display: flex;
-  gap: 5.26px;
+  gap: 0.274vw;
   margin-top: 12.49px;
 
   & > img {
     width: 15.79px;
+
+    @media (max-width: 520px) {
+      width: 2.0833vw;
+    }
   }
 `;
 
 const FrontBackContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 29px;
+  gap: 1.5104vw;
   margin-top: 24.7px;
   width: 100%;
 `;
@@ -193,6 +205,10 @@ const ScoreWithText = styled.div`
   font-size: 0.875rem;
   color: ${palette.text2};
 
+  @media (max-width: 670px) {
+    font-size: 0.5208vw;
+  }
+
   @media ${responsive.mobile} {
     font-size: 0.75rem;
   }
@@ -202,6 +218,8 @@ const RecommendBox = styled(CommonBox)`
   width: 100%;
 
   & > p {
+    word-break: keep-all;
+
     @media (min-width: 768px) and (max-width: 790px) {
       font-size: 0.875rem;
     }
@@ -234,19 +252,30 @@ const HalfBox = styled.div`
     color: ${(props) => (props.red ? palette.pointRed : palette.text4)};
 
     @media (min-width: 768px) and (max-width: 790px) {
-      font-size: 15px;
+      font-size: 1.0625rem;
+    }
+
+    @media (max-width: 615px) {
+      font-size: 1.0625rem;
     }
   }
 
   & > img {
     @media (min-width: 768px) and (max-width: 790px) {
-      width: 25px;
+      width: 5.2083vw;
+    }
+    @media (max-width: 615px) {
+      width: 20px;
     }
   }
 `;
 
 const StyledRecommendBadge = styled(RecommendBadge)`
   @media (min-width: 768px) and (max-width: 790px) {
+    display: none;
+  }
+
+  @media (max-width: 614px) {
     display: none;
   }
 `;
