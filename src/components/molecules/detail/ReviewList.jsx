@@ -242,6 +242,7 @@ const MoreLectureButton = styled.button`
   background-color: ${palette.subNavy};
 
   border-radius: 3px;
+  cursor: pointer;
 
   @media ${responsive.tablet} {
     display: flex;

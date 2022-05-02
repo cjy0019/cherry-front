@@ -104,7 +104,7 @@ const BoxContainer = styled.div`
   margin-top: 28px;
   gap: 20px;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     flex-direction: column;
     gap: 8px;
   }
@@ -115,7 +115,7 @@ const ReviewRecommendContainer = styled.div`
   width: 55%;
   gap: 20px;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     gap: 8px;
     width: 100%;
   }
@@ -142,7 +142,7 @@ const ScoreBox = styled(CommonBox)`
   width: 100%;
   min-width: 105px;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     width: 50%;
   }
 `;
@@ -157,20 +157,12 @@ const Score = styled.p`
   font-size: 2rem;
   font-weight: 700;
   color: ${palette.textWhite};
-
-  @media (min-width: 430px) and (max-width: 525px) {
-    font-size: 1.625rem;
-  }
 `;
 
 const Counter = styled.p`
   font-weight: 400;
   font-size: 0.875rem;
   color: ${palette.text2};
-
-  @media (min-width: 430px) and (max-width: 525px) {
-    font-size: 0.6875rem;
-  }
 `;
 
 const StarContainer = styled.div`
@@ -181,7 +173,7 @@ const StarContainer = styled.div`
   & > img {
     width: 15.79px;
 
-    @media (max-width: 520px) {
+    @media (min-width: 501px) and (max-width: 520px) {
       width: 2.0833vw;
     }
   }
@@ -209,7 +201,7 @@ const ScoreWithText = styled.div`
     font-size: 0.5208vw;
   }
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     font-size: 0.75rem;
   }
 `;
@@ -225,7 +217,7 @@ const RecommendBox = styled(CommonBox)`
     }
   }
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     width: 50%;
   }
 `;
@@ -264,8 +256,11 @@ const HalfBox = styled.div`
     @media (min-width: 768px) and (max-width: 790px) {
       width: 5.2083vw;
     }
-    @media (max-width: 615px) {
+    @media (min-width: 501px) and (max-width: 615px) {
       width: 20px;
+    }
+    @media (max-width: 250px) {
+      width: 4.6875vw;
     }
   }
 `;
@@ -275,7 +270,7 @@ const StyledRecommendBadge = styled(RecommendBadge)`
     display: none;
   }
 
-  @media (max-width: 614px) {
+  @media (min-width: 501px) and (max-width: 614px) {
     display: none;
   }
 `;
@@ -283,7 +278,7 @@ const StyledRecommendBadge = styled(RecommendBadge)`
 const SatisfactionBox = styled(CommonBox)`
   width: 60%;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     width: 100%;
   }
 `;
