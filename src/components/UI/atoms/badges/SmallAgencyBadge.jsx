@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SmallAgencyBadge = ({ children }) => {
+const SmallAgencyBadge = ({ children, className }) => {
   const [type, ...name] = children.split(' ');
   return (
-    <StyledBadge>
+    <StyledBadge className={className}>
       <span>{type}</span>
       <span>{name.join(' ')}</span>
     </StyledBadge>

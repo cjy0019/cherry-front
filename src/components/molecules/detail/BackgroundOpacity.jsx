@@ -22,10 +22,6 @@ const Background = styled.div`
   width: 100%;
   height: 800px;
 
-  @media ${responsive.mobile} {
-    height: 38%;
-  }
-
   & > div {
     width: 100%;
     height: 800px;
@@ -33,8 +29,25 @@ const Background = styled.div`
     backdrop-filter: blur(19px);
 
     @media ${responsive.mobile} {
-      height: 100%;
+      height: 79.9479vw;
     }
+
+    @media (max-width: 350px) {
+      height: 83.3333vw;
+    }
+    @media (max-width: 320px) {
+      height: 93.75vw;
+    }
+  }
+
+  @media ${responsive.mobile} {
+    height: 79.9479vw;
+  }
+  @media (max-width: 350px) {
+    height: 83.3333vw;
+  }
+  @media (max-width: 320px) {
+    height: 93.75vw;
   }
 `;
 

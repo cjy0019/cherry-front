@@ -52,13 +52,13 @@ const AverageScore = () => {
               <HalfBox red>
                 <img src={smileRed} alt='추천해요 이미지' />
                 <p>92%</p>
-                <RecommendBadge point>추천해요!</RecommendBadge>
+                <StyledRecommendBadge point>추천해요!</StyledRecommendBadge>
               </HalfBox>
 
               <HalfBox>
                 <img src={smileGrey} alt='별로에요 이미지' />
                 <p>8%</p>
-                <RecommendBadge>별로에요</RecommendBadge>
+                <StyledRecommendBadge>별로에요</StyledRecommendBadge>
               </HalfBox>
             </DivisionBox>
           </RecommendBox>
@@ -104,7 +104,7 @@ const BoxContainer = styled.div`
   margin-top: 28px;
   gap: 20px;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     flex-direction: column;
     gap: 8px;
   }
@@ -115,7 +115,7 @@ const ReviewRecommendContainer = styled.div`
   width: 55%;
   gap: 20px;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     gap: 8px;
     width: 100%;
   }
@@ -124,8 +124,9 @@ const ReviewRecommendContainer = styled.div`
 const CommonBox = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+
+  padding: 27px 10px 0;
 
   height: 230px;
   border-radius: 8px;
@@ -139,8 +140,9 @@ const CommonBox = styled.div`
 
 const ScoreBox = styled(CommonBox)`
   width: 100%;
+  min-width: 105px;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     width: 50%;
   }
 `;
@@ -160,24 +162,27 @@ const Score = styled.p`
 const Counter = styled.p`
   font-weight: 400;
   font-size: 0.875rem;
-  line-height: 100%;
   color: ${palette.text2};
 `;
 
 const StarContainer = styled.div`
   display: flex;
-  gap: 5.26px;
+  gap: 0.274vw;
   margin-top: 12.49px;
 
   & > img {
     width: 15.79px;
+
+    @media (min-width: 501px) and (max-width: 520px) {
+      width: 2.0833vw;
+    }
   }
 `;
 
 const FrontBackContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 29px;
+  gap: 1.5104vw;
   margin-top: 24.7px;
   width: 100%;
 `;
@@ -192,7 +197,11 @@ const ScoreWithText = styled.div`
   font-size: 0.875rem;
   color: ${palette.text2};
 
-  @media ${responsive.mobile} {
+  @media (max-width: 670px) {
+    font-size: 0.5208vw;
+  }
+
+  @media (max-width: 500px) {
     font-size: 0.75rem;
   }
 `;
@@ -200,7 +209,15 @@ const ScoreWithText = styled.div`
 const RecommendBox = styled(CommonBox)`
   width: 100%;
 
-  @media ${responsive.mobile} {
+  & > p {
+    word-break: keep-all;
+
+    @media (min-width: 768px) and (max-width: 790px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 500px) {
     width: 50%;
   }
 `;
@@ -209,7 +226,7 @@ const DivisionBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.0417vw;
 
   margin-top: 48px;
 `;
@@ -225,13 +242,43 @@ const HalfBox = styled.div`
     font-size: 1.25rem;
 
     color: ${(props) => (props.red ? palette.pointRed : palette.text4)};
+
+    @media (min-width: 768px) and (max-width: 790px) {
+      font-size: 1.0625rem;
+    }
+
+    @media (max-width: 615px) {
+      font-size: 1.0625rem;
+    }
+  }
+
+  & > img {
+    @media (min-width: 768px) and (max-width: 790px) {
+      width: 5.2083vw;
+    }
+    @media (min-width: 501px) and (max-width: 615px) {
+      width: 20px;
+    }
+    @media (max-width: 250px) {
+      width: 4.6875vw;
+    }
+  }
+`;
+
+const StyledRecommendBadge = styled(RecommendBadge)`
+  @media (min-width: 768px) and (max-width: 790px) {
+    display: none;
+  }
+
+  @media (min-width: 501px) and (max-width: 614px) {
+    display: none;
   }
 `;
 
 const SatisfactionBox = styled(CommonBox)`
   width: 60%;
 
-  @media ${responsive.mobile} {
+  @media (max-width: 500px) {
     width: 100%;
   }
 `;
