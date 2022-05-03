@@ -34,13 +34,13 @@ const SelectCategory = () => {
   const [sortIsClicked, setSortIsClicked] = useState('최신순');
   const [currentCarousel, setCurrentCarousel] = useState(0);
 
-  let mobileSecondSlider = {
+  let mobileSecondSlider = useRef({
     startX: 0,
     moveX: 0,
     endX: 0,
     lastElementLocation: 0,
     isFirstTouch: false,
-  };
+  });
   let mobileThirdSlider = useRef({
     startX: 0,
     moveX: 0,
@@ -99,42 +99,42 @@ const SelectCategory = () => {
 
   function touchStartSecondSlider(e) {
     e.stopPropagation();
-    mobileSecondSlider.startX = e.changedTouches[0].clientX;
-    if (!mobileSecondSlider.isFirstTouch) {
-      mobileSecondSlider.lastElementLocation =
+    mobileSecondSlider.current.startX = e.changedTouches[0].clientX;
+    if (!mobileSecondSlider.current.isFirstTouch) {
+      mobileSecondSlider.current.lastElementLocation =
         e.currentTarget.lastElementChild.getBoundingClientRect().right;
     }
-    mobileSecondSlider.isFirstTouch = true;
+    mobileSecondSlider.current.isFirstTouch = true;
   }
   function touchMoveSecondSlider(e) {
     e.stopPropagation();
-    mobileSecondSlider.moveX = -(
-      mobileSecondSlider.startX - e.changedTouches[0].clientX
+    mobileSecondSlider.current.moveX = -(
+      mobileSecondSlider.current.startX - e.changedTouches[0].clientX
     );
 
     e.currentTarget.style.transform = `translateX(${
-      mobileSecondSlider.endX + mobileSecondSlider.moveX
+      mobileSecondSlider.current.endX + mobileSecondSlider.current.moveX
     }px)`;
   }
   function touchEndSecondSlider(e) {
     e.stopPropagation();
     let responsiveWidth = (340 / 360) * window.innerWidth;
-    mobileSecondSlider.endX += -(
-      mobileSecondSlider.startX - e.changedTouches[0].clientX
+    mobileSecondSlider.current.endX += -(
+      mobileSecondSlider.current.startX - e.changedTouches[0].clientX
     );
 
     if (
-      responsiveWidth - mobileSecondSlider.lastElementLocation >
-      mobileSecondSlider.endX
+      responsiveWidth - mobileSecondSlider.current.lastElementLocation >
+      mobileSecondSlider.current.endX
     ) {
-      mobileSecondSlider.endX =
-        responsiveWidth - mobileSecondSlider.lastElementLocation;
-      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.endX}px)`;
+      mobileSecondSlider.current.endX =
+        responsiveWidth - mobileSecondSlider.current.lastElementLocation;
+      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.current.endX}px)`;
     }
 
-    if (mobileSecondSlider.endX > 0) {
-      mobileSecondSlider.endX = 0;
-      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.endX}px)`;
+    if (mobileSecondSlider.current.endX > 0) {
+      mobileSecondSlider.current.endX = 0;
+      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.current.endX}px)`;
     }
   }
 
