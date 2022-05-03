@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { responsive } from '../../../style/responsive';
 import palette from '../../../style/palette';
@@ -28,18 +28,12 @@ const skillArr = [
 const SelectCategory = () => {
   const [firstCategoryIsClicked, setFirstCategoryIsClicked] =
     useState('프론트엔드');
-
   const [secondCategoryIsClicked, setSecondCategoryIsClicked] =
     useState('전체');
-
-  const [thirdCategoryIsClicked, setThirdCategoryIsClicked] = useState([
-    'Javascript3',
-    'Javascript1',
-    'Javascript5',
-  ]);
-
+  const [thirdCategoryIsClicked, setThirdCategoryIsClicked] = useState([]);
   const [sortIsClicked, setSortIsClicked] = useState('최신순');
   const [currentCarousel, setCurrentCarousel] = useState(0);
+
   let mobileSecondSlider = {
     startX: 0,
     moveX: 0,
@@ -47,6 +41,14 @@ const SelectCategory = () => {
     lastElementLocation: 0,
     isFirstTouch: false,
   };
+  let mobileThirdSlider = useRef({
+    startX: 0,
+    moveX: 0,
+    endX: 0,
+    lastElementLocation: 0,
+    isFirstTouch: false,
+  });
+  let isThirdSliderMoved = false;
 
   function selectFirstCategory(e) {
     setFirstCategoryIsClicked(e.target.innerText);
@@ -55,16 +57,24 @@ const SelectCategory = () => {
     setSecondCategoryIsClicked(e.target.innerText);
   }
   function selectThirdCategory(e) {
+    e.preventDefault();
+    if (isThirdSliderMoved) {
+      isThirdSliderMoved = false;
+      return;
+    }
+
     const dataSetId = e.currentTarget.dataset.id;
     const indexOf = thirdCategoryIsClicked.indexOf(dataSetId);
+    let res = [];
     if (indexOf !== -1) {
-      setThirdCategoryIsClicked([
+      res = [
         ...thirdCategoryIsClicked.slice(0, indexOf),
         ...thirdCategoryIsClicked.slice(indexOf + 1),
-      ]);
+      ];
     } else {
-      setThirdCategoryIsClicked([...thirdCategoryIsClicked, dataSetId]);
+      res = [...thirdCategoryIsClicked, dataSetId];
     }
+    setThirdCategoryIsClicked(res);
   }
   function unselectThirdCategory(e) {
     const datasetName = e.target.dataset.name;
@@ -88,6 +98,7 @@ const SelectCategory = () => {
   }
 
   function touchStartSecondSlider(e) {
+    e.stopPropagation();
     mobileSecondSlider.startX = e.changedTouches[0].clientX;
     if (!mobileSecondSlider.isFirstTouch) {
       mobileSecondSlider.lastElementLocation =
@@ -96,6 +107,7 @@ const SelectCategory = () => {
     mobileSecondSlider.isFirstTouch = true;
   }
   function touchMoveSecondSlider(e) {
+    e.stopPropagation();
     mobileSecondSlider.moveX = -(
       mobileSecondSlider.startX - e.changedTouches[0].clientX
     );
@@ -105,6 +117,7 @@ const SelectCategory = () => {
     }px)`;
   }
   function touchEndSecondSlider(e) {
+    e.stopPropagation();
     let responsiveWidth = (340 / 360) * window.innerWidth;
     mobileSecondSlider.endX += -(
       mobileSecondSlider.startX - e.changedTouches[0].clientX
@@ -122,6 +135,47 @@ const SelectCategory = () => {
     if (mobileSecondSlider.endX > 0) {
       mobileSecondSlider.endX = 0;
       e.currentTarget.style.transform = `translateX(${mobileSecondSlider.endX}px)`;
+    }
+  }
+
+  function touchStartThirdSlider(e) {
+    isThirdSliderMoved = false;
+    mobileThirdSlider.current.startX = e.changedTouches[0].clientX;
+    if (!mobileThirdSlider.current.isFirstTouch) {
+      mobileThirdSlider.current.lastElementLocation =
+        e.currentTarget.lastElementChild.getBoundingClientRect().right;
+    }
+
+    mobileThirdSlider.current.isFirstTouch = true;
+  }
+  function touchMoveThirdSlider(e) {
+    isThirdSliderMoved = true;
+    mobileThirdSlider.current.moveX = -(
+      mobileThirdSlider.current.startX - e.changedTouches[0].clientX
+    );
+
+    e.currentTarget.style.transform = `translateX(${
+      mobileThirdSlider.current.endX + mobileThirdSlider.current.moveX
+    }px)`;
+  }
+  function touchEndThirdSlider(e) {
+    let responsiveWidth = (340 / 360) * window.innerWidth;
+    mobileThirdSlider.current.endX += -(
+      mobileThirdSlider.current.startX - e.changedTouches[0].clientX
+    );
+
+    if (
+      responsiveWidth - mobileThirdSlider.current.lastElementLocation >
+      mobileThirdSlider.current.endX
+    ) {
+      mobileThirdSlider.current.endX =
+        responsiveWidth - mobileThirdSlider.current.lastElementLocation;
+      e.currentTarget.style.transform = `translateX(${mobileThirdSlider.current.endX}px)`;
+    }
+
+    if (mobileThirdSlider.current.endX > 0) {
+      mobileThirdSlider.current.endX = 0;
+      e.currentTarget.style.transform = `translateX(${mobileThirdSlider.current.endX}px)`;
     }
   }
 
@@ -143,45 +197,47 @@ const SelectCategory = () => {
           백엔드
         </FirstCategoryButton>
       </FirstCategoryContainer>
-      <SecondCategoryContainer
-        onTouchStart={touchStartSecondSlider}
-        onTouchMove={touchMoveSecondSlider}
-        onTouchEnd={touchEndSecondSlider}>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === '전체'}
-          onClick={selectSecondCategory}>
-          전체
-        </SecondCategoryButton>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === '언어'}
-          onClick={selectSecondCategory}>
-          언어
-        </SecondCategoryButton>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === '프레임워크'}
-          onClick={selectSecondCategory}>
-          프레임워크
-        </SecondCategoryButton>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === '스타일링'}
-          onClick={selectSecondCategory}>
-          스타일링
-        </SecondCategoryButton>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === '상태관리'}
-          onClick={selectSecondCategory}>
-          상태관리
-        </SecondCategoryButton>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === '테스팅'}
-          onClick={selectSecondCategory}>
-          테스팅
-        </SecondCategoryButton>
-        <SecondCategoryButton
-          secondCategoryIsClicked={secondCategoryIsClicked === 'Tools'}
-          onClick={selectSecondCategory}>
-          Tools
-        </SecondCategoryButton>
+      <SecondCategoryContainer>
+        <SecondCategorySlider
+          onTouchStart={touchStartSecondSlider}
+          onTouchMove={touchMoveSecondSlider}
+          onTouchEnd={touchEndSecondSlider}>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === '전체'}
+            onClick={selectSecondCategory}>
+            전체
+          </SecondCategoryButton>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === '언어'}
+            onClick={selectSecondCategory}>
+            언어
+          </SecondCategoryButton>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === '프레임워크'}
+            onClick={selectSecondCategory}>
+            프레임워크
+          </SecondCategoryButton>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === '스타일링'}
+            onClick={selectSecondCategory}>
+            스타일링
+          </SecondCategoryButton>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === '상태관리'}
+            onClick={selectSecondCategory}>
+            상태관리
+          </SecondCategoryButton>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === '테스팅'}
+            onClick={selectSecondCategory}>
+            테스팅
+          </SecondCategoryButton>
+          <SecondCategoryButton
+            secondCategoryIsClicked={secondCategoryIsClicked === 'Tools'}
+            onClick={selectSecondCategory}>
+            Tools
+          </SecondCategoryButton>
+        </SecondCategorySlider>
       </SecondCategoryContainer>
       <ThirdCategoryContainer>
         <ThirdButton
@@ -193,10 +249,16 @@ const SelectCategory = () => {
           left1120='-2.6786vw'
         />
         <ThirdCategorySliderContainer>
-          <SliderUl length={skillArr.length} currentCarousel={currentCarousel}>
+          <SliderUl
+            onTouchStart={touchStartThirdSlider}
+            onTouchMove={touchMoveThirdSlider}
+            onTouchEnd={touchEndThirdSlider}
+            length={skillArr.length}
+            currentCarousel={currentCarousel}>
             {skillArr.map(({ src, name, id }) => (
               <SidlerLi
-                onClickCapture={selectThirdCategory}
+                onClick={selectThirdCategory}
+                onTouchEnd={selectThirdCategory}
                 thirdCategoryIsClicked={thirdCategoryIsClicked.includes(
                   `${name}`,
                 )}
@@ -305,6 +367,17 @@ const SelectCategory = () => {
     </Container>
   );
 };
+
+const SecondCategorySlider = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  @media ${responsive.mobile} {
+    flex-wrap: nowrap;
+
+    width: 1000px;
+  }
+`;
 
 const TabletPagination = styled.div`
   display: flex;
@@ -658,7 +731,7 @@ const SkillImgContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: #1f2026;
+  background-color: #1f2026;
   border-radius: 64px;
 
   @media (max-width: 1120px) {
@@ -689,8 +762,32 @@ const SidlerLi = styled.li`
   transition: all 0.2s ease-in-out;
 
   ${({ thirdCategoryIsClicked }) =>
-    thirdCategoryIsClicked &&
-    css`
+    thirdCategoryIsClicked
+      ? css`
+          transform: translateY(-13px);
+
+          & > div {
+            background-color: #2a2a2a;
+          }
+
+          & > h5 {
+            color: #ffffff;
+          }
+        `
+      : css`
+          transform: translateY(0px);
+
+          & > div {
+            background-color: #1f2026;
+          }
+
+          & > h5 {
+            color: #b4b4b4;
+          }
+        `}
+
+  @media (hover: hover) {
+    &:hover {
       transform: translateY(-13px);
 
       & > div {
@@ -700,17 +797,6 @@ const SidlerLi = styled.li`
       & > h5 {
         color: #ffffff;
       }
-    `}
-
-  &:hover {
-    transform: translateY(-13px);
-
-    & > div {
-      background-color: #2a2a2a;
-    }
-
-    & > h5 {
-      color: #ffffff;
     }
   }
 
@@ -764,7 +850,8 @@ const SliderUl = styled.ul`
   }
 
   @media ${responsive.mobile} {
-    width: auto;
+    transition: none;
+    width: 5000px;
   }
 `;
 
@@ -772,9 +859,10 @@ const ThirdCategorySliderContainer = styled.div`
   display: flex;
   overflow: hidden;
   align-items: flex-end;
+  overflow: hidden;
 
   width: 62.5vw;
-  height: 130px;
+  height: 10.4167vw;
 
   @media (max-width: 1120px) {
     height: 180px;
@@ -786,8 +874,8 @@ const ThirdCategorySliderContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
-    overflow: visible;
-    width: auto;
+    width: 88.8889vw;
+    height: 120px;
   }
 `;
 
@@ -896,7 +984,6 @@ const SecondCategoryButton = styled.h4`
 
   @media ${responsive.mobile} {
     display: flex;
-    flex-direction: row;
 
     padding: 2.2222vw 4.4444vw;
 
@@ -908,9 +995,8 @@ const SecondCategoryButton = styled.h4`
 `;
 
 const SecondCategoryContainer = styled.div`
-  display: flex;
-
   margin-top: 19px;
+  overflow: hidden;
 
   @media ${responsive.tablet} {
     margin-top: 15px;
@@ -919,7 +1005,6 @@ const SecondCategoryContainer = styled.div`
   @media ${responsive.mobile} {
     flex-wrap: nowrap;
 
-    width: 1000px;
     margin-top: 16px;
   }
 `;
@@ -983,8 +1068,6 @@ const Title = styled.h2`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  overflow: hidden;
 
   margin-top: 120px;
 
