@@ -117,129 +117,131 @@ const ReviewWriteTemplate = () => {
   };
 
   return (
-    <Container>
-      <CenterBox>
-        <TitleContainer>
-          <Title>리뷰 작성하기</Title>
-          <img src={closeDark} alt='닫기 버튼' />
-        </TitleContainer>
-        <SmallTextWrapper>
-          <p>- 익명으로 등록되며, 무단 홍보/비방 글은 삭제될 수 있습니다.</p>
-          <p>- 작성된 리뷰는 심사과정을 거친후 게재됩니다.</p>
-        </SmallTextWrapper>
-        <LectureTitle>
-          강의 - 웹 게임을 만들며 배우는 JavaScript(자바스크립트)
-        </LectureTitle>
+    <>
+      <Container>
+        <CenterBox>
+          <TitleContainer>
+            <Title>리뷰 작성하기</Title>
+            <img src={closeDark} alt='닫기 버튼' />
+          </TitleContainer>
+          <SmallTextWrapper>
+            <p>- 익명으로 등록되며, 무단 홍보/비방 글은 삭제될 수 있습니다.</p>
+            <p>- 작성된 리뷰는 심사과정을 거친후 게재됩니다.</p>
+          </SmallTextWrapper>
+          <LectureTitle>
+            강의 - 웹 게임을 만들며 배우는 JavaScript(자바스크립트)
+          </LectureTitle>
 
-        <QuestionContainer>
-          <AlignInline>
-            <NumberBadge>1</NumberBadge>
-            <p>리뷰 평점(필수)</p>
-          </AlignInline>
-          <AlignInline>
-            <StarContainer
-              onMouseMove={handleMouseMove}
-              onClick={pickStarPoint}>
-              {starImagesArr.map((url, i) => (
-                <img src={url} key={i} data-point={String(i + 1)} />
-              ))}
-            </StarContainer>
-            <p>{starPoint}</p>
-          </AlignInline>
-        </QuestionContainer>
+          <QuestionContainer>
+            <AlignInline>
+              <NumberBadge>1</NumberBadge>
+              <p>리뷰 평점(필수)</p>
+            </AlignInline>
+            <AlignInline>
+              <StarContainer
+                onMouseMove={handleMouseMove}
+                onClick={pickStarPoint}>
+                {starImagesArr.map((url, i) => (
+                  <img src={url} key={i} data-point={String(i + 1)} />
+                ))}
+              </StarContainer>
+              <p>{starPoint}</p>
+            </AlignInline>
+          </QuestionContainer>
 
-        <QuestionContainer>
-          <AlignInline>
-            <NumberBadge>2</NumberBadge>
-            <p>강의를 추천하시나요?(필수)</p>
-          </AlignInline>
-          <SmileButtonContainer>
-            <button data-name='recommendation' onClick={selectRecommendation}>
-              <img
-                src={recommend === 'recommendation' ? smileRed : smileGrey}
-                alt='추천합니다'
-              />
-            </button>
-            <button
-              data-name='non-recommendation'
-              onClick={selectRecommendation}>
-              <img
-                src={recommend === 'non-recommendation' ? sadRed : sadGrey}
-                alt='추천하지 않습니다'
-              />
-            </button>
-          </SmileButtonContainer>
-        </QuestionContainer>
+          <QuestionContainer>
+            <AlignInline>
+              <NumberBadge>2</NumberBadge>
+              <p>강의를 추천하시나요?(필수)</p>
+            </AlignInline>
+            <SmileButtonContainer>
+              <button data-name='recommendation' onClick={selectRecommendation}>
+                <img
+                  src={recommend === 'recommendation' ? smileRed : smileGrey}
+                  alt='추천합니다'
+                />
+              </button>
+              <button
+                data-name='non-recommendation'
+                onClick={selectRecommendation}>
+                <img
+                  src={recommend === 'non-recommendation' ? sadRed : sadGrey}
+                  alt='추천하지 않습니다'
+                />
+              </button>
+            </SmileButtonContainer>
+          </QuestionContainer>
 
-        <QuestionContainer>
-          <AlignInline>
-            <NumberBadge>3</NumberBadge>
-            <p>가격 대비 만족도(필수)</p>
-          </AlignInline>
-          <SatisfactionButtonContainer>
-            <SatisfactionButton
-              handleClick={selectSatisfaction}
-              selected={satisfaction}>
-              매우 만족
-            </SatisfactionButton>
-            <SatisfactionButton
-              handleClick={selectSatisfaction}
-              selected={satisfaction}>
-              만족
-            </SatisfactionButton>
-            <SatisfactionButton
-              handleClick={selectSatisfaction}
-              selected={satisfaction}>
-              보통
-            </SatisfactionButton>
-            <SatisfactionButton
-              handleClick={selectSatisfaction}
-              selected={satisfaction}>
-              그저 그럼
-            </SatisfactionButton>
-          </SatisfactionButtonContainer>
-        </QuestionContainer>
+          <QuestionContainer>
+            <AlignInline>
+              <NumberBadge>3</NumberBadge>
+              <p>가격 대비 만족도(필수)</p>
+            </AlignInline>
+            <SatisfactionButtonContainer>
+              <SatisfactionButton
+                handleClick={selectSatisfaction}
+                selected={satisfaction}>
+                매우 만족
+              </SatisfactionButton>
+              <SatisfactionButton
+                handleClick={selectSatisfaction}
+                selected={satisfaction}>
+                만족
+              </SatisfactionButton>
+              <SatisfactionButton
+                handleClick={selectSatisfaction}
+                selected={satisfaction}>
+                보통
+              </SatisfactionButton>
+              <SatisfactionButton
+                handleClick={selectSatisfaction}
+                selected={satisfaction}>
+                그저 그럼
+              </SatisfactionButton>
+            </SatisfactionButtonContainer>
+          </QuestionContainer>
 
-        <ColQuestionContainer>
-          <QuestionTitleContainer>
-            <NumberBadge>4</NumberBadge>
-            <p>한 줄 평이 궁금해요(필수)</p>
-          </QuestionTitleContainer>
-          <ReviewOneLineInput handleChange={writeOneLineReview} />
-        </ColQuestionContainer>
+          <ColQuestionContainer>
+            <QuestionTitleContainer>
+              <NumberBadge>4</NumberBadge>
+              <p>한 줄 평이 궁금해요(필수)</p>
+            </QuestionTitleContainer>
+            <ReviewOneLineInput handleChange={writeOneLineReview} />
+          </ColQuestionContainer>
 
-        <AdvantagesContainer>
-          <BetweenWrapper>
-            <FlexWrapper>
-              <NumberBadge>5</NumberBadge>
-              <p>장점(필수)</p>
-            </FlexWrapper>
-            <TextCount>
-              <span>{advantage.length}/</span>
-              <span>500</span>
-            </TextCount>
-          </BetweenWrapper>
-          <ReviewProsConsTextarea handleChange={writeAdvantage} />
-        </AdvantagesContainer>
+          <AdvantagesContainer>
+            <BetweenWrapper>
+              <FlexWrapper>
+                <NumberBadge>5</NumberBadge>
+                <p>장점(필수)</p>
+              </FlexWrapper>
+              <TextCount>
+                <span>{advantage.length}/</span>
+                <span>500</span>
+              </TextCount>
+            </BetweenWrapper>
+            <ReviewProsConsTextarea handleChange={writeAdvantage} />
+          </AdvantagesContainer>
 
-        <AdvantagesContainer mb>
-          <BetweenWrapper>
-            <FlexWrapper>
-              <NumberBadge>6</NumberBadge>
-              <p>단점(필수)</p>
-            </FlexWrapper>
-            <TextCount>
-              <span>{disadvantage.length}/</span>
-              <span>500</span>
-            </TextCount>
-          </BetweenWrapper>
-          <ReviewProsConsTextarea handleChange={writeDisadvantage} />
-        </AdvantagesContainer>
+          <AdvantagesContainer mb>
+            <BetweenWrapper>
+              <FlexWrapper>
+                <NumberBadge>6</NumberBadge>
+                <p>단점(필수)</p>
+              </FlexWrapper>
+              <TextCount>
+                <span>{disadvantage.length}/</span>
+                <span>500</span>
+              </TextCount>
+            </BetweenWrapper>
+            <ReviewProsConsTextarea handleChange={writeDisadvantage} />
+          </AdvantagesContainer>
 
-        <SaveButton disabled={!checkQuestionIsFull()}>저장하기</SaveButton>
-      </CenterBox>
+          <SaveButton disabled={!checkQuestionIsFull()}>저장하기</SaveButton>
+        </CenterBox>
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 };
 
