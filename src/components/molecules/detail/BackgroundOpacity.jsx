@@ -26,7 +26,17 @@ const Background = styled.div`
     width: 100%;
     height: 800px;
     background-color: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(19px);
+
+    /* backdrop-filter chrome, safari */
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    /* firefox 더 어둡게 적용 */
+    @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+      background-color: rgba(0, 0, 0, 0.87);
+    }
 
     @media ${responsive.mobile} {
       height: 79.9479vw;

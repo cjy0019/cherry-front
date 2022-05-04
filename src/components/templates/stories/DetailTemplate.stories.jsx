@@ -19,4 +19,4 @@ export default {
 
 export const DetailStory = () => <DetailTemplate />;
 
-Error.storyName = '상세 페이지';
+DetailStory.storyName = '상세 페이지';
