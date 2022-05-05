@@ -11,6 +11,8 @@ import PretendardMedium from '../assets/fonts/Pretendard-Medium.woff';
 import PretendardRegular from '../assets/fonts/Pretendard-Regular.woff';
 import PretendardLight from '../assets/fonts/Roboto-Light.woff';
 import PretendardThin from '../assets/fonts/Pretendard-Thin.woff';
+import SpoqaHanSansNeoBold from '../assets/fonts/SpoqaHanSansNeo-Bold.woff';
+
 import palette from './palette';
 
 const globalStyle = css`
@@ -18,6 +20,11 @@ const globalStyle = css`
 
   * {
     box-sizing: border-box;
+  }
+  @font-face {
+    font-family: 'SpoqaHanSansNeo-Bold';
+    src: url(${SpoqaHanSansNeoBold}) format('woff');
+    font-weight: 700;
   }
 
   @font-face {
