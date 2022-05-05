@@ -1156,10 +1156,6 @@ const Container = styled.div`
   flex-direction: column;
 
   margin-top: 120px;
-
-  /* 디버깅 */
-  border: 1px solid tomato;
-  /* background-color: yellowgreen; */
 `;
 
 export default SelectCategory;
