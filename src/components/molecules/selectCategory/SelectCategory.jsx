@@ -11,6 +11,7 @@ import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
 import closeDark from '../../../assets/img/close_dark.svg';
 import javascript from '../../../assets/img/JavaScript.png';
+import MobileLectureCard from '../../UI/atoms/mobileLectureCard/MobileLectureCard';
 
 const skillArr = [
   { src: javascript, name: 'Javascript', id: 1 },
@@ -321,35 +322,63 @@ const SelectCategory = () => {
           <DownArrow src={categoryDown} alt='펼쳐 보기' />
         </SortMobile>
       </SortContainer>
-      <LectureCardsContainer>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-        <LectureCardLi>
-          <CategoryLectureCard />
-        </LectureCardLi>
-      </LectureCardsContainer>
+      <PcMobileLectureCard>
+        <PcLectureCardsContainer>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+          <PcLectureCardLi>
+            <CategoryLectureCard />
+          </PcLectureCardLi>
+        </PcLectureCardsContainer>
+        <MobileLectureCardContainer>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+          <MobileLectureCardLi>
+            <MobileLectureCard />
+          </MobileLectureCardLi>
+        </MobileLectureCardContainer>
+      </PcMobileLectureCard>
       <Pagination>
         <PcPagination>
           <Prev>← PREV</Prev>
@@ -362,11 +391,39 @@ const SelectCategory = () => {
           </PaginationNumberContainer>
           <Next>Next →</Next>
         </PcPagination>
-        <TabletPagination>강의 전체 보기↓</TabletPagination>
+        <TabletMobilePagination>강의 전체 보기 ↓</TabletMobilePagination>
       </Pagination>
     </Container>
   );
 };
+
+const PcMobileLectureCard = styled.div``;
+
+const MobileLectureCardLi = styled.li`
+  all: unset;
+  display: block;
+
+  padding: 22px 0px;
+  border-bottom: 1px solid #2a2a2a;
+`;
+
+const MobileLectureCardContainer = styled.ul`
+  display: none;
+
+  @media ${responsive.mobile} {
+    display: block;
+    margin-top: 16px;
+
+    & > li:last-of-type {
+      padding-bottom: 0;
+      border: none;
+    }
+
+    & > li:first-of-type {
+      padding-top: 0;
+    }
+  }
+`;
 
 const SecondCategorySlider = styled.div`
   display: flex;
@@ -379,20 +436,40 @@ const SecondCategorySlider = styled.div`
   }
 `;
 
-const TabletPagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const TabletMobilePagination = styled.div`
+  display: none;
 
-  width: 93.75vw;
-  height: 44px;
+  @media ${responsive.tablet} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  background-color: #1f2026;
-  border-radius: 3px;
+    width: 93.75vw;
+    height: 44px;
 
-  font-weight: 400;
-  font-size: 0.75rem;
-  color: #ffffff;
+    background-color: #1f2026;
+    border-radius: 3px;
+
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #ffffff;
+  }
+
+  @media ${responsive.mobile} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 88.6111vw;
+    height: 44px;
+
+    background-color: #1f2026;
+    border-radius: 3px;
+
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #ffffff;
+  }
 `;
 
 const PcPagination = styled.div`
@@ -405,6 +482,7 @@ const PcPagination = styled.div`
   }
 
   @media ${responsive.mobile} {
+    display: none;
   }
 `;
 
@@ -465,9 +543,13 @@ const Pagination = styled.div`
   @media ${responsive.tablet} {
     margin-top: 32px;
   }
+
+  @media ${responsive.mobile} {
+    margin-top: 32px;
+  }
 `;
 
-const LectureCardLi = styled.li`
+const PcLectureCardLi = styled.li`
   all: unset;
 `;
 
@@ -475,7 +557,7 @@ const CategoryLectureCard = styled(LectureCard)`
   margin-top: 32px;
 `;
 
-const LectureCardsContainer = styled.ul`
+const PcLectureCardsContainer = styled.ul`
   all: unset;
   margin-top: 1px;
 
@@ -510,6 +592,10 @@ const LectureCardsContainer = styled.ul`
     & > li:not(:nth-of-type(2n)) {
       margin-right: 3.3036vw;
     }
+  }
+
+  @media ${responsive.mobile} {
+    display: none;
   }
 `;
 
