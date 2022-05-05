@@ -20,13 +20,44 @@ const Hotsix = () => {
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
   const [currentCarousel, setCurrentCarousel] = useState(0);
   const cardListRef = useRef(null);
-  let isBack1121 = false;
 
-  function CarouselMoveRight(e) {
+  let isBack1121 = false;
+  let startClientX = 0;
+  let moveClientX = 0;
+  let endClientX = 0;
+
+  function selectCategory(e) {
+    setIsCategoryActive(e.target.innerText);
+  }
+
+  function carouselMoveRight(e) {
     setCurrentCarousel(currentCarousel + 1);
   }
-  function CarouselMoveLeft(e) {
+  function carouselMoveLeft(e) {
     setCurrentCarousel(currentCarousel - 1);
+  }
+
+  function touchStartCarousel(e) {
+    startClientX = e.changedTouches[0].clientX;
+  }
+  function touchMoveCarousel(e) {
+    moveClientX = -(startClientX - e.changedTouches[0].clientX);
+    e.currentTarget.style.transform = `translateX(${
+      endClientX + moveClientX
+    }px)`;
+  }
+  function touchEndCarousel(e) {
+    endClientX += -(startClientX - e.changedTouches[0].clientX);
+
+    let responsiveWidth = (-1450 / 360) * window.innerWidth;
+    if (responsiveWidth > endClientX) {
+      endClientX = responsiveWidth;
+      e.currentTarget.style.transform = `translateX(${endClientX}px)`;
+    }
+    if (endClientX > 0) {
+      endClientX = 0;
+      e.currentTarget.style.transform = `translateX(${endClientX}px)`;
+    }
   }
 
   useEffect(() => {
@@ -62,40 +93,76 @@ const Hotsix = () => {
           </Title>
         </TitleSection>
         <Category>
-          <CategorySpan>프론트엔드</CategorySpan>
-          <CategorySpan>백엔드</CategorySpan>
+          <CategorySpan
+            isCategoryActive={isCategoryActive === '프론트엔드'}
+            onClick={selectCategory}>
+            프론트엔드
+          </CategorySpan>
+          <CategorySpan
+            isCategoryActive={isCategoryActive === '백엔드'}
+            onClick={selectCategory}>
+            백엔드
+          </CategorySpan>
           <MobileCategory>
             백엔드 <DownArrow src={categoryDown} alt='펼쳐 보기' />
           </MobileCategory>
         </Category>
       </Header>
-      <CarrouselButton onClick={CarouselMoveLeft} />
+      <CarrouselButton onClick={carouselMoveLeft} />
       <CarouselContainer>
-        <CardsUl cardListRef={cardListRef} currentCarousel={currentCarousel}>
-          <li>
-            <HotSixCard src={rank1} alt='1위 강의' />
-          </li>
-          <li>
-            <HotSixCard src={rank2} alt='2위 강의' />
-          </li>
-          <li>
-            <HotSixCard src={rank3} alt='3위 강의' />
-          </li>
-          <li>
-            <HotSixCard src={rank4} alt='4위 강의' />
-          </li>
-          <li>
-            <HotSixCard src={rank5} alt='5위 강의' />
-          </li>
-          <li>
-            <HotSixCard src={rank6} alt='6위 강의' />
-          </li>
+        <CardsUl
+          onTouchStart={touchStartCarousel}
+          onTouchMove={touchMoveCarousel}
+          onTouchEnd={touchEndCarousel}
+          cardListRef={cardListRef}
+          currentCarousel={currentCarousel}>
+          <CardLi>
+            <HotSixCard rankSrc={rank1} />
+          </CardLi>
+          <CardLi>
+            <HotSixCard rankSrc={rank2} />
+          </CardLi>
+          <CardLi>
+            <HotSixCard rankSrc={rank3} />
+          </CardLi>
+          <CardLi>
+            <HotSixCard rankSrc={rank4} />
+          </CardLi>
+          <CardLi>
+            <HotSixCard rankSrc={rank5} />
+          </CardLi>
+          <CardLi>
+            <HotSixCard rankSrc={rank6} />
+          </CardLi>
         </CardsUl>
       </CarouselContainer>
-      <CarrouselButton onClick={CarouselMoveRight} />
+      <CarrouselButton onClick={carouselMoveRight} />
     </Container>
   );
 };
+
+const CardLi = styled.li`
+  all: unset;
+  cursor: pointer;
+  position: relative;
+
+  margin-right: 1.6146vw;
+
+  @media (max-width: 1121px) {
+    margin-right: 1.7857vw;
+  }
+
+  @media ${responsive.tablet} {
+    margin-right: 12px;
+  }
+  @media (max-width: 666px) {
+    margin-right: 2.9985vw;
+  }
+
+  @media ${responsive.mobile} {
+    margin-right: 12px;
+  }
+`;
 
 const CarrouselButton = styled.button`
   all: unset;
@@ -111,17 +178,18 @@ const CarrouselButton = styled.button`
   @media (max-width: 1121px) {
     top: 20.9933vw;
   }
+  @media (max-width: 666px) {
+    top: 31.934vw;
+  }
 
   @media ${responsive.mobile} {
+    display: none;
     top: 56.4061vw;
   }
 `;
 
 const CardsUl = styled.ul`
   all: unset;
-  & > li {
-    all: unset;
-  }
 
   display: flex;
 
@@ -150,11 +218,22 @@ const CardsUl = styled.ul`
     `}
   }
 
+  @media (max-width: 666px) {
+    width: calc(44.9775vw * 6 + 2.9985vw * 6);
+
+    ${({ currentCarousel }) => css`
+      /* transform: translateX(-${33.3333 * currentCarousel}%); */
+      transform: translateX(-${currentCarousel * 33.333333}%);
+    `}
+  }
+
   @media ${responsive.mobile} {
     width: calc(82.5vw * 6);
-    ${({ currentCarousel }) => css`
+    transition: none;
+
+    /* ${({ currentCarousel }) => css`
       transform: translateX(-${16.6666 * currentCarousel}%);
-    `}
+    `} */
   }
 `;
 
@@ -169,8 +248,7 @@ const CarouselContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
-    overflow: none;
-    width: calc(82.5vw * 6);
+    width: 94.4444vw;
   }
 `;
 
@@ -198,25 +276,23 @@ const MobileCategory = styled.div`
   }
 `;
 
-const HotSixCard = styled(LectureCard)`
-  margin-right: 1.6146vw;
-
-  @media (max-width: 1121px) {
-    margin-right: 1.7857vw;
-  }
-  @media ${responsive.tablet} {
-    margin-right: 12px;
-  }
-
-  @media ${responsive.mobile} {
-    margin-right: 12px;
-  }
-`;
+const HotSixCard = styled(LectureCard)``;
 
 const CategorySpan = styled.span`
+  cursor: pointer;
+
   color: ${palette.textWhite};
   font-size: 0.875rem;
   font-weight: 400;
+  opacity: 0.5;
+
+  transition: all 0.2s;
+
+  ${({ isCategoryActive }) =>
+    isCategoryActive &&
+    css`
+      opacity: 1;
+    `}
 
   @media ${responsive.tablet} {
     font-size: 0.875rem;
@@ -322,6 +398,23 @@ const Container = styled.div`
       left: -27px;
     }
   }
+  @media (max-width: 1121px) {
+    & > button:nth-of-type(2) {
+      right: -13px;
+      display: block;
+
+      ${({ currentCarousel }) =>
+        currentCarousel === 2
+          ? css`
+              display: none;
+            `
+          : ''}
+    }
+
+    & > button:nth-of-type(1) {
+      left: -27px;
+    }
+  }
 
   @media ${responsive.tablet} {
     & > button:nth-of-type(2) {
@@ -336,17 +429,34 @@ const Container = styled.div`
     }
   }
 
-  @media ${responsive.mobile} {
+  @media (max-width: 666px) {
     & > button:nth-of-type(2) {
       display: block;
-      right: 5px;
 
+      ${({ currentCarousel }) =>
+        currentCarousel === 2
+          ? css`
+              display: none;
+            `
+          : ''}
+    }
+
+    & > button:nth-of-type(1) {
+      left: -27px;
+    }
+  }
+
+  @media ${responsive.mobile} {
+    & > button:nth-of-type(2) {
+      display: none;
+      /* right: 5px; */
+      /* 
       ${({ currentCarousel }) =>
         currentCarousel === 5
           ? css`
               display: none;
             `
-          : ''}
+          : ''} */
     }
   }
 `;

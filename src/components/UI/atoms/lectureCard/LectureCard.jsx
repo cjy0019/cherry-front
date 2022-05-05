@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import { responsive } from '../../../../style/responsive';
 
 import lectureImg from '../../../../assets/img/lectureImg.png';
@@ -7,18 +7,26 @@ import palette from '../../../../style/palette';
 import RegularAgencyBadge from '../badges/RegularAgencyBadge';
 import OfflineBadge from '../badges/OfflineBadge';
 
-import bookmark from '../../../../assets/img/bookmark.svg';
-import bookmarkActive from '../../../../assets/img/bookmark_active.svg';
+import offBookmark from '../../../../assets/img/bookmark.svg';
+import onBookmark from '../../../../assets/img/bookmark_active.svg';
 
-const Card = ({ className, src, alt }) => {
+const Card = ({ className, rankSrc }) => {
+  const [isActiveBookmark, setIsActiveBookmark] = useState(false);
+
+  function addBookmark(e) {
+    setIsActiveBookmark(!isActiveBookmark);
+  }
+
   return (
     <LectureCard className={className}>
       <LectureImg src={lectureImg} alt='제로초 자바스크립트 강의' />
       <LectureOfflineBadge />
-      <Bookmark />
-      <HoverDark>
-        <RankImg src={src} alt={alt} />
-      </HoverDark>
+      <Bookmark isActiveBookmark={isActiveBookmark} onClick={addBookmark} />
+      <HoverDark src={rankSrc} />
+      <RankImg src={rankSrc} alt='1위 강의' />
+      <BookmarkAdded isActiveBookmark={isActiveBookmark}>
+        북마크 완료!
+      </BookmarkAdded>
       <InfoContainer>
         <LectureInfo>
           <div>
@@ -38,7 +46,6 @@ const Card = ({ className, src, alt }) => {
               <AdditionalInfoTitle>평점</AdditionalInfoTitle>
               <AdditionalInfoContent>측정중</AdditionalInfoContent>
             </AdditionalInfo>
-
             <AdditionalInfo>
               <AdditionalInfoTitle>리뷰</AdditionalInfoTitle>
               <AdditionalInfoContent>수집중</AdditionalInfoContent>
@@ -49,30 +56,53 @@ const Card = ({ className, src, alt }) => {
     </LectureCard>
   );
 };
+
 const RankImg = styled.img`
+  ${({ src }) => {
+    return !src
+      ? css`
+          display: none;
+        `
+      : css`
+          display: block;
+        `;
+  }}
+
   position: absolute;
-  top: 7.5vw;
+  top: 6.7708vw;
   right: 0;
+
+  transition: all 0.2s ease-in-out;
 
   width: 6.7188vw;
   height: 2.1354vw;
 
-  opacity: 1;
+  opacity: 0;
 
   @media (max-width: 1121px) {
-    top: 11.1964vw;
+    top: 9.375vw;
 
     width: 10.03vw;
     height: 3.1878vw;
   }
 
   @media ${responsive.tablet} {
+    opacity: 1;
+
     width: 10.2875vw;
     height: 3.2694vw;
   }
+  @media (max-width: 666px) {
+    opacity: 1;
+    top: 15.015vw;
+
+    width: 15.3341vw;
+    height: 4.8728vw;
+  }
 
   @media ${responsive.mobile} {
-    top: 30.0833vw;
+    opacity: 1;
+    top: 26.3889vw;
 
     width: 26.9489vw;
     height: 8.5633vw;
@@ -80,7 +110,18 @@ const RankImg = styled.img`
 `;
 
 const HoverDark = styled.div`
+  ${({ src }) =>
+    !src
+      ? css`
+          display: none;
+        `
+      : css`
+          display: block;
+        `}
+
   position: absolute;
+  top: 0;
+
   width: 19.74vw;
   height: 10.99vw;
 
@@ -88,7 +129,13 @@ const HoverDark = styled.div`
   opacity: 0;
   border-radius: 8px 8px 0px 0px;
 
+  transition: all 0.2s ease-in-out;
+
   &:hover {
+    & + img {
+      opacity: 1;
+    }
+
     opacity: 0.7;
   }
 
@@ -97,6 +144,13 @@ const HoverDark = styled.div`
     height: 16.4063vw;
   }
   @media ${responsive.tablet} {
+    &:hover {
+      & + img {
+        opacity: 1;
+      }
+      opacity: 0;
+    }
+
     /* width: 232px;
     height: 129px; */
     width: 30.21vw;
@@ -104,13 +158,14 @@ const HoverDark = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 200.891px;
-    height: 111.719px;
+    width: 44.9775vw;
+    height: 25.0445vw;
   }
 
   @media ${responsive.mobile} {
-    width: 79.1667vw;
-    height: 44.1667vw;
+    display: none;
+    /* width: 79.1667vw; */
+    /* height: 44.1667vw; */
   }
 `;
 
@@ -145,9 +200,9 @@ const LectureOfflineBadge = styled(OfflineBadge)`
   }
 
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
-  @media (max-width: 666px) {
-    top: 7.78px;
-    left: 6.916px;
+  @media (max-width: 667px) {
+    top: 1.1664vw;
+    left: 1.0369vw;
   }
 
   @media ${responsive.mobile} {
@@ -157,13 +212,88 @@ const LectureOfflineBadge = styled(OfflineBadge)`
     left: 5.5556vw;
   }
 `;
+const BookmarkAdded = styled.div`
+  position: absolute;
+  top: 9.4271vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 19.74vw;
+  height: 2.0833vw;
+
+  background: rgba(0, 0, 0, 0.95);
+
+  font-weight: 400;
+  font-size: 0.75rem;
+
+  color: #ffffff;
+
+  ${({ isActiveBookmark }) =>
+    isActiveBookmark
+      ? css`
+          display: flex;
+        `
+      : css`
+          display: none;
+        `}
+
+  @media (max-width: 1121px) {
+    width: 29.4643vw;
+    height: 3.1096vw;
+
+    top: 13.3929vw;
+  }
+
+  @media ${responsive.tablet} {
+    width: 30.21vw;
+    height: 4.1667vw;
+
+    top: 13.0208vw;
+  }
+
+  @media (max-width: 666px) {
+    width: 44.9775vw;
+    height: 4.7544vw;
+
+    top: 21.021vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 79.1667vw;
+    height: 7.7778vw;
+
+    top: 37.5vw;
+  }
+`;
 
 const Bookmark = styled.button`
   all: unset;
+
   cursor: pointer;
   position: absolute;
 
-  background-image: url(${bookmark});
+  z-index: 10;
+
+  &:hover {
+    & + div {
+      opacity: 0.7;
+    }
+
+    & + div + img {
+      opacity: 1;
+    }
+  }
+
+  ${({ isActiveBookmark }) =>
+    isActiveBookmark
+      ? css`
+          background-image: url(${onBookmark});
+        `
+      : css`
+          background-image: url(${offBookmark});
+        `}
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -193,6 +323,15 @@ const Bookmark = styled.button`
   }
 
   @media ${responsive.tablet} {
+    &:hover {
+      & + div {
+        opacity: 0;
+      }
+
+      & + div + img {
+        opacity: 1;
+      }
+    }
     /* top: 9px;
     right: 8px; */
     top: 1.17vw;
@@ -203,8 +342,8 @@ const Bookmark = styled.button`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    top: 7.78px;
-    right: 6.916px;
+    top: 1.1664vw;
+    right: 1.0369vw;
   }
 
   @media ${responsive.mobile} {
@@ -322,7 +461,7 @@ const LectureTitle = styled.h3`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    margin-top: 6px;
+    margin-top: 1.4243vw;
   }
 
   @media ${responsive.mobile} {
@@ -350,7 +489,7 @@ const HashTagContainer = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    margin-top: 14px;
+    margin-top: 3.5607vw;
   }
 
   @media ${responsive.mobile} {
@@ -405,8 +544,8 @@ const AgencyBadge = styled(RegularAgencyBadge)`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    margin-right: 3.45px;
-    padding: 4.256px 2.793px;
+    margin-right: 1.1994vw;
+    padding: 0.9496vw;
   }
 
   @media ${responsive.mobile} {
@@ -439,8 +578,8 @@ const LectureImg = styled.img`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 200.891px;
-    height: 111.719px;
+    width: 44.9775vw;
+    height: 25.0445vw;
   }
 
   @media ${responsive.mobile} {
@@ -474,8 +613,8 @@ const LectureInfo = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 180.078px;
-    height: 113.445px;
+    width: 37.3958vw;
+    height: 24.2234vw;
   }
 
   @media ${responsive.mobile} {
@@ -497,7 +636,7 @@ const InfoContainer = styled.div`
   border-radius: 0 0 8px 8px;
   background: linear-gradient(180deg, #212121 76.67%, #000000 126.25%);
 
-  /* 1120px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
+  /* 1120px 부터 더 작아질 수 없어서, 카드 크기 변경 */
   @media (max-width: 1121px) {
     /* width: 221.086px;
     height: 156.352px; */
@@ -513,8 +652,8 @@ const InfoContainer = styled.div`
   }
   /* Tablet 665px 부터 더이상 크기를 줄이지 않음, 너무 작아짐 */
   @media (max-width: 666px) {
-    width: 200.891px;
-    height: 141.109px;
+    width: 44.9775vw;
+    height: 31.8123vw;
   }
 
   @media ${responsive.mobile} {
@@ -525,9 +664,9 @@ const InfoContainer = styled.div`
 
 const LectureCard = styled.div`
   cursor: pointer;
+  position: relative;
   display: inline-flex;
   flex-direction: column;
-  position: relative;
 `;
 
 export default Card;
