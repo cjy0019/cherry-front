@@ -15,15 +15,19 @@ const CategoryCancelButton = ({ children, handleClick }) => {
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
-  border-radius: 3px;
+  gap: 5px;
+
   padding: 5px 7px;
-  color: ${palette.text6};
-  font-size: 14px;
+
+  font-size: 0.875rem;
   font-weight: 400;
+  color: ${palette.text6};
+
   background-color: ${palette.lineGray};
+
+  border-radius: 3px;
   border: none;
   cursor: pointer;
-  gap: 5px;
 
   & > img {
     width: 18px;

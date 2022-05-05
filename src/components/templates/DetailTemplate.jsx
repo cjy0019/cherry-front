@@ -10,6 +10,7 @@ import SideBar from '../molecules/detail/SideBar';
 import palette from '../../style/palette';
 import AverageScore from '../molecules/detail/AverageScore';
 import ReviewList from '../molecules/detail/ReviewList';
+import { responsive } from '../../style/responsive';
 
 const DetailTemplate = () => {
   return (
@@ -33,8 +34,18 @@ const DetailTemplate = () => {
 const VerticalContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 49px;
+  gap: 2.5521vw;
   background-color: ${palette.backgroundBlack};
+
+  padding: 0 15px;
+
+  @media ${responsive.tablet} {
+    padding: 0 35px;
+  }
+
+  @media ${responsive.mobile} {
+    padding: 0 20px 0 21px;
+  }
 `;
 
 export default DetailTemplate;

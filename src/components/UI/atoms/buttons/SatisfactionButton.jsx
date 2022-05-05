@@ -14,13 +14,17 @@ const SatisfactionButton = ({ children, selected, handleClick }) => {
 };
 
 const StyledButton = styled.button`
-  background-color: #000000;
   padding: 10px;
-  border-radius: 3px;
+
+  font-size: 0.875rem;
   font-weight: 400;
   color: ${palette.textWhite};
-  cursor: pointer;
+
+  background-color: #000000;
+
+  border-radius: 3px;
   border: none;
+  cursor: pointer;
 
   ${(props) =>
     props.selected === props['data-name'] &&

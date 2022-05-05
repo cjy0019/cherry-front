@@ -35,24 +35,26 @@ export default {
   ],
 };
 
-export const Retry = () => <RetryButton />;
+export const Retry = () => <RetryButton>다시 시도</RetryButton>;
 Retry.storyName = '다시 시도';
-export const CherryPickStart = () => <CherryPickStartButton />;
+export const CherryPickStart = () => (
+  <CherryPickStartButton>체리픽 시작하기</CherryPickStartButton>
+);
 CherryPickStart.storyName = '체리픽 시작하기';
 
 export const Save = () => (
   <>
     <SaveButton>저장하기</SaveButton>
-    <SaveButton dim>저장하기</SaveButton>
+    <SaveButton disabled>저장하기</SaveButton>
   </>
 );
 Save.storyName = '저장하기 버튼';
 
 export const Satisfaction = () => (
   <div>
-    <SatisfactionButton selected>매우 만족</SatisfactionButton>
+    <SatisfactionButton selected='매우 만족'>매우 만족</SatisfactionButton>
     <SatisfactionButton>만족</SatisfactionButton>
-    <SatisfactionButton selected>보통</SatisfactionButton>
+    <SatisfactionButton selected='보통'>보통</SatisfactionButton>
     <SatisfactionButton>그저 그럼</SatisfactionButton>
   </div>
 );

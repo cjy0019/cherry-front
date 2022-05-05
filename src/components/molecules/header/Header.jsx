@@ -332,6 +332,8 @@ const StyledHeader = styled.header`
 
   font-weight: 400;
   color: ${palette.textWhite};
+
+  background-color: #181920;
 `;
 
 export default Header;

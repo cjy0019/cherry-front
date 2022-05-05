@@ -5,9 +5,9 @@ import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 import linkIcon from '../../../../assets/img/linkicon.svg';
 
-const OriginalLinkButton = ({ to }) => {
+const OriginalLinkButton = ({ to, className }) => {
   return (
-    <StyledLink to={to}>
+    <StyledLink className={className} to={to}>
       원본 링크
       <img src={linkIcon} alt='아이콘' />
     </StyledLink>
@@ -16,17 +16,21 @@ const OriginalLinkButton = ({ to }) => {
 
 const StyledLink = styled(Link)`
   display: flex;
-  gap: 10px;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  height: 40px;
+
   border-radius: 4px;
   background-color: #15161d;
-  color: ${palette.textWhite};
-  text-decoration: none;
+
   font-size: 0.75rem;
-  width: 100%;
   font-weight: 700;
-  height: 40px;
+  color: ${palette.textWhite};
+
+  text-decoration: none;
 
   @media ${responsive.tablet} {
     width: 50%;
@@ -34,7 +38,7 @@ const StyledLink = styled(Link)`
 
   @media ${responsive.mobile} {
     width: 50%;
-  } ;
+  }
 `;
 
 export default OriginalLinkButton;

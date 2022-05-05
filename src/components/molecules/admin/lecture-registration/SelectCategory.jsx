@@ -6,7 +6,7 @@ import arrowBottom from '../../../../assets/img/arrow_bottom.svg';
 import palette from '../../../../style/palette';
 import SatisfactionButton from '../../../UI/atoms/buttons/SatisfactionButton';
 
-const SelectCategory = ({ category, handleClick }) => {
+const SelectCategory = ({ lectureData, handleClick }) => {
   return (
     <Container>
       <CenterWrapper>
@@ -15,10 +15,14 @@ const SelectCategory = ({ category, handleClick }) => {
           <DepthContainer>
             <DepthText>&#183; 1depth</DepthText>
             <SatisfactionButtonContainer>
-              <SatisfactionButton selected={category} handleClick={handleClick}>
+              <SatisfactionButton
+                selected={lectureData.category}
+                handleClick={handleClick}>
                 프론트엔드
               </SatisfactionButton>
-              <SatisfactionButton selected={category} handleClick={handleClick}>
+              <SatisfactionButton
+                selected={lectureData.category}
+                handleClick={handleClick}>
                 백엔드
               </SatisfactionButton>
             </SatisfactionButtonContainer>
