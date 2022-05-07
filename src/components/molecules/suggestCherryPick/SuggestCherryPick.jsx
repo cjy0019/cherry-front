@@ -7,7 +7,7 @@ import feedbackImg from '../../../assets/img/feedback.png';
 import Feedback from '../../UI/atoms/feedback/Feedback';
 
 const SuggestCherryPick = () => {
-  const [feedbackIsClicked, setFeedbackIsClicked] = useState(true);
+  const [feedbackIsClicked, setFeedbackIsClicked] = useState(false);
 
   const openFeedback = useCallback(() => {
     setFeedbackIsClicked(!feedbackIsClicked);
