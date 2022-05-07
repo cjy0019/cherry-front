@@ -188,6 +188,7 @@ const Title = styled.h2`
 `;
 
 const Container = styled.div`
+  position: absolute;
   ${({ notificationIsClicked }) =>
     notificationIsClicked
       ? css`

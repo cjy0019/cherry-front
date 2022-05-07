@@ -14,18 +14,10 @@ export default {
 
 export const NotificationStory = () => (
   <Container>
-    <Notification />
+    <Notification notificationIsClicked />
   </Container>
 );
 
 NotificationStory.storyName = '헤더 알림';
 
-const Container = styled.div`
-  width: 62.5vw;
-  margin: 0 auto;
-
-  @media ${responsive.mobile} {
-    width: 88.8889vw;
-    margin: 0 auto;
-  }
-`;
+const Container = styled.div``;
