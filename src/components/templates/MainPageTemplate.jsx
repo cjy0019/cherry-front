@@ -15,7 +15,7 @@ import SelectCategory from '../molecules/selectCategory/SelectCategory';
 const MainPageTemplate = () => {
   return (
     <>
-      <Container1200>
+      <SmallContainer>
         <StyledHeader />
         <HeaderSection>
           <Illustrate />
@@ -30,7 +30,7 @@ const MainPageTemplate = () => {
         <Hotsix />
         <SuggestReview />
         <SelectCategory />
-      </Container1200>
+      </SmallContainer>
       <SuggestCherryPick />
     </>
   );
@@ -43,7 +43,7 @@ const StyledHeader = styled(Header)`
   }
 `;
 
-const Container1200 = styled.div`
+const SmallContainer = styled.div`
   position: relative;
   width: 62.5vw;
   margin: 0 auto;

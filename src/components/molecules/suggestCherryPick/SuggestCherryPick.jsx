@@ -1,24 +1,85 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { responsive } from '../../../style/responsive';
 
+import feedbackImg from '../../../assets/img/feedback.png';
+import Feedback from '../../UI/atoms/feedback/Feedback';
+
 const SuggestCherryPick = () => {
+  const [feedbackIsClicked, setFeedbackIsClicked] = useState(true);
+
+  const openFeedback = useCallback(() => {
+    setFeedbackIsClicked(!feedbackIsClicked);
+  }, [feedbackIsClicked]);
+
   return (
     <Container>
-      <Title>
-        누구나 첫 리뷰 작성하면
-        <Br /> 전체 열람 가능
-      </Title>
-      <Info>
-        들을까 말까 한 강의들을 계속 비교하느라 지치셨죠?
-        <br /> 체리픽은 익명으로 솔직하게 리뷰를 남기고, <Br />
-        강의 퀄리티를 판단할 수 있습니다.
-      </Info>
-      <StartButton to='#'>체리픽 시작하기</StartButton>
+      <FitSizeContainer>
+        <Title>
+          누구나 첫 리뷰 작성하면
+          <Br /> 전체 열람 가능
+        </Title>
+        <Info>
+          들을까 말까 한 강의들을 계속 비교하느라 지치셨죠?
+          <br /> 체리픽은 익명으로 솔직하게 리뷰를 남기고, <Br />
+          강의 퀄리티를 판단할 수 있습니다.
+        </Info>
+        <StartButton to='#'>체리픽 시작하기</StartButton>
+        <FeedbackButton onClick={openFeedback} />
+        <CherryPickFeedback
+          openFeedback={openFeedback}
+          feedbackIsClicked={feedbackIsClicked}
+        />
+      </FitSizeContainer>
     </Container>
   );
 };
+
+const FitSizeContainer = styled.div`
+  position: relative;
+
+  width: 1200px;
+  height: 340px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CherryPickFeedback = styled(Feedback)`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  ${({ feedbackIsClicked }) =>
+    feedbackIsClicked
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `}
+`;
+
+const FeedbackButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  display: block;
+
+  position: absolute;
+  bottom: 35.54px;
+  left: 0;
+
+  width: 38px;
+  height: 50px;
+
+  background-image: url(${feedbackImg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 
 const Br = styled.br`
   display: none;
@@ -97,9 +158,8 @@ const Title = styled.h2`
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   height: 340px;
   margin-top: 80px;
