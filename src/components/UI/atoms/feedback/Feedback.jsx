@@ -15,15 +15,15 @@ const Feedback = ({ className, openFeedback }) => {
       </Title>
       <StartForm>
         <StartFieldset>
-          <StartLabel for='rate1' />
+          <StartLabel htmlFor='rate1' />
           <StartInput type='radio' name='rating' value='1' id='rate1' />
-          <StartLabel for='rate2' />
+          <StartLabel htmlFor='rate2' />
           <StartInput type='radio' name='rating' value='2' id='rate2' />
-          <StartLabel for='rate3' />
+          <StartLabel htmlFor='rate3' />
           <StartInput type='radio' name='rating' value='3' id='rate3' />
-          <StartLabel for='rate4' />
+          <StartLabel htmlFor='rate4' />
           <StartInput type='radio' name='rating' value='4' id='rate4' />
-          <StartLabel for='rate5' />
+          <StartLabel htmlFor='rate5' />
           <StartInput type='radio' name='rating' value='5' id='rate5' />
         </StartFieldset>
       </StartForm>
