@@ -9,13 +9,17 @@ import { Link } from 'react-router-dom';
 const MobileNotificationTemplate = () => {
   return (
     <Container>
-      <Title>알림(3)</Title>
+      <Header>
+        <Title>알림(3)</Title>
+        <CloseButton to='#' />
+      </Header>
       <ReviewsNotificationContainer>
         <ReviewsNotificationLi>
           <ReviewImg src={lectureImg} alt='강의 이미지' />
           <ReviewInfoContainer>
             <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
             <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            <UpdateDate320>지금</UpdateDate320>
           </ReviewInfoContainer>
           <UpdateDate>지금</UpdateDate>
         </ReviewsNotificationLi>
@@ -24,6 +28,7 @@ const MobileNotificationTemplate = () => {
           <ReviewInfoContainer>
             <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
             <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            <UpdateDate320>하루 전</UpdateDate320>
           </ReviewInfoContainer>
           <UpdateDate>하루 전</UpdateDate>
         </ReviewsNotificationLi>
@@ -32,6 +37,7 @@ const MobileNotificationTemplate = () => {
           <ReviewInfoContainer>
             <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
             <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            <UpdateDate320>지금</UpdateDate320>
           </ReviewInfoContainer>
           <UpdateDate>지금</UpdateDate>
         </ReviewsNotificationLi>
@@ -40,6 +46,7 @@ const MobileNotificationTemplate = () => {
           <ReviewInfoContainer>
             <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
             <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            <UpdateDate320>지금</UpdateDate320>
           </ReviewInfoContainer>
           <UpdateDate>지금</UpdateDate>
         </ReviewsNotificationLi>
@@ -48,38 +55,7 @@ const MobileNotificationTemplate = () => {
           <ReviewInfoContainer>
             <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
             <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>지금</UpdateDate>
-        </ReviewsNotificationLi>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>지금</UpdateDate>
-        </ReviewsNotificationLi>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>지금</UpdateDate>
-        </ReviewsNotificationLi>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>지금</UpdateDate>
-        </ReviewsNotificationLi>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는 JavaSc...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            <UpdateDate320>지금</UpdateDate320>
           </ReviewInfoContainer>
           <UpdateDate>지금</UpdateDate>
         </ReviewsNotificationLi>
@@ -92,18 +68,34 @@ const MobileNotificationTemplate = () => {
         <WelcomeDate>2021.12.31</WelcomeDate>
       </Welcome>
       <DeleteAll>모두 지우기</DeleteAll>
-      <CloseButton to='#' />
     </Container>
   );
 };
 
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const UpdateDate320 = styled.p`
+  display: none;
+
+  margin-top: 8px;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ffffff;
+  opacity: 0.5;
+
+  @media (max-width: 320px) {
+    display: block;
+  }
+`;
+
 const CloseButton = styled(Link)`
   all: unset;
   cursor: pointer;
-
-  position: absolute;
-  top: 11.1111vw;
-  right: 5.5556vw;
 
   width: 32px;
   height: 32px;
@@ -122,7 +114,7 @@ const DeleteAll = styled.button`
   justify-content: center;
   align-items: center;
 
-  width: 320px;
+  width: 88.8889vw;
   height: 44px;
 
   background-color: #000000;
@@ -161,13 +153,20 @@ const Welcome = styled.div`
 `;
 
 const UpdateDate = styled.p`
-  width: 50px;
-  text-align: end;
+  display: block;
+
+  /* width: 50px;
+  text-align: end; */
+  margin-left: auto;
 
   font-weight: 400;
   font-size: 0.75rem;
   color: #ffffff;
   opacity: 0.5;
+
+  @media (max-width: 320px) {
+    display: none;
+  }
 `;
 
 const ReviewState = styled.p`
@@ -221,6 +220,8 @@ const ReviewsNotificationContainer = styled.ul`
 `;
 
 const Title = styled.h1`
+  display: inline-block;
+
   font-weight: 700;
   font-size: 1.5rem;
   color: #ffffff;
