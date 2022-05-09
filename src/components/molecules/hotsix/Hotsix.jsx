@@ -117,22 +117,22 @@ const Hotsix = () => {
           cardListRef={cardListRef}
           currentCarousel={currentCarousel}>
           <CardLi>
-            <HotSixCard rankSrc={rank1} />
+            <HotSixCard three rankSrc={rank1} />
           </CardLi>
           <CardLi>
-            <HotSixCard rankSrc={rank2} />
+            <HotSixCard three rankSrc={rank2} />
           </CardLi>
           <CardLi>
-            <HotSixCard rankSrc={rank3} />
+            <HotSixCard three rankSrc={rank3} />
           </CardLi>
           <CardLi>
-            <HotSixCard rankSrc={rank4} />
+            <HotSixCard three rankSrc={rank4} />
           </CardLi>
           <CardLi>
-            <HotSixCard rankSrc={rank5} />
+            <HotSixCard three rankSrc={rank5} />
           </CardLi>
           <CardLi>
-            <HotSixCard rankSrc={rank6} />
+            <HotSixCard three rankSrc={rank6} />
           </CardLi>
         </CardsUl>
       </CarouselContainer>

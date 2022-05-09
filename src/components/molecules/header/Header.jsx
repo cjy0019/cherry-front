@@ -14,7 +14,7 @@ import Notification from '../../UI/atoms/notification/Notification';
 const Header = ({ className, login, notMain, activeNotification }) => {
   const [myPageIsClicked, setMyPageIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
-  const [notificationIsClicked, setNotificationIsClicked] = useState(true);
+  const [notificationIsClicked, setNotificationIsClicked] = useState(false);
 
   if (!activeNotification) {
     activeNotification = () => {
