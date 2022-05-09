@@ -1,41 +1,76 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 
 import zeroStart from '../../../../assets/img/star0_dark.svg';
 import halfStart from '../../../../assets/img/star0.5_dark.svg';
 import fullStart from '../../../../assets/img/star1_dark.svg';
 import closeButtonImg from '../../../../assets/img/feddback_close.svg';
+import feedbackImg from '../../../../assets/img/feedback.png';
+import { responsive } from '../../../../style/responsive';
 
-const Feedback = ({ className, openFeedback }) => {
+const Feedback = ({ className }) => {
+  const [feedbackIsClicked, setFeedbackIsClicked] = useState(false);
+
+  const openFeedback = () => {
+    setFeedbackIsClicked(!feedbackIsClicked);
+  };
+
   return (
     <Container className={className}>
-      <Title>
-        Cherry Pick에
-        <br /> 만족하셨나요?
-      </Title>
-      <StartForm>
-        <StartFieldset>
-          <StartLabel htmlFor='rate1' />
-          <StartInput type='radio' name='rating' value='1' id='rate1' />
-          <StartLabel htmlFor='rate2' />
-          <StartInput type='radio' name='rating' value='2' id='rate2' />
-          <StartLabel htmlFor='rate3' />
-          <StartInput type='radio' name='rating' value='3' id='rate3' />
-          <StartLabel htmlFor='rate4' />
-          <StartInput type='radio' name='rating' value='4' id='rate4' />
-          <StartLabel htmlFor='rate5' />
-          <StartInput type='radio' name='rating' value='5' id='rate5' />
-        </StartFieldset>
-      </StartForm>
-      <FeedbackTextArea
-        cols='8'
-        placeholder='추가하고 싶은 강의/불편한 점/건의사항이 있으신가요?'
-      />
-      <Submit>제출하기</Submit>
-      <CloseButton onClick={openFeedback} />
+      <FeedbackButton onClick={openFeedback} />
+      <FeedbackContainer feedbackIsClicked={feedbackIsClicked}>
+        <Title>
+          Cherry Pick에
+          <br /> 만족하셨나요?
+        </Title>
+        <StartForm>
+          <StartFieldset>
+            <StartLabel htmlFor='rate1' />
+            <StartInput type='radio' name='rating' value='1' id='rate1' />
+            <StartLabel htmlFor='rate2' />
+            <StartInput type='radio' name='rating' value='2' id='rate2' />
+            <StartLabel htmlFor='rate3' />
+            <StartInput type='radio' name='rating' value='3' id='rate3' />
+            <StartLabel htmlFor='rate4' />
+            <StartInput type='radio' name='rating' value='4' id='rate4' />
+            <StartLabel htmlFor='rate5' />
+            <StartInput type='radio' name='rating' value='5' id='rate5' />
+          </StartFieldset>
+        </StartForm>
+        <FeedbackTextArea
+          cols='8'
+          placeholder='추가하고 싶은 강의/불편한 점/건의사항이 있으신가요?'
+        />
+        <Submit>제출하기</Submit>
+        <CloseButton onClick={openFeedback} />
+      </FeedbackContainer>
     </Container>
   );
 };
+
+const FeedbackButton = styled.button`
+  all: unset;
+
+  cursor: pointer;
+  display: block;
+
+  width: 36px;
+  height: 47px;
+
+  background-image: url(${feedbackImg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media ${responsive.mobile} {
+    width: 32px;
+    height: 41px;
+  }
+`;
+
+const Container = styled.div`
+  position: relative;
+`;
 
 const CloseButton = styled.button`
   all: unset;
@@ -132,14 +167,29 @@ const Title = styled.h3`
   color: #000000;
 `;
 
-const Container = styled.div`
-  position: relative;
+const FeedbackContainer = styled.div`
+  position: absolute;
+  top: -262.75px;
+
+  ${({ feedbackIsClicked }) =>
+    feedbackIsClicked
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `}
+
   width: 332px;
 
   padding: 16px;
 
   background-color: #ffffff;
   border-radius: 8px;
+
+  @media ${responsive.mobile} {
+    right: 0;
+  }
 `;
 
 export default Feedback;

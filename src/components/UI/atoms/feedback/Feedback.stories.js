@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { responsive } from '../../../../style/responsive';
 import Feedback from './Feedback';
 
 export default {
@@ -12,13 +13,20 @@ export default {
 
 export const FeedbackStory = () => (
   <Container>
-    <Feedback />;
+    <Feedback />
   </Container>
 );
 
 FeedbackStory.storyName = '피드백';
 
 const Container = styled.div`
-  width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  margin-top: 300px;
+
+  @media ${responsive.mobile} {
+    justify-content: flex-end;
+  }
+  background: indigo;
 `;
