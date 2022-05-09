@@ -39,19 +39,29 @@ const SuggestCherryPick = () => {
 const FitSizeContainer = styled.div`
   position: relative;
 
-  width: 1200px;
+  width: 62.5vw;
   height: 340px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media ${responsive.tablet} {
+    width: 100vw;
+    height: 300px;
+  }
+
+  @media ${responsive.mobile} {
+    width: 100vw;
+    height: 284px;
+  }
 `;
 
 const CherryPickFeedback = styled(Feedback)`
   position: absolute;
   top: 0;
-  left: 0;
+  left: -5.4167vw;
 
   ${({ feedbackIsClicked }) =>
     feedbackIsClicked
@@ -61,6 +71,16 @@ const CherryPickFeedback = styled(Feedback)`
       : css`
           display: none;
         `}
+
+  @media ${responsive.tablet} {
+    top: -14px;
+    left: 2.9948vw;
+  }
+
+  @media ${responsive.mobile} {
+    top: -30px;
+    left: 0;
+  }
 `;
 
 const FeedbackButton = styled.button`
@@ -70,15 +90,28 @@ const FeedbackButton = styled.button`
 
   position: absolute;
   bottom: 35.54px;
-  left: 0;
+  left: -5.4167vw;
 
-  width: 38px;
-  height: 50px;
+  width: 36px;
+  height: 47px;
 
   background-image: url(${feedbackImg});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media ${responsive.tablet} {
+    bottom: 13.54px;
+    left: 2.9948vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 32px;
+    height: 41px;
+
+    bottom: 11.7px;
+    left: 85.5556vw;
+  }
 `;
 
 const Br = styled.br`
@@ -134,6 +167,8 @@ const Info = styled.p`
   }
 
   @media ${responsive.mobile} {
+    line-height: 20px;
+
     margin-top: 16px;
     font-size: 0.75rem;
   }
@@ -153,6 +188,7 @@ const Title = styled.h2`
 
   @media ${responsive.mobile} {
     font-size: 1.125rem;
+    line-height: 25px;
   }
 `;
 
@@ -161,10 +197,16 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 340px;
   margin-top: 80px;
 
   background-color: #15161d;
+
+  @media ${responsive.tablet} {
+    margin-top: 60px;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 export default SuggestCherryPick;
