@@ -4,13 +4,14 @@ import { responsive } from '../../../style/responsive';
 import Footer from '../../molecules/footer/Footer';
 
 import Header from '../../molecules/header/Header';
+import Feedback from '../../UI/atoms/feedback/Feedback';
 import LectureCard from '../../UI/atoms/lectureCard/LectureCard';
 import MobileLectureCard from '../../UI/atoms/mobileLectureCard/MobileLectureCard';
 import Sorts from '../../UI/atoms/sorts/Sorts';
 
 const SearchResultTemplate = () => {
   return (
-    <>
+    <Container>
       <SearchHeader notMain login />
       <SearchResultContainer>
         <SearchTitle>웹 게임 검색결과 0개</SearchTitle>
@@ -33,11 +34,31 @@ const SearchResultTemplate = () => {
           <MobileLectureCard />
           <MobileLectureCard />
         </MobileLectureCards>
+        <SearchFeedback />
       </SearchResultContainer>
       <SearchFooter />
-    </>
+    </Container>
   );
 };
+
+const SearchFeedback = styled(Feedback)`
+  position: absolute;
+
+  bottom: -119.08px;
+  left: -5.4167vw;
+
+  @media ${responsive.tablet} {
+    bottom: -65px;
+    left: 0;
+  }
+
+  @media ${responsive.mobile} {
+    bottom: -60.3px;
+    left: 80vw;
+  }
+`;
+
+const Container = styled.div``;
 
 const SearchFooter = styled(Footer)`
   margin-top: 130px;
@@ -69,6 +90,7 @@ const MobileLectureCards = styled.div`
 
     & > div:last-of-type {
       border-bottom: none;
+      padding-bottom: 0;
     }
   }
 `;
@@ -151,6 +173,7 @@ const SearchSorts = styled(Sorts)`
 `;
 
 const SearchResultContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
