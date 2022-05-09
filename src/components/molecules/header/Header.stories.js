@@ -25,13 +25,13 @@ export const HeaderLoginMain = () => (
 
 export const HeaderLoginTheOtherPage = () => (
   <BrowserRouter>
-    <Header login NotMain />
+    <Header login notMain />
   </BrowserRouter>
 );
 
 export const HeaderNotLoginTheOtherPage = () => (
   <BrowserRouter>
-    <Header NotMain />
+    <Header notMain />
   </BrowserRouter>
 );
 

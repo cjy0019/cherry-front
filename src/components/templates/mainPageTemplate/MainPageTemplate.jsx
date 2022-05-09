@@ -51,12 +51,6 @@ const HeaderNotification = styled(Notification)`
   right: 43px;
 
   z-index: 10;
-
-  @media ${responsive.tablet} {
-  }
-
-  @media ${responsive.mobile} {
-  }
 `;
 
 const StyledHeader = styled(Header)`
