@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../style/palette';
+import { responsive } from '../../../style/responsive';
+import { Link } from 'react-router-dom';
+
+import SearchInput from '../../UI/atoms/input/SearchInput';
+
 import bellImg from '../../../assets/img/bell.svg';
 import bellActive from '../../../assets/img/bell_active.svg';
 import searchM from '../../../assets/img/search_m.svg';
-import { responsive } from '../../../style/responsive';
-import SearchInput from '../../UI/atoms/input/SearchInput';
-import { Link } from 'react-router-dom';
 
-const Header = ({ className, login, NotMain }) => {
-  const [noticeIsClicked, setNoticeIsClicked] = useState(false);
+const Header = ({ className, login, NotMain, activeNotification }) => {
+  const [myPageIsClicked, setMyPageIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
 
-  const noticeOnClick = () => {
-    setNoticeIsClicked(!noticeIsClicked);
+  const activeMyPage = () => {
+    setMyPageIsClicked(!myPageIsClicked);
   };
 
   const searchMOnClick = () => {
@@ -44,9 +46,9 @@ const Header = ({ className, login, NotMain }) => {
           )}
           {login && (
             <>
-              <NotificationButton onClick={noticeOnClick} />
-              <StyledLink to='#'>MY</StyledLink>
-              <NotificationUl noticeIsClicked={noticeIsClicked}>
+              <NotificationButton onClick={activeNotification} />
+              <MyPage onClick={activeMyPage}>MY</MyPage>
+              <NotificationUl myPageIsClicked={myPageIsClicked}>
                 <NotificationLi>
                   <Link to='#'>내가 쓴 리뷰</Link>
                 </NotificationLi>
@@ -72,6 +74,18 @@ const Header = ({ className, login, NotMain }) => {
     </StyledHeader>
   );
 };
+const MyPage = styled.span`
+  cursor: pointer;
+  margin-left: 24px;
+
+  @media ${responsive.tablet} {
+    margin-left: 12px;
+  }
+
+  @media ${responsive.mobile} {
+    margin-left: 12px;
+  }
+`;
 
 const CancelSpan = styled.span`
   cursor: pointer;
@@ -122,8 +136,8 @@ const StyledSearchInput = styled(SearchInput)`
 const NotificationUl = styled.ul`
   z-index: 9999;
 
-  ${({ noticeIsClicked }) =>
-    noticeIsClicked
+  ${({ myPageIsClicked }) =>
+    myPageIsClicked
       ? css`
           display: flex;
         `
@@ -232,7 +246,9 @@ const Span = styled.span`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.span`
+  cursor: pointer;
+
   font-size: 1rem;
   display: inline-block;
   color: ${palette.textWhite};
