@@ -78,11 +78,9 @@ const AvailableSkill = () => {
       <AutoSlider>
         <ImagesUl>
           {imgList.map((src, i) => (
-            <>
-              <ImageLi key={i}>
-                <SkillImg src={src} />
-              </ImageLi>
-            </>
+            <ImageLi key={i}>
+              <SkillImg src={src} />
+            </ImageLi>
           ))}
         </ImagesUl>
       </AutoSlider>
