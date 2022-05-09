@@ -5,7 +5,7 @@ import MobileLectureImg from '../../../../assets/img/mobileLectureImg.png';
 import bookmark from '../../../../assets/img/bookmark.svg';
 import bookmarkActive from '../../../../assets/img/bookmark_active.svg';
 
-const MobileLectureCard = () => {
+const MobileLectureCard = ({ className }) => {
   const [bookmarkIsClicked, setBookmarkIsClicked] = useState(false);
 
   function addBookmark(e) {
@@ -13,7 +13,7 @@ const MobileLectureCard = () => {
   }
 
   return (
-    <Container>
+    <Container className={className}>
       <LectureImgContainer>
         <LectureImg src={MobileLectureImg} alt='자바스크립트 강의' />
         <Bookmark bookmarkIsClicked={bookmarkIsClicked} onClick={addBookmark} />

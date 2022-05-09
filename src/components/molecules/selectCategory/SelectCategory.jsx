@@ -3,15 +3,15 @@ import styled, { css } from 'styled-components';
 import { responsive } from '../../../style/responsive';
 import palette from '../../../style/palette';
 
-import LectureCard from '../../UI/atoms/lectureCard/LectureCard';
+import LectureCard from '../../UI/atoms/lectureCard/ThreeLectureCard';
 
 import curiousEmoji from '../../../assets/img/emoji_hmm.png';
-import categoryDown from '../../../assets/img/categoryDown.svg';
 import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
 import closeDark from '../../../assets/img/close_dark.svg';
 import javascript from '../../../assets/img/JavaScript.png';
 import MobileLectureCard from '../../UI/atoms/mobileLectureCard/MobileLectureCard';
+import Sorts from '../../UI/atoms/sorts/Sorts';
 
 const skillArr = [
   { src: javascript, name: 'Javascript', id: 1 },
@@ -32,7 +32,6 @@ const SelectCategory = () => {
   const [secondCategoryIsClicked, setSecondCategoryIsClicked] =
     useState('전체');
   const [thirdCategoryIsClicked, setThirdCategoryIsClicked] = useState([]);
-  const [sortIsClicked, setSortIsClicked] = useState('최신순');
   const [currentCarousel, setCurrentCarousel] = useState(0);
 
   let mobileSecondSlider = useRef({
@@ -85,10 +84,6 @@ const SelectCategory = () => {
       ...thirdCategoryIsClicked.slice(0, indexOf),
       ...thirdCategoryIsClicked.slice(indexOf + 1),
     ]);
-  }
-
-  function selectSort(e) {
-    setSortIsClicked(e.target.innerText);
   }
 
   function sliderMoveRight(e) {
@@ -294,62 +289,35 @@ const SelectCategory = () => {
           </CategoryResult>
         ))}
       </ThirdCategoryResultContainer>
-      <SortContainer>
-        <SortPcTablet>
-          <SortCategory
-            sortIsClicked={sortIsClicked === '최신순'}
-            onClick={selectSort}>
-            최신순
-          </SortCategory>
-          <SortCategory
-            sortIsClicked={sortIsClicked === '인기순'}
-            onClick={selectSort}>
-            인기순
-          </SortCategory>
-          <SortCategory
-            sortIsClicked={sortIsClicked === '가격↑'}
-            onClick={selectSort}>
-            가격↑
-          </SortCategory>
-          <SortCategory
-            sortIsClicked={sortIsClicked === '가격↓'}
-            onClick={selectSort}>
-            가격↓
-          </SortCategory>
-        </SortPcTablet>
-        <SortMobile>
-          <CurrentSort>백엔드</CurrentSort>
-          <DownArrow src={categoryDown} alt='펼쳐 보기' />
-        </SortMobile>
-      </SortContainer>
+      <SelectSorts />
       <PcMobileLectureCard>
         <PcLectureCardsContainer>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
           <PcLectureCardLi>
-            <CategoryLectureCard />
+            <CategoryLectureCard three />
           </PcLectureCardLi>
         </PcLectureCardsContainer>
         <MobileLectureCardContainer>
@@ -396,6 +364,15 @@ const SelectCategory = () => {
     </Container>
   );
 };
+
+const SelectSorts = styled(Sorts)`
+  margin-top: 60px;
+  margin-left: auto;
+
+  @media ${responsive.mobile} {
+    margin-top: 32px;
+  }
+`;
 
 const PcMobileLectureCard = styled.div``;
 
@@ -967,69 +944,6 @@ const ThirdCategorySliderContainer = styled.div`
 
 const ThirdCategoryContainer = styled.div`
   position: relative;
-`;
-
-const SortCategory = styled.button`
-  all: unset;
-  cursor: pointer;
-
-  margin-left: 12px;
-
-  font-weight: 400;
-  font-size: 0.875rem;
-  color: #ffffff;
-  opacity: 0.5;
-
-  ${({ sortIsClicked }) =>
-    sortIsClicked &&
-    css`
-      opacity: 1;
-      transition: all 0.3s linear;
-    `}
-`;
-
-const CurrentSort = styled.span`
-  font-weight: 400;
-  font-size: 0.75rem;
-  color: #ffffff;
-`;
-
-const DownArrow = styled.img`
-  margin-left: 4px;
-`;
-
-const SortMobile = styled.div`
-  display: none;
-
-  @media ${responsive.mobile} {
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-
-    background-color: #1f2026;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 100px;
-
-    padding: 8px 12px;
-  }
-`;
-
-const SortPcTablet = styled.div`
-  @media ${responsive.mobile} {
-    display: none;
-  }
-`;
-
-const SortContainer = styled.div`
-  display: block;
-  margin-top: 60px;
-  margin-left: auto;
-
-  @media ${responsive.mobile} {
-    margin-top: 32px;
-  }
 `;
 
 const SecondCategoryButton = styled.h4`

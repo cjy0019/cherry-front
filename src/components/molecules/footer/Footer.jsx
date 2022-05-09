@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
-const Footer = ({ login }) => {
+const Footer = ({ login, className }) => {
   return (
-    <StyledFooter login={login}>
+    <StyledFooter login={login} className={className}>
       <ContentsContainer>
         <FlexLeft>
           <BadgeWrapper>

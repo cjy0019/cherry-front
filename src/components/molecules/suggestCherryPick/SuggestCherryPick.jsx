@@ -7,12 +7,6 @@ import feedbackImg from '../../../assets/img/feedback.png';
 import Feedback from '../../UI/atoms/feedback/Feedback';
 
 const SuggestCherryPick = () => {
-  const [feedbackIsClicked, setFeedbackIsClicked] = useState(false);
-
-  const openFeedback = useCallback(() => {
-    setFeedbackIsClicked(!feedbackIsClicked);
-  }, [feedbackIsClicked]);
-
   return (
     <Container>
       <FitSizeContainer>
@@ -26,15 +20,31 @@ const SuggestCherryPick = () => {
           강의 퀄리티를 판단할 수 있습니다.
         </Info>
         <StartButton to='#'>체리픽 시작하기</StartButton>
-        <FeedbackButton onClick={openFeedback} />
-        <CherryPickFeedback
-          openFeedback={openFeedback}
-          feedbackIsClicked={feedbackIsClicked}
-        />
+        <MainFeedback />
       </FitSizeContainer>
     </Container>
   );
 };
+
+const MainFeedback = styled(Feedback)`
+  position: absolute;
+
+  bottom: 35.54px;
+  left: -5.4167vw;
+
+  @media ${responsive.tablet} {
+    bottom: 13.54px;
+    left: 2.9948vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 32px;
+    height: 41px;
+
+    bottom: 11.7px;
+    left: 85.5556vw;
+  }
+`;
 
 const FitSizeContainer = styled.div`
   position: relative;
@@ -55,62 +65,6 @@ const FitSizeContainer = styled.div`
   @media ${responsive.mobile} {
     width: 100vw;
     height: 284px;
-  }
-`;
-
-const CherryPickFeedback = styled(Feedback)`
-  position: absolute;
-  top: 0;
-  left: -5.4167vw;
-
-  ${({ feedbackIsClicked }) =>
-    feedbackIsClicked
-      ? css`
-          display: block;
-        `
-      : css`
-          display: none;
-        `}
-
-  @media ${responsive.tablet} {
-    top: -14px;
-    left: 2.9948vw;
-  }
-
-  @media ${responsive.mobile} {
-    top: -30px;
-    left: 0;
-  }
-`;
-
-const FeedbackButton = styled.button`
-  all: unset;
-  cursor: pointer;
-  display: block;
-
-  position: absolute;
-  bottom: 35.54px;
-  left: -5.4167vw;
-
-  width: 36px;
-  height: 47px;
-
-  background-image: url(${feedbackImg});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  @media ${responsive.tablet} {
-    bottom: 13.54px;
-    left: 2.9948vw;
-  }
-
-  @media ${responsive.mobile} {
-    width: 32px;
-    height: 41px;
-
-    bottom: 11.7px;
-    left: 85.5556vw;
   }
 `;
 
@@ -145,9 +99,6 @@ const StartButton = styled(Link)`
 
   @media ${responsive.tablet} {
     margin-top: 36px;
-  }
-
-  @media ${responsive.mobile} {
   }
 `;
 

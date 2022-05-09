@@ -9,10 +9,18 @@ import SearchInput from '../../UI/atoms/input/SearchInput';
 import bellImg from '../../../assets/img/bell.svg';
 import bellActive from '../../../assets/img/bell_active.svg';
 import searchM from '../../../assets/img/search_m.svg';
+import Notification from '../../UI/atoms/notification/Notification';
 
-const Header = ({ className, login, NotMain, activeNotification }) => {
+const Header = ({ className, login, notMain, activeNotification }) => {
   const [myPageIsClicked, setMyPageIsClicked] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
+  const [notificationIsClicked, setNotificationIsClicked] = useState(false);
+
+  if (!activeNotification) {
+    activeNotification = () => {
+      setNotificationIsClicked(!notificationIsClicked);
+    };
+  }
 
   const activeMyPage = () => {
     setMyPageIsClicked(!myPageIsClicked);
@@ -23,21 +31,21 @@ const Header = ({ className, login, NotMain, activeNotification }) => {
   };
 
   return (
-    <StyledHeader className={className} NotMain={NotMain}>
+    <StyledHeader className={className} notMain={notMain}>
       <Container>
         <FlexLeft>
-          <Span mobileSearchIsClicked={mobileSearchIsClicked} NotMain={NotMain}>
+          <Span mobileSearchIsClicked={mobileSearchIsClicked} notMain={notMain}>
             Cherry Pick
           </Span>
-          {NotMain && (
+          {notMain && (
             <StyledSearchInput
-              main={!NotMain}
+              main={!notMain}
               mobileSearchIsClicked={mobileSearchIsClicked}
             />
           )}
         </FlexLeft>
         <FlexRight mobileSearchIsClicked={mobileSearchIsClicked}>
-          <MobileSearchButton NotMain={NotMain} onClick={searchMOnClick} />
+          <MobileSearchButton notMain={notMain} onClick={searchMOnClick} />
           {!login && (
             <>
               <StyledLink to='#'>로그인</StyledLink>
@@ -47,6 +55,9 @@ const Header = ({ className, login, NotMain, activeNotification }) => {
           {login && (
             <>
               <NotificationButton onClick={activeNotification} />
+              <HeaderNotification
+                notificationIsClicked={notificationIsClicked}
+              />
               <MyPage onClick={activeMyPage}>MY</MyPage>
               <NotificationUl myPageIsClicked={myPageIsClicked}>
                 <NotificationLi>
@@ -74,6 +85,22 @@ const Header = ({ className, login, NotMain, activeNotification }) => {
     </StyledHeader>
   );
 };
+
+const HeaderNotification = styled(Notification)`
+  ${({ notificationIsClicked }) =>
+    notificationIsClicked
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `}
+
+  position: absolute;
+  top: 70px;
+  right: 43px;
+`;
+
 const MyPage = styled.span`
   cursor: pointer;
   margin-left: 24px;
@@ -114,7 +141,7 @@ const MobileSearchButton = styled.button`
   background-size: cover;
 
   @media ${responsive.mobile} {
-    ${({ NotMain }) => (NotMain ? 'display: block' : 'display: none')};
+    ${({ notMain }) => (notMain ? 'display: block' : 'display: none')};
   }
 `;
 
@@ -226,8 +253,8 @@ const Span = styled.span`
   font-family: 'Roboto';
   white-space: nowrap;
 
-  ${(NotMain) =>
-    NotMain &&
+  ${(notMain) =>
+    notMain &&
     css`
       margin-right: 36px;
     `}
@@ -316,7 +343,7 @@ const FlexRight = styled.div`
   }
   @media ${responsive.mobile} {
     & > a:nth-last-of-type(1) {
-      margin-left: ${({ NotMain }) => (NotMain ? '2.22vw' : '3.33vw')};
+      margin-left: ${({ notMain }) => (notMain ? '2.22vw' : '3.33vw')};
     }
   }
 `;
