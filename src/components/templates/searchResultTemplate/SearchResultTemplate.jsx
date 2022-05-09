@@ -4,6 +4,7 @@ import { responsive } from '../../../style/responsive';
 
 import Header from '../../molecules/header/Header';
 import LectureCard from '../../UI/atoms/lectureCard/LectureCard';
+import MobileLectureCard from '../../UI/atoms/mobileLectureCard/MobileLectureCard';
 import Sorts from '../../UI/atoms/sorts/Sorts';
 
 const SearchResultTemplate = () => {
@@ -23,10 +24,35 @@ const SearchResultTemplate = () => {
           <LectureCard four />
           <LectureCard four />
         </LectureCards>
+        <MobileLectureCards>
+          <MobileLectureCard />
+          <MobileLectureCard />
+          <MobileLectureCard />
+          <MobileLectureCard />
+          <MobileLectureCard />
+          <MobileLectureCard />
+        </MobileLectureCards>
       </SearchResultContainer>
     </>
   );
 };
+const MobileLectureCards = styled.div`
+  display: none;
+
+  @media ${responsive.mobile} {
+    display: block;
+    margin-top: 16px;
+
+    & > div {
+      padding: 22px 0px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    & > div:first-of-type {
+      padding-top: 0;
+    }
+  }
+`;
 
 const SearchHeader = styled(Header)`
   position: relative;
@@ -92,11 +118,7 @@ const LectureCards = styled.div`
   }
 
   @media ${responsive.mobile} {
-    margin-top: 0;
-    & > div {
-      padding: 22px 0px;
-      border-bottom: 1px solid #2a2a2a;
-    }
+    display: none;
   }
 `;
 
