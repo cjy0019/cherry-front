@@ -90,11 +90,23 @@ const LectureCards = styled.div`
       margin-top: 4.1667vw;
     }
   }
+
+  @media ${responsive.mobile} {
+    margin-top: 0;
+    & > div {
+      padding: 22px 0px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+  }
 `;
 
 const SearchSorts = styled(Sorts)`
   margin-left: auto;
   margin-top: 20px;
+
+  @media ${responsive.mobile} {
+    margin-top: 10px;
+  }
 `;
 
 const SearchResultContainer = styled.div`
@@ -109,6 +121,7 @@ const SearchResultContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    width: 88.8889vw;
   }
 `;
 
@@ -119,6 +132,14 @@ const SearchTitle = styled.h2`
 
   padding: 81px 0 53px 0;
   border-bottom: 1px solid #2a2a2a;
+
+  @media ${responsive.tablet} {
+    padding: 49px 0 53px;
+  }
+
+  @media ${responsive.mobile} {
+    padding: 49px 0 33px;
+  }
 `;
 
 export default SearchResultTemplate;

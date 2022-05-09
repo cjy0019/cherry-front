@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { responsive } from '../../../../style/responsive';
 
+import MobileLectureCard from '../mobileLectureCard/MobileLectureCard';
+
 import lectureImg from '../../../../assets/img/lectureImg.png';
 import onBookmark from '../../../../assets/img/bookmark_active.svg';
 import offBookmark from '../../../../assets/img/bookmark.svg';
@@ -17,40 +19,52 @@ const FourLectureCard = ({ className }) => {
   }
 
   return (
-    <LectureCard className={className}>
-      <LectureImg src={lectureImg} alt='제로초 자바스크립트 강의' />
-      <LectureOfflineBadge />
-      <Bookmark isActiveBookmark={isActiveBookmark} onClick={addBookmark} />
-      <BookmarkAdded isActiveBookmark={isActiveBookmark}>
-        북마크 완료!
-      </BookmarkAdded>
-      <InfoContainer>
-        <AgencyBadgeContainer>
-          <AgencyBadge>기관 groomedu</AgencyBadge>
-          <AgencyBadge>강사 groomedu</AgencyBadge>
-        </AgencyBadgeContainer>
-        <HashTagContainer>
-          <HashTag>#수강가능</HashTag>
-          <HashTag>#Javascript</HashTag>
-        </HashTagContainer>
-        <LectureTitle>
-          웹 게임을 만들며 배우는 JavaScript(자바스크립트)
-        </LectureTitle>
-        <AdditionalInfoContainer>
-          <AdditionalInfoContent>무료</AdditionalInfoContent>
-          <AdditionalInfo>
-            <AdditionalInfoTitle>평점</AdditionalInfoTitle>
-            <AdditionalInfoContent>측정중</AdditionalInfoContent>
-          </AdditionalInfo>
-          <AdditionalInfo>
-            <AdditionalInfoTitle>리뷰</AdditionalInfoTitle>
-            <AdditionalInfoContent>수집중</AdditionalInfoContent>
-          </AdditionalInfo>
-        </AdditionalInfoContainer>
-      </InfoContainer>
-    </LectureCard>
+    <>
+      <LectureCard className={className}>
+        <LectureImg src={lectureImg} alt='제로초 자바스크립트 강의' />
+        <LectureOfflineBadge />
+        <Bookmark isActiveBookmark={isActiveBookmark} onClick={addBookmark} />
+        <BookmarkAdded isActiveBookmark={isActiveBookmark}>
+          북마크 완료!
+        </BookmarkAdded>
+        <InfoContainer>
+          <AgencyBadgeContainer>
+            <AgencyBadge>기관 groomedu</AgencyBadge>
+            <AgencyBadge>강사 groomedu</AgencyBadge>
+          </AgencyBadgeContainer>
+          <HashTagContainer>
+            <HashTag>#수강가능</HashTag>
+            <HashTag>#Javascript</HashTag>
+          </HashTagContainer>
+          <LectureTitle>
+            웹 게임을 만들며 배우는 JavaScript(자바스크립트)
+          </LectureTitle>
+          <AdditionalInfoContainer>
+            <AdditionalInfoContent>무료</AdditionalInfoContent>
+            <AdditionalInfo>
+              <AdditionalInfoTitle>평점</AdditionalInfoTitle>
+              <AdditionalInfoContent>측정중</AdditionalInfoContent>
+            </AdditionalInfo>
+            <AdditionalInfo>
+              <AdditionalInfoTitle>리뷰</AdditionalInfoTitle>
+              <AdditionalInfoContent>수집중</AdditionalInfoContent>
+            </AdditionalInfo>
+          </AdditionalInfoContainer>
+        </InfoContainer>
+      </LectureCard>
+      <SearchMobileLectureCard />
+    </>
   );
 };
+
+const SearchMobileLectureCard = styled(MobileLectureCard)`
+  display: none;
+
+  @media ${responsive.mobile} {
+    display: flex;
+  }
+`;
+
 const AgencyBadgeContainer = styled.div`
   & > div:first-of-type {
     margin-right: 0.4167vw;
@@ -420,6 +434,10 @@ const LectureCard = styled.div`
   position: relative;
   display: inline-flex;
   flex-direction: column;
+
+  @media ${responsive.mobile} {
+    display: none;
+  }
 `;
 
 export default FourLectureCard;
