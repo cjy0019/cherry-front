@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { responsive } from '../../../style/responsive';
+import Footer from '../../molecules/footer/Footer';
 
 import Header from '../../molecules/header/Header';
 import LectureCard from '../../UI/atoms/lectureCard/LectureCard';
@@ -33,9 +34,23 @@ const SearchResultTemplate = () => {
           <MobileLectureCard />
         </MobileLectureCards>
       </SearchResultContainer>
+      <SearchFooter />
     </>
   );
 };
+
+const SearchFooter = styled(Footer)`
+  margin-top: 130px;
+
+  @media ${responsive.tablet} {
+    margin-top: 80px;
+  }
+
+  @media ${responsive.mobile} {
+    margin-top: 72px;
+  }
+`;
+
 const MobileLectureCards = styled.div`
   display: none;
 
@@ -50,6 +65,10 @@ const MobileLectureCards = styled.div`
 
     & > div:first-of-type {
       padding-top: 0;
+    }
+
+    & > div:last-of-type {
+      border-bottom: none;
     }
   }
 `;
