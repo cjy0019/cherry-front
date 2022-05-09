@@ -15,7 +15,7 @@ import { responsive } from '../../style/responsive';
 const DetailTemplate = () => {
   return (
     <>
-      <Header NotMain />
+      <Header notMain />
       <BackgroundOpacity />
       <LectureDetailTitle />
       <VerticalContainer>

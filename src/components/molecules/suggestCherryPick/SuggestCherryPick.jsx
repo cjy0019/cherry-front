@@ -7,12 +7,6 @@ import feedbackImg from '../../../assets/img/feedback.png';
 import Feedback from '../../UI/atoms/feedback/Feedback';
 
 const SuggestCherryPick = () => {
-  const [feedbackIsClicked, setFeedbackIsClicked] = useState(false);
-
-  const openFeedback = useCallback(() => {
-    setFeedbackIsClicked(!feedbackIsClicked);
-  }, [feedbackIsClicked]);
-
   return (
     <Container>
       <FitSizeContainer>
@@ -26,59 +20,52 @@ const SuggestCherryPick = () => {
           강의 퀄리티를 판단할 수 있습니다.
         </Info>
         <StartButton to='#'>체리픽 시작하기</StartButton>
-        <FeedbackButton onClick={openFeedback} />
-        <CherryPickFeedback
-          openFeedback={openFeedback}
-          feedbackIsClicked={feedbackIsClicked}
-        />
+        <MainFeedback />
       </FitSizeContainer>
     </Container>
   );
 };
 
+const MainFeedback = styled(Feedback)`
+  position: absolute;
+
+  bottom: 35.54px;
+  left: -5.4167vw;
+
+  @media ${responsive.tablet} {
+    bottom: 13.54px;
+    left: 2.9948vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 32px;
+    height: 41px;
+
+    bottom: 11.7px;
+    left: 85.5556vw;
+  }
+`;
+
 const FitSizeContainer = styled.div`
   position: relative;
 
-  width: 1200px;
+  width: 62.5vw;
   height: 340px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
 
-const CherryPickFeedback = styled(Feedback)`
-  position: absolute;
-  top: 0;
-  left: 0;
+  @media ${responsive.tablet} {
+    width: 100vw;
+    height: 300px;
+  }
 
-  ${({ feedbackIsClicked }) =>
-    feedbackIsClicked
-      ? css`
-          display: block;
-        `
-      : css`
-          display: none;
-        `}
-`;
-
-const FeedbackButton = styled.button`
-  all: unset;
-  cursor: pointer;
-  display: block;
-
-  position: absolute;
-  bottom: 35.54px;
-  left: 0;
-
-  width: 38px;
-  height: 50px;
-
-  background-image: url(${feedbackImg});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  @media ${responsive.mobile} {
+    width: 100vw;
+    height: 284px;
+  }
 `;
 
 const Br = styled.br`
@@ -113,9 +100,6 @@ const StartButton = styled(Link)`
   @media ${responsive.tablet} {
     margin-top: 36px;
   }
-
-  @media ${responsive.mobile} {
-  }
 `;
 
 const Info = styled.p`
@@ -134,6 +118,8 @@ const Info = styled.p`
   }
 
   @media ${responsive.mobile} {
+    line-height: 20px;
+
     margin-top: 16px;
     font-size: 0.75rem;
   }
@@ -153,6 +139,7 @@ const Title = styled.h2`
 
   @media ${responsive.mobile} {
     font-size: 1.125rem;
+    line-height: 25px;
   }
 `;
 
@@ -161,10 +148,16 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 340px;
   margin-top: 80px;
 
   background-color: #15161d;
+
+  @media ${responsive.tablet} {
+    margin-top: 60px;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 export default SuggestCherryPick;
