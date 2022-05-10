@@ -55,16 +55,38 @@ const MyPageTemplate = () => {
 const MyPageFeedback = styled(Feedback)`
   position: absolute;
 
-  bottom: -186.46px;
+  bottom: -208.46px;
   left: -5.4167vw;
+
+  @media ${responsive.tablet} {
+    bottom: -186.46px;
+    left: 0;
+  }
+
+  @media ${responsive.mobile} {
+    bottom: -71.3px;
+    left: 80vw;
+  }
 `;
 
 const MyPageFooter = styled(Footer)`
   margin-top: 222px;
+
+  @media ${responsive.tablet} {
+    margin-top: 200px;
+  }
+
+  @media ${responsive.mobile} {
+    margin-top: 83px;
+  }
 `;
 
 const MyReviewPage = styled(MyReview)`
   margin-top: 80px;
+
+  @media ${responsive.mobile} {
+    margin-top: 50px;
+  }
 `;
 
 const Title = styled.h2`
@@ -84,11 +106,19 @@ const Title = styled.h2`
           color: #444444;
           font-weight: 500;
         `}
+
+  @media ${responsive.mobile} {
+    font-size: 1.25rem;
+  }
 `;
 
 const TitleLi = styled.li`
   all: unset;
   margin-right: 22px;
+
+  @media ${responsive.mobile} {
+    margin-right: 5vw;
+  }
 `;
 
 const TitleUl = styled.ul`
@@ -99,6 +129,11 @@ const TitleUl = styled.ul`
   padding-bottom: 24px;
 
   border-bottom: 1px solid #2a2a2a;
+
+  @media ${responsive.mobile} {
+    padding-top: 48px;
+    padding-bottom: 20px;
+  }
 `;
 
 const JustifyCenter = styled.div`

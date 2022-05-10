@@ -27,6 +27,7 @@ const MyReview = ({ className }) => {
                 <Dot />
               </Dots>
               <Confirm confirm={true}>승인 완료</Confirm>
+              <MobileConfirm confirm={true}>승인 대기중</MobileConfirm>
             </ConfirmContainer>
           </LectureInfo>
         </ReviewLi>
@@ -48,6 +49,7 @@ const MyReview = ({ className }) => {
                 <Dot />
               </Dots>
               <Confirm confirm={false}>승인 완료</Confirm>
+              <MobileConfirm confirm={true}>승인 대기중</MobileConfirm>
             </ConfirmContainer>
           </LectureInfo>
         </ReviewLi>
@@ -69,6 +71,7 @@ const MyReview = ({ className }) => {
                 <Dot />
               </Dots>
               <Confirm confirm={true}>승인 완료</Confirm>
+              <MobileConfirm confirm={true}>승인 대기중</MobileConfirm>
             </ConfirmContainer>
           </LectureInfo>
         </ReviewLi>
@@ -90,6 +93,7 @@ const MyReview = ({ className }) => {
                 <Dot />
               </Dots>
               <Confirm confirm={false}>승인 완료</Confirm>
+              <MobileConfirm confirm={false}>승인 거절</MobileConfirm>
             </ConfirmContainer>
           </LectureInfo>
         </ReviewLi>
@@ -97,6 +101,7 @@ const MyReview = ({ className }) => {
     </Container>
   );
 };
+
 const Dot = styled.div`
   border-radius: 50%;
 
@@ -114,6 +119,10 @@ const Dots = styled.div`
 
   & > div:not(:last-of-type) {
     margin-right: 7px;
+  }
+
+  @media ${responsive.mobile} {
+    display: none;
   }
 `;
 
@@ -140,6 +149,15 @@ const Confirm = styled.span`
   }
 
   @media ${responsive.mobile} {
+    display: none;
+  }
+`;
+
+const MobileConfirm = styled(Confirm)`
+  display: none;
+
+  @media ${responsive.mobile} {
+    display: block;
   }
 `;
 
@@ -152,6 +170,7 @@ const ConfirmContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    margin-top: 9.4444vw;
   }
 `;
 
@@ -185,6 +204,14 @@ const DateCreatedContainer = styled.div`
   }
 
   @media ${responsive.mobile} {
+    margin-top: 4.1667vw;
+
+    & > span:first-of-type {
+      padding-right: 2.2222vw;
+    }
+    & > span:last-of-type {
+      padding-left: 2.2222vw;
+    }
   }
 `;
 
@@ -192,6 +219,7 @@ const LectureTittle = styled.h4`
   font-weight: 700;
   font-size: 0.875rem;
   color: #ffffff;
+  line-height: 18px;
 `;
 
 const LectureInfo = styled.div`
@@ -204,6 +232,8 @@ const LectureInfo = styled.div`
   }
 
   @media ${responsive.mobile} {
+    margin-left: 3.3333vw;
+    padding: 3.0556vw 0;
   }
 `;
 
@@ -218,6 +248,8 @@ const LectureImg = styled.img`
   }
 
   @media ${responsive.mobile} {
+    width: 38.8889vw;
+    height: 38.8889vw;
   }
 `;
 
@@ -248,6 +280,9 @@ const ReviewsUl = styled.ul`
   }
 
   @media ${responsive.mobile} {
+    & > li {
+      padding: 6.1111vw 0;
+    }
   }
 `;
 
@@ -260,10 +295,9 @@ const Title = styled.h3`
   color: #ffffff;
   opacity: 0.9;
 
-  @media ${responsive.tablet} {
-  }
-
   @media ${responsive.mobile} {
+    font-size: 1rem;
+    padding-bottom: 25px;
   }
 `;
 
