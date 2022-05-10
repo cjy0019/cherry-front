@@ -17,7 +17,7 @@ const MyPageTemplate = () => {
   return (
     <>
       <Header login notMain />
-      <Width1200>
+      <JustifyCenter>
         <TitleUl>
           <TitleLi>
             <Title
@@ -46,7 +46,7 @@ const MyPageTemplate = () => {
         </TitleUl>
         <MyReviewPage />
         <MyPageFeedback />
-      </Width1200>
+      </JustifyCenter>
       <MyPageFooter />
     </>
   );
@@ -101,11 +101,19 @@ const TitleUl = styled.ul`
   border-bottom: 1px solid #2a2a2a;
 `;
 
-const Width1200 = styled.div`
+const JustifyCenter = styled.div`
   position: relative;
 
   width: 62.5vw;
   margin: 0 auto;
+
+  @media ${responsive.tablet} {
+    width: 93.75vw;
+  }
+
+  @media ${responsive.mobile} {
+    width: 88.8889vw;
+  }
 `;
 
 export default MyPageTemplate;

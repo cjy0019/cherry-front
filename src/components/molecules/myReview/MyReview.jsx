@@ -122,7 +122,7 @@ const Confirm = styled.span`
   padding: 4px 8px;
 
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.75rem;
 
   ${({ confirm }) =>
     confirm
@@ -134,11 +134,25 @@ const Confirm = styled.span`
           background-color: #1f2026;
           color: #b4b4b4;
         `}
+
+  @media ${responsive.tablet} {
+    padding: 0.5208vw 1.0417vw;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const ConfirmContainer = styled.div`
   display: flex;
   margin-top: 34px;
+
+  @media ${responsive.tablet} {
+    margin-top: 4.4271vw;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const DateCreated = styled.span`
@@ -158,11 +172,23 @@ const DateCreatedContainer = styled.div`
   & > span:last-of-type {
     padding-left: 8px;
   }
+
+  @media ${responsive.tablet} {
+    margin-top: 2.3438vw;
+
+    & > span:first-of-type {
+      padding-right: 1.0417vw;
+    }
+    & > span:last-of-type {
+      padding-left: 1.0417vw;
+    }
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const LectureTittle = styled.h4`
-  width: 500px;
-
   font-weight: 700;
   font-size: 0.875rem;
   color: #ffffff;
@@ -171,17 +197,34 @@ const LectureTittle = styled.h4`
 const LectureInfo = styled.div`
   margin-left: 27px;
   padding: 13px 0;
+
+  @media ${responsive.tablet} {
+    margin-left: 3.5156vw;
+    padding: 1.6927vw 0;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const LectureImg = styled.img`
   width: 232px;
   height: 129px;
   border-radius: 8px;
+
+  @media ${responsive.tablet} {
+    width: 30.2083vw;
+    height: 16.7969vw;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const ReviewLi = styled.li`
   all: unset;
   display: flex;
+  align-items: center;
 `;
 
 const ReviewsUl = styled.ul`
@@ -197,6 +240,15 @@ const ReviewsUl = styled.ul`
     padding-bottom: 0;
     border-bottom: none;
   }
+
+  @media ${responsive.tablet} {
+    & > li {
+      padding: 5.8594vw 0;
+    }
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const Title = styled.h3`
@@ -204,9 +256,15 @@ const Title = styled.h3`
   border-bottom: 1px solid #2a2a2a;
 
   font-weight: 700;
-  font-size: 22px;
+  font-size: 1.375rem;
   color: #ffffff;
   opacity: 0.9;
+
+  @media ${responsive.tablet} {
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const Container = styled.div``;
