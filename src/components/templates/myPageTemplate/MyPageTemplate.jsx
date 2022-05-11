@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { responsive } from '../../../style/responsive';
+import Bookmark from '../../molecules/bookmark/Bookmark';
 import Footer from '../../molecules/footer/Footer';
 
 import Header from '../../molecules/header/Header';
@@ -8,7 +9,7 @@ import MyReview from '../../molecules/myReview/MyReview';
 import Feedback from '../../UI/atoms/feedback/Feedback';
 
 const MyPageTemplate = () => {
-  const [currentPage, setCurrentPage] = useState('내가 쓴 리뷰');
+  const [currentPage, setCurrentPage] = useState('북마크');
 
   const movePage = (e) => {
     setCurrentPage(e.currentTarget.dataset.name);
@@ -44,13 +45,25 @@ const MyPageTemplate = () => {
             </Title>
           </TitleLi>
         </TitleUl>
-        <MyReviewPage />
+        <MyReviewPage currentPage={currentPage === '내가 쓴 리뷰'} />
+        <MyBookmark currentPage={currentPage === '북마크'} />
         <MyPageFeedback />
       </JustifyCenter>
       <MyPageFooter />
     </>
   );
 };
+
+const MyBookmark = styled(Bookmark)`
+  ${({ currentPage }) =>
+    currentPage
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `}
+`;
 
 const MyPageFeedback = styled(Feedback)`
   position: absolute;
@@ -82,11 +95,14 @@ const MyPageFooter = styled(Footer)`
 `;
 
 const MyReviewPage = styled(MyReview)`
-  margin-top: 80px;
-
-  @media ${responsive.mobile} {
-    margin-top: 50px;
-  }
+  ${({ currentPage }) =>
+    currentPage
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `}
 `;
 
 const Title = styled.h2`
@@ -127,12 +143,15 @@ const TitleUl = styled.ul`
 
   padding-top: 60px;
   padding-bottom: 24px;
+  margin-bottom: 80px;
 
   border-bottom: 1px solid #2a2a2a;
 
   @media ${responsive.mobile} {
     padding-top: 48px;
     padding-bottom: 20px;
+
+    margin-bottom: 50px;
   }
 `;
 
