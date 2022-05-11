@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { responsive } from '../../../style/responsive';
+
+import AccountSetting from '../../molecules/accountSetting/AccountSetting';
 import Bookmark from '../../molecules/bookmark/Bookmark';
 import Footer from '../../molecules/footer/Footer';
-
 import Header from '../../molecules/header/Header';
 import MyReview from '../../molecules/myReview/MyReview';
 import Feedback from '../../UI/atoms/feedback/Feedback';
 
 const MyPageTemplate = () => {
-  const [currentPage, setCurrentPage] = useState('북마크');
+  const [currentPage, setCurrentPage] = useState('계정설정');
 
   const movePage = (e) => {
     setCurrentPage(e.currentTarget.dataset.name);
@@ -47,12 +48,24 @@ const MyPageTemplate = () => {
         </TitleUl>
         <MyReviewPage currentPage={currentPage === '내가 쓴 리뷰'} />
         <MyBookmark currentPage={currentPage === '북마크'} />
+        <MyAccountSetting currentPage={currentPage === '계정설정'} />
         <MyPageFeedback />
       </JustifyCenter>
       <MyPageFooter />
     </>
   );
 };
+
+const MyAccountSetting = styled(AccountSetting)`
+  ${({ currentPage }) =>
+    currentPage
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `}
+`;
 
 const MyBookmark = styled(Bookmark)`
   ${({ currentPage }) =>
