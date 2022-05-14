@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import cherryPickImg from '../../../assets/img/feedback.png';
+import { responsive } from '../../../style/responsive';
 
 const AccountSetting = ({ className }) => {
   return (
@@ -105,6 +106,13 @@ const SelectBox = styled.span`
   @media (max-width: 1150px) {
     padding: 1.2174vw 1.7391vw;
   }
+
+  @media ${responsive.tablet} {
+    padding: 1.8229vw 2.6042vw;
+  }
+
+  @media ${responsive.mobile} {
+  }
 `;
 
 const SelectBoxContainer = styled.div`
@@ -121,36 +129,69 @@ const BasicInfoPartTitle = styled.h4`
 const BasicInfoBox = styled.div`
   display: inline-block;
 
-  padding: 28px 24px 28px 20px;
   ${({ width }) =>
     css`
       width: ${width};
     `}
 
-  @media (max-width: 1150px) {
-    padding: 28px 2.087vw 28px 1.7391vw;
+  @media ${responsive.tablet} {
+  }
+
+  @media ${responsive.mobile} {
   }
 `;
 
 const FirstBasicInfoBox = styled(BasicInfoBox)`
-  width: 246px;
+  width: 240px;
+
+  padding: 28px 20px 28px 20px;
 
   @media (max-width: 1150px) {
-    width: 21.3913vw;
+    width: 20.8696vw;
+    padding: 28px 1.7391vw 28px 1.7391vw;
+  }
+
+  @media ${responsive.tablet} {
+    width: 27.7344vw;
+    padding: 28px 1.3021vw 28px 1.3021vw;
+  }
+
+  @media ${responsive.mobile} {
   }
 `;
+
 const SecondBasicInfoBox = styled(BasicInfoBox)`
-  width: 320px;
+  width: 270px;
+  padding: 28px 0 28px 0;
 
   @media (max-width: 1150px) {
-    width: 27.8261vw;
+    width: 23.4783vw;
+    padding: 28px 0 28px 0;
+  }
+
+  @media ${responsive.tablet} {
+    width: 35.1563vw;
+  }
+
+  @media ${responsive.mobile} {
   }
 `;
+
 const ThirdBasicInfoBox = styled(BasicInfoBox)`
   width: 340px;
+  padding: 28px 20px 28px 20px;
 
   @media (max-width: 1150px) {
     width: 29.5652vw;
+    padding: 28px 1.7391vw 28px 1.7391vw;
+  }
+
+  @media ${responsive.tablet} {
+    width: 31.901vw;
+    padding: 28px 0.651vw 28px 1.3021vw;
+  }
+
+  @media ${responsive.mobile} {
   }
 `;
 
