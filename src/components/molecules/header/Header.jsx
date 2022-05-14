@@ -56,6 +56,7 @@ const Header = ({ className, login, notMain, activeNotification }) => {
             <>
               <NotificationButton onClick={activeNotification} />
               <HeaderNotification
+                activeNotification={activeNotification}
                 notificationIsClicked={notificationIsClicked}
               />
               <MyPage onClick={activeMyPage}>MY</MyPage>

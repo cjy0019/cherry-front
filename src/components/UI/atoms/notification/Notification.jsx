@@ -6,7 +6,11 @@ import lectureImg from '../../../../assets/img/lectureImg.png';
 import emojiHi from '../../../../assets/img/emoji_hi.png';
 import closeDark from '../../../../assets/img/close_dark.svg';
 
-const Notification = ({ className, notificationIsClicked }) => {
+const Notification = ({
+  className,
+  notificationIsClicked,
+  activeNotification,
+}) => {
   return (
     <Container
       notificationIsClicked={notificationIsClicked}
@@ -46,7 +50,7 @@ const Notification = ({ className, notificationIsClicked }) => {
         <WelcomeDate>1개월 전</WelcomeDate>
       </Welcome>
       <DeleteAll>모두 지우기</DeleteAll>
-      <CloseButton />
+      <CloseButton onClick={activeNotification} />
     </Container>
   );
 };
