@@ -1,10 +1,121 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import cherryPickImg from '../../../assets/img/feedback.png';
 import { responsive } from '../../../style/responsive';
 
 const AccountSetting = ({ className }) => {
+  const [currentJob, setCurrentJob] = useState('프론트엔드');
+  const [currentCareer, setCurrentCareer] = useState('학생');
+  const [currentWay, setCurrentWay] = useState('검색');
+
+  let mobileSecondSlider = useRef({
+    startX: 0,
+    moveX: 0,
+    endX: 0,
+    lastElementLocation: 0,
+    isFirstTouch: false,
+  });
+  let mobileThirdSlider = useRef({
+    startX: 0,
+    moveX: 0,
+    endX: 0,
+    lastElementLocation: 0,
+    isFirstTouch: false,
+  });
+
+  function selectJob(e) {
+    setCurrentJob(e.currentTarget.dataset.name);
+  }
+  function selectCareer(e) {
+    setCurrentCareer(e.currentTarget.dataset.name);
+  }
+  function selectWay(e) {
+    setCurrentWay(e.currentTarget.dataset.name);
+  }
+
+  function touchStartSecondSlider(e) {
+    e.stopPropagation();
+    mobileSecondSlider.current.startX = e.changedTouches[0].clientX;
+    if (!mobileSecondSlider.current.isFirstTouch) {
+      mobileSecondSlider.current.lastElementLocation =
+        e.currentTarget.lastElementChild.getBoundingClientRect().right;
+    }
+    mobileSecondSlider.current.isFirstTouch = true;
+  }
+  function touchMoveSecondSlider(e) {
+    e.stopPropagation();
+    mobileSecondSlider.current.moveX = -(
+      mobileSecondSlider.current.startX - e.changedTouches[0].clientX
+    );
+
+    e.currentTarget.style.transform = `translateX(${
+      mobileSecondSlider.current.endX + mobileSecondSlider.current.moveX
+    }px)`;
+  }
+  function touchEndSecondSlider(e) {
+    e.stopPropagation();
+    let responsiveWidth = (340 / 360) * window.innerWidth;
+    mobileSecondSlider.current.endX += -(
+      mobileSecondSlider.current.startX - e.changedTouches[0].clientX
+    );
+
+    if (
+      responsiveWidth - mobileSecondSlider.current.lastElementLocation >
+      mobileSecondSlider.current.endX
+    ) {
+      mobileSecondSlider.current.endX =
+        responsiveWidth - mobileSecondSlider.current.lastElementLocation;
+      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.current.endX}px)`;
+    }
+
+    if (mobileSecondSlider.current.endX > 0) {
+      mobileSecondSlider.current.endX = 0;
+      e.currentTarget.style.transform = `translateX(${mobileSecondSlider.current.endX}px)`;
+    }
+  }
+
+  function touchStartThirdSlider(e) {
+    e.stopPropagation();
+    mobileThirdSlider.current.startX = e.changedTouches[0].clientX;
+    if (!mobileThirdSlider.current.isFirstTouch) {
+      mobileThirdSlider.current.lastElementLocation =
+        e.currentTarget.lastElementChild.getBoundingClientRect().right;
+    }
+    mobileThirdSlider.current.isFirstTouch = true;
+  }
+  function touchMoveThirdSlider(e) {
+    e.stopPropagation();
+    mobileThirdSlider.current.moveX = -(
+      mobileThirdSlider.current.startX - e.changedTouches[0].clientX
+    );
+
+    e.currentTarget.style.transform = `translateX(${
+      mobileThirdSlider.current.endX + mobileThirdSlider.current.moveX
+    }px)`;
+  }
+  function touchEndThirdSlider(e) {
+    e.stopPropagation();
+    let responsiveWidth = (340 / 360) * window.innerWidth;
+    mobileThirdSlider.current.endX += -(
+      mobileThirdSlider.current.startX - e.changedTouches[0].clientX
+    );
+
+    if (
+      responsiveWidth - mobileThirdSlider.current.lastElementLocation >
+      mobileThirdSlider.current.endX
+    ) {
+      mobileThirdSlider.current.endX =
+        responsiveWidth - mobileThirdSlider.current.lastElementLocation;
+      e.currentTarget.style.transform = `translateX(${mobileThirdSlider.current.endX}px)`;
+    }
+
+    if (mobileThirdSlider.current.endX > 0) {
+      mobileThirdSlider.current.endX = 0;
+      e.currentTarget.style.transform = `translateX(${mobileThirdSlider.current.endX}px)`;
+    }
+  }
+
   return (
     <Container className={className}>
       <ProfileContainer>
@@ -24,29 +135,100 @@ const AccountSetting = ({ className }) => {
           <FirstBasicInfoBox>
             <BasicInfoPartTitle>1. 현재 직무</BasicInfoPartTitle>
             <SelectBoxContainer>
-              <SelectBox>프론트엔드</SelectBox>
-              <SelectBox>백엔드</SelectBox>
+              <SelectBox
+                current={currentJob === '프론트엔드'}
+                onClick={selectJob}
+                data-name='프론트엔드'>
+                프론트엔드
+              </SelectBox>
+              <SelectBox
+                current={currentJob === '백엔드'}
+                onClick={selectJob}
+                data-name='백엔드'>
+                백엔드
+              </SelectBox>
             </SelectBoxContainer>
           </FirstBasicInfoBox>
           <SecondBasicInfoBox>
             <BasicInfoPartTitle>2. 경력</BasicInfoPartTitle>
-            <SelectBoxContainer>
-              <SelectBox>학생</SelectBox>
-              <SelectBox>1~3년차</SelectBox>
-              <SelectBox>1년 미만</SelectBox>
-              <SelectBox>3~6년차</SelectBox>
-              <SelectBox>7년 이상</SelectBox>
+            <SelectBoxContainer
+              onTouchStart={touchStartSecondSlider}
+              onTouchMove={touchMoveSecondSlider}
+              onTouchEnd={touchEndSecondSlider}>
+              <SelectBox
+                current={currentCareer === '학생'}
+                data-name='학생'
+                onClick={selectCareer}>
+                학생
+              </SelectBox>
+              <SelectBox
+                current={currentCareer === '1~3년차'}
+                data-name='1~3년차'
+                onClick={selectCareer}>
+                1~3년차
+              </SelectBox>
+              <SelectBox
+                current={currentCareer === '1년 미만'}
+                data-name='1년 미만'
+                onClick={selectCareer}>
+                1년 미만
+              </SelectBox>
+              <SelectBox
+                current={currentCareer === '3~6년차'}
+                data-name='3~6년차'
+                onClick={selectCareer}>
+                3~6년차
+              </SelectBox>
+              <SelectBox
+                current={currentCareer === '7년 이상'}
+                data-name='7년 이상'
+                onClick={selectCareer}>
+                7년 이상
+              </SelectBox>
             </SelectBoxContainer>
           </SecondBasicInfoBox>
           <ThirdBasicInfoBox>
             <BasicInfoPartTitle>3. 알게 된 경로</BasicInfoPartTitle>
-            <SelectBoxContainer>
-              <SelectBox>검색</SelectBox>
-              <SelectBox>지인</SelectBox>
-              <SelectBox>SNS</SelectBox>
-              <SelectBox>카페</SelectBox>
-              <SelectBox>블로그</SelectBox>
-              <SelectBox>기타</SelectBox>
+            <SelectBoxContainer
+              onTouchStart={touchStartThirdSlider}
+              onTouchMove={touchMoveThirdSlider}
+              onTouchEnd={touchEndThirdSlider}>
+              <SelectBox
+                current={currentWay === '검색'}
+                onClick={selectWay}
+                data-name='검색'>
+                검색
+              </SelectBox>
+              <SelectBox
+                current={currentWay === '지인'}
+                onClick={selectWay}
+                data-name='지인'>
+                지인
+              </SelectBox>
+              <SelectBox
+                current={currentWay === 'SNS'}
+                onClick={selectWay}
+                data-name='SNS'>
+                SNS
+              </SelectBox>
+              <SelectBox
+                current={currentWay === '카페'}
+                onClick={selectWay}
+                data-name='카페'>
+                카페
+              </SelectBox>
+              <SelectBox
+                current={currentWay === '블로그'}
+                onClick={selectWay}
+                data-name='블로그'>
+                블로그
+              </SelectBox>
+              <SelectBox
+                current={currentWay === '기타'}
+                onClick={selectWay}
+                data-name='기타'>
+                기타
+              </SelectBox>
             </SelectBoxContainer>
           </ThirdBasicInfoBox>
         </AlignCenter>
@@ -85,6 +267,11 @@ const AlignCenter = styled.div`
   display: inline-flex;
   background-color: #15161d;
   border-radius: 8px;
+
+  @media ${responsive.mobile} {
+    flex-direction: column;
+    background-color: transparent;
+  }
 `;
 
 const SelectBox = styled.span`
@@ -93,6 +280,7 @@ const SelectBox = styled.span`
 
   padding: 14px 20px;
   background-color: #1f2026;
+  /* background-color: tomato; */
   border-radius: 6px;
 
   font-weight: 600;
@@ -103,6 +291,15 @@ const SelectBox = styled.span`
   margin-right: 8px;
   margin-top: 8px;
 
+  ${({ current }) =>
+    current
+      ? css`
+          border: 0.6px solid #e72847;
+        `
+      : css`
+          border: none;
+        `}
+
   @media (max-width: 1150px) {
     padding: 1.2174vw 1.7391vw;
   }
@@ -112,11 +309,16 @@ const SelectBox = styled.span`
   }
 
   @media ${responsive.mobile} {
+    padding: 14px 20px;
   }
 `;
 
 const SelectBoxContainer = styled.div`
   margin-top: 8px;
+
+  @media ${responsive.mobile} {
+    width: 1000px;
+  }
 `;
 
 const BasicInfoPartTitle = styled.h4`
@@ -126,20 +328,7 @@ const BasicInfoPartTitle = styled.h4`
   opacity: 0.9;
 `;
 
-const BasicInfoBox = styled.div`
-  display: inline-block;
-
-  ${({ width }) =>
-    css`
-      width: ${width};
-    `}
-
-  @media ${responsive.tablet} {
-  }
-
-  @media ${responsive.mobile} {
-  }
-`;
+const BasicInfoBox = styled.div``;
 
 const FirstBasicInfoBox = styled(BasicInfoBox)`
   width: 240px;
@@ -157,11 +346,14 @@ const FirstBasicInfoBox = styled(BasicInfoBox)`
   }
 
   @media ${responsive.mobile} {
+    overflow: hidden;
+    padding: 28px 0 28px 0;
+    width: 88.8889vw;
   }
 `;
 
 const SecondBasicInfoBox = styled(BasicInfoBox)`
-  width: 270px;
+  width: 280px;
   padding: 28px 0 28px 0;
 
   @media (max-width: 1150px) {
@@ -172,13 +364,16 @@ const SecondBasicInfoBox = styled(BasicInfoBox)`
   @media ${responsive.tablet} {
     width: 35.1563vw;
   }
-
   @media ${responsive.mobile} {
+    padding: 28px 0 28px 0;
+    overflow: hidden;
+    width: 88.8889vw;
   }
 `;
 
 const ThirdBasicInfoBox = styled(BasicInfoBox)`
   width: 340px;
+  overflow: hidden;
   padding: 28px 20px 28px 20px;
 
   @media (max-width: 1150px) {
@@ -190,8 +385,10 @@ const ThirdBasicInfoBox = styled(BasicInfoBox)`
     width: 31.901vw;
     padding: 28px 0.651vw 28px 1.3021vw;
   }
-
   @media ${responsive.mobile} {
+    padding: 28px 0 28px 0;
+    overflow: hidden;
+    width: 88.8889vw;
   }
 `;
 
