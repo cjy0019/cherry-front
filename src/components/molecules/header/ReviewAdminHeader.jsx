@@ -30,7 +30,11 @@ const AdminHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  width: 62.5vw;
   height: 100px;
+
+  margin: 0 auto;
 `;
 const HeaderTitle = styled.h1`
   margin-right: auto;

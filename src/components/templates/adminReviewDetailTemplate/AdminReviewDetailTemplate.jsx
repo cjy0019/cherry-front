@@ -5,7 +5,7 @@ import ReviewAdminHeader from '../../molecules/header/ReviewAdminHeader';
 
 import redStart from '../../../assets/img/star1_red.svg';
 
-const AdminReviewDetail = () => {
+const AdminReviewDetailTemplate = () => {
   return (
     <Container>
       <ReviewAdminHeader />
@@ -276,4 +276,4 @@ const Title = styled.h2`
   margin-top: 60px;
 `;
 
-export default AdminReviewDetail;
+export default AdminReviewDetailTemplate;
