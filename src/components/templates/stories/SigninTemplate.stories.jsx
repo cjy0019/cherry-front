@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SigninTemplate from '../SigninTemplate';
 
 export default {
-  title: 'templates/로그인 페이지',
+  title: 'templates/서비스 페이지/로그인 페이지',
   component: SigninTemplate,
   parameters: {
     layout: 'fullscreen',

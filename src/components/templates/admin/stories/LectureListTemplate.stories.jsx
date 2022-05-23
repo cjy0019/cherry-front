@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import LectureListTemplate from '../LectureListTemplate';
 
 export default {
-  title: 'templates/어드민',
+  title: 'templates/관리자 페이지',
   component: LectureListTemplate,
   parameters: {
     layout: 'fullscreen',

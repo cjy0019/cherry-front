@@ -2,7 +2,7 @@ import React from 'react';
 import ErrorTemplate from '../ErrorTemplate';
 
 export default {
-  title: 'templates/에러 페이지',
+  title: 'templates/서비스 페이지/에러 페이지',
   component: ErrorTemplate,
   parameters: {
     layout: 'fullscreen',

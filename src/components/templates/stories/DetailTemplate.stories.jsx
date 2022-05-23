@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import DetailTemplate from '../DetailTemplate';
 
 export default {
-  title: 'templates/상세 페이지',
+  title: 'templates/서비스 페이지/상세 페이지',
   component: DetailTemplate,
   parameters: {
     layout: 'fullscreen',
