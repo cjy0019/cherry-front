@@ -35,6 +35,7 @@ const VerticalContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 2.5521vw;
+
   background-color: ${palette.backgroundBlack};
 
   padding: 0 15px;

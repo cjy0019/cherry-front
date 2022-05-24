@@ -86,6 +86,7 @@ const AverageScore = () => {
 
 const Container = styled.div`
   margin-top: 60px;
+  width: 40vw;
 `;
 
 const Title = styled.h2`

@@ -62,7 +62,7 @@ const Container = styled.div`
   gap: 7.4479vw;
 
   padding: 0 15px;
-  margin-top: 106px;
+  margin-top: 5.5208vw;
 
   @media ${responsive.tablet} {
     padding: 0 35px;
@@ -395,6 +395,8 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledOriginalLinkButton = styled(OriginalLinkButton)`
+  height: 2.0833vw;
+
   @media ${responsive.tablet} {
     height: 5.2083vw;
     font-size: 0.625vw;
