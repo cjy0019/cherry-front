@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import UserListTemplate from '../UserListTemplate';
 
 export default {
-  title: 'templates/어드민',
+  title: 'templates/관리자 페이지/유저 리스트 페이지',
   component: UserListTemplate,
   parameters: {
     layout: 'fullscreen',

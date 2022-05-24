@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import LectureRegisterTemplate from '../LectureRegisterTemplate';
 
 export default {
-  title: 'templates/어드민/강의추가 페이지',
+  title: 'templates/관리자 페이지/강의추가 페이지',
   component: LectureRegisterTemplate,
   parameters: {
     layout: 'fullscreen',

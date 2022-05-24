@@ -37,6 +37,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-top: 72px;
+  width: 40vw;
 
   @media ${responsive.tablet} {
     width: 100%;

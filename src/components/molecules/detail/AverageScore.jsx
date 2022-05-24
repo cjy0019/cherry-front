@@ -86,6 +86,11 @@ const AverageScore = () => {
 
 const Container = styled.div`
   margin-top: 60px;
+  width: 40vw;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.h2`
@@ -104,7 +109,7 @@ const BoxContainer = styled.div`
   margin-top: 28px;
   gap: 20px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1120px) {
     flex-direction: column;
     gap: 8px;
   }
@@ -115,7 +120,7 @@ const ReviewRecommendContainer = styled.div`
   width: 55%;
   gap: 20px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1120px) {
     gap: 8px;
     width: 100%;
   }
@@ -194,15 +199,11 @@ const ScoreWithText = styled.div`
   justify-content: center;
   gap: 4px;
 
-  font-size: 0.875rem;
+  font-size: 0.7292vw;
   color: ${palette.text2};
 
-  @media (max-width: 670px) {
-    font-size: 0.5208vw;
-  }
-
-  @media (max-width: 500px) {
-    font-size: 0.75rem;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
   }
 `;
 
@@ -242,43 +243,25 @@ const HalfBox = styled.div`
     font-size: 1.25rem;
 
     color: ${(props) => (props.red ? palette.pointRed : palette.text4)};
-
-    @media (min-width: 768px) and (max-width: 790px) {
-      font-size: 1.0625rem;
-    }
-
-    @media (max-width: 615px) {
-      font-size: 1.0625rem;
-    }
   }
 
   & > img {
-    @media (min-width: 768px) and (max-width: 790px) {
-      width: 5.2083vw;
-    }
-    @media (min-width: 501px) and (max-width: 615px) {
-      width: 20px;
-    }
-    @media (max-width: 250px) {
-      width: 4.6875vw;
-    }
+    width: 32px;
   }
 `;
 
 const StyledRecommendBadge = styled(RecommendBadge)`
-  @media (min-width: 768px) and (max-width: 790px) {
-    display: none;
-  }
+  font-size: 0.625rem;
 
-  @media (min-width: 501px) and (max-width: 614px) {
-    display: none;
+  @media (max-width: 768px) {
+    font-size: 12px;
   }
 `;
 
 const SatisfactionBox = styled(CommonBox)`
-  width: 60%;
+  width: 45%;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1120px) {
     width: 100%;
   }
 `;

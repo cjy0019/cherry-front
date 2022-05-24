@@ -90,7 +90,12 @@ const ReviewList = () => {
 };
 
 const Container = styled.div`
+  width: 40vw;
   margin-top: 60px;
+
+  @media ${responsive.tablet} {
+    width: 100%;
+  }
 `;
 
 const HeaderContainer = styled.div`

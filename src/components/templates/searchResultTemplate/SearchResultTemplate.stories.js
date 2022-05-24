@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SearchResultTemplate from './SearchResultTemplate';
 
 export default {
-  title: 'templates/검색 결과 페이지',
+  title: 'templates/서비스 페이지/검색 결과 페이지',
   component: SearchResultTemplate,
   parameters: {
     layout: 'fullscreen',

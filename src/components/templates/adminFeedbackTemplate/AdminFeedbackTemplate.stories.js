@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import AdminFeedbackTemplate from './AdminFeedbackTemplate';
 
 export default {
-  title: 'templates/관리자 피드백',
+  title: 'templates/관리자 페이지/관리자 피드백',
   component: AdminFeedbackTemplate,
   parameters: {
     layout: 'fullscreen',

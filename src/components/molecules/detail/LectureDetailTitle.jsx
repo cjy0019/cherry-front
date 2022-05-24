@@ -62,7 +62,7 @@ const Container = styled.div`
   gap: 7.4479vw;
 
   padding: 0 15px;
-  margin-top: 106px;
+  margin-top: 5.5208vw;
 
   @media ${responsive.tablet} {
     padding: 0 35px;
@@ -80,7 +80,7 @@ const Container = styled.div`
 
 const FlexLeft = styled.div`
   position: relative;
-  width: 580px;
+  width: 30.2083vw;
   border-radius: 10px;
 
   & > img {
@@ -106,7 +106,7 @@ const FlexLeft = styled.div`
     width: 922.9997px;
     height: 420px;
     top: -32%;
-    left: -191px;
+    left: -330px;
     z-index: -1;
 
     background: radial-gradient(
@@ -119,19 +119,13 @@ const FlexLeft = styled.div`
       top: -42%;
     }
     @media (max-width: 975px) {
-      width: 800px;
       top: -56%;
     }
     @media (max-width: 892px) {
-      width: 700px;
-
       top: -57%;
     }
 
     @media (max-width: 800px) {
-      width: 500px;
-
-      left: -60px;
       top: -50%;
     }
 
@@ -204,8 +198,8 @@ const FlexLeft = styled.div`
 
 const StyledOffLineBadge = styled(OfflineBadge)`
   position: absolute;
-  left: 5%;
-  top: 8%;
+  left: 1.3021vw;
+  top: 2.0833vw;
 
   font-size: 0.5729vw;
   padding: 0.4167vw 0.5208vw 0.3646vw;
@@ -217,6 +211,8 @@ const StyledBookMarkButton = styled(BookMarkButton)`
   top: 1.4583vw;
 
   & > img {
+    width: 2.5vw;
+
     @media ${responsive.tablet} {
       width: 5.2083vw;
     }
@@ -227,9 +223,9 @@ const FlexRight = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  word-break: keep-all;
+  word-break: break-all;
 
-  width: 471px;
+  width: 24.5313vw;
 
   @media ${responsive.tablet} {
     width: 247px;
@@ -259,7 +255,7 @@ const Title = styled.h1`
 const Badges = styled.div`
   display: flex;
   gap: 8px;
-  margin-top: 28px;
+  margin-top: 1.4583vw;
 
   @media ${responsive.tablet} {
     margin-top: 0.625vw;
@@ -277,6 +273,12 @@ const Badges = styled.div`
 `;
 
 const StyledLargeAgencyBadge = styled(LargeAgencyBadge)`
+  font-size: 0.875rem;
+
+  @media (max-width: 996px) {
+    font-size: 0.625rem;
+  }
+
   @media ${responsive.tablet} {
     font-size: 0.8333vw;
   }
@@ -290,7 +292,15 @@ const HashTags = styled.div`
   font-weight: 400;
   color: ${palette.text4};
 
-  margin-top: 12px;
+  margin-top: 0.625vw;
+
+  @media (max-width: 1045px) {
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 805px) {
+    font-size: 0.625rem;
+  }
 
   @media ${responsive.tablet} {
     gap: 0.625vw;
@@ -307,7 +317,7 @@ const StarPoints = styled.div`
   display: flex;
   align-items: center;
 
-  margin-top: 3.6979vw;
+  margin-top: 1.6667vw;
 
   @media ${responsive.tablet} {
     margin-top: 1.0938vw;
@@ -325,6 +335,7 @@ const Stars = styled.div`
   margin: 0 16px 0 10px;
 
   & > img {
+    width: 1.6667vw;
     @media ${responsive.tablet} {
       width: 3.125vw;
     }
@@ -337,7 +348,7 @@ const Stars = styled.div`
 
 const Points = styled.p`
   font-weight: 700;
-  font-size: 1.7708vw;
+  font-size: 1.4583vw;
   color: ${palette.textWhite};
 
   padding-top: 8px;
@@ -384,6 +395,8 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledOriginalLinkButton = styled(OriginalLinkButton)`
+  height: 2.0833vw;
+
   @media ${responsive.tablet} {
     height: 5.2083vw;
     font-size: 0.625vw;
