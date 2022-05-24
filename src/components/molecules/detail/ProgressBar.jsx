@@ -21,9 +21,13 @@ const Container = styled.div`
   white-space: nowrap;
 
   & > p:first-child {
-    font-size: 0.875rem;
-    width: 27%;
+    font-size: 0.75rem;
     text-align: right;
+    width: 100px;
+
+    @media (max-width: 768px) {
+      font-size: 0.875rem;
+    }
   }
 
   & > p:last-child {
