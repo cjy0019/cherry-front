@@ -89,7 +89,7 @@ const AdminStatisticsTemplate = () => {
 };
 
 const JobContainer = styled.div`
-  margin-left: auto;
+  margin-left: 5.8333vw;
 
   @media (max-width: 900px) {
     margin-left: 0;
