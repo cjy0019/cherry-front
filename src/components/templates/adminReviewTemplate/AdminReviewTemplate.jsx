@@ -156,10 +156,9 @@ const ReviewLi = styled.li`
   align-items: center;
 
   margin-top: 16px;
-  padding-left: 1.875vw;
+  padding-left: 36px;
 
-  width: 62.3958vw;
-  /* height: 68px; */
+  width: 100%;
   border: 1px solid #2a2a2a;
 `;
 
@@ -175,7 +174,8 @@ const ReviewSpan = styled.span`
 `;
 
 const ReviewConfirmDate = styled(ReviewSpan)`
-  width: 6.5625vw;
+  text-align: center;
+  flex: 2;
 `;
 
 const ReviewState = styled(ReviewSpan)`
@@ -192,19 +192,21 @@ const ReviewState = styled(ReviewSpan)`
           color: #feb700;
         `}
 
-  width: 8.125vw;
+  text-align: center;
+  flex: 2;
 `;
 const ReviewDate = styled(ReviewSpan)`
-  width: 8.125vw;
+  text-align: center;
+  flex: 2;
 `;
 const ReviewLecture = styled(ReviewSpan)`
-  width: 21.1458vw;
+  flex: 5;
 `;
 const ReviewAccount = styled(ReviewSpan)`
-  width: 12.5521vw;
+  flex: 3;
 `;
 const ReviewNumber = styled(ReviewSpan)`
-  width: 4.1146vw;
+  flex: 1;
 `;
 
 const ReviewUl = styled.ul`
@@ -221,37 +223,40 @@ const StandardName = styled.li`
 `;
 
 const StandardConfirmDate = styled(StandardName)`
-  width: 6.5625vw;
+  text-align: center;
+  flex: 2;
 `;
 
 const StandardState = styled(StandardName)`
-  width: 8.125vw;
+  text-align: center;
+  flex: 2;
 `;
 
 const StandardDate = styled(StandardName)`
-  width: 8.125vw;
+  flex: 2;
+  text-align: center;
 `;
 
 const StandardLecture = styled(StandardName)`
-  width: 21.1458vw;
+  flex: 5;
 `;
 
 const StandardAccount = styled(StandardName)`
-  width: 12.5521vw;
+  flex: 3;
 `;
 
 const StandardNumber = styled(StandardName)`
-  width: 4.1146vw;
+  flex: 1;
 `;
 
 const StandardHeader = styled.ul`
   display: flex;
   align-items: center;
 
-  padding-left: 1.875vw;
+  padding-left: 36px;
   margin-top: 84px;
 
-  width: 62.5vw;
+  width: 100%;
   height: 64px;
 
   background-color: #ffffff;
@@ -362,7 +367,7 @@ const Title = styled.h2`
 `;
 
 const JustifyCenter = styled.div`
-  width: 62.5vw;
+  width: 80%;
   margin: 0 auto;
 `;
 
