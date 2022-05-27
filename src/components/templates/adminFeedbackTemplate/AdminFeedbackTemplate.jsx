@@ -3,13 +3,13 @@ import ReviewAdminHeader from '../../molecules/header/ReviewAdminHeader';
 
 import searchRed from '../../../assets/img/search_red.svg';
 import styled, { css } from 'styled-components';
+import AdminHeader from '../../molecules/admin/header/AdminHeader';
 
 const AdminFeedback = () => {
   const [feedbackIsClicked, setFeedbackIsClicked] = useState([]);
 
   function openDetailFeedback(e) {
     // e.currentTarget에 dataset.id가 있으면, 지워주기
-    // e.currentTarget에 dataset.id가 없으면, 넣어주기
     const indexOfDataId = feedbackIsClicked.indexOf(e.currentTarget.dataset.id);
 
     if (indexOfDataId !== -1) {
@@ -24,7 +24,7 @@ const AdminFeedback = () => {
 
   return (
     <>
-      <ReviewAdminHeader />
+      <AdminHeader />
 
       <JustifyCenter>
         <FeedbackHeader>
@@ -109,7 +109,6 @@ const AdminFeedback = () => {
             </FeedbackDetailContainer>
           </ReviewLi>
         </ReviewUl>
-
         <Pagination>
           <PcPagination>
             <Prev>← PREV</Prev>
@@ -215,13 +214,13 @@ const ConfirmButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  gap: 16px;
+  width: 30%;
 
-  width: 16.6667vw;
+  gap: 16px;
 `;
 
 const FeedbackContents = styled.p`
-  width: 45.7813vw;
+  width: 70%;
 
   padding: 28px 183px 28px 115px;
   border-right: 1px solid #2a2a2a;
@@ -248,41 +247,31 @@ const ReviewSpan = styled.span`
   font-size: 0.875rem;
   color: #ffffff;
 `;
+1, 3, 4, 1, 1.5, 1.5, 1.5;
 
 const FeedbackNumber = styled(ReviewSpan)`
-  width: 4.1146vw;
+  flex: 1;
 `;
 const FeedbackAccount = styled(ReviewSpan)`
-  width: 175px;
-
-  margin-right: 2.8646vw;
+  flex: 3;
 `;
 const FeedbackFeedback = styled(ReviewSpan)`
-  width: 252px;
-
-  margin-right: 4.1146vw;
+  flex: 4;
 `;
 const FeedbackScore = styled(ReviewSpan)`
-  width: 21px;
-
-  margin-right: 4.375vw;
+  flex: 1;
   text-align: center;
 `;
 const FeedbackUpdateDate = styled(ReviewSpan)`
-  width: 71px;
-
-  margin-right: 4.375vw;
+  flex: 1.5;
   text-align: center;
 `;
 const FeedbackConfirmDate = styled(ReviewSpan)`
-  width: 71px;
-
-  margin-right: 4.375vw;
+  flex: 1.5;
   text-align: center;
 `;
 const FeedbackAction = styled(ReviewSpan)`
-  width: 68px;
-
+  flex: 1.5;
   text-align: center;
 `;
 
@@ -290,8 +279,8 @@ const FeedbackContainer = styled.div`
   display: flex;
   align-items: center;
 
-  padding-left: 1.875vw;
-  width: 62.3958vw;
+  padding-left: 36px;
+  width: 100%;
   border: 1px solid #2a2a2a;
 
   ${({ feedbackIsClicked }) =>
@@ -332,45 +321,39 @@ const StandardName = styled.li`
 `;
 
 const StandardNumber = styled(StandardName)`
-  width: 4.1146vw;
+  flex: 1;
 `;
 const StandardAccount = styled(StandardName)`
-  width: 11.9792vw;
+  flex: 3;
 `;
 const StandardFeedback = styled(StandardName)`
-  width: 42px;
-
-  margin-right: 14.8958vw;
+  flex: 4;
 `;
 const StandardScore = styled(StandardName)`
-  width: 28px;
-
-  margin-right: 4.9479vw;
+  flex: 1;
+  text-align: center;
 `;
 const StandardUpdateDate = styled(StandardName)`
-  width: 42px;
-
-  margin-right: 5.8854vw;
+  flex: 1.5;
+  text-align: center;
 `;
 const StandardConfirmDate = styled(StandardName)`
-  width: 42px;
-
-  margin-right: 6.0417vw;
+  flex: 1.5;
+  text-align: center;
 `;
 const StandardAction = styled(StandardName)`
-  width: 28px;
-
-  margin-right: 3.2813vw;
+  flex: 1.5;
+  text-align: center;
 `;
 
 const StandardHeader = styled.ul`
   display: flex;
   align-items: center;
 
-  padding-left: 1.875vw;
+  padding-left: 36px;
   margin-top: 84px;
 
-  width: 62.5vw;
+  width: 100%;
   height: 64px;
 
   background-color: #ffffff;
@@ -378,7 +361,7 @@ const StandardHeader = styled.ul`
 `;
 
 const JustifyCenter = styled.div`
-  width: 62.5vw;
+  width: 80%;
   margin: 0 auto;
 `;
 

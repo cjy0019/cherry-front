@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import redStart from '../../../assets/img/star1_red.svg';
+import AdminHeader from '../../molecules/admin/header/AdminHeader';
 import ReviewAdminHeader from '../../molecules/header/ReviewAdminHeader';
 
 const careerArr = [
@@ -24,7 +25,7 @@ const wayKnownArr = [
 const AdminStatisticsTemplate = () => {
   return (
     <>
-      <ReviewAdminHeader />
+      <AdminHeader />
       <GrayBox>
         <LeftBox>
           <Title>통계 분석</Title>
@@ -88,7 +89,7 @@ const AdminStatisticsTemplate = () => {
 };
 
 const JobContainer = styled.div`
-  margin-left: auto;
+  margin-left: 5.8333vw;
 
   @media (max-width: 900px) {
     margin-left: 0;
@@ -153,7 +154,7 @@ const BottomBox = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 62.5vw;
+  width: 80%;
   margin: 0 auto;
   margin-bottom: 80px;
 `;
@@ -206,7 +207,7 @@ const RightBox = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 31.1979vw;
+  width: 40%;
 
   padding: 222px 0 60px 10px;
 
@@ -284,7 +285,7 @@ const LeftBox = styled.div`
   display: inline-flex;
   flex-direction: column;
 
-  width: 31.1979vw;
+  width: 40%;
 
   padding: 60px 0;
 
