@@ -27,6 +27,7 @@ const MainPageTemplate = () => {
         <StyledHeader login activeNotification={activeNotification} />
         <HeaderNotification notificationIsClicked={notificationIsClicked} />
         <HeaderSection>
+          <MobileHeader login />
           <Illustrate />
           <StyledH1>
             성장하고 싶은 개발자를 위한 <br />
@@ -45,6 +46,19 @@ const MainPageTemplate = () => {
   );
 };
 
+const MobileHeader = styled(Header)`
+  display: none;
+
+  @media ${responsive.mobile} {
+    display: flex;
+
+    position: relative;
+    z-index: 999;
+
+    background-color: transparent;
+  }
+`;
+
 const HeaderNotification = styled(Notification)`
   position: absolute;
   top: 70px;
@@ -54,9 +68,10 @@ const HeaderNotification = styled(Notification)`
 `;
 
 const StyledHeader = styled(Header)`
+  display: flex;
+
   @media ${responsive.mobile} {
-    position: relative;
-    z-index: 1000;
+    display: none;
   }
 `;
 
