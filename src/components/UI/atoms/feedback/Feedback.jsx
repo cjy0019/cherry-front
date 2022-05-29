@@ -218,7 +218,7 @@ const FeedbackButton = styled.button`
 
 const Container = styled.div`
   position: relative;
-  z-index: 9999;
+  z-index: 5000;
 `;
 
 const CloseButton = styled.button`
