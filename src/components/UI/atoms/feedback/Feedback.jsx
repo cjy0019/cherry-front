@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { responsive } from '../../../../style/responsive';
 
 import zeroStart from '../../../../assets/img/star0_dark.svg';
 import halfStart from '../../../../assets/img/star0.5_dark.svg';
 import fullStart from '../../../../assets/img/star1_dark.svg';
 import closeButtonImg from '../../../../assets/img/feddback_close.svg';
 import feedbackImg from '../../../../assets/img/feedback.png';
-import { responsive } from '../../../../style/responsive';
+import closeButton from '../../../../assets/img/close_w.svg';
 
 const Feedback = ({ className }) => {
   const [feedbackIsClicked, setFeedbackIsClicked] = useState(false);
@@ -44,9 +45,156 @@ const Feedback = ({ className }) => {
         <Submit>제출하기</Submit>
         <CloseButton onClick={openFeedback} />
       </FeedbackContainer>
+      <MobileFeedbackContainer feedbackIsClicked={feedbackIsClicked}>
+        <CloseFeedbackButton onClick={openFeedback} />
+        <FeedbackTitle>Cheery Pick에 만족하셨나요?</FeedbackTitle>
+        <StarsUl>
+          <StarLi>
+            <StarImg src={zeroStart} alt='별점'></StarImg>
+          </StarLi>
+          <StarLi>
+            <StarImg src={zeroStart} alt='별점'></StarImg>
+          </StarLi>
+          <StarLi>
+            <StarImg src={zeroStart} alt='별점'></StarImg>
+          </StarLi>
+          <StarLi>
+            <StarImg src={zeroStart} alt='별점'></StarImg>
+          </StarLi>
+          <StarLi>
+            <StarImg src={zeroStart} alt='별점'></StarImg>
+          </StarLi>
+        </StarsUl>
+        <MobileFeedbackTextArea
+          cols='8'
+          placeholder='추가하고 싶은 강의/불편한 점/건의사항이 있으신가요?'
+        />
+        <MobileSubmitButton>제출하기</MobileSubmitButton>
+      </MobileFeedbackContainer>
     </Container>
   );
 };
+
+const CloseFeedbackButton = styled.button`
+  all: unset;
+  box-sizing: border-box;
+
+  background-image: url(${closeButton});
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  top: -44px;
+  right: 20px;
+
+  width: 32px;
+  height: 32px;
+
+  margin-bottom: 12px;
+`;
+
+const MobileSubmitButton = styled.button`
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 44px;
+
+  margin-top: 20px;
+  background-color: #000000;
+  border-radius: 3px;
+
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #ffffff;
+`;
+
+const MobileFeedbackTextArea = styled.textarea`
+  all: unset;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 84px;
+
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+
+  margin-top: 24px;
+  padding: 12px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+
+  color: #000000;
+
+  &::placeholder {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+
+    color: #000000;
+    opacity: 0.3;
+  }
+`;
+
+const StarImg = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+const StarLi = styled.li`
+  list-style: none;
+`;
+
+const StarsUl = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+  gap: 8px;
+`;
+
+const FeedbackTitle = styled.p`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #000000;
+`;
+
+const MobileFeedbackContainer = styled.div`
+  display: none;
+
+  @media ${responsive.mobile} {
+    ${({ feedbackIsClicked }) =>
+      feedbackIsClicked
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: none;
+          `}
+
+    flex-direction: column;
+    align-items: center;
+
+    position: fixed;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 36px 20px 24px 20px;
+
+    background-color: #ffffff;
+    border-radius: 20px 20px 0px 0px;
+  }
+`;
 
 const FeedbackButton = styled.button`
   all: unset;
@@ -70,6 +218,7 @@ const FeedbackButton = styled.button`
 
 const Container = styled.div`
   position: relative;
+  z-index: 9999;
 `;
 
 const CloseButton = styled.button`
@@ -189,6 +338,8 @@ const FeedbackContainer = styled.div`
 
   @media ${responsive.mobile} {
     right: 0;
+
+    display: none;
   }
 `;
 
