@@ -14,17 +14,32 @@ import rank3 from '../../../assets/img/rank03.svg';
 import rank4 from '../../../assets/img/rank04.svg';
 import rank5 from '../../../assets/img/rank05.svg';
 import rank6 from '../../../assets/img/rank06.svg';
+import MobileSort from '../mobileSort/MobileSort';
 
 const Hotsix = () => {
   // 프론트엔드, 백엔드 선택후 CSS 변경 구현
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
   const [currentCarousel, setCurrentCarousel] = useState(0);
+  const [sortIsClicked, setSortIsClicked] = useState(false);
+  const [hotSixCurrentSort, setHotSixCurrentSort] = useState('최신순');
+
   const cardListRef = useRef(null);
 
   let isBack1121 = false;
   let startClientX = 0;
   let moveClientX = 0;
   let endClientX = 0;
+
+  function checkSort(e) {
+    const currentName = e.currentTarget.dataset.id;
+
+    setSortIsClicked(false);
+    setHotSixCurrentSort(currentName);
+  }
+
+  function openMobileSort(e) {
+    setSortIsClicked(!sortIsClicked);
+  }
 
   function selectCategory(e) {
     setIsCategoryActive(e.target.innerText);
@@ -103,9 +118,15 @@ const Hotsix = () => {
             onClick={selectCategory}>
             백엔드
           </CategorySpan>
-          <MobileCategory>
-            백엔드 <DownArrow src={categoryDown} alt='펼쳐 보기' />
+          <MobileCategory onClick={openMobileSort}>
+            {hotSixCurrentSort} <DownArrow src={categoryDown} alt='펼쳐 보기' />
           </MobileCategory>
+          <StyledMobileSort
+            hotSixCurrentSort={hotSixCurrentSort}
+            checkSort={checkSort}
+            setSortIsClicked={setSortIsClicked}
+            sortIsClicked={sortIsClicked}
+          />
         </Category>
       </Header>
       <CarrouselButton onClick={carouselMoveLeft} />
@@ -140,6 +161,24 @@ const Hotsix = () => {
     </Container>
   );
 };
+
+const StyledMobileSort = styled(MobileSort)`
+  display: none;
+
+  @media ${responsive.mobile} {
+    ${({ sortIsClicked }) =>
+      sortIsClicked
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: none;
+          `}
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+  }
+`;
 
 const CardLi = styled.li`
   all: unset;
@@ -304,6 +343,8 @@ const CategorySpan = styled.span`
 `;
 
 const Category = styled.div`
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   & > span:first-child {
