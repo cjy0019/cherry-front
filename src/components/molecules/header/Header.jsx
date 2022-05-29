@@ -274,7 +274,7 @@ const Span = styled.span`
   }
 `;
 
-const StyledLink = styled.span`
+const StyledLink = styled(Link)`
   cursor: pointer;
 
   font-size: 1rem;
