@@ -12,8 +12,14 @@ import LectureRegisterPage from './components/pages/admin/LectureRegisterPage';
 import CategoryRegisterPage from './components/pages/admin/CategoryRegisterPage';
 import LectureListPage from './components/pages/admin/LectureListPage';
 import UserListPage from './components/pages/admin/UserListPage';
+import axios from 'axios';
 
 const App = () => {
+  (async () => {
+    const res = await axios.get('/todos');
+    console.log(res);
+  })();
+
   return (
     <>
       <GlobalStyle />
