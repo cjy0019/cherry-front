@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 import { responsive } from '../../../../style/responsive';
 
-const ReviewButton = ({ children, dim, handleClick }) => {
+const ReviewButton = ({ children, dim, handleClick, className }) => {
   return (
-    <StyledButton onClick={handleClick} dim={dim}>
+    <StyledButton className={className} onClick={handleClick} dim={dim}>
       {children}
     </StyledButton>
   );

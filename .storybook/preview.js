@@ -2,6 +2,11 @@
 import '@storybook/addon-console';
 import GlobalStyle from '../src/style/GlobalStyle';
 
+import { initialize, mswDecorator } from 'msw-storybook-addon';
+
+// Initialize MSW
+initialize();
+
 const customViewports = {
   cherrypickPC: {
     name: 'cherrypick PC',
@@ -62,6 +67,7 @@ const customViewports = {
 };
 
 export const decorators = [
+  mswDecorator,
   (Story) => (
     <>
       <GlobalStyle />

@@ -3,7 +3,7 @@ import MainPageTemplate from './MainPageTemplate';
 import { BrowserRouter } from 'react-router-dom';
 
 export default {
-  title: 'templates/메인 페이지',
+  title: 'templates/서비스 페이지/메인 페이지',
   component: MainPageTemplate,
   parameters: {
     layout: 'fullscreen',

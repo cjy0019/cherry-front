@@ -14,7 +14,7 @@ const ErrorTemplate = () => {
         <CheckInternet>
           인터넷 연결을 확인하거나 나중에 다시 시도하세요.
         </CheckInternet>
-        <RetryButton />
+        <RetryButton>다시 시도</RetryButton>
       </TextContainer>
     </Container>
   );

@@ -1,25 +1,13 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import bookmark_active from '../../../../assets/img/bookmark_active.svg';
 import bookmark from '../../../../assets/img/bookmark.svg';
 import { responsive } from '../../../../style/responsive';
 
-const BookMarkButton = ({
-  active,
-  handleClick,
-  absolute,
-  top,
-  right,
-  markSize,
-}) => {
+const BookMarkButton = ({ active, handleClick, markSize, className }) => {
   return (
-    <StyledButton
-      top={top}
-      right={right}
-      absolute={absolute}
-      markSize={markSize}
-      onClick={handleClick}>
+    <StyledButton className={className} onClick={handleClick}>
       {active && <img src={bookmark_active} alt='북마크' />}
       {!active && <img src={bookmark} alt='북마크' />}
     </StyledButton>
@@ -30,9 +18,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: none;
-  & > img {
-    width: ${(props) => props.markSize || '48px'};
 
+  & > img {
     @media ${responsive.tablet} {
       width: 40px;
     }
@@ -40,14 +27,6 @@ const StyledButton = styled.button`
       width: 40px;
     }
   }
-
-  ${(props) =>
-    props.absolute &&
-    css`
-      position: absolute;
-      top: ${({ top }) => top};
-      right: ${({ right }) => right};
-    `}
 `;
 
 export default BookMarkButton;

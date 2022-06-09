@@ -18,6 +18,7 @@ const LectureInfo = () => {
         '끝말잇기'부터 '테트리스'까지! 실제로 동작하는 웹 게임을 개발하며 쉽고
         재밌는 자바스크립트를 배울 수 있는 강의입니다.
       </Description>
+
       <Box>
         <PriceWrapper>
           <p>가격</p>
@@ -36,6 +37,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-top: 72px;
+  width: 40vw;
 
   @media ${responsive.tablet} {
     width: 100%;
@@ -52,24 +54,41 @@ const Title = styled.h2`
   color: ${palette.text2};
   font-size: 1.5rem;
   font-weight: 700;
+
   border-bottom: 1px solid ${palette.subNavy3};
+
   padding-bottom: 24px;
+
+  @media ${responsive.mobile} {
+    font-size: 1.125rem;
+
+    padding-bottom: 20px;
+  }
 `;
 
 const Badges = styled.div`
   display: flex;
   align-items: center;
+  gap: 6px;
+
   font-size: 0.875rem;
   color: ${palette.textWhite};
-  margin-top: 25px;
-  gap: 6px;
+
+  margin-top: 20px;
+
+  @media ${responsive.mobile} {
+    margin-top: 12px;
+  }
 `;
 
 const Description = styled.p`
   font-size: 0.875rem;
   color: ${palette.text4};
+
   margin-top: 21px;
+
   word-break: keep-all;
+  line-height: 1.5;
 `;
 
 const Box = styled.div`
@@ -77,11 +96,19 @@ const Box = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 0 36px;
+
+  padding: 13px 36px;
+  margin-top: 28px;
+
   background-color: ${palette.subNavy};
   border-radius: 4px;
-  height: 40px;
-  margin-top: 28px;
+
+  @media ${responsive.mobile} {
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 12px 12px;
+  }
 `;
 
 const PriceWrapper = styled.div`
@@ -93,6 +120,7 @@ const PriceWrapper = styled.div`
     font-weight: 400;
     font-size: 0.75rem;
     color: ${palette.text2};
+
     white-space: nowrap;
   }
 
@@ -107,6 +135,10 @@ const SmallText = styled.p`
   font-size: 0.75rem;
   line-height: 100%;
   color: ${palette.text5};
+
+  @media ${responsive.mobile} {
+    font-size: 0.625rem;
+  }
 `;
 
 export default LectureInfo;

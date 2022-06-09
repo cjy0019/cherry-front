@@ -35,9 +35,11 @@ export default {
   ],
 };
 
-export const Retry = () => <RetryButton />;
+export const Retry = () => <RetryButton>다시 시도</RetryButton>;
 Retry.storyName = '다시 시도';
-export const CherryPickStart = () => <CherryPickStartButton />;
+export const CherryPickStart = () => (
+  <CherryPickStartButton>체리픽 시작하기</CherryPickStartButton>
+);
 CherryPickStart.storyName = '체리픽 시작하기';
 
 export const Save = () => (

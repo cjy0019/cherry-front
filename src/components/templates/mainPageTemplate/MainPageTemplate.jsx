@@ -1,42 +1,81 @@
-import React from 'react';
-import Header from '../molecules/header/Header';
-import illustrate from '../../assets/img/illu_pc.svg';
+import React, { useCallback, useState } from 'react';
+import Header from '../../molecules/header/Header';
+import illustrate from '../../../assets/img/illu_pc.svg';
 import styled from 'styled-components';
-import SearchInput from '../UI/atoms/input/SearchInput';
-import palette from '../../style/palette';
-import { responsive } from '../../style/responsive';
-import AvailableSkill from '../molecules/availableSkill/AvailableSkill';
-import Hotsix from '../molecules/hotsix/Hotsix';
-import SuggestReview from '../molecules/suggestReview/SuggestReview';
+import SearchInput from '../../UI/atoms/input/SearchInput';
+import palette from '../../../style/palette';
+import { responsive } from '../../../style/responsive';
+
+import AvailableSkill from '../../molecules/availableSkill/AvailableSkill';
+import Hotsix from '../../molecules/hotsix/Hotsix';
+import SuggestReview from '../../molecules/suggestReview/SuggestReview';
+import SuggestCherryPick from '../../molecules/suggestCherryPick/SuggestCherryPick';
+import SelectCategory from '../../molecules/selectCategory/SelectCategory';
+import Footer from '../../molecules/footer/Footer';
+import Notification from '../../UI/atoms/notification/Notification';
 
 const MainPageTemplate = () => {
-  return (
-    <Container>
-      <StyledHeader />
-      <HeaderSection>
-        <Illustrate />
-        <StyledH1>
-          성장하고 싶은 개발자를 위한 <br />
-          강의 추천 서비스
-        </StyledH1>
-        <SearchInput main />
-      </HeaderSection>
+  const [notificationIsClicked, setNotificationIsClicked] = useState(false);
 
-      <AvailableSkill />
-      <Hotsix />
-      <SuggestReview />
-    </Container>
+  const activeNotification = useCallback(() => {
+    setNotificationIsClicked(!notificationIsClicked);
+  }, [notificationIsClicked]);
+
+  return (
+    <>
+      <SmallContainer>
+        <StyledHeader login activeNotification={activeNotification} />
+        <HeaderNotification notificationIsClicked={notificationIsClicked} />
+        <HeaderSection>
+          <MobileHeader login />
+          <Illustrate />
+          <StyledH1>
+            성장하고 싶은 개발자를 위한 <br />
+            강의 추천 서비스
+          </StyledH1>
+          <SearchInput main />
+        </HeaderSection>
+        <AvailableSkill />
+        <Hotsix />
+        <SuggestReview />
+        <SelectCategory />
+      </SmallContainer>
+      <SuggestCherryPick />
+      <Footer />
+    </>
   );
 };
 
-const StyledHeader = styled(Header)`
+const MobileHeader = styled(Header)`
+  display: none;
+
   @media ${responsive.mobile} {
+    display: flex;
+
     position: relative;
-    z-index: 1000;
+    z-index: 999;
+
+    background-color: transparent;
   }
 `;
 
-const Container = styled.div`
+const HeaderNotification = styled(Notification)`
+  position: absolute;
+  top: 70px;
+  right: 43px;
+
+  z-index: 10;
+`;
+
+const StyledHeader = styled(Header)`
+  display: flex;
+
+  @media ${responsive.mobile} {
+    display: none;
+  }
+`;
+
+const SmallContainer = styled.div`
   position: relative;
   width: 62.5vw;
   margin: 0 auto;
