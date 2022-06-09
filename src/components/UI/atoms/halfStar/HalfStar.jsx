@@ -6,15 +6,22 @@ import rightFullDarkStar from '../../../../assets/img/star1_RightFullDark.svg';
 import leftEmptyDarkStar from '../../../../assets/img/star0_LeftEmptyDark.svg';
 import rightEmptyDarkStar from '../../../../assets/img/star0_RightEmptyDark.svg';
 
+import LeftHalfStar from './LeftHalfStar';
+import RightHalfStar from './RightHalfStar';
+
 const HalfStar = () => {
   return (
     <>
+      <StyledRightHalfStar />
+      <StyledLeftHalfStar />
+
       <LeftFullDarkStarImg
         src={leftFullDarkStar}
         alt='왼쪽 별 반개'></LeftFullDarkStarImg>
       <RightFullDarkStarImg
         src={rightFullDarkStar}
         alt='오른쪽 별 반개'></RightFullDarkStarImg>
+
       <LeftEmptyDarkStar
         src={leftEmptyDarkStar}
         alt='오른쪽 별 반개'></LeftEmptyDarkStar>
@@ -24,6 +31,20 @@ const HalfStar = () => {
     </>
   );
 };
+
+const StyledLeftHalfStar = styled(LeftHalfStar)`
+  &:hover path {
+    cursor: pointer;
+    fill: black;
+  }
+`;
+
+const StyledRightHalfStar = styled(RightHalfStar)`
+  &:hover path {
+    cursor: pointer;
+    fill: black;
+  }
+`;
 
 const LeftEmptyDarkStar = styled.img`
   display: inline-block;
@@ -36,7 +57,6 @@ const RightEmptyDarkStar = styled.img`
 `;
 
 const LeftFullDarkStarImg = styled.img`
-  margin-right: 10px;
   display: inline-block;
 `;
 
