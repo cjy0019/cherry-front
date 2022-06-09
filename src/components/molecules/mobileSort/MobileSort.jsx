@@ -4,34 +4,34 @@ import { responsive } from '../../../style/responsive';
 
 import feedbackChecked from '../../../assets/img/feedbackChecked.svg';
 
-const MobileSort = ({ className, checkSort, hotSixCurrentSort }) => {
+const MobileSort = ({ className, checkSort, currentSort }) => {
   return (
     <Container className={className}>
       <Title>정렬</Title>
       <SortsUl>
         <SortLi
-          hotSixCurrentSort={hotSixCurrentSort === '최신순'}
+          currentSort={currentSort === '최신순'}
           data-id='최신순'
           onClick={checkSort}>
           <SortName>최신순</SortName>
           <Checked src={feedbackChecked} alt='체크' />
         </SortLi>
         <SortLi
-          hotSixCurrentSort={hotSixCurrentSort === '인기순'}
+          currentSort={currentSort === '인기순'}
           data-id='인기순'
           onClick={checkSort}>
           <SortName>인기순</SortName>
           <Checked src={feedbackChecked} alt='체크' />
         </SortLi>
         <SortLi
-          hotSixCurrentSort={hotSixCurrentSort === '가격↑'}
+          currentSort={currentSort === '가격↑'}
           data-id='가격↑'
           onClick={checkSort}>
           <SortName>가격↑</SortName>
           <Checked src={feedbackChecked} alt='체크' />
         </SortLi>
         <SortLi
-          hotSixCurrentSort={hotSixCurrentSort === '가격↓'}
+          currentSort={currentSort === '가격↓'}
           data-id='가격↓'
           onClick={checkSort}>
           <SortName>가격↓</SortName>
@@ -64,8 +64,8 @@ const SortLi = styled.li`
 
   height: 48px;
 
-  ${({ hotSixCurrentSort }) =>
-    hotSixCurrentSort
+  ${({ currentSort }) =>
+    currentSort
       ? css`
           & > p {
             font-weight: 600;

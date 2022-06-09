@@ -122,7 +122,7 @@ const Hotsix = () => {
             {hotSixCurrentSort} <DownArrow src={categoryDown} alt='펼쳐 보기' />
           </MobileCategory>
           <StyledMobileSort
-            hotSixCurrentSort={hotSixCurrentSort}
+            currentSort={hotSixCurrentSort}
             checkSort={checkSort}
             setSortIsClicked={setSortIsClicked}
             sortIsClicked={sortIsClicked}
