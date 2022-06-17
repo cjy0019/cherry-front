@@ -15,11 +15,6 @@ import UserListPage from './components/pages/admin/UserListPage';
 import axios from 'axios';
 
 const App = () => {
-  (async () => {
-    const res = await axios.get('/todos');
-    console.log(res);
-  })();
-
   return (
     <>
       <GlobalStyle />
