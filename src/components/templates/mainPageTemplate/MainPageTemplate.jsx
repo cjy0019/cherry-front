@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Header from '../../molecules/header/Header';
 import illustrate from '../../../assets/img/illu_pc.svg';
 import styled from 'styled-components';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import palette from '../../../style/palette';
+import axios from 'axios';
+
 import { responsive } from '../../../style/responsive';
 
 import AvailableSkill from '../../molecules/availableSkill/AvailableSkill';
@@ -20,6 +22,16 @@ const MainPageTemplate = () => {
   const activeNotification = useCallback(() => {
     setNotificationIsClicked(!notificationIsClicked);
   }, [notificationIsClicked]);
+
+  useEffect(async () => {
+    const res = await axios(
+      '/lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1',
+    );
+
+    console.log(res);
+
+    return;
+  }, []);
 
   return (
     <>
