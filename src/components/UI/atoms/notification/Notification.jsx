@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { responsive } from '../../../../style/responsive';
 
@@ -6,54 +6,53 @@ import lectureImg from '../../../../assets/img/lectureImg.png';
 import emojiHi from '../../../../assets/img/emoji_hi.png';
 import closeDark from '../../../../assets/img/close_dark.svg';
 
-const Notification = ({
-  className,
-  notificationIsClicked,
-  activeNotification,
-}) => {
-  return (
-    <Container
-      notificationIsClicked={notificationIsClicked}
-      className={className}>
-      <Title>알림(2)</Title>
-      <ReviewsNotificationContainer>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>하루 전</UpdateDate>
-        </ReviewsNotificationLi>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>하루 전</UpdateDate>
-        </ReviewsNotificationLi>
-        <ReviewsNotificationLi>
-          <ReviewImg src={lectureImg} alt='강의 이미지' />
-          <ReviewInfoContainer>
-            <ReviewTittle>웹 게임 만들며 배우는...</ReviewTittle>
-            <ReviewState>리뷰가 승인되었습니다.</ReviewState>
-          </ReviewInfoContainer>
-          <UpdateDate>하루 전</UpdateDate>
-        </ReviewsNotificationLi>
-      </ReviewsNotificationContainer>
-      <Welcome>
-        <WelcomeText>
-          뮴미님! 가입을 환영합니다
-          <HiEmoji src={emojiHi} alt='hi' />
-        </WelcomeText>
-        <WelcomeDate>1개월 전</WelcomeDate>
-      </Welcome>
-      <DeleteAll>모두 지우기</DeleteAll>
-      <CloseButton onClick={activeNotification} />
-    </Container>
-  );
-};
+const Notification = forwardRef(
+  ({ className, notificationIsOpen, activeNotification }, ref) => {
+    return (
+      <Container
+        ref={ref}
+        notificationIsOpen={notificationIsOpen}
+        className={className}>
+        <Title>알림(2)</Title>
+        <ReviewsNotificationContainer>
+          <ReviewsNotificationLi>
+            <ReviewImg src={lectureImg} alt='강의 이미지' />
+            <ReviewInfoContainer>
+              <ReviewTittle>웹 게임 만들며 배우는...</ReviewTittle>
+              <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            </ReviewInfoContainer>
+            <UpdateDate>하루 전</UpdateDate>
+          </ReviewsNotificationLi>
+          <ReviewsNotificationLi>
+            <ReviewImg src={lectureImg} alt='강의 이미지' />
+            <ReviewInfoContainer>
+              <ReviewTittle>웹 게임 만들며 배우는...</ReviewTittle>
+              <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            </ReviewInfoContainer>
+            <UpdateDate>하루 전</UpdateDate>
+          </ReviewsNotificationLi>
+          <ReviewsNotificationLi>
+            <ReviewImg src={lectureImg} alt='강의 이미지' />
+            <ReviewInfoContainer>
+              <ReviewTittle>웹 게임 만들며 배우는...</ReviewTittle>
+              <ReviewState>리뷰가 승인되었습니다.</ReviewState>
+            </ReviewInfoContainer>
+            <UpdateDate>하루 전</UpdateDate>
+          </ReviewsNotificationLi>
+        </ReviewsNotificationContainer>
+        <Welcome>
+          <WelcomeText>
+            뮴미님! 가입을 환영합니다
+            <HiEmoji src={emojiHi} alt='hi' />
+          </WelcomeText>
+          <WelcomeDate>1개월 전</WelcomeDate>
+        </Welcome>
+        <DeleteAll>모두 지우기</DeleteAll>
+        <CloseButton onClick={activeNotification} />
+      </Container>
+    );
+  },
+);
 
 const CloseButton = styled.button`
   all: unset;
@@ -193,8 +192,8 @@ const Title = styled.h2`
 
 const Container = styled.div`
   position: absolute;
-  ${({ notificationIsClicked }) =>
-    notificationIsClicked
+  ${({ notificationIsOpen }) =>
+    notificationIsOpen
       ? css`
           display: block;
         `
