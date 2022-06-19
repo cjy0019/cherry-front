@@ -12,11 +12,14 @@ import LectureRegisterPage from './components/pages/admin/LectureRegisterPage';
 import CategoryRegisterPage from './components/pages/admin/CategoryRegisterPage';
 import LectureListPage from './components/pages/admin/LectureListPage';
 import UserListPage from './components/pages/admin/UserListPage';
-import axios from 'axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Router>
         <Routes>
@@ -40,7 +43,8 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
-    </>
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+    </QueryClientProvider>
   );
 };
 
