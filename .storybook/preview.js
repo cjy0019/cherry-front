@@ -3,6 +3,7 @@ import '@storybook/addon-console';
 import GlobalStyle from '../src/style/GlobalStyle';
 
 import { initialize, mswDecorator } from 'msw-storybook-addon';
+import { handlers } from '../src/mocks/handlers';
 
 // Initialize MSW
 initialize();
@@ -92,4 +93,5 @@ export const parameters = {
   viewport: {
     viewports: customViewports,
   },
+  msw: { handlers: [...handlers] },
 };
