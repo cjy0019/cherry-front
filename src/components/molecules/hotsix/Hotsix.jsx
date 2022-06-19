@@ -15,9 +15,17 @@ import rank4 from '../../../assets/img/rank04.svg';
 import rank5 from '../../../assets/img/rank05.svg';
 import rank6 from '../../../assets/img/rank06.svg';
 import MobileSort from '../mobileSort/MobileSort';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 
 const Hotsix = () => {
   // 프론트엔드, 백엔드 선택후 CSS 변경 구현
+  // const { isLoading, data } = useQuery('hotSixLectures', () => {
+  //   return axios.get(
+  //     '/lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1',
+  //   );
+  // });
+
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
   const [currentCarousel, setCurrentCarousel] = useState(0);
   const [sortIsClicked, setSortIsClicked] = useState(false);
@@ -75,27 +83,29 @@ const Hotsix = () => {
     }
   }
 
+  const handleResizeForHotSix = () => {
+    if (window.innerWidth < 1121 && window.innerWidth > 768) {
+      isBack1121 = true;
+      return;
+    }
+
+    if (window.innerWidth > 1121 && isBack1121) {
+      setCurrentCarousel(1);
+      isBack1121 = false;
+      return;
+    }
+
+    if (window.innerWidth < 769) {
+      setCurrentCarousel(0);
+      return;
+    }
+  };
+
   useEffect(() => {
     // 변수 함수를 넣으면 왜 안돼는지 검색
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 1121 && window.innerWidth > 768) {
-        isBack1121 = true;
-        return;
-      }
+    window.addEventListener('resize', handleResizeForHotSix);
 
-      if (window.innerWidth > 1121 && isBack1121) {
-        setCurrentCarousel(1);
-        isBack1121 = false;
-        return;
-      }
-
-      if (window.innerWidth < 769) {
-        setCurrentCarousel(0);
-        return;
-      }
-    });
-
-    // return window.removeEventListener('resize', checkViewPort);
+    return window.removeEventListener('resize', handleResizeForHotSix);
   }, []);
 
   return (

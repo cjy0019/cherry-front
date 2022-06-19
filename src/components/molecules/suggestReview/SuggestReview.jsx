@@ -102,6 +102,9 @@ const ReviewList = styled.li`
 
 const CheckReview = styled.a`
   all: unset;
+
+  cursor: pointer;
+
   display: flex;
   justify-content: center;
   align-items: center;
