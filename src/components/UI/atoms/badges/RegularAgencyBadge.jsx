@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
 const RegularAgencyBadge = ({ children, className }) => {
-  const [type, ...name] = children.split(' ');
+  const [type, ...name] = children;
 
   return (
     <StyledBadge className={className}>

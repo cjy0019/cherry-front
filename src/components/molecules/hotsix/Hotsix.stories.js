@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { responsive } from '../../../style/responsive';
 import Hotsix from './Hotsix';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default {
   title: 'molecules/Hot6',
@@ -10,11 +11,14 @@ export default {
     layout: 'fullscreen',
   },
 };
+const queryClient = new QueryClient();
 
 export const PcHot6 = () => (
-  <Container>
-    <Hotsix></Hotsix>
-  </Container>
+  <QueryClientProvider client={queryClient}>
+    <Container>
+      <Hotsix></Hotsix>
+    </Container>
+  </QueryClientProvider>
 );
 
 PcHot6.storyName = 'PcHot6';

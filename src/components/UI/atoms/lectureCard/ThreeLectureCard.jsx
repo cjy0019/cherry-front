@@ -10,7 +10,24 @@ import OfflineBadge from '../badges/OfflineBadge';
 import offBookmark from '../../../../assets/img/bookmark.svg';
 import onBookmark from '../../../../assets/img/bookmark_active.svg';
 
-const ThreeLectureCard = ({ className, rankSrc }) => {
+const ThreeLectureCard = ({ className, rankSrc, lectureData }) => {
+  const {
+    id,
+    desktopImgUrl,
+    tabletImgUrl,
+    mobileImgUrl,
+    name,
+    lectureCompany,
+    lecturers,
+    hashtags,
+    originLink,
+    price,
+    reviewCount,
+    rating,
+    bookMark,
+    offline,
+  } = lectureData;
+
   const [isActiveBookmark, setIsActiveBookmark] = useState(false);
 
   function addBookmark(e) {
@@ -19,38 +36,41 @@ const ThreeLectureCard = ({ className, rankSrc }) => {
 
   return (
     <LectureCard className={className}>
-      <LectureImg src={lectureImg} alt='제로초 자바스크립트 강의' />
-      <LectureOfflineBadge />
+      <LectureImg src={desktopImgUrl} alt={name} />
+      {offline && <LectureOfflineBadge />}
       <HoverContainer>
         <Bookmark isActiveBookmark={isActiveBookmark} onClick={addBookmark} />
         <HoverDark src={rankSrc} />
         <RankImg src={rankSrc} alt='1위 강의' />
       </HoverContainer>
-      <BookmarkAdded isActiveBookmark={isActiveBookmark}>
-        북마크 완료!
-      </BookmarkAdded>
+      {isActiveBookmark && (
+        <BookmarkAdded isActiveBookmark={isActiveBookmark}>
+          북마크 완료!
+        </BookmarkAdded>
+      )}
       <InfoContainer>
         <LectureInfo>
           <div>
-            <AgencyBadge>기관 groomedu</AgencyBadge>
-            <AgencyBadge>강사 groomedu</AgencyBadge>
+            <AgencyBadge>기관 {lectureCompany}</AgencyBadge>
+            {lecturers.map((lecturer) => (
+              <AgencyBadge key={lecturer}>강사 {lecturer}</AgencyBadge>
+            ))}
           </div>
           <HashTagContainer>
-            <HashTag>#수강가능</HashTag>
-            <HashTag>#Javascript</HashTag>
+            {hashtags.map((hashtag) => (
+              <HashTag key={hashtag}>#{hashtag}</HashTag>
+            ))}
           </HashTagContainer>
-          <LectureTitle>
-            웹 게임을 만들며 배우는 JavaScript(자바스크립트)
-          </LectureTitle>
+          <LectureTitle>{name}</LectureTitle>
           <AdditionalInfoContainer>
-            <AdditionalInfoContent>무료</AdditionalInfoContent>
+            <AdditionalInfoContent>{price}</AdditionalInfoContent>
             <AdditionalInfo>
               <AdditionalInfoTitle>평점</AdditionalInfoTitle>
-              <AdditionalInfoContent>측정중</AdditionalInfoContent>
+              <AdditionalInfoContent>{rating}</AdditionalInfoContent>
             </AdditionalInfo>
             <AdditionalInfo>
               <AdditionalInfoTitle>리뷰</AdditionalInfoTitle>
-              <AdditionalInfoContent>수집중</AdditionalInfoContent>
+              <AdditionalInfoContent>{reviewCount}</AdditionalInfoContent>
             </AdditionalInfo>
           </AdditionalInfoContainer>
         </LectureInfo>
@@ -503,7 +523,7 @@ const HashTag = styled.span`
 `;
 
 const AgencyBadge = styled(RegularAgencyBadge)`
-  margin-right: 8px;
+  margin-right: 3px;
   padding: 0.4167vw;
 
   /* 1440px 부터 폰트 크기 줄여줌 */

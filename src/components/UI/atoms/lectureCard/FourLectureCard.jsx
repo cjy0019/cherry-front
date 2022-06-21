@@ -11,7 +11,7 @@ import palette from '../../../../style/palette';
 import RegularAgencyBadge from '../badges/RegularAgencyBadge';
 import OfflineBadge from '../badges/OfflineBadge';
 
-const FourLectureCard = ({ className }) => {
+const FourLectureCard = ({ className, lectureData }) => {
   const [isActiveBookmark, setIsActiveBookmark] = useState(false);
 
   function addBookmark(e) {

@@ -30,13 +30,6 @@ const MainPageTemplate = () => {
     }
   };
 
-  useEffect(async () => {
-    const res = await axios.get(
-      '/lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1',
-    );
-    console.log('res: ', res);
-  });
-
   return (
     <div onClick={handleClickOutside}>
       <SmallContainer>
@@ -58,7 +51,7 @@ const MainPageTemplate = () => {
         <AvailableSkill />
         <Hotsix />
         <SuggestReview />
-        <SelectCategory />
+        {/* <SelectCategory /> */}
       </SmallContainer>
       <SuggestCherryPick />
       <Footer />

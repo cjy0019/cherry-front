@@ -20,11 +20,16 @@ import axios from 'axios';
 
 const Hotsix = () => {
   // 프론트엔드, 백엔드 선택후 CSS 변경 구현
-  // const { isLoading, data } = useQuery('hotSixLectures', () => {
-  //   return axios.get(
-  //     '/lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1',
-  //   );
-  // });
+  const { isLoading, data: lecturesData } = useQuery('hotSixLectures', () => {
+    return axios.get(
+      '/lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1',
+    );
+  });
+  console.log('isLoading: ', isLoading);
+
+  if (!isLoading) {
+    console.log('lecturesData: ', lecturesData);
+  }
 
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
   const [currentCarousel, setCurrentCarousel] = useState(0);
@@ -147,24 +152,14 @@ const Hotsix = () => {
           onTouchEnd={touchEndCarousel}
           cardListRef={cardListRef}
           currentCarousel={currentCarousel}>
-          <CardLi>
-            <HotSixCard three rankSrc={rank1} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank2} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank3} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank4} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank5} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank6} />
-          </CardLi>
+          {!isLoading &&
+            lecturesData.data.data.content.map((lectureData) => {
+              return (
+                <CardLi key={lectureData.id}>
+                  <HotSixCard lectureData={lectureData} three rankSrc={rank1} />
+                </CardLi>
+              );
+            })}
         </CardsUl>
       </CarouselContainer>
       <CarrouselButton onClick={carouselMoveRight} />
