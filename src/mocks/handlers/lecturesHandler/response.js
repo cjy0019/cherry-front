@@ -289,7 +289,7 @@ export const hotSixBackEnd = {
       {
         id: 9,
         desktopImgUrl:
-          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
+          'https://images.unsplash.com/photo-1572953745960-14685e3e9b49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 3편',
@@ -297,7 +297,7 @@ export const hotSixBackEnd = {
         lecturers: ['패캠강사2'],
         hashtags: ['devops', 'aws', 'gcp', 'cloud'],
         originLink:
-          'https://www.inflearn.com/course/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81',
+          'https://images.unsplash.com/photo-1586902197503-e71026292412?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80',
         price: 73000,
         reviewCount: 0,
         rating: 0.0,
@@ -307,7 +307,7 @@ export const hotSixBackEnd = {
       {
         id: 8,
         desktopImgUrl:
-          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
+          'https://images.unsplash.com/flagged/photo-1570700005880-4ecdb8595d4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2120&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 2편',
@@ -421,5 +421,11 @@ export const hotSixBackEnd = {
     },
     empty: false,
   },
+  message: null,
+};
+
+export const bookMark = {
+  result: 'SUCCESS',
+  data: null,
   message: null,
 };

@@ -9,8 +9,15 @@ import OfflineBadge from '../badges/OfflineBadge';
 
 import offBookmark from '../../../../assets/img/bookmark.svg';
 import onBookmark from '../../../../assets/img/bookmark_active.svg';
+import { useMutation, useQueryClient } from 'react-query';
+import axios from 'axios';
 
-const ThreeLectureCard = ({ className, rankSrc, lectureData }) => {
+const ThreeLectureCard = ({
+  className,
+  rankSrc,
+  lectureData,
+  isCategoryActive,
+}) => {
   const {
     id,
     desktopImgUrl,
@@ -28,10 +35,37 @@ const ThreeLectureCard = ({ className, rankSrc, lectureData }) => {
     offline,
   } = lectureData;
 
-  const [isActiveBookmark, setIsActiveBookmark] = useState(false);
+  const queryClient = useQueryClient();
+
+  const { mutate: changeBookMark } = useMutation(
+    () => {
+      return axios.post(`/lectures/${id}/bookmark`);
+    },
+    {
+      onSuccess: () => {
+        queryClient.setQueryData(
+          ['hotSixLectures', isCategoryActive],
+          (oldQueryData) => {
+            const diffId = oldQueryData.data.data.content.findIndex(
+              (v) => v.id === id,
+            );
+
+            oldQueryData.data.data.content.splice(diffId, 1, {
+              ...lectureData,
+              bookMark: !bookMark,
+            });
+
+            return {
+              ...oldQueryData,
+            };
+          },
+        );
+      },
+    },
+  );
 
   function addBookmark(e) {
-    setIsActiveBookmark(!isActiveBookmark);
+    changeBookMark();
   }
 
   return (
@@ -39,14 +73,12 @@ const ThreeLectureCard = ({ className, rankSrc, lectureData }) => {
       <LectureImg src={desktopImgUrl} alt={name} />
       {offline && <LectureOfflineBadge />}
       <HoverContainer>
-        <Bookmark isActiveBookmark={isActiveBookmark} onClick={addBookmark} />
+        <Bookmark bookMark={bookMark} onClick={addBookmark} />
         <HoverDark src={rankSrc} />
         <RankImg src={rankSrc} alt='1위 강의' />
       </HoverContainer>
-      {isActiveBookmark && (
-        <BookmarkAdded isActiveBookmark={isActiveBookmark}>
-          북마크 완료!
-        </BookmarkAdded>
+      {bookMark && (
+        <BookmarkAdded bookMark={bookMark}>북마크 완료!</BookmarkAdded>
       )}
       <InfoContainer>
         <LectureInfo>
@@ -251,8 +283,8 @@ const BookmarkAdded = styled.div`
 
   color: #ffffff;
 
-  ${({ isActiveBookmark }) =>
-    isActiveBookmark
+  ${({ bookMark }) =>
+    bookMark
       ? css`
           display: flex;
         `
@@ -297,8 +329,8 @@ const Bookmark = styled.button`
 
   z-index: 10;
 
-  ${({ isActiveBookmark }) =>
-    isActiveBookmark
+  ${({ bookMark }) =>
+    bookMark
       ? css`
           background-image: url(${onBookmark});
         `

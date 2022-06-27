@@ -2,11 +2,23 @@ import React from 'react';
 import FourLectureCard from './FourLectureCard';
 import ThreeLectureCard from './ThreeLectureCard';
 
-const LectureCard = ({ three, four, className, lectureData }) => {
+const LectureCard = ({
+  three,
+  four,
+  className,
+  lectureData,
+  rankSrc,
+  isCategoryActive,
+}) => {
   return (
     <>
       {three && (
-        <ThreeLectureCard lectureData={lectureData} className={className} />
+        <ThreeLectureCard
+          isCategoryActive={isCategoryActive}
+          rankSrc={rankSrc}
+          lectureData={lectureData}
+          className={className}
+        />
       )}
       {four && <FourLectureCard className={className} />}
     </>
