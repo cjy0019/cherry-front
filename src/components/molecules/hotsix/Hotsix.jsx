@@ -15,18 +15,33 @@ import rank4 from '../../../assets/img/rank04.svg';
 import rank5 from '../../../assets/img/rank05.svg';
 import rank6 from '../../../assets/img/rank06.svg';
 import MobileSort from '../mobileSort/MobileSort';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import axios from 'axios';
 
 const Hotsix = () => {
-  // 프론트엔드, 백엔드 선택후 CSS 변경 구현
-  // const { isLoading, data } = useQuery('hotSixLectures', () => {
-  //   return axios.get(
-  //     '/lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1',
-  //   );
-  // });
-
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
+  const { isLoading: IsInitDataLoading, data: lecturesData } = useQuery(
+    ['hotSixLectures', isCategoryActive],
+    async () => {
+      let categoryNumber = '1';
+
+      if (isCategoryActive === '프론트엔드') {
+        categoryNumber = '1';
+      } else if (isCategoryActive === '백엔드') {
+        categoryNumber = '2';
+      }
+
+      return await axios.get(
+        `/lectures?sort=reviewCount&page=1&size=6&depth=1&categoryId=${categoryNumber}`,
+      );
+    },
+    {
+      keepPreviousData: true,
+    },
+  );
+  // ranks 이미지들을 불러온다면 ,useQueyr 캐시에서 불러오면된다.(나중에 지워주기)
+  const rankSrcs = [rank1, rank2, rank3, rank4, rank5, rank6];
+
   const [currentCarousel, setCurrentCarousel] = useState(0);
   const [sortIsClicked, setSortIsClicked] = useState(false);
   const [hotSixCurrentSort, setHotSixCurrentSort] = useState('최신순');
@@ -119,11 +134,13 @@ const Hotsix = () => {
         </TitleSection>
         <Category>
           <CategorySpan
+            data-id='1'
             isCategoryActive={isCategoryActive === '프론트엔드'}
             onClick={selectCategory}>
             프론트엔드
           </CategorySpan>
           <CategorySpan
+            data-id='2'
             isCategoryActive={isCategoryActive === '백엔드'}
             onClick={selectCategory}>
             백엔드
@@ -147,24 +164,19 @@ const Hotsix = () => {
           onTouchEnd={touchEndCarousel}
           cardListRef={cardListRef}
           currentCarousel={currentCarousel}>
-          <CardLi>
-            <HotSixCard three rankSrc={rank1} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank2} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank3} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank4} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank5} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank6} />
-          </CardLi>
+          {!IsInitDataLoading &&
+            lecturesData.data.data.content.map((lectureData, i) => {
+              return (
+                <CardLi key={lectureData.id}>
+                  <HotSixCard
+                    isCategoryActive={isCategoryActive}
+                    lectureData={lectureData}
+                    three
+                    rankSrc={rankSrcs[i]}
+                  />
+                </CardLi>
+              );
+            })}
         </CardsUl>
       </CarouselContainer>
       <CarrouselButton onClick={carouselMoveRight} />

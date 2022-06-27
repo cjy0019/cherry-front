@@ -4,7 +4,8 @@ export const search = {
     content: [
       {
         id: 9,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 3편',
@@ -21,7 +22,8 @@ export const search = {
       },
       {
         id: 8,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 2편',
@@ -38,7 +40,8 @@ export const search = {
       },
       {
         id: 5,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '리액트 시작하기',
@@ -55,7 +58,8 @@ export const search = {
       },
       {
         id: 6,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 1편',
@@ -72,7 +76,8 @@ export const search = {
       },
       {
         id: 7,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '리팩토링 리액트 자바스크립트 강의',
@@ -89,7 +94,8 @@ export const search = {
       },
       {
         id: 3,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '자바 기초로 공부하기',
@@ -140,7 +146,8 @@ export const hotSixFrontEnd = {
     content: [
       {
         id: 9,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '프론트엔드 React 3편',
@@ -157,7 +164,8 @@ export const hotSixFrontEnd = {
       },
       {
         id: 8,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1526485856375-9110812fbf35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '프론트엔드 React 2편',
@@ -167,14 +175,15 @@ export const hotSixFrontEnd = {
         originLink:
           'https://www.inflearn.com/course/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81',
         price: 72000,
-        reviewCount: 0,
-        rating: 0.0,
-        bookMark: false,
-        offline: false,
+        reviewCount: 100,
+        rating: 3.2,
+        bookMark: true,
+        offline: true,
       },
       {
         id: 5,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlraW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '리액트 시작하기',
@@ -191,7 +200,8 @@ export const hotSixFrontEnd = {
       },
       {
         id: 6,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 1편',
@@ -208,7 +218,8 @@ export const hotSixFrontEnd = {
       },
       {
         id: 7,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '리팩토링 리액트 자바스크립트 강의',
@@ -225,7 +236,8 @@ export const hotSixFrontEnd = {
       },
       {
         id: 3,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '자바 기초로 공부하기',
@@ -276,7 +288,8 @@ export const hotSixBackEnd = {
     content: [
       {
         id: 9,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1572953745960-14685e3e9b49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 3편',
@@ -284,7 +297,7 @@ export const hotSixBackEnd = {
         lecturers: ['패캠강사2'],
         hashtags: ['devops', 'aws', 'gcp', 'cloud'],
         originLink:
-          'https://www.inflearn.com/course/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81',
+          'https://images.unsplash.com/photo-1586902197503-e71026292412?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80',
         price: 73000,
         reviewCount: 0,
         rating: 0.0,
@@ -293,7 +306,8 @@ export const hotSixBackEnd = {
       },
       {
         id: 8,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/flagged/photo-1570700005880-4ecdb8595d4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2120&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 2편',
@@ -310,7 +324,8 @@ export const hotSixBackEnd = {
       },
       {
         id: 5,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '백엔드 시작하기',
@@ -327,7 +342,8 @@ export const hotSixBackEnd = {
       },
       {
         id: 6,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '데브옵스 강의 1편',
@@ -344,7 +360,8 @@ export const hotSixBackEnd = {
       },
       {
         id: 7,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '리팩토링 백엔드 자바스크립트 강의',
@@ -361,7 +378,8 @@ export const hotSixBackEnd = {
       },
       {
         id: 3,
-        desktopImgUrl: 'desktop_img_url',
+        desktopImgUrl:
+          'https://images.unsplash.com/photo-1604537372111-68af9affc2aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80',
         tabletImgUrl: 'tablet_img_url',
         mobileImgUrl: 'mobile_img_url',
         name: '자바 기초로 공부하기',
@@ -403,5 +421,11 @@ export const hotSixBackEnd = {
     },
     empty: false,
   },
+  message: null,
+};
+
+export const bookMark = {
+  result: 'SUCCESS',
+  data: null,
   message: null,
 };
