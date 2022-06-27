@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { search, hotSixBackEnd, hotSixFrontEnd } from './response';
+import { search, hotSixBackEnd, hotSixFrontEnd, bookMark } from './response';
 
 export default [
   rest.get('/lectures', (req, res, ctx) => {
@@ -35,5 +35,11 @@ export default [
     }
 
     return req.passthrough();
+  }),
+  rest.post('/lectures/:lectureId/bookmark', (req, res, ctx) => {
+    // 북마크 보내기
+    // /lectures/{lectureId}/bookmark
+
+    return res(ctx.status(200), ctx.json(bookMark));
   }),
 ];
