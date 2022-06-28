@@ -10,7 +10,9 @@ import ProgressBar from './ProgressBar';
 import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
 import { responsive } from '../../../style/responsive';
 
-const AverageScore = () => {
+const AverageScore = ({ lectureDetailInfoData }) => {
+  const { review } = lectureDetailInfoData;
+
   return (
     <Container>
       <Title>평점</Title>
@@ -21,8 +23,8 @@ const AverageScore = () => {
             <p>리뷰 평점</p>
 
             <ScoreWrapper>
-              <Score>4.5</Score>
-              <Counter>(133명 참여)</Counter>
+              <Score>{review.totalRating.toFixed(1)}</Score>
+              <Counter>({review.count}명 참여)</Counter>
             </ScoreWrapper>
 
             <StarContainer>
@@ -36,11 +38,11 @@ const AverageScore = () => {
             <FrontBackContainer>
               <ScoreWithText>
                 <p>프론트엔드</p>
-                <p>2.2</p>
+                <p>{review.frontendRating}</p>
               </ScoreWithText>
               <ScoreWithText>
                 <p>백엔드</p>
-                <p>2.5</p>
+                <p>{review.backendRating}</p>
               </ScoreWithText>
             </FrontBackContainer>
           </ScoreBox>
@@ -51,13 +53,13 @@ const AverageScore = () => {
             <DivisionBox>
               <HalfBox red>
                 <img src={smileRed} alt='추천해요 이미지' />
-                <p>92%</p>
+                <p>{review.recommendation.good}%</p>
                 <StyledRecommendBadge point>추천해요!</StyledRecommendBadge>
               </HalfBox>
 
               <HalfBox>
                 <img src={smileGrey} alt='별로에요 이미지' />
-                <p>8%</p>
+                <p>{review.recommendation.bad}%</p>
                 <StyledRecommendBadge>별로에요</StyledRecommendBadge>
               </HalfBox>
             </DivisionBox>
@@ -68,12 +70,27 @@ const AverageScore = () => {
           <p>가격 대비 만족도</p>
 
           <ProgressColContainer>
-            <ProgressBar title='매우 만족' total={2} percentage='0.3' id='1' />
-            <ProgressBar title='만족' total={4} percentage='0.9' id='2' />
-            <ProgressBar title='보통' total={20} percentage='1' id='3' />
+            <ProgressBar
+              title='매우 만족'
+              total={review.costPerformance.verySatisfaction}
+              percentage='0.3'
+              id='1'
+            />
+            <ProgressBar
+              title='만족'
+              total={review.costPerformance.satisfaction}
+              percentage='0.9'
+              id='2'
+            />
+            <ProgressBar
+              title='보통'
+              total={review.costPerformance.middle}
+              percentage='1'
+              id='3'
+            />
             <ProgressBar
               title='그저 그럼'
-              total={100}
+              total={review.costPerformance.soso}
               percentage='0.5'
               id='4'
             />

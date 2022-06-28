@@ -11,23 +11,28 @@ import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
 import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
 import { responsive } from '../../../style/responsive';
 
-const SideBar = () => {
+const SideBar = ({ lectureDetailInfoData }) => {
+  const { name, lectureCompany, lecturers, originLink, offline, bookmark } =
+    lectureDetailInfoData;
+
   return (
     <Container>
       <ThumbnailWrapper>
         <img src={thumbnail} alt='섬네일' />
-        <StyledOffLineBadge />
-        <StyledBookMark />
+        {offline && <StyledOffLineBadge />}
+        <StyledBookMark active={bookmark} />
       </ThumbnailWrapper>
 
       <Badges>
-        <StyledSmallAgencyBadge>기관 groomedu</StyledSmallAgencyBadge>
-        <StyledSmallAgencyBadge>강사 ZeroCho</StyledSmallAgencyBadge>
+        <StyledSmallAgencyBadge>{`기관 ${lectureCompany}`}</StyledSmallAgencyBadge>
+        {lecturers.map((lecture) => (
+          <StyledSmallAgencyBadge>{`강사 ${lecture}`}</StyledSmallAgencyBadge>
+        ))}
       </Badges>
 
-      <Title>웹 게임을 만들며 배우는 JavaScript(자바스크립트)</Title>
+      <Title>{name}</Title>
       <ButtonContainer>
-        <StyledOriginalLink to='/' />
+        <StyledOriginalLink to={originLink} />
         <StyledReview>리뷰 작성완료</StyledReview>
       </ButtonContainer>
     </Container>
@@ -109,6 +114,7 @@ const StyledBookMark = styled(BookMarkButton)`
 
 const Badges = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
 
   margin-top: 1.0417vw;

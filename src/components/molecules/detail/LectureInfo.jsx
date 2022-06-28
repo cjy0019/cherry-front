@@ -4,14 +4,16 @@ import styled from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
-const LectureInfo = () => {
+const LectureInfo = ({ lectureDetailInfoData }) => {
+  const { mostViewUserGroup, price } = lectureDetailInfoData;
+
   return (
     <Container>
       <Title>강의 정보</Title>
 
       <Badges>
-        <JobBadge>프론트</JobBadge>
-        <JobBadge>1년차</JobBadge>
+        <JobBadge>{mostViewUserGroup.job}</JobBadge>
+        <JobBadge>{mostViewUserGroup.career}</JobBadge>
         <p>가 많이 들은 강의입니다.</p>
       </Badges>
       <Description>
@@ -22,7 +24,7 @@ const LectureInfo = () => {
       <Box>
         <PriceWrapper>
           <p>가격</p>
-          <p>17,000</p>
+          <p>{price.toLocaleString()}</p>
         </PriceWrapper>
         <SmallText>
           * 할인 가격이므로, 정확한 가격정보는 원본링크를 통해 확인하세요.
