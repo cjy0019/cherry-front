@@ -4,14 +4,17 @@ import { responsive } from '../../../style/responsive';
 import palette from '../../../style/palette';
 
 import LectureCard from '../../UI/atoms/lectureCard/ThreeLectureCard';
+import MobileLectureCard from '../../UI/atoms/mobileLectureCard/MobileLectureCard';
 
 import curiousEmoji from '../../../assets/img/emoji_hmm.png';
 import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
 import closeDark from '../../../assets/img/close_dark.svg';
 import javascript from '../../../assets/img/JavaScript.png';
-import MobileLectureCard from '../../UI/atoms/mobileLectureCard/MobileLectureCard';
 import Sorts from '../../UI/atoms/sorts/Sorts';
+import { axiosInstance } from '../../../api';
+import { useQuery } from 'react-query';
+import { firstCategory } from '../../../mocks/handlers/category/response';
 
 const skillArr = [
   { src: javascript, name: 'Javascript', id: 1 },
@@ -175,6 +178,21 @@ const SelectCategory = () => {
     }
   }
 
+  const { data: categoryData, isLoading: isCategoryDataLoading } = useQuery(
+    ['category', 1],
+    async () => {
+      const firstCategory = await axiosInstance.get('/category?depth=1');
+      const secondCategory = await axiosInstance.get(
+        '/category?depth=2&parentId=1',
+      );
+      const thirdCategory = await axiosInstance.get(
+        `/category?depth=3&parentId=${secondCategory.data[0].id}`,
+      );
+
+      return [firstCategory.data, secondCategory.data, thirdCategory.data];
+    },
+  );
+
   return (
     <Container>
       <Title>
@@ -182,17 +200,17 @@ const SelectCategory = () => {
         <TitleEmoji src={curiousEmoji} alt='궁금한 이모티콘' />
       </Title>
       <FirstCategoryContainer>
-        <FirstCategoryButton
-          firstCategoryIsClicked={firstCategoryIsClicked === '프론트엔드'}
-          onClick={selectFirstCategory}>
-          프론트엔드
-        </FirstCategoryButton>
-        <FirstCategoryButton
-          firstCategoryIsClicked={firstCategoryIsClicked === '백엔드'}
-          onClick={selectFirstCategory}>
-          백엔드
-        </FirstCategoryButton>
+        {!isCategoryDataLoading &&
+          categoryData[0].map(({ id, name }) => (
+            <FirstCategoryButton
+              key={id + name}
+              firstCategoryIsClicked={firstCategoryIsClicked === name}
+              onClick={selectFirstCategory}>
+              {name}
+            </FirstCategoryButton>
+          ))}
       </FirstCategoryContainer>
+      {/* 여기까지 */}
       <SecondCategoryContainer>
         <SecondCategorySlider
           onTouchStart={touchStartSecondSlider}
@@ -291,9 +309,9 @@ const SelectCategory = () => {
       </ThirdCategoryResultContainer>
       <SelectSorts />
       <PcMobileLectureCard>
-        <PcLectureCardsContainer>
+        {/* <PcLectureCardsContainer>
           <PcLectureCardLi>
-            <CategoryLectureCard three />
+            <CategoryLectureCard category='javascript' three />
           </PcLectureCardLi>
           <PcLectureCardLi>
             <CategoryLectureCard three />
@@ -345,7 +363,7 @@ const SelectCategory = () => {
           <MobileLectureCardLi>
             <MobileLectureCard />
           </MobileLectureCardLi>
-        </MobileLectureCardContainer>
+        </MobileLectureCardContainer>*/}
       </PcMobileLectureCard>
       <Pagination>
         <PcPagination>

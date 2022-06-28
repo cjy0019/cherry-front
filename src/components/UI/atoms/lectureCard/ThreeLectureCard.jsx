@@ -10,14 +10,9 @@ import OfflineBadge from '../badges/OfflineBadge';
 import offBookmark from '../../../../assets/img/bookmark.svg';
 import onBookmark from '../../../../assets/img/bookmark_active.svg';
 import { useMutation, useQueryClient } from 'react-query';
-import axios from 'axios';
+import { axiosInstance } from '../../../../api';
 
-const ThreeLectureCard = ({
-  className,
-  rankSrc,
-  lectureData,
-  isCategoryActive,
-}) => {
+const ThreeLectureCard = ({ className, rankSrc, lectureData, category }) => {
   const {
     id,
     desktopImgUrl,
@@ -39,18 +34,18 @@ const ThreeLectureCard = ({
 
   const { mutate: changeBookMark } = useMutation(
     () => {
-      return axios.post(`/lectures/${id}/bookmark`);
+      return axiosInstance.post(`/lectures/${id}/bookmark`);
     },
     {
       onSuccess: () => {
         queryClient.setQueryData(
-          ['hotSixLectures', isCategoryActive],
+          ['hotSixLectures', category],
           (oldQueryData) => {
-            const diffId = oldQueryData.data.data.content.findIndex(
+            const diffId = oldQueryData.data.content.findIndex(
               (v) => v.id === id,
             );
 
-            oldQueryData.data.data.content.splice(diffId, 1, {
+            oldQueryData.data.content.splice(diffId, 1, {
               ...lectureData,
               bookMark: !bookMark,
             });

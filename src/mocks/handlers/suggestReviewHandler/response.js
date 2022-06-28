@@ -1,0 +1,58 @@
+export const suggestReview = {
+  result: 'SUCCESS',
+  data: {
+    content: [
+      {
+        id: 1,
+        desktopImgUrl: 'desktop_img_url',
+        tabletImgUrl: 'tablet_img_url',
+        mobileImgUrl: 'mobile_img_url',
+        name: '데브옵스 강의 1편',
+        createdAt: '2022.02.04',
+        status: 'READY',
+      },
+      {
+        id: 2,
+        desktopImgUrl: 'desktop_img_url',
+        tabletImgUrl: 'tablet_img_url',
+        mobileImgUrl: 'mobile_img_url',
+        name: '데브옵스 강의 2편',
+        createdAt: '2022.02.04',
+        status: 'APPROVE',
+      },
+      {
+        id: 3,
+        desktopImgUrl: 'desktop_img_url',
+        tabletImgUrl: 'tablet_img_url',
+        mobileImgUrl: 'mobile_img_url',
+        name: '데브옵스 강의 3편',
+        createdAt: '2022.02.04',
+        status: 'APPROVE',
+      },
+    ],
+    pageable: {
+      sort: {
+        sorted: false,
+        unsorted: true,
+        empty: true,
+      },
+      pageSize: 1,
+      pageNumber: 1,
+      offset: 1,
+      paged: true,
+      unpaged: false,
+    },
+    number: 1,
+    sort: {
+      sorted: false,
+      unsorted: true,
+      empty: true,
+    },
+    first: false,
+    last: false,
+    numberOfElements: 1,
+    size: 1,
+    empty: false,
+  },
+  message: null,
+};

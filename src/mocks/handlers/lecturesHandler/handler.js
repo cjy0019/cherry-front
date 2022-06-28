@@ -18,6 +18,7 @@ export default [
 
     // Hot6 조회 API(기능설명)
     // /lectures?sort=reviewCount&page=1&size=1&depth=1&categoryId=1
+
     // - sort 항상 reviewCount로 고정(인기순이므로)
     // - page 항상 1로 고정
     // - size 강의 카드 개수 6개
@@ -39,6 +40,7 @@ export default [
   rest.post('/lectures/:lectureId/bookmark', (req, res, ctx) => {
     // 북마크 보내기
     // /lectures/{lectureId}/bookmark
+    const { lectureId } = req.params;
 
     return res(ctx.status(200), ctx.json(bookMark));
   }),
