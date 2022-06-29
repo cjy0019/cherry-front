@@ -36,7 +36,7 @@ const DetailTemplate = () => {
         <LoadingPage />
       ) : (
         <>
-          <BackgroundOpacity />
+          <BackgroundOpacity lectureDetailInfoData={lectureDetailInfoData} />
           <LectureDetailTitle
             lectureDetailInfoData={lectureDetailInfoData?.data}
           />

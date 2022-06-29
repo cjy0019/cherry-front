@@ -44,7 +44,8 @@ const LectureDetailTitle = ({ lectureDetailInfoData }) => {
         <Badges>
           <StyledLargeAgencyBadge>{`기관 ${lectureCompany}`}</StyledLargeAgencyBadge>
           {lecturers.map((lecturer) => (
-            <StyledLargeAgencyBadge>{`강사 ${lecturer}`}</StyledLargeAgencyBadge>
+            <StyledLargeAgencyBadge
+              key={lecturer}>{`강사 ${lecturer}`}</StyledLargeAgencyBadge>
           ))}
         </Badges>
 
@@ -366,6 +367,7 @@ const Stars = styled.div`
 `;
 
 const Points = styled.p`
+  white-space: nowrap;
   font-weight: 700;
   font-size: 1.4583vw;
   color: ${palette.textWhite};

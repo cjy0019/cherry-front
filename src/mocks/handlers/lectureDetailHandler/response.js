@@ -1,7 +1,7 @@
 export const lectureDetailInfo = {
   id: 1,
   desktopImgUrl:
-    'https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+    'https://images.unsplash.com/photo-1656389426118-0844b68ec32e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
   tabletImgUrl: 'tablet_img_url',
   mobileImgUrl: 'mobile_img_url',
   name: '이펙티브자바 완벽 공략 1부',
@@ -18,7 +18,7 @@ export const lectureDetailInfo = {
   bookmark: true,
   offline: false,
   review: {
-    totalRating: 5,
+    totalRating: 2.6,
     count: 200,
     frontendRating: 2.5,
     backendRating: 2.5,
@@ -27,10 +27,10 @@ export const lectureDetailInfo = {
       bad: 16,
     },
     costPerformance: {
-      verySatisfaction: 2,
-      satisfaction: 2,
-      middle: 2,
-      soso: 2,
+      verySatisfaction: 100,
+      satisfaction: 20,
+      middle: 40,
+      soso: 10,
     },
   },
 };

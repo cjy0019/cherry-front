@@ -12,21 +12,29 @@ import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
 import { responsive } from '../../../style/responsive';
 
 const SideBar = ({ lectureDetailInfoData }) => {
-  const { name, lectureCompany, lecturers, originLink, offline, bookmark } =
-    lectureDetailInfoData;
+  const {
+    name,
+    lectureCompany,
+    lecturers,
+    originLink,
+    offline,
+    bookmark,
+    desktopImgUrl,
+  } = lectureDetailInfoData;
 
   return (
     <Container>
       <ThumbnailWrapper>
-        <img src={thumbnail} alt='섬네일' />
+        <img src={desktopImgUrl} alt='섬네일' />
         {offline && <StyledOffLineBadge />}
         <StyledBookMark active={bookmark} />
       </ThumbnailWrapper>
 
       <Badges>
         <StyledSmallAgencyBadge>{`기관 ${lectureCompany}`}</StyledSmallAgencyBadge>
-        {lecturers.map((lecture) => (
-          <StyledSmallAgencyBadge>{`강사 ${lecture}`}</StyledSmallAgencyBadge>
+        {lecturers.map((lecturer) => (
+          <StyledSmallAgencyBadge
+            key={lecturer}>{`강사 ${lecturer}`}</StyledSmallAgencyBadge>
         ))}
       </Badges>
 

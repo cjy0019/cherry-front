@@ -3,15 +3,54 @@ import styled from 'styled-components';
 import palette from '../../../style/palette';
 
 import starRed from '../../../assets/img/star1_red.svg';
+import starHalfRed from '../../../assets/img/star0.5_red.svg';
+import starEmptyRed from '../../../assets/img/star0_red.svg';
+
 import smileRed from '../../../assets/img/smile_red.svg';
 import smileGrey from '../../../assets/img/smile_grey.svg';
 import ProgressBar from './ProgressBar';
 
 import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
 import { responsive } from '../../../style/responsive';
+import { useMemo } from 'react';
 
 const AverageScore = ({ lectureDetailInfoData }) => {
   const { review } = lectureDetailInfoData;
+  const { count, costPerformance, totalRating } = review;
+
+  const verySatisfactionCnt = useMemo(
+    () => costPerformance.verySatisfaction / count,
+    [count, costPerformance],
+  );
+  const satisfactionCnt = useMemo(
+    () => costPerformance.satisfaction / count,
+    [count, costPerformance],
+  );
+  const middleCnt = useMemo(
+    () => costPerformance.middle / count,
+    [count, costPerformance],
+  );
+  const sosoCnt = useMemo(
+    () => costPerformance.soso / count,
+    [count, costPerformance],
+  );
+  const starArray = Array.from({ length: 5 }, () => false);
+  const fullStarCount = Math.floor(totalRating);
+
+  for (let i = 0; i < fullStarCount; i++) {
+    starArray[i] = 'full';
+  }
+
+  let halfStar = (totalRating * 10) % 10 >= 5 ? 'half' : 'empty';
+  if (!(fullStarCount === 5)) {
+    starArray[fullStarCount] = halfStar;
+  }
+
+  for (let i = 0; i < starArray.length; i++) {
+    if (!starArray[i]) {
+      starArray[i] = 'empty';
+    }
+  }
 
   return (
     <Container>
@@ -28,11 +67,14 @@ const AverageScore = ({ lectureDetailInfoData }) => {
             </ScoreWrapper>
 
             <StarContainer>
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
+              {starArray.map((value, i) => {
+                if (value === 'full')
+                  return <img key={i} src={starRed} alt='별점' />;
+                else if (value === 'half')
+                  return <img key={i} src={starHalfRed} alt='별점' />;
+                else if (value === 'empty')
+                  return <img key={i} src={starEmptyRed} alt='별점' />;
+              })}
             </StarContainer>
 
             <FrontBackContainer>
@@ -73,25 +115,25 @@ const AverageScore = ({ lectureDetailInfoData }) => {
             <ProgressBar
               title='매우 만족'
               total={review.costPerformance.verySatisfaction}
-              percentage='0.3'
+              percentage={String(verySatisfactionCnt)}
               id='1'
             />
             <ProgressBar
               title='만족'
               total={review.costPerformance.satisfaction}
-              percentage='0.9'
+              percentage={String(satisfactionCnt)}
               id='2'
             />
             <ProgressBar
               title='보통'
               total={review.costPerformance.middle}
-              percentage='1'
+              percentage={String(middleCnt)}
               id='3'
             />
             <ProgressBar
               title='그저 그럼'
               total={review.costPerformance.soso}
-              percentage='0.5'
+              percentage={String(sosoCnt)}
               id='4'
             />
           </ProgressColContainer>
