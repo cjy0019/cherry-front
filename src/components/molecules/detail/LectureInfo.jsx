@@ -5,7 +5,7 @@ import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
 const LectureInfo = ({ lectureDetailInfoData }) => {
-  const { mostViewUserGroup, price } = lectureDetailInfoData;
+  const { mostViewUserGroup, price, info } = lectureDetailInfoData;
 
   return (
     <Container>
@@ -16,10 +16,7 @@ const LectureInfo = ({ lectureDetailInfoData }) => {
         <JobBadge>{mostViewUserGroup.career}</JobBadge>
         <p>가 많이 들은 강의입니다.</p>
       </Badges>
-      <Description>
-        '끝말잇기'부터 '테트리스'까지! 실제로 동작하는 웹 게임을 개발하며 쉽고
-        재밌는 자바스크립트를 배울 수 있는 강의입니다.
-      </Description>
+      <Description>{info}</Description>
 
       <Box>
         <PriceWrapper>

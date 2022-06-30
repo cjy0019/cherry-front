@@ -117,6 +117,8 @@ const FlexLeft = styled.div`
 
   @media ${responsive.mobile} {
     width: 100%;
+
+    transform: translateY(-7.8125vw);
   }
 
   &::before {
@@ -236,6 +238,9 @@ const StyledBookMarkButton = styled(BookMarkButton)`
     @media ${responsive.tablet} {
       width: 5.2083vw;
     }
+    @media ${responsive.mobile} {
+      width: 45px;
+    }
   }
 `;
 
@@ -312,7 +317,7 @@ const HashTags = styled.div`
   font-weight: 400;
   color: ${palette.text4};
 
-  margin-top: 0.625vw;
+  margin-top: 12px;
 
   @media (max-width: 1045px) {
     font-size: 0.75rem;
@@ -324,7 +329,6 @@ const HashTags = styled.div`
 
   @media ${responsive.tablet} {
     gap: 0.625vw;
-    margin-top: 0.5208vw;
     font-size: 0.625vw;
   }
 
@@ -416,7 +420,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledOriginalLinkButton = styled(OriginalLinkButton)`
-  height: 2.0833vw;
+  height: 40px;
 
   @media ${responsive.tablet} {
     height: 5.2083vw;

@@ -17,6 +17,7 @@ export const lectureDetailInfo = {
   },
   bookmark: true,
   offline: false,
+  info: '이 강의는 1년차 프론트 엔드를 위한 리액트 수강강의 입니다~ 백엔드 분들이 들어도 아주 괜찮은 강의에요',
   review: {
     totalRating: 2.6,
     count: 200,
