@@ -18,6 +18,8 @@ import ReviewProsConsTextarea from '../UI/atoms/input/ReviewProsConsTextarea';
 import SaveButton from '../UI/atoms/buttons/SaveButton';
 import Footer from '../molecules/footer/Footer';
 import { responsive } from '../../style/responsive';
+import { useQuery } from 'react-query';
+import { axiosInstance } from '../../api';
 
 const starImageUrl = {
   emptyStar,
@@ -26,28 +28,45 @@ const starImageUrl = {
 };
 
 const ReviewWriteTemplate = () => {
-  // 1번 평점 state
   const [lockStarPoints, setLockStarPoints] = useState(false);
   const [starImagesArr, setStarImagesArr] = useState(
     Array.from({ length: 5 }, () => starImageUrl.emptyStar),
   );
   const [isOverHalf, setIsOverHalf] = useState(false);
-  const [starPoint, setStarPoint] = useState(0);
+  const [rating, setRating] = useState(0);
 
   // 2번 추천 state
-  const [recommend, setRecommend] = useState('recommendation');
+  const [recommendation, setRecommendation] = useState('GOOD');
 
   // 3번 만족도 선택 state
-  const [satisfaction, setSatisfaction] = useState('매우 만족');
+  const [costPerformance, setCostPerformance] = useState('VERY_SATISFACTION');
 
   // 4번 한줄평 state
-  const [oneLineReview, setOneLineReview] = useState('');
+  const [oneLineComment, setOneLineComment] = useState('');
 
   // 5번 장점 state
-  const [advantage, setAdvantage] = useState('');
+  const [strengthComment, setStrengthComment] = useState('');
 
   // 6번 단점 state
-  const [disadvantage, setDisadvantage] = useState('');
+  const [weaknessComment, setWeaknessComment] = useState('');
+
+  const { data, isLoading, refetch } = useQuery(
+    'createReview',
+    async () => {
+      const payload = {
+        recommendation,
+        costPerformance,
+        rating,
+        oneLineComment,
+        strengthComment,
+        weaknessComment,
+      };
+      return await axiosInstance.post('/lectures/22/review', payload);
+    },
+    { enabled: false },
+  );
+
+  // 1번 평점 state
 
   const handleMouseMove = (e) => {
     if (lockStarPoints) return;
@@ -77,40 +96,41 @@ const ReviewWriteTemplate = () => {
     const { point } = e.target.dataset;
     setLockStarPoints(!lockStarPoints);
 
-    if (isOverHalf) setStarPoint(point);
-    else setStarPoint(point - 0.5);
+    if (isOverHalf) setRating(point);
+    else setRating(point - 0.5);
   };
 
   const writeOneLineReview = (e) => {
-    setOneLineReview(e.target.value);
+    setOneLineComment(e.target.value);
   };
 
   const selectRecommendation = (e) => {
     const { name } = e.currentTarget.dataset;
-    setRecommend(name);
+    setRecommendation(name);
   };
 
-  const selectSatisfaction = (e) => {
+  const selectCostPerformance = (e) => {
     const { name } = e.target.dataset;
-    setSatisfaction(name);
+    setCostPerformance(name);
+    console.log(costPerformance);
   };
 
   const writeAdvantage = (e) => {
-    setAdvantage(e.target.value);
+    setStrengthComment(e.target.value);
   };
 
   const writeDisadvantage = (e) => {
-    setDisadvantage(e.target.value);
+    setWeaknessComment(e.target.value);
   };
 
   const checkQuestionIsFull = () => {
     if (
-      starPoint > 0 &&
-      recommend &&
-      satisfaction &&
-      oneLineReview.length > 0 &&
-      advantage.length > 0 &&
-      disadvantage.length > 0
+      rating > 0 &&
+      recommendation &&
+      costPerformance &&
+      oneLineComment.length > 0 &&
+      strengthComment.length > 0 &&
+      weaknessComment.length > 0
     ) {
       return true;
     } else return false;
@@ -145,7 +165,7 @@ const ReviewWriteTemplate = () => {
                   <img src={url} key={i} data-point={String(i + 1)} />
                 ))}
               </StarContainer>
-              <p>{starPoint}</p>
+              <p>{rating}</p>
             </AlignInline>
           </QuestionContainer>
 
@@ -155,17 +175,15 @@ const ReviewWriteTemplate = () => {
               <p>강의를 추천하시나요?(필수)</p>
             </AlignInline>
             <SmileButtonContainer>
-              <button data-name='recommendation' onClick={selectRecommendation}>
+              <button data-name='GOOD' onClick={selectRecommendation}>
                 <img
-                  src={recommend === 'recommendation' ? smileRed : smileGrey}
+                  src={recommendation === 'GOOD' ? smileRed : smileGrey}
                   alt='추천합니다'
                 />
               </button>
-              <button
-                data-name='non-recommendation'
-                onClick={selectRecommendation}>
+              <button data-name='BAD' onClick={selectRecommendation}>
                 <img
-                  src={recommend === 'non-recommendation' ? sadRed : sadGrey}
+                  src={recommendation === 'BAD' ? sadRed : sadGrey}
                   alt='추천하지 않습니다'
                 />
               </button>
@@ -179,23 +197,27 @@ const ReviewWriteTemplate = () => {
             </AlignInline>
             <SatisfactionButtonContainer>
               <SatisfactionButton
-                handleClick={selectSatisfaction}
-                selected={satisfaction}>
+                handleClick={selectCostPerformance}
+                selected={costPerformance}
+                name='VERY_SATISFACTION'>
                 매우 만족
               </SatisfactionButton>
               <SatisfactionButton
-                handleClick={selectSatisfaction}
-                selected={satisfaction}>
+                handleClick={selectCostPerformance}
+                selected={costPerformance}
+                name='SATISFACTION'>
                 만족
               </SatisfactionButton>
               <SatisfactionButton
-                handleClick={selectSatisfaction}
-                selected={satisfaction}>
+                handleClick={selectCostPerformance}
+                selected={costPerformance}
+                name='MIDDLE'>
                 보통
               </SatisfactionButton>
               <SatisfactionButton
-                handleClick={selectSatisfaction}
-                selected={satisfaction}>
+                handleClick={selectCostPerformance}
+                selected={costPerformance}
+                name='SOSO'>
                 그저 그럼
               </SatisfactionButton>
             </SatisfactionButtonContainer>
@@ -216,7 +238,7 @@ const ReviewWriteTemplate = () => {
                 <p>장점(필수)</p>
               </FlexWrapper>
               <TextCount>
-                <span>{advantage.length}/</span>
+                <span>{strengthComment.length}/</span>
                 <span>500</span>
               </TextCount>
             </BetweenWrapper>
@@ -230,14 +252,16 @@ const ReviewWriteTemplate = () => {
                 <p>단점(필수)</p>
               </FlexWrapper>
               <TextCount>
-                <span>{disadvantage.length}/</span>
+                <span>{weaknessComment.length}/</span>
                 <span>500</span>
               </TextCount>
             </BetweenWrapper>
             <ReviewProsConsTextarea handleChange={writeDisadvantage} />
           </AdvantagesContainer>
 
-          <SaveButton disabled={!checkQuestionIsFull()}>저장하기</SaveButton>
+          <SaveButton disabled={!checkQuestionIsFull()} handleClick={refetch}>
+            저장하기
+          </SaveButton>
         </CenterBox>
       </Container>
       <Footer />
