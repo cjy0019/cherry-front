@@ -38,7 +38,7 @@ const App = () => {
               path='category-registration'
               element={<CategoryRegisterPage />}
             />
-            <Route path='lecture-list' element={<LectureListPage />} />
+            <Route path='lectures' element={<LectureListPage />} />
             <Route path='users' element={<UserListPage />} />
           </Route>
         </Routes>

@@ -4,16 +4,16 @@ import styled from 'styled-components';
 import palette from '../../../../style/palette';
 import ToggleButton from '../../../UI/atoms/buttons/ToggleButton';
 
-const LectureListItem = () => {
+const LectureListItem = ({ lecture }) => {
   return (
     <Container>
-      <li>1111</li>
-      <li>자바스크립트 어쩌구 저쩌구 궁시러러러러러러러러 덩기덕러러</li>
-      <li>스파르타 코딩클럽</li>
-      <li>2022.02.14</li>
-      <li>2022.02.15</li>
+      <li>{lecture.id}</li>
+      <li>{lecture.name}</li>
+      <li>{lecture.lectureCompany}</li>
+      <li>{lecture.createdAt}</li>
+      <li>{lecture.updatedAt || '-'}</li>
       <li>
-        <ToggleButton />
+        <ToggleButton isOpened={lecture.isOpened} />
       </li>
       <li>
         <StyledLink to='/'>수정하기</StyledLink>
@@ -52,14 +52,17 @@ const Container = styled.ul`
 
   & > li:nth-of-type(3) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(4) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(5) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(6) {

@@ -1,0 +1,45 @@
+export const adminLecturesResponse = {
+  content: [
+    {
+      id: 1,
+      name: '데브옵스 강의 3편',
+      lectureCompany: 'fastCampus',
+      createdAt: '2022.02.14',
+      updatedAt: '2022.02.14',
+      isOpened: true,
+    },
+    {
+      id: 2,
+      name: '데브옵스 강의 3편',
+      lectureCompany: 'fastCampus',
+      createdAt: '2022.02.14',
+      updatedAt: '',
+      isOpened: false,
+    },
+  ],
+  pageable: {
+    sort: {
+      unsorted: false,
+      sorted: true,
+      empty: false,
+    },
+    pageNumber: 0,
+    pageSize: 6,
+    offset: 0,
+    unpaged: false,
+    paged: true,
+  },
+  totalPages: 2,
+  totalElements: 9,
+  last: false,
+  numberOfElements: 6,
+  size: 6,
+  number: 0,
+  first: true,
+  sort: {
+    unsorted: false,
+    sorted: true,
+    empty: false,
+  },
+  empty: false,
+};
