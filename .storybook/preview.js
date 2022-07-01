@@ -4,6 +4,7 @@ import GlobalStyle from '../src/style/GlobalStyle';
 
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import { handlers } from '../src/mocks/handlers';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Initialize MSW
 initialize();
@@ -66,14 +67,15 @@ const customViewports = {
     },
   },
 };
+const queryClient = new QueryClient();
 
 export const decorators = [
   mswDecorator,
   (Story) => (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Story />
-    </>
+    </QueryClientProvider>
   ),
 ];
 

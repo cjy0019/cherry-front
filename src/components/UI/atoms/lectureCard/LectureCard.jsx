@@ -8,13 +8,13 @@ const LectureCard = ({
   className,
   lectureData,
   rankSrc,
-  isCategoryActive,
+  category,
 }) => {
   return (
     <>
       {three && (
         <ThreeLectureCard
-          isCategoryActive={isCategoryActive}
+          category={category}
           rankSrc={rankSrc}
           lectureData={lectureData}
           className={className}
