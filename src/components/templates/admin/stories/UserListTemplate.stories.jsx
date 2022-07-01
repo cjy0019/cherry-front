@@ -1,4 +1,5 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import UserListTemplate from '../UserListTemplate';
 
@@ -8,15 +9,16 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  decorators: [
-    (Story) => (
-      <BrowserRouter>
-        <Story />
-      </BrowserRouter>
-    ),
-  ],
 };
 
-export const LectureList = () => <UserListTemplate />;
+const queryClient = new QueryClient();
+
+export const LectureList = () => (
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <UserListTemplate />
+    </QueryClientProvider>
+  </BrowserRouter>
+);
 
 LectureList.storyName = '유저 리스트 페이지';

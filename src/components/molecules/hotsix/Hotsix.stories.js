@@ -11,14 +11,11 @@ export default {
     layout: 'fullscreen',
   },
 };
-const queryClient = new QueryClient();
 
 export const PcHot6 = () => (
-  <QueryClientProvider client={queryClient}>
-    <Container>
-      <Hotsix></Hotsix>
-    </Container>
-  </QueryClientProvider>
+  <Container>
+    <Hotsix></Hotsix>
+  </Container>
 );
 
 PcHot6.storyName = 'PcHot6';

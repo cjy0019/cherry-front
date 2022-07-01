@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import palette from '../../../../style/palette';
 
-const ToggleButton = () => {
-  const [isPublic, setIsPublic] = useState(false);
-
-  const handleIsPublic = (e) => {
-    setIsPublic(e.target.checked);
-  };
-
+const ToggleButton = ({ isOpened }) => {
   return (
     <Container>
       <div>
-        <CheckBox type='checkbox' id='chk' onChange={handleIsPublic} />
+        <CheckBox type='checkbox' id='chk' checked={isOpened} />
         <StyledLabel htmlFor='chk'>
           <span>선택</span>
         </StyledLabel>
       </div>
-      <p>{isPublic ? '공개' : '비공개'}</p>
+      <p>{isOpened ? '공개' : '비공개'}</p>
     </Container>
   );
 };

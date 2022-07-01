@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import thumbnail from '../../../assets/img/thumbnail.svg';
 import { responsive } from '../../../style/responsive';
 
-const BackgroundOpacity = () => {
+const BackgroundOpacity = ({ lectureDetailInfoData }) => {
   return (
-    <Background>
+    <Background imageSrc={lectureDetailInfoData.data.desktopImgUrl}>
       <div />
     </Background>
   );
@@ -16,7 +15,13 @@ const Background = styled.div`
   position: absolute;
   top: 0;
   z-index: -2;
-  background-image: url(${thumbnail});
+
+  ${({ imageSrc }) => {
+    return css`
+      background-image: url(${imageSrc});
+    `;
+  }}
+
   background-size: cover;
   background-position-y: 100px;
   width: 100%;

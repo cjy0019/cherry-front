@@ -93,7 +93,7 @@ const Container = styled.div`
   width: 40vw;
   margin-top: 60px;
 
-  @media ${responsive.tablet} {
+  @media (max-width: 768px) {
     width: 100%;
   }
 `;

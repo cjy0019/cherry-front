@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../../../style/palette';
 
@@ -7,8 +7,25 @@ import AdminHeader from '../../molecules/admin/header/AdminHeader';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import CherryPickStartButton from '../../UI/atoms/buttons/CherryPickStartButton';
 import LectureListItem from '../../molecules/admin/lecture-list/LectureListItem';
+import { useQuery } from 'react-query';
+import { axiosInstance } from '../../../api';
+import { useCallback } from 'react';
 
 const LectureListTemplate = () => {
+  const navigate = useNavigate();
+  const { data: adminLectureList, isLoading } = useQuery(
+    'admin/lectureList',
+    async () => {
+      return await axiosInstance.get('/admin/v1/lectures');
+    },
+  );
+
+  const moveToRegister = useCallback(() => {
+    navigate('/lectures');
+  }, [navigate]);
+
+  console.log(adminLectureList);
+
   return (
     <>
       <AdminHeader />
@@ -23,14 +40,16 @@ const LectureListTemplate = () => {
       <LinkButtonContainer>
         <CenterWrapper>
           <FrontBackWrapper>
-            <StyledLink to='/admin/lecture-list?language=frontend'>
+            <StyledLink to='/admin/lectures?firstCategoryId=frontend'>
               프론트엔드(340)
             </StyledLink>
-            <StyledLink to='/admin/lecture-list?language=backend'>
+            <StyledLink to='/admin/lectures?firstCategoryId=backend'>
               백엔드(9)
             </StyledLink>
           </FrontBackWrapper>
-          <CherryPickStartButton>강의 추가</CherryPickStartButton>
+          <CherryPickStartButton handleClick={moveToRegister}>
+            강의 추가
+          </CherryPickStartButton>
         </CenterWrapper>
       </LinkButtonContainer>
 
@@ -48,7 +67,13 @@ const LectureListTemplate = () => {
         </CenterWrapper>
 
         <CenterWrapper>
-          <LectureListItem />
+          <LectureListContainer>
+            {adminLectureList?.data &&
+              adminLectureList.data.content.length > 0 &&
+              adminLectureList.data.content.map((lecture) => {
+                return <LectureListItem key={lecture.id} lecture={lecture} />;
+              })}
+          </LectureListContainer>
         </CenterWrapper>
       </Table>
     </>
@@ -140,14 +165,17 @@ const TableTitles = styled.ul`
 
   & > li:nth-of-type(3) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(4) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(5) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(6) {
@@ -157,6 +185,12 @@ const TableTitles = styled.ul`
   & > li:nth-of-type(7) {
     flex: 1;
   }
+`;
+
+const LectureListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export default LectureListTemplate;

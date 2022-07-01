@@ -1,7 +1,7 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import DetailTemplate from '../DetailTemplate';
-import { rest } from 'msw';
 
 export default {
   title: 'templates/서비스 페이지/상세 페이지',
@@ -9,15 +9,15 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  decorators: [
-    (Story) => (
-      <BrowserRouter>
-        <Story />
-      </BrowserRouter>
-    ),
-  ],
 };
+const queryClient = new QueryClient();
 
-export const DetailStory = () => <DetailTemplate />;
+export const DetailTemplateStory = () => (
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <DetailTemplate />
+    </QueryClientProvider>
+  </BrowserRouter>
+);
 
-DetailStory.storyName = '상세 페이지';
+DetailTemplateStory.storyName = '상세 페이지';

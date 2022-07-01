@@ -4,7 +4,6 @@ import illustrate from '../../../assets/img/illu_pc.svg';
 import styled from 'styled-components';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import palette from '../../../style/palette';
-import axios from 'axios';
 
 import { responsive } from '../../../style/responsive';
 
@@ -51,7 +50,7 @@ const MainPageTemplate = () => {
         <AvailableSkill />
         <Hotsix />
         <SuggestReview />
-        {/* <SelectCategory /> */}
+        <SelectCategory />
       </SmallContainer>
       <SuggestCherryPick />
       <Footer />

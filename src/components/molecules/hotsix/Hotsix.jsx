@@ -15,8 +15,9 @@ import rank4 from '../../../assets/img/rank04.svg';
 import rank5 from '../../../assets/img/rank05.svg';
 import rank6 from '../../../assets/img/rank06.svg';
 import MobileSort from '../mobileSort/MobileSort';
-import { useMutation, useQuery } from 'react-query';
-import axios from 'axios';
+
+import { useQuery } from 'react-query';
+import { axiosInstance } from '../../../api';
 
 const Hotsix = () => {
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
@@ -31,7 +32,7 @@ const Hotsix = () => {
         categoryNumber = '2';
       }
 
-      return await axios.get(
+      return await axiosInstance.get(
         `/lectures?sort=reviewCount&page=1&size=6&depth=1&categoryId=${categoryNumber}`,
       );
     },
@@ -165,11 +166,12 @@ const Hotsix = () => {
           cardListRef={cardListRef}
           currentCarousel={currentCarousel}>
           {!IsInitDataLoading &&
-            lecturesData.data.data.content.map((lectureData, i) => {
+            lecturesData.data.content.map((lectureData, i) => {
               return (
                 <CardLi key={lectureData.id}>
                   <HotSixCard
-                    isCategoryActive={isCategoryActive}
+                    // 메인 페이지에서, 프론트엔드, 백엔드, 강의 페이지 별로 저장되는 위치가 다름
+                    category={isCategoryActive}
                     lectureData={lectureData}
                     three
                     rankSrc={rankSrcs[i]}
