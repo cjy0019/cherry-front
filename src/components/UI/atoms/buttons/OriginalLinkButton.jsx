@@ -7,7 +7,7 @@ import linkIcon from '../../../../assets/img/linkicon.svg';
 
 const OriginalLinkButton = ({ to, className }) => {
   return (
-    <StyledLink className={className} to={to}>
+    <StyledLink className={className} to={to} target='_blank'>
       원본 링크
       <img src={linkIcon} alt='아이콘' />
     </StyledLink>

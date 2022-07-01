@@ -2,12 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../../style/palette';
 
-const SatisfactionButton = ({ children, selected, handleClick }) => {
+const SatisfactionButton = ({ children, selected, handleClick, name }) => {
   return (
-    <StyledButton
-      onClick={handleClick}
-      selected={selected}
-      data-name={children}>
+    <StyledButton onClick={handleClick} selected={selected} data-name={name}>
       {children}
     </StyledButton>
   );

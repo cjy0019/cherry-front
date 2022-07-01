@@ -1,4 +1,6 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { BrowserRouter } from 'react-router-dom';
 import ReviewWriteTemplate from '../ReviewWriteTemplate';
 
 export default {
@@ -9,6 +11,14 @@ export default {
   },
 };
 
-export const ReviewWrite = () => <ReviewWriteTemplate />;
+const queryClient = new QueryClient();
+
+export const ReviewWrite = () => (
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <ReviewWriteTemplate />
+    </QueryClientProvider>
+  </BrowserRouter>
+);
 
 ReviewWrite.storyName = '리뷰 작성 페이지';
