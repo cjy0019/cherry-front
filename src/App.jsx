@@ -39,7 +39,7 @@ const App = () => {
               element={<CategoryRegisterPage />}
             />
             <Route path='lecture-list' element={<LectureListPage />} />
-            <Route path='user-list' element={<UserListPage />} />
+            <Route path='users' element={<UserListPage />} />
           </Route>
         </Routes>
       </Router>

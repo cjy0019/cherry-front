@@ -1,12 +1,24 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { axiosInstance } from '../../../api';
 import palette from '../../../style/palette';
 import AdminHeader from '../../molecules/admin/header/AdminHeader';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 
 const UserListTemplate = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { data: userListResponse, isLoadings } = useQuery(
+    'admin/userList',
+    async () => {
+      return await axiosInstance.get('/admin/v1/users');
+    },
+    { refetchOnWindowFocus: false },
+  );
+
+  console.log(userListResponse?.data);
 
   return (
     <>
@@ -49,13 +61,24 @@ const UserListTemplate = () => {
         </CenterWrapper>
 
         <CenterWrapper>
-          <UserList>
-            <li>3</li>
-            <li>cjy0029@naver.com</li>
-            <li>2022.02.14</li>
-            <li>승인1 거절1 대기0</li>
-            <li>2022.02.23</li>
-          </UserList>
+          <UserListContainer>
+            {userListResponse?.data &&
+              userListResponse.data.content.length > 0 &&
+              userListResponse.data.content.map((user) => {
+                return (
+                  <UserList key={user.id}>
+                    <li>{user.id}</li>
+                    <li>{user.email}</li>
+                    <li>{user.createdAt}</li>
+                    <li>
+                      승인{user.review.approve} 거절{user.review.reject} 대기
+                      {user.review.ready}
+                    </li>
+                    <li>{user.deleteAt || '-'}</li>
+                  </UserList>
+                );
+              })}
+          </UserListContainer>
         </CenterWrapper>
       </Table>
     </>
@@ -141,20 +164,30 @@ const TableTitles = styled.ul`
   }
 
   & > li:nth-of-type(2) {
-    flex: 5;
+    flex: 4;
   }
 
   & > li:nth-of-type(3) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(4) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(5) {
     flex: 2;
+    text-align: center;
   }
+`;
+
+const UserListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
 `;
 
 const UserList = styled.ul`
@@ -178,7 +211,7 @@ const UserList = styled.ul`
   }
 
   & > li:nth-of-type(2) {
-    flex: 5;
+    flex: 4;
     padding: 0 0.3125rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -187,15 +220,18 @@ const UserList = styled.ul`
 
   & > li:nth-of-type(3) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(4) {
     flex: 2;
+    text-align: center;
   }
 
   & > li:nth-of-type(5) {
     flex: 2;
     color: ${palette.pointRed};
+    text-align: center;
   }
 `;
 
