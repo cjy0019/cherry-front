@@ -10,24 +10,10 @@ import curiousEmoji from '../../../assets/img/emoji_hmm.png';
 import arrowRight from '../../../assets/img/arrow_right.svg';
 import arrowLeft from '../../../assets/img/arrow_left.svg';
 import closeDark from '../../../assets/img/close_dark.svg';
-import javascript from '../../../assets/img/JavaScript.png';
+
 import Sorts from '../../UI/atoms/sorts/Sorts';
 import { axiosInstance } from '../../../api';
 import { useQuery } from 'react-query';
-import { firstCategory } from '../../../mocks/handlers/category/response';
-
-const skillArr = [
-  { src: javascript, name: 'Javascript', id: 1 },
-  { src: javascript, name: 'Javascript1', id: 2 },
-  { src: javascript, name: 'Javascript2', id: 3 },
-  { src: javascript, name: 'Javascript3', id: 4 },
-  { src: javascript, name: 'Javascript4', id: 5 },
-  { src: javascript, name: 'Javascript5', id: 6 },
-  { src: javascript, name: 'Javascript6', id: 7 },
-  { src: javascript, name: 'Javascript7', id: 8 },
-  { src: javascript, name: 'Javascript8', id: 9 },
-  { src: javascript, name: 'Javascript9', id: 10 },
-];
 
 const SelectCategory = () => {
   const [firstCategoryIsClicked, setFirstCategoryIsClicked] =
@@ -199,103 +185,81 @@ const SelectCategory = () => {
         리뷰가 궁금한 강의 살펴보기
         <TitleEmoji src={curiousEmoji} alt='궁금한 이모티콘' />
       </Title>
-      <FirstCategoryContainer>
-        {!isCategoryDataLoading &&
-          categoryData[0].map(({ id, name }) => (
-            <FirstCategoryButton
-              key={id + name}
-              firstCategoryIsClicked={firstCategoryIsClicked === name}
-              onClick={selectFirstCategory}>
-              {name}
-            </FirstCategoryButton>
-          ))}
-      </FirstCategoryContainer>
-      {/* 여기까지 */}
-      <SecondCategoryContainer>
-        <SecondCategorySlider
-          onTouchStart={touchStartSecondSlider}
-          onTouchMove={touchMoveSecondSlider}
-          onTouchEnd={touchEndSecondSlider}>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === '전체'}
-            onClick={selectSecondCategory}>
-            전체
-          </SecondCategoryButton>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === '언어'}
-            onClick={selectSecondCategory}>
-            언어
-          </SecondCategoryButton>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === '프레임워크'}
-            onClick={selectSecondCategory}>
-            프레임워크
-          </SecondCategoryButton>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === '스타일링'}
-            onClick={selectSecondCategory}>
-            스타일링
-          </SecondCategoryButton>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === '상태관리'}
-            onClick={selectSecondCategory}>
-            상태관리
-          </SecondCategoryButton>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === '테스팅'}
-            onClick={selectSecondCategory}>
-            테스팅
-          </SecondCategoryButton>
-          <SecondCategoryButton
-            secondCategoryIsClicked={secondCategoryIsClicked === 'Tools'}
-            onClick={selectSecondCategory}>
-            Tools
-          </SecondCategoryButton>
-        </SecondCategorySlider>
-      </SecondCategoryContainer>
-      <ThirdCategoryContainer>
-        <ThirdButton
-          isHidden={currentCarousel === 0}
-          onClick={sliderMoveLeft}
-          src={arrowLeft}
-          bottom='2.6042vw'
-          left='-1.5625vw'
-          left1120='-2.6786vw'
-        />
-        <ThirdCategorySliderContainer>
-          <SliderUl
-            onTouchStart={touchStartThirdSlider}
-            onTouchMove={touchMoveThirdSlider}
-            onTouchEnd={touchEndThirdSlider}
-            length={skillArr.length}
-            currentCarousel={currentCarousel}>
-            {skillArr.map(({ src, name, id }) => (
-              <SidlerLi
-                onClick={selectThirdCategory}
-                onTouchEnd={selectThirdCategory}
-                thirdCategoryIsClicked={thirdCategoryIsClicked.includes(
-                  `${name}`,
-                )}
-                data-id={name}
-                key={id}>
-                <SkillImgContainer>
-                  <SkillImg src={src} alt='자바스크립트' />
-                </SkillImgContainer>
-                <SkillTitle>{name}</SkillTitle>
-              </SidlerLi>
+      {!isCategoryDataLoading && (
+        <>
+          <FirstCategoryContainer>
+            {categoryData[0].map(({ id, name }) => (
+              <FirstCategoryButton
+                key={id + name}
+                firstCategoryIsClicked={firstCategoryIsClicked === name}
+                onClick={selectFirstCategory}>
+                {name}
+              </FirstCategoryButton>
             ))}
-          </SliderUl>
-        </ThirdCategorySliderContainer>
-        <ThirdButton
-          length={skillArr.length}
-          currentCarousel={currentCarousel}
-          onClick={sliderMoveRight}
-          src={arrowRight}
-          bottom='2.6042vw'
-          right='-1.5625vw'
-          right1120='-2.6786vw'
-        />
-      </ThirdCategoryContainer>
+          </FirstCategoryContainer>
+          <SecondCategoryContainer>
+            <SecondCategorySlider
+              onTouchStart={touchStartSecondSlider}
+              onTouchMove={touchMoveSecondSlider}
+              onTouchEnd={touchEndSecondSlider}>
+              {categoryData[1].map(({ id, name }) => (
+                <SecondCategoryButton
+                  key={id + name}
+                  secondCategoryIsClicked={secondCategoryIsClicked === name}
+                  onClick={selectSecondCategory}>
+                  {name}
+                </SecondCategoryButton>
+              ))}
+            </SecondCategorySlider>
+          </SecondCategoryContainer>
+          <ThirdCategoryContainer>
+            <ThirdButton
+              isHidden={currentCarousel === 0}
+              onClick={sliderMoveLeft}
+              src={arrowLeft}
+              bottom='2.6042vw'
+              left='-1.5625vw'
+              left1120='-2.6786vw'
+            />
+            <ThirdCategorySliderContainer>
+              <SliderUl
+                onTouchStart={touchStartThirdSlider}
+                onTouchMove={touchMoveThirdSlider}
+                onTouchEnd={touchEndThirdSlider}
+                length={categoryData[2].length}
+                currentCarousel={currentCarousel}>
+                {categoryData[2].map(({ categoryImgUrl, name, id }) => (
+                  <SidlerLi
+                    key={id + name}
+                    onClick={selectThirdCategory}
+                    onTouchEnd={selectThirdCategory}
+                    thirdCategoryIsClicked={thirdCategoryIsClicked.includes(
+                      `${name}`,
+                    )}
+                    data-id={name}>
+                    <SkillImgContainer>
+                      <SkillImg src={categoryImgUrl} alt={name} />
+                    </SkillImgContainer>
+                    <SkillTitle>{name}</SkillTitle>
+                  </SidlerLi>
+                ))}
+              </SliderUl>
+            </ThirdCategorySliderContainer>
+            <ThirdButton
+              length={categoryData[2].length}
+              currentCarousel={currentCarousel}
+              onClick={sliderMoveRight}
+              src={arrowRight}
+              bottom='2.6042vw'
+              right='-1.5625vw'
+              right1120='-2.6786vw'
+            />
+          </ThirdCategoryContainer>
+        </>
+      )}
+
+      {/* 여기까지 */}
+
       <ThirdCategoryResultContainer>
         {thirdCategoryIsClicked.map((name, i) => (
           <CategoryResult key={i}>
