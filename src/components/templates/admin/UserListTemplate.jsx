@@ -35,14 +35,14 @@ const UserListTemplate = () => {
           <LinkWrapper>
             <StyledButton
               data-id='frontend'
-              searchParams={searchParams.get('language')}
-              onClick={() => setSearchParams({ language: 'frontend' })}>
+              searchParams={searchParams.get('firstCategory')}
+              onClick={() => setSearchParams({ firstCategory: 'frontend' })}>
               프론트엔드(340)
             </StyledButton>
             <StyledButton
               data-id='backend'
-              searchParams={searchParams.get('language')}
-              onClick={() => setSearchParams({ language: 'backend' })}>
+              searchParams={searchParams.get('firstCategory')}
+              onClick={() => setSearchParams({ firstCategory: 'backend' })}>
               백엔드(9)
             </StyledButton>
           </LinkWrapper>

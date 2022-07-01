@@ -15,7 +15,7 @@ const AdminHeader = () => {
             <StyledNavLink to='/admin/lecture-list'>강의 리스트</StyledNavLink>
           </LinkWrapper>
           <LinkWrapper>
-            <StyledNavLink to='/admin/user-list?language=frontend'>
+            <StyledNavLink to='/admin/users?firstCategory=frontend'>
               회원 관리
             </StyledNavLink>
           </LinkWrapper>
