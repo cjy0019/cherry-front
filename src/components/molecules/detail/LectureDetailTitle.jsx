@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
-import thumbnail from '../../../assets/img/thumbnail.svg';
 import starRed from '../../../assets/img/star1_red.svg';
 
 import LargeAgencyBadge from '../../UI/atoms/badges/LargeAgencyBadge';
@@ -11,32 +10,53 @@ import OfflineBadge from '../../UI/atoms/badges/OfflineBadge';
 import BookMarkButton from '../../UI/atoms/buttons/BookMarkButton';
 import OriginalLinkButton from '../../UI/atoms/buttons/OriginalLinkButton';
 import ReviewButton from '../../UI/atoms/buttons/ReviewButton';
+import { useMemo } from 'react';
 
-const LectureDetailTitle = () => {
+const LectureDetailTitle = ({ lectureDetailInfoData }) => {
+  const {
+    name,
+    hashTags,
+    review,
+    bookmark,
+    offline,
+    lectureCompany,
+    lecturers,
+    desktopImgUrl,
+  } = lectureDetailInfoData;
+  const { totalRating, count } = review;
+
+  const hashTagsWithSharp = useMemo(
+    () => hashTags.map((hashTag) => `# ${hashTag}`),
+    [hashTags],
+  );
+
   return (
     <Container>
       <FlexLeft>
-        <img src={thumbnail} alt='강의 썸네일' />
-        <StyledOffLineBadge />
-        <StyledBookMarkButton />
+        <img src={desktopImgUrl} alt='강의 썸네일' />
+        {offline && <StyledOffLineBadge />}
+        <StyledBookMarkButton active={bookmark} />
       </FlexLeft>
 
       <FlexRight>
-        <Title>웹 게임을 만들며 배우는 JavaScript (자바스크립트)</Title>
+        <Title>{name}</Title>
 
         <Badges>
-          <StyledLargeAgencyBadge>기관 groomedu</StyledLargeAgencyBadge>
-          <StyledLargeAgencyBadge>강사 ZeroCho</StyledLargeAgencyBadge>
+          <StyledLargeAgencyBadge>{`기관 ${lectureCompany}`}</StyledLargeAgencyBadge>
+          {lecturers.map((lecturer) => (
+            <StyledLargeAgencyBadge
+              key={lecturer}>{`강사 ${lecturer}`}</StyledLargeAgencyBadge>
+          ))}
         </Badges>
 
         <HashTags>
-          <p>#수강가능</p>
-          <p>#JavaScript</p>
-          <p>#TypeScript</p>
+          {hashTagsWithSharp.map((hashTag) => (
+            <p key={hashTag}>{hashTag}</p>
+          ))}
         </HashTags>
 
         <StarPoints>
-          <Points>4.5</Points>
+          <Points>{totalRating.toFixed(1)}</Points>
           <Stars>
             <img src={starRed} alt='point' />
             <img src={starRed} alt='point' />
@@ -44,7 +64,7 @@ const LectureDetailTitle = () => {
             <img src={starRed} alt='point' />
             <img src={starRed} alt='point' />
           </Stars>
-          <Counter>(99+참여)</Counter>
+          <Counter>({count}+참여)</Counter>
         </StarPoints>
 
         <ButtonContainer>
@@ -97,6 +117,8 @@ const FlexLeft = styled.div`
 
   @media ${responsive.mobile} {
     width: 100%;
+
+    transform: translateY(-7.8125vw);
   }
 
   &::before {
@@ -216,6 +238,9 @@ const StyledBookMarkButton = styled(BookMarkButton)`
     @media ${responsive.tablet} {
       width: 5.2083vw;
     }
+    @media ${responsive.mobile} {
+      width: 45px;
+    }
   }
 `;
 
@@ -288,11 +313,11 @@ const HashTags = styled.div`
   display: flex;
   gap: 12px;
 
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 400;
   color: ${palette.text4};
 
-  margin-top: 0.625vw;
+  margin-top: 12px;
 
   @media (max-width: 1045px) {
     font-size: 0.75rem;
@@ -304,7 +329,6 @@ const HashTags = styled.div`
 
   @media ${responsive.tablet} {
     gap: 0.625vw;
-    margin-top: 0.5208vw;
     font-size: 0.625vw;
   }
 
@@ -347,6 +371,7 @@ const Stars = styled.div`
 `;
 
 const Points = styled.p`
+  white-space: nowrap;
   font-weight: 700;
   font-size: 1.4583vw;
   color: ${palette.textWhite};
@@ -395,7 +420,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledOriginalLinkButton = styled(OriginalLinkButton)`
-  height: 2.0833vw;
+  height: 40px;
 
   @media ${responsive.tablet} {
     height: 5.2083vw;

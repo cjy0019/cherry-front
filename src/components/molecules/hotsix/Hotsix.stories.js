@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { responsive } from '../../../style/responsive';
 import Hotsix from './Hotsix';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default {
   title: 'molecules/Hot6',

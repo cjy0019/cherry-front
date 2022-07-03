@@ -4,25 +4,24 @@ import styled from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
 
-const LectureInfo = () => {
+const LectureInfo = ({ lectureDetailInfoData }) => {
+  const { mostViewUserGroup, price, info } = lectureDetailInfoData;
+
   return (
     <Container>
       <Title>강의 정보</Title>
 
       <Badges>
-        <JobBadge>프론트</JobBadge>
-        <JobBadge>1년차</JobBadge>
+        <JobBadge>{mostViewUserGroup.job}</JobBadge>
+        <JobBadge>{mostViewUserGroup.career}</JobBadge>
         <p>가 많이 들은 강의입니다.</p>
       </Badges>
-      <Description>
-        '끝말잇기'부터 '테트리스'까지! 실제로 동작하는 웹 게임을 개발하며 쉽고
-        재밌는 자바스크립트를 배울 수 있는 강의입니다.
-      </Description>
+      <Description>{info}</Description>
 
       <Box>
         <PriceWrapper>
           <p>가격</p>
-          <p>17,000</p>
+          <p>{price.toLocaleString()}</p>
         </PriceWrapper>
         <SmallText>
           * 할인 가격이므로, 정확한 가격정보는 원본링크를 통해 확인하세요.

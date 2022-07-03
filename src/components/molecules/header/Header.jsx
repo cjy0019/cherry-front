@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../style/palette';
 import { responsive } from '../../../style/responsive';
@@ -12,23 +12,43 @@ import searchM from '../../../assets/img/search_m.svg';
 import Notification from '../../UI/atoms/notification/Notification';
 
 const Header = ({ className, login, notMain, activeNotification }) => {
-  const [myPageIsClicked, setMyPageIsClicked] = useState(false);
+  const headerModalEl = useRef(null);
+  const myPageModalEl = useRef(null);
+  const [myPageIsOpen, setMyPageIsOpen] = useState(false);
+  const [notificationIsOpen, setNotificationIsOpen] = useState(false);
   const [mobileSearchIsClicked, setMobileSearchIsClicked] = useState(false);
-  const [notificationIsClicked, setNotificationIsClicked] = useState(false);
 
   if (!activeNotification) {
     activeNotification = () => {
-      setNotificationIsClicked(!notificationIsClicked);
+      setNotificationIsOpen(!notificationIsOpen);
     };
   }
 
-  const activeMyPage = () => {
-    setMyPageIsClicked(!myPageIsClicked);
+  const handleActiveMyPage = () => {
+    setMyPageIsOpen(!myPageIsOpen);
   };
 
-  const searchMOnClick = () => {
+  const handleSearchMOnClick = () => {
     setMobileSearchIsClicked(!mobileSearchIsClicked);
   };
+
+  const handleClickOutside = (e) => {
+    if (notificationIsOpen && !headerModalEl.current.contains(e.target)) {
+      setNotificationIsOpen(false);
+    }
+
+    if (myPageIsOpen && !myPageModalEl.current.contains(e.target)) {
+      setMyPageIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, [notificationIsOpen, myPageIsOpen]);
 
   return (
     <StyledHeader className={className} notMain={notMain}>
@@ -45,7 +65,10 @@ const Header = ({ className, login, notMain, activeNotification }) => {
           )}
         </FlexLeft>
         <FlexRight mobileSearchIsClicked={mobileSearchIsClicked}>
-          <MobileSearchButton notMain={notMain} onClick={searchMOnClick} />
+          <MobileSearchButton
+            notMain={notMain}
+            onClick={handleSearchMOnClick}
+          />
           {!login && (
             <>
               <StyledLink to='#'>로그인</StyledLink>
@@ -56,11 +79,14 @@ const Header = ({ className, login, notMain, activeNotification }) => {
             <>
               <NotificationButton onClick={activeNotification} />
               <HeaderNotification
+                ref={headerModalEl}
                 activeNotification={activeNotification}
-                notificationIsClicked={notificationIsClicked}
+                notificationIsOpen={notificationIsOpen}
               />
-              <MyPage onClick={activeMyPage}>MY</MyPage>
-              <NotificationUl myPageIsClicked={myPageIsClicked}>
+              <MyPage onClick={handleActiveMyPage}>MY</MyPage>
+              <MyPageNotificationUl
+                ref={myPageModalEl}
+                myPageIsOpen={myPageIsOpen}>
                 <NotificationLi>
                   <Link to='#'>내가 쓴 리뷰</Link>
                 </NotificationLi>
@@ -73,13 +99,13 @@ const Header = ({ className, login, notMain, activeNotification }) => {
                 <NotificationLi>
                   <Link to='#'>로그아웃</Link>
                 </NotificationLi>
-              </NotificationUl>
+              </MyPageNotificationUl>
             </>
           )}
         </FlexRight>
         <CancelSpan
           mobileSearchIsClicked={mobileSearchIsClicked}
-          onClick={searchMOnClick}>
+          onClick={handleSearchMOnClick}>
           취소
         </CancelSpan>
       </Container>
@@ -88,8 +114,8 @@ const Header = ({ className, login, notMain, activeNotification }) => {
 };
 
 const HeaderNotification = styled(Notification)`
-  ${({ notificationIsClicked }) =>
-    notificationIsClicked
+  ${({ notificationIsOpen }) =>
+    notificationIsOpen
       ? css`
           display: block;
         `
@@ -103,6 +129,7 @@ const HeaderNotification = styled(Notification)`
 `;
 
 const MyPage = styled.span`
+  user-select: none;
   cursor: pointer;
   margin-left: 24px;
 
@@ -161,11 +188,11 @@ const StyledSearchInput = styled(SearchInput)`
   }
 `;
 
-const NotificationUl = styled.ul`
+const MyPageNotificationUl = styled.ul`
   z-index: 9999;
 
-  ${({ myPageIsClicked }) =>
-    myPageIsClicked
+  ${({ myPageIsOpen }) =>
+    myPageIsOpen
       ? css`
           display: flex;
         `

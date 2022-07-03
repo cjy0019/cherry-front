@@ -12,7 +12,7 @@ const RecommendBadge = ({ children, point, className }) => {
 
 const StyledBadge = styled.div`
   display: inline-block;
-  padding: 4px 9px 3px;
+  padding: 4px 7px 3px;
 
   background-color: #1d1c21;
 

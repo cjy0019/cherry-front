@@ -1,33 +1,52 @@
 import React, { useEffect, useRef } from 'react';
+import { useQuery } from 'react-query';
 import styled, { css, keyframes } from 'styled-components';
+import { axiosInstance } from '../../../api';
 import { responsive } from '../../../style/responsive';
 import JobBadge from '../../UI/atoms/badges/JobBadge';
 
 const SuggestReview = () => {
+  const { data: reviewListData, isLoading } = useQuery(
+    ['suggestReview'],
+    async () => {
+      return await axiosInstance.get('/reviews');
+    },
+    {
+      select: (data) => {
+        const initReviewListData = data.data.data.content;
+
+        return [...initReviewListData, initReviewListData[0]];
+      },
+    },
+  );
+
   return (
     <Slider>
       <ReviewUl>
-        <ReviewList>
-          <Review>
-            <Header>
-              <Dots>
-                <Dot red />
-                <Dot />
-                <Dot />
-              </Dots>
-              <JobBadge>11111</JobBadge>
-              <JobBadge>1년차</JobBadge>
-            </Header>
-            <Contents>
-              <Title>이렇게 전달력 좋게 설명한 강의는 처음이에요!</Title>
-              <Texts>
-                3시간이 아깝지 않은 강의 였습니다. 반복해서 듣고 복습하기에도
-                너무 좋은 것 같아요. 다른 강의도 만들어주세요!{' '}
-              </Texts>
-              <CheckReview>강의 확인하기</CheckReview>
-            </Contents>
-          </Review>
-        </ReviewList>
+        {!isLoading &&
+          reviewListData.map((review, i) => (
+            <ReviewList key={`${review.id}` + i}>
+              <Review>
+                <Header>
+                  <Dots>
+                    <Dot red={i === 1 || i === 4} />
+                    <Dot red={i === 2} />
+                    <Dot red={i === 3} />
+                  </Dots>
+                  <JobBadge>11111</JobBadge>
+                  <JobBadge>1년차</JobBadge>
+                </Header>
+                <Contents>
+                  <Title>이렇게 전달력 좋게 설명한 강의는 처음이에요!</Title>
+                  <Texts>
+                    3시간이 아깝지 않은 강의 였습니다. 반복해서 듣고
+                    복습하기에도 너무 좋은 것 같아요. 다른 강의도 만들어주세요!{' '}
+                  </Texts>
+                  <CheckReview>강의 확인하기</CheckReview>
+                </Contents>
+              </Review>
+            </ReviewList>
+          ))}
         <ReviewList>
           <Review>
             <Header>
@@ -102,6 +121,9 @@ const ReviewList = styled.li`
 
 const CheckReview = styled.a`
   all: unset;
+
+  cursor: pointer;
+
   display: flex;
   justify-content: center;
   align-items: center;

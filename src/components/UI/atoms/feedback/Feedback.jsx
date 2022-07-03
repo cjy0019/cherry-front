@@ -3,14 +3,16 @@ import styled, { css } from 'styled-components';
 import { responsive } from '../../../../style/responsive';
 
 import zeroStart from '../../../../assets/img/star0_dark.svg';
-import halfStart from '../../../../assets/img/star0.5_dark.svg';
-import fullStart from '../../../../assets/img/star1_dark.svg';
+
 import closeButtonImg from '../../../../assets/img/feddback_close.svg';
 import feedbackImg from '../../../../assets/img/feedback.png';
 import closeButton from '../../../../assets/img/close_w.svg';
 
+import LeftHalfStar from '../halfStar/LeftHalfStar';
+import RightHalfStar from '../halfStar/RightHalfStar';
+
 const Feedback = ({ className }) => {
-  const [feedbackIsClicked, setFeedbackIsClicked] = useState(false);
+  const [feedbackIsClicked, setFeedbackIsClicked] = useState(true);
 
   const openFeedback = () => {
     setFeedbackIsClicked(!feedbackIsClicked);
@@ -26,16 +28,60 @@ const Feedback = ({ className }) => {
         </Title>
         <StartForm>
           <StartFieldset>
-            <StartLabel htmlFor='rate1' />
-            <StartInput type='radio' name='rating' value='1' id='rate1' />
-            <StartLabel htmlFor='rate2' />
-            <StartInput type='radio' name='rating' value='2' id='rate2' />
-            <StartLabel htmlFor='rate3' />
-            <StartInput type='radio' name='rating' value='3' id='rate3' />
-            <StartLabel htmlFor='rate4' />
-            <StartInput type='radio' name='rating' value='4' id='rate4' />
-            <StartLabel htmlFor='rate5' />
-            <StartInput type='radio' name='rating' value='5' id='rate5' />
+            <StarInput name='rateGroup' id='rate5' type='radio' data-id='5' />
+            <StyledRightHalfStar htmlFor='rate5' />
+
+            <StarInput
+              name='rateGroup'
+              id='rate4.5'
+              type='radio'
+              data-id='4.5'
+            />
+            <StyledLeftHalfStar htmlFor='rate4.5' />
+
+            <StarInput name='rateGroup' id='rate4' type='radio' data-id='4' />
+            <StyledRightHalfStar htmlFor='rate4' />
+
+            <StarInput
+              name='rateGroup'
+              id='rate3.5'
+              type='radio'
+              data-id='3.5'
+            />
+            <StyledLeftHalfStar htmlFor='rate3.5' />
+
+            <StarInput name='rateGroup' id='rate3' type='radio' data-id='3' />
+            <StyledRightHalfStar htmlFor='rate3' />
+
+            <StarInput
+              name='rateGroup'
+              id='rate2.5'
+              type='radio'
+              data-id='2.5'
+            />
+            <StyledLeftHalfStar htmlFor='rate2.5' />
+
+            <StarInput name='rateGroup' id='rate2' type='radio' data-id='2' />
+            <StyledRightHalfStar htmlFor='rate2' />
+
+            <StarInput
+              name='rateGroup'
+              id='rate1.5'
+              type='radio'
+              data-id='1.5'
+            />
+            <StyledLeftHalfStar htmlFor='rate1.5' />
+
+            <StarInput name='rateGroup' id='rate1' type='radio' data-id='1' />
+            <StyledRightHalfStar htmlFor='rate1' />
+
+            <StarInput
+              name='rateGroup'
+              id='rate0.5'
+              type='radio'
+              data-id='0.5'
+            />
+            <StyledLeftHalfStar htmlFor='rate0.5' />
           </StartFieldset>
         </StartForm>
         <FeedbackTextArea
@@ -218,7 +264,7 @@ const FeedbackButton = styled.button`
 
 const Container = styled.div`
   position: relative;
-  z-index: 9999;
+  z-index: 5000;
 `;
 
 const CloseButton = styled.button`
@@ -280,26 +326,56 @@ const FeedbackTextArea = styled.textarea`
   }
 `;
 
-const StartInput = styled.input`
-  display: none;
+const StarInput = styled.input`
+  /* display: none; */
 `;
 
-const StartLabel = styled.label`
+const StyledRightHalfStar = styled(RightHalfStar)`
+  cursor: pointer;
   display: inline-block;
-  width: 24px;
-  height: 22.5px;
-  margin-right: 8px;
 
-  background-image: url(${zeroStart});
+  &:hover path {
+    fill: black;
+  }
+`;
+
+const StyledLeftHalfStar = styled(LeftHalfStar)`
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover path {
+    fill: black;
+  }
 `;
 
 const StartFieldset = styled.fieldset`
   all: unset;
   display: flex;
   justify-content: center;
+  flex-direction: row-reverse;
 
-  & > label:last-of-type {
+  & > input {
+    display: none;
+  }
+
+  & > label:nth-of-type(odd) {
+    padding-right: 8px;
+  }
+
+  & label:first-of-type {
     margin-right: 0;
+  }
+
+  & > label:hover ~ label > svg {
+    path {
+      fill: black;
+    }
+  }
+
+  input:checked ~ label > svg {
+    path {
+      fill: black;
+    }
   }
 `;
 

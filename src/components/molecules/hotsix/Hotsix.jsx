@@ -16,9 +16,33 @@ import rank5 from '../../../assets/img/rank05.svg';
 import rank6 from '../../../assets/img/rank06.svg';
 import MobileSort from '../mobileSort/MobileSort';
 
+import { useQuery } from 'react-query';
+import { axiosInstance } from '../../../api';
+
 const Hotsix = () => {
-  // 프론트엔드, 백엔드 선택후 CSS 변경 구현
   const [isCategoryActive, setIsCategoryActive] = useState('프론트엔드');
+  const { isLoading: IsInitDataLoading, data: lecturesData } = useQuery(
+    ['hotSixLectures', isCategoryActive],
+    async () => {
+      let categoryNumber = '1';
+
+      if (isCategoryActive === '프론트엔드') {
+        categoryNumber = '1';
+      } else if (isCategoryActive === '백엔드') {
+        categoryNumber = '2';
+      }
+
+      return await axiosInstance.get(
+        `/lectures?sort=reviewCount&page=1&size=6&depth=1&categoryId=${categoryNumber}`,
+      );
+    },
+    {
+      keepPreviousData: true,
+    },
+  );
+  // ranks 이미지들을 불러온다면 ,useQueyr 캐시에서 불러오면된다.(나중에 지워주기)
+  const rankSrcs = [rank1, rank2, rank3, rank4, rank5, rank6];
+
   const [currentCarousel, setCurrentCarousel] = useState(0);
   const [sortIsClicked, setSortIsClicked] = useState(false);
   const [hotSixCurrentSort, setHotSixCurrentSort] = useState('최신순');
@@ -75,27 +99,29 @@ const Hotsix = () => {
     }
   }
 
+  const handleResizeForHotSix = () => {
+    if (window.innerWidth < 1121 && window.innerWidth > 768) {
+      isBack1121 = true;
+      return;
+    }
+
+    if (window.innerWidth > 1121 && isBack1121) {
+      setCurrentCarousel(1);
+      isBack1121 = false;
+      return;
+    }
+
+    if (window.innerWidth < 769) {
+      setCurrentCarousel(0);
+      return;
+    }
+  };
+
   useEffect(() => {
     // 변수 함수를 넣으면 왜 안돼는지 검색
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 1121 && window.innerWidth > 768) {
-        isBack1121 = true;
-        return;
-      }
+    window.addEventListener('resize', handleResizeForHotSix);
 
-      if (window.innerWidth > 1121 && isBack1121) {
-        setCurrentCarousel(1);
-        isBack1121 = false;
-        return;
-      }
-
-      if (window.innerWidth < 769) {
-        setCurrentCarousel(0);
-        return;
-      }
-    });
-
-    // return window.removeEventListener('resize', checkViewPort);
+    return window.removeEventListener('resize', handleResizeForHotSix);
   }, []);
 
   return (
@@ -109,11 +135,13 @@ const Hotsix = () => {
         </TitleSection>
         <Category>
           <CategorySpan
+            data-id='1'
             isCategoryActive={isCategoryActive === '프론트엔드'}
             onClick={selectCategory}>
             프론트엔드
           </CategorySpan>
           <CategorySpan
+            data-id='2'
             isCategoryActive={isCategoryActive === '백엔드'}
             onClick={selectCategory}>
             백엔드
@@ -122,7 +150,7 @@ const Hotsix = () => {
             {hotSixCurrentSort} <DownArrow src={categoryDown} alt='펼쳐 보기' />
           </MobileCategory>
           <StyledMobileSort
-            hotSixCurrentSort={hotSixCurrentSort}
+            currentSort={hotSixCurrentSort}
             checkSort={checkSort}
             setSortIsClicked={setSortIsClicked}
             sortIsClicked={sortIsClicked}
@@ -137,24 +165,20 @@ const Hotsix = () => {
           onTouchEnd={touchEndCarousel}
           cardListRef={cardListRef}
           currentCarousel={currentCarousel}>
-          <CardLi>
-            <HotSixCard three rankSrc={rank1} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank2} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank3} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank4} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank5} />
-          </CardLi>
-          <CardLi>
-            <HotSixCard three rankSrc={rank6} />
-          </CardLi>
+          {!IsInitDataLoading &&
+            lecturesData.data.content.map((lectureData, i) => {
+              return (
+                <CardLi key={lectureData.id}>
+                  <HotSixCard
+                    // 메인 페이지에서, 프론트엔드, 백엔드, 강의 페이지 별로 저장되는 위치가 다름
+                    category={isCategoryActive}
+                    lectureData={lectureData}
+                    three
+                    rankSrc={rankSrcs[i]}
+                  />
+                </CardLi>
+              );
+            })}
         </CardsUl>
       </CarouselContainer>
       <CarrouselButton onClick={carouselMoveRight} />

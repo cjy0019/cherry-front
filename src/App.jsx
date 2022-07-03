@@ -12,22 +12,20 @@ import LectureRegisterPage from './components/pages/admin/LectureRegisterPage';
 import CategoryRegisterPage from './components/pages/admin/CategoryRegisterPage';
 import LectureListPage from './components/pages/admin/LectureListPage';
 import UserListPage from './components/pages/admin/UserListPage';
-import axios from 'axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
+const queryClient = new QueryClient();
 
 const App = () => {
-  (async () => {
-    const res = await axios.get('/todos');
-    console.log(res);
-  })();
-
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Router>
         <Routes>
           <Route path='/' element={<MainPage />} />
-          <Route path='detail' element={<DetailPage />} />
-          <Route path='write' element={<ReviewWritePage />} />
+          <Route path='lecture' element={<DetailPage />} />
+          <Route path='review' element={<ReviewWritePage />} />
           <Route path='signin' element={<SigninPage />} />
           <Route path='signup' element={<SignupPage />} />
 
@@ -40,12 +38,13 @@ const App = () => {
               path='category-registration'
               element={<CategoryRegisterPage />}
             />
-            <Route path='lecture-list' element={<LectureListPage />} />
-            <Route path='user-list' element={<UserListPage />} />
+            <Route path='lectures' element={<LectureListPage />} />
+            <Route path='users' element={<UserListPage />} />
           </Route>
         </Routes>
       </Router>
-    </>
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+    </QueryClientProvider>
   );
 };
 

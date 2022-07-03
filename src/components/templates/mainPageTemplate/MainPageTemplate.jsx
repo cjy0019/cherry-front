@@ -1,9 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Header from '../../molecules/header/Header';
 import illustrate from '../../../assets/img/illu_pc.svg';
 import styled from 'styled-components';
 import SearchInput from '../../UI/atoms/input/SearchInput';
 import palette from '../../../style/palette';
+
 import { responsive } from '../../../style/responsive';
 
 import AvailableSkill from '../../molecules/availableSkill/AvailableSkill';
@@ -15,17 +16,28 @@ import Footer from '../../molecules/footer/Footer';
 import Notification from '../../UI/atoms/notification/Notification';
 
 const MainPageTemplate = () => {
-  const [notificationIsClicked, setNotificationIsClicked] = useState(false);
+  const modalEl = useRef(null);
+  const [notificationIsOpen, setNotificationIsOpen] = useState(false);
 
   const activeNotification = useCallback(() => {
-    setNotificationIsClicked(!notificationIsClicked);
-  }, [notificationIsClicked]);
+    setNotificationIsOpen(!notificationIsOpen);
+  }, [notificationIsOpen]);
+
+  const handleClickOutside = (e) => {
+    if (notificationIsOpen && !modalEl.current.contains(e.target)) {
+      setNotificationIsOpen(false);
+    }
+  };
 
   return (
-    <>
+    <div onClick={handleClickOutside}>
       <SmallContainer>
         <StyledHeader login activeNotification={activeNotification} />
-        <HeaderNotification notificationIsClicked={notificationIsClicked} />
+        <HeaderNotification
+          ref={modalEl}
+          activeNotification={activeNotification}
+          notificationIsOpen={notificationIsOpen}
+        />
         <HeaderSection>
           <MobileHeader login />
           <Illustrate />
@@ -42,7 +54,7 @@ const MainPageTemplate = () => {
       </SmallContainer>
       <SuggestCherryPick />
       <Footer />
-    </>
+    </div>
   );
 };
 

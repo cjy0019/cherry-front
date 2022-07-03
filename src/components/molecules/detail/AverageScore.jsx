@@ -3,14 +3,55 @@ import styled from 'styled-components';
 import palette from '../../../style/palette';
 
 import starRed from '../../../assets/img/star1_red.svg';
+import starHalfRed from '../../../assets/img/star0.5_red.svg';
+import starEmptyRed from '../../../assets/img/star0_red.svg';
+
 import smileRed from '../../../assets/img/smile_red.svg';
 import smileGrey from '../../../assets/img/smile_grey.svg';
 import ProgressBar from './ProgressBar';
 
 import RecommendBadge from '../../UI/atoms/badges/RecommendBadge';
 import { responsive } from '../../../style/responsive';
+import { useMemo } from 'react';
 
-const AverageScore = () => {
+const AverageScore = ({ lectureDetailInfoData }) => {
+  const { review } = lectureDetailInfoData;
+  const { count, costPerformance, totalRating } = review;
+
+  const verySatisfactionCnt = useMemo(
+    () => costPerformance.verySatisfaction / count,
+    [count, costPerformance],
+  );
+  const satisfactionCnt = useMemo(
+    () => costPerformance.satisfaction / count,
+    [count, costPerformance],
+  );
+  const middleCnt = useMemo(
+    () => costPerformance.middle / count,
+    [count, costPerformance],
+  );
+  const sosoCnt = useMemo(
+    () => costPerformance.soso / count,
+    [count, costPerformance],
+  );
+  const starArray = Array.from({ length: 5 }, () => false);
+  const fullStarCount = Math.floor(totalRating);
+
+  for (let i = 0; i < fullStarCount; i++) {
+    starArray[i] = 'full';
+  }
+
+  let halfStar = (totalRating * 10) % 10 >= 5 ? 'half' : 'empty';
+  if (!(fullStarCount === 5)) {
+    starArray[fullStarCount] = halfStar;
+  }
+
+  for (let i = 0; i < starArray.length; i++) {
+    if (!starArray[i]) {
+      starArray[i] = 'empty';
+    }
+  }
+
   return (
     <Container>
       <Title>평점</Title>
@@ -21,26 +62,29 @@ const AverageScore = () => {
             <p>리뷰 평점</p>
 
             <ScoreWrapper>
-              <Score>4.5</Score>
-              <Counter>(133명 참여)</Counter>
+              <Score>{review.totalRating.toFixed(1)}</Score>
+              <Counter>({review.count}명 참여)</Counter>
             </ScoreWrapper>
 
             <StarContainer>
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
-              <img src={starRed} alt='포인트' />
+              {starArray.map((value, i) => {
+                if (value === 'full')
+                  return <img key={i} src={starRed} alt='별점' />;
+                else if (value === 'half')
+                  return <img key={i} src={starHalfRed} alt='별점' />;
+                else if (value === 'empty')
+                  return <img key={i} src={starEmptyRed} alt='별점' />;
+              })}
             </StarContainer>
 
             <FrontBackContainer>
               <ScoreWithText>
                 <p>프론트엔드</p>
-                <p>2.2</p>
+                <p>{review.frontendRating}</p>
               </ScoreWithText>
               <ScoreWithText>
                 <p>백엔드</p>
-                <p>2.5</p>
+                <p>{review.backendRating}</p>
               </ScoreWithText>
             </FrontBackContainer>
           </ScoreBox>
@@ -51,13 +95,13 @@ const AverageScore = () => {
             <DivisionBox>
               <HalfBox red>
                 <img src={smileRed} alt='추천해요 이미지' />
-                <p>92%</p>
+                <p>{review.recommendation.good}%</p>
                 <StyledRecommendBadge point>추천해요!</StyledRecommendBadge>
               </HalfBox>
 
               <HalfBox>
                 <img src={smileGrey} alt='별로에요 이미지' />
-                <p>8%</p>
+                <p>{review.recommendation.bad}%</p>
                 <StyledRecommendBadge>별로에요</StyledRecommendBadge>
               </HalfBox>
             </DivisionBox>
@@ -68,13 +112,28 @@ const AverageScore = () => {
           <p>가격 대비 만족도</p>
 
           <ProgressColContainer>
-            <ProgressBar title='매우 만족' total={2} percentage='0.3' id='1' />
-            <ProgressBar title='만족' total={4} percentage='0.9' id='2' />
-            <ProgressBar title='보통' total={20} percentage='1' id='3' />
+            <ProgressBar
+              title='매우 만족'
+              total={review.costPerformance.verySatisfaction}
+              percentage={String(verySatisfactionCnt)}
+              id='1'
+            />
+            <ProgressBar
+              title='만족'
+              total={review.costPerformance.satisfaction}
+              percentage={String(satisfactionCnt)}
+              id='2'
+            />
+            <ProgressBar
+              title='보통'
+              total={review.costPerformance.middle}
+              percentage={String(middleCnt)}
+              id='3'
+            />
             <ProgressBar
               title='그저 그럼'
-              total={100}
-              percentage='0.5'
+              total={review.costPerformance.soso}
+              percentage={String(sosoCnt)}
               id='4'
             />
           </ProgressColContainer>
